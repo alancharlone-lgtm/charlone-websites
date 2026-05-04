@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="store-id" content="viejatabernaok">
+  <title>La Vieja Taberna — Restaurante & Salón de Eventos | Charlone</title>
+  <meta name="description" content="Restaurante parrillero y salón de eventos en Coronel Charlone. Asados a la llama, cocina artesanal y el mejor salón para tus celebraciones.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --carbon: #1a1008;
+      --ember: #c0392b;
+      --ember-light: #e74c3c;
+      --gold: #d4a843;
+      --cream: #f5f0e8;
+      --wood: #6b3a2a;
+      --smoke: #2d2318;
+      --text-light: #f0ebe0;
+      --text-muted: rgba(240,235,224,0.6);
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--carbon); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+    nav.scrolled { background: rgba(26,16,8,0.92); backdrop-filter: blur(12px); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; letter-spacing: 0.05em; color: var(--gold); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--ember); color: #fff; padding: 0.5rem 1.2rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background 0.3s; }
+    .nav-cta:hover { background: var(--ember-light); }
+    .nav-mobile-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .nav-mobile-btn span { display: block; width: 24px; height: 2px; background: var(--text-light); transition: 0.3s; }
+    <!-- ADS:NAV:END -->
+
+    /* HERO */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--smoke) 0%, var(--carbon) 40%, #0d0a05 100%);
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: url('img/hero.png') center/cover no-repeat;
+      opacity: 0.35;
+      filter: saturate(0.6);
+    }
+    .hero-fire {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 80%, rgba(192,57,43,0.25) 0%, transparent 70%);
+    }
+    .hero-content { position: relative; text-align: center; padding: 2rem; max-width: 800px; }
+    .hero-eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.6; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 900; line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub { font-size: 1rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0.05em; max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--ember); color: #fff;
+      padding: 0.9rem 2rem; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.3s, transform 0.2s;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+    }
+    .btn-primary:hover { background: var(--ember-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(240,235,224,0.3); color: var(--text-light);
+      padding: 0.9rem 2rem; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; transition: border-color 0.3s, color 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); text-align: center; }
+    .hero-scroll span { display: block; width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 0.5rem auto 0; animation: scrollLine 2s ease-in-out infinite; }
+    @keyframes scrollLine { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:0.3;transform:scaleY(0.5)} }
+
+    /* SECTIONS */
+    section { padding: 6rem 2rem; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.1; }
+    .section-subtitle { color: var(--text-muted); font-size: 1rem; font-weight: 300; line-height: 1.7; max-width: 520px; margin-top: 1rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .divider { width: 60px; height: 2px; background: var(--ember); margin: 2rem 0; }
+
+    /* ABOUT */
+    #nosotros { background: var(--smoke); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: saturate(0.8); }
+    .about-badge {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--ember); padding: 1.5rem;
+      font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: #fff;
+      line-height: 1;
+    }
+    .about-badge small { display: block; font-family: 'Inter', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400; margin-top: 0.25rem; }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .feature { border-left: 2px solid var(--ember); padding-left: 1rem; }
+    .feature strong { display: block; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--cream); margin-bottom: 0.25rem; }
+    .feature p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* MENU */
+    #menu { background: var(--carbon); }
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .menu-card {
+      position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer;
+      background: var(--smoke);
+    }
+    .menu-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, filter 0.4s; filter: saturate(0.7) brightness(0.85); }
+    .menu-card:hover img { transform: scale(1.08); filter: saturate(1) brightness(1); }
+    .menu-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,16,8,0.9) 0%, transparent 60%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
+    }
+    .menu-card-overlay h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--cream); }
+    .menu-card-overlay p { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
+    .menu-card-overlay .price { color: var(--gold); font-size: 0.8rem; margin-top: 0.5rem; letter-spacing: 0.05em; }
+
+    /* GALLERY */
+    #galeria { background: var(--smoke); }
+    .gallery-masonry { columns: 3; gap: 3px; margin-top: 3rem; }
+    .gallery-masonry img { width: 100%; display: block; margin-bottom: 3px; filter: saturate(0.75); transition: filter 0.4s; cursor: pointer; }
+    .gallery-masonry img:hover { filter: saturate(1); }
+
+    /* EVENTOS */
+    #eventos { background: var(--carbon); }
+    .eventos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .eventos-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; filter: saturate(0.8); }
+    .evento-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .evento-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+    .evento-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .evento-item strong { display: block; font-size: 0.9rem; letter-spacing: 0.05em; color: var(--cream); margin-bottom: 0.3rem; }
+    .evento-item p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* CONTACT */
+    #contacto { background: var(--smoke); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+    .contact-info { display: flex; flex-direction: column; gap: 2rem; }
+    .contact-item strong { display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .contact-item p, .contact-item a { font-size: 0.95rem; color: var(--text-light); text-decoration: none; line-height: 1.6; }
+    .contact-item a:hover { color: var(--gold); }
+    .whatsapp-cta {
+      background: #25D366; color: #fff;
+      padding: 1rem 2rem; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.75rem;
+      transition: opacity 0.3s; margin-top: 1rem;
+    }
+    .whatsapp-cta:hover { opacity: 0.9; }
+    .map-placeholder {
+      background: var(--carbon); aspect-ratio: 4/3;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1rem; color: var(--text-muted); font-size: 0.85rem;
+    }
+    .map-placeholder a { color: var(--gold); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* FOOTER */
+    footer { background: #0d0a05; padding: 3rem 2rem; text-align: center; }
+    <!-- ADS:FOOTER:START -->
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; }
+    .footer-links { display: flex; gap: 2rem; justify-content: center; list-style: none; margin-bottom: 2rem; }
+    .footer-links a { color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-social { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
+    .footer-social a { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: border-color 0.3s, color 0.3s; }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-copy { font-size: 0.7rem; color: var(--text-muted); line-height: 2; }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* WHATSAPP FAB */
+    .wa-fab {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 90;
+      width: 56px; height: 56px; background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none; animation: waPulse 2.5s ease-in-out infinite;
+    }
+    .wa-fab svg { width: 28px; height: 28px; fill: #fff; }
+    @keyframes waPulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)} 50%{box-shadow:0 4px 30px rgba(37,211,102,0.7),0 0 0 8px rgba(37,211,102,0.1)} }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-btn { display: flex; }
+      .about-grid, .eventos-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-badge { bottom: 1rem; right: 1rem; }
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-masonry { columns: 2; }
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">La Vieja Taberna<br><span style="font-size: 0.45em; letter-spacing: 2px; text-transform: uppercase; font-weight: normal; opacity: 0.8;">Servicio de Catering</span></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/54XXXXXXXXXX" class="nav-cta" target="_blank">Reservar Mesa</a>
+  <button class="nav-mobile-btn" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-img"></div>
+  <div class="hero-fire"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Charlone, Buenos Aires</p>
+    <h1>La Vieja<br><em>Taberna</em></h1>
+    <p class="hero-sub">Servicio exclusivo de catering. Llevamos el fuego, la tradición y el sabor de nuestros asados a la llama y cocina artesanal a donde vos elijas celebrar.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/54XXXXXXXXXX?text=Hola%20La%20Vieja%20Taberna%2C%20quiero%20hacer%20una%20consulta" class="btn-primary" target="_blank">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.526 5.855L0 24l6.335-1.502A11.96 11.96 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.004-1.37l-.36-.213-3.76.892.939-3.65-.234-.376A9.82 9.82 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        Contactá con ventas
+      </a>
+      <a href="#menu" class="btn-outline">Ver Menú</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span></span>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap fade-in">
+        <img src="img/mesa_sillas_retocada.png" alt="La Vieja Taberna" class="about-img">
+        <div class="about-badge">+ de<br>5<small>años</small></div>
+      </div>
+      <div class="fade-in">
+        <p class="section-label">Quiénes Somos</p>
+        <h2 class="section-title">Servicio de Catering</h2>
+        <div class="divider"></div>
+        <p style="margin-bottom: 1.5rem; line-height: 1.6; color: var(--text-muted);">
+          Con más de 5 años de trayectoria, nos especializamos en transformar tus eventos en verdaderas fiestas de sabor. Llevamos la magia de los asados a la llama y nuestras especialidades artesanales a tu locación, ofreciendo una experiencia gastronómica completa.
+        </p>
+        <div class="features" style="margin-top:2rem;">
+          <div class="feature">
+            <strong>🔥 Parrilla a Leña</strong>
+            <p>Cortes premium cocinados al ritmo del fuego vivo.</p>
+          </div>
+          <div class="feature">
+            <strong>🥂 Servicio de Catering</strong>
+            <p>Llevamos el sabor y el servicio de la taberna a tu evento.</p>
+          </div>
+          <div class="feature">
+            <strong>👩‍🍳 Cocina Artesanal</strong>
+            <p>Preparaciones caseras con productos seleccionados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Lo que ofrecemos</p>
+      <h2 class="section-title">Nuestra Propuesta</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="menu-grid fade-in">
+      <div class="menu-card">
+        <img src="img/parrilla_retocada.png" alt="Parrilla">
+        <div class="menu-card-overlay">
+          <h3>Parrilla & Asados</h3>
+          <p>Cortes seleccionados a la llama</p>
+          <span class="price">Consultar precio</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="img/salon_retocado.png" alt="Salón">
+        <div class="menu-card-overlay">
+          <h3>Excelentes Platos</h3>
+          <p>Preparaciones caseras con productos seleccionados</p>
+          <span class="price">Consultar</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="img/barra_lvt_real_retocada.png" alt="Tragos">
+        <div class="menu-card-overlay">
+          <h3>Barra de Tragos</h3>
+          <p>Bodega seleccionada y coctelería de autor</p>
+          <span class="price">Ver carta</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="img/mozo_sirviendo.png" alt="Excelente Atención">
+        <div class="menu-card-overlay">
+          <h3>Excelente Atención</h3>
+          <p>Servicio dedicado para que disfrutes tu momento</p>
+          <span class="price">Conocenos</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem;" class="fade-in">
+      <a href="https://wa.me/54XXXXXXXXXX?text=Hola%2C%20quiero%20consultar%20el%20men%C3%BA" class="btn-primary" target="_blank">Consultar Menú Completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Momentos</p>
+      <h2 class="section-title">Galería</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="gallery-masonry fade-in">
+      <video src="img/viejatabernaok_0.mp4" autoplay loop muted playsinline alt="Asado" style="width: 100%; display: block; margin-bottom: 3px; cursor: pointer;"></video>
+      <video src="img/viejatabernaok_2.mp4" autoplay loop muted playsinline alt="Detalles" style="width: 100%; display: block; margin-bottom: 3px; cursor: pointer;"></video>
+      <img src="img/parrilla_retocada.png" alt="Parrilla">
+      <img src="img/salon_retocado.png" alt="Salón">
+    </div>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+<section id="eventos">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Celebrá con nosotros</p>
+      <h2 class="section-title">Servicio de Catering</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="eventos-grid">
+      <img src="img/salon_retocado.png" alt="Servicio de Catering" class="eventos-img fade-in">
+      <div class="evento-list fade-in">
+        <p class="section-subtitle" style="margin-top:0;">Nuestro servicio de catering lleva toda la magia, elegancia y calidez de La Vieja Taberna a tu evento.</p>
+        <div class="evento-item"><span class="evento-icon">🎂</span><div><strong>Cumpleaños</strong><p>Celebrá tu día especial rodeado de quienes más querés, con menú personalizado.</p></div></div>
+        <div class="evento-item"><span class="evento-icon">💍</span><div><strong>Bodas & Compromisos</strong><p>El ambiente perfecto para el gran momento, con decoración y ambientación incluida.</p></div></div>
+        <div class="evento-item"><span class="evento-icon">🏢</span><div><strong>Eventos Corporativos</strong><p>Reuniones, cenas de empresa y celebraciones institucionales con servicio profesional.</p></div></div>
+        <div class="evento-item"><span class="evento-icon">🎄</span><div><strong>Fiestas de Fin de Año</strong><p>Cerná el año como se merece. Consultar disponibilidad y menú especial de temporada.</p></div></div>
+        <a href="https://wa.me/54XXXXXXXXXX?text=Hola%2C%20quiero%20consultar%20disponibilidad%20del%20sal%C3%B3n" class="btn-primary" style="align-self:flex-start;margin-top:1rem;" target="_blank">Consultar Disponibilidad</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Encontranos</p>
+      <h2 class="section-title">Contacto & Ubicación</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <div class="contact-item">
+          <strong>Dirección</strong>
+          <p>Coronel Charlone, Buenos Aires<br>Provincia de Buenos Aires, Argentina</p>
+        </div>
+        <div class="contact-item">
+          <strong>Instagram</strong>
+          <a href="https://instagram.com/viejatabernaok" target="_blank">@viejatabernaok</a>
+        </div>
+        <div class="contact-item">
+          <strong>Reservas & Consultas</strong>
+          <p>Escribinos directamente por WhatsApp para hacer tu reserva o consultar el menú del día.</p>
+          <a href="https://wa.me/54XXXXXXXXXX?text=Hola%20La%20Vieja%20Taberna%2C%20quiero%20hacer%20una%20consulta" class="whatsapp-cta" target="_blank">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.526 5.855L0 24l6.335-1.502A11.96 11.96 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.004-1.37l-.36-.213-3.76.892.939-3.65-.234-.376A9.82 9.82 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="map-placeholder fade-in">
+        <p>📍 Coronel Charlone, Bs.As.</p>
+        <a href="https://maps.google.com/?q=Coronel+Charlone+Buenos+Aires" target="_blank">Abrir en Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADS:CONTENT:END -->
+
+<!-- FOOTER -->
+<footer>
+  <!-- ADS:FOOTER:START -->
+  <div class="footer-logo">La Vieja Taberna</div>
+  <ul class="footer-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="footer-social">
+    <a href="https://instagram.com/viejatabernaok" target="_blank" title="Instagram">IG</a>
+    <a href="https://wa.me/54XXXXXXXXXX" target="_blank" title="WhatsApp">WA</a>
+  </div>
+  <p class="footer-copy">
+    © 2025 La Vieja Taberna — Coronel Charlone, Buenos Aires<br>
+    Desarrollado por <strong style="color:var(--gold)">ADS Labs</strong>
+  </p>
+</footer>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/54XXXXXXXXXX" class="wa-fab" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.526 5.855L0 24l6.335-1.502A11.96 11.96 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.004-1.37l-.36-.213-3.76.892.939-3.65-.234-.376A9.82 9.82 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+</a>
+
+<!-- ADS:SCRIPTS -->
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

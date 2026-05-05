@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conti Insumos | Agro y Ferretería Premium</title>
+    <meta name="description" content="Insumos agropecuarios de alta calidad. Semillas, herbicidas y herramientas para potenciar tu campo.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FECE14',
+                        secondary: '#000000',
+                        surface: '#FFFFFF',
+                        text: '#111827',
+                        success: '#16A34A',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..300,0..1&display=swap" rel="stylesheet">
+    <meta name="store-id" content="contiinsumos">
+</head>
+<body class="bg-gray-50 text-text font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg overflow-hidden bg-white shadow-sm border border-gray-100 flex items-center justify-center">
+                        <img src="img/charlone/contiinsumos_0.jpg" alt="Conti Insumos Logo" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-secondary">Conti Insumos</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#soluciones" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Soluciones</a>
+                    <a href="#productos" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Productos</a>
+                    <a href="#contacto" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Contacto</a>
+                    <a href="https://instagram.com/conti.insumos" target="_blank" class="px-5 py-2.5 bg-secondary text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors shadow-lg shadow-gray-200">
+                        Ver Instagram
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-secondary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+                <button onclick="window._cart.openCartDrawer()" class="relative cursor-pointer hover:text-brand-accent transition-colors" id="cart-fab">
+                    <span class="material-symbols-outlined">shopping_bag</span>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 w-5 h-5 bg-brand-accent text-white text-[10px] font-bold rounded-full items-center justify-center" style="display:none;">0</span>
+                </button>
+            <!-- ADS:NAV:END -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="img/charlone/contiinsumos_1.jpg" alt="Campo Argentino" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary mb-6">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    <span class="text-xs font-mono font-semibold uppercase tracking-wider">Potencia Tu Rendimiento</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+                    Insumos de Alta Gama para el Campo Argentino
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 font-light max-w-2xl leading-relaxed">
+                    Soluciones avanzadas en semillas, herbicidas y maquinaria. Maximizá la productividad de tus tierras con tecnología de precisión y asesoramiento experto.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contacto" class="px-8 py-4 bg-primary text-secondary text-base font-bold rounded-lg hover:bg-yellow-400 transition-all shadow-xl shadow-primary/20 text-center flex items-center justify-center gap-2">
+                        Solicitar Presupuesto
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                    <a href="#productos" class="px-8 py-4 bg-white/10 text-white border border-white/20 text-base font-semibold rounded-lg hover:bg-white/20 transition-all backdrop-blur-md text-center">
+                        Explorar Catálogo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By / Features -->
+    <section id="soluciones" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-mono text-gray-400 uppercase tracking-widest mb-3">Nuestra Especialidad</h2>
+                <p class="text-3xl md:text-4xl font-semibold text-secondary">Calidad Profesional en Cada Etapa</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 card-hover">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Genética Superior</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Semillas de alta tolerancia y rendimiento como Girasol Nusol 4175 CL y BASF INSUN 211, adaptadas a nuestros suelos.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 card-hover">
+                    <div class="w-14 h-14 rounded-xl bg-secondary text-white flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Control Efectivo</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Herbicidas avanzados como Laudis para el manejo de malezas en maíz, optimizando tu rentabilidad y protegiendo la inversión.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 card-hover">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Asesoramiento Experto</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Te acompañamos en cada etapa de la siembra y cosecha con soporte técnico especializado para la zona de Coronel Charlone.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Showcase -->
+    <section id="productos" class="py-24 bg-secondary text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">El Potencial en Acción</h2>
+                    <p class="text-gray-400 text-lg">
+                        Mirá los resultados de nuestros productos aplicados en campos de la región. Calidad que se ve en la cosecha.
+                    </p>
+                </div>
+                <a href="https://instagram.com/conti.insumos" target="_blank" class="inline-flex items-center gap-2 text-primary hover:text-white transition-colors font-semibold border-b border-primary hover:border-white pb-1">
+                    Ver más en Instagram
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Media 1 -->
+                <div class="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900 shadow-2xl">
+                    <img src="img/charlone/contiinsumos_2.jpg" alt="Cultivos" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <span class="text-primary text-sm font-mono mb-2 block">Alta Resistencia</span>
+                        <h4 class="text-xl font-semibold text-white">Girasol BASF</h4>
+                    </div>
+                </div>
+                <!-- Media 2 -->
+                <div class="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900 shadow-2xl">
+                    <img src="img/charlone/contiinsumos_3.jpg" alt="Herramientas" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <span class="text-primary text-sm font-mono mb-2 block">Herbicidas</span>
+                        <h4 class="text-xl font-semibold text-white">Control de Malezas</h4>
+                    </div>
+                </div>
+                <!-- Media 3 -->
+                <div class="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900 shadow-2xl md:hidden lg:block">
+                    <img src="img/charlone/contiinsumos_4.jpg" alt="Campo" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <span class="text-primary text-sm font-mono mb-2 block">Rendimiento</span>
+                        <h4 class="text-xl font-semibold text-white">Cosecha Exitosa</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-primary relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full border-[30px] border-black/5"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full border-[40px] border-white/20"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary mb-6">¿Listo para optimizar tu producción?</h2>
+            <p class="text-xl text-secondary/80 mb-10 max-w-2xl mx-auto font-medium">
+                Conectate con nuestros especialistas hoy mismo para un asesoramiento a medida.
+            </p>
+            <a href="https://wa.me/5493388000000" target="_blank" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-secondary text-white text-lg font-bold rounded-xl hover:bg-gray-800 transition-all shadow-2xl hover:shadow-xl hover:-translate-y-1">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contactar por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    
+    <!-- ============================================================ -->
+    <!-- TIENDA — Catálogo Dinámico (inyectado por marketplace upgrade) -->
+    <!-- ============================================================ -->
+    <section id="tienda" class="pb-32 px-6 lg:px-12 max-w-screen-2xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 border-b border-black/10 pb-8 gap-6">
+            <div>
+                <h2 class="font-serif text-3xl md:text-4xl mb-2">Nuestra Colección</h2>
+                <p class="text-sm text-text-muted font-light">Elegí tu favorito y agregalo al carrito. Finalizás tu pedido por WhatsApp.</p>
+            </div>
+        </div>
+        <div class="flex flex-wrap gap-3 mb-12">
+        <button onclick="window._cart.filterCategory('all')" data-category="all"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-brand text-surface">Todo</button>
+        <button onclick="window._cart.filterCategory('Herramientas')" data-category="Herramientas"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">Herramientas</button>
+        <button onclick="window._cart.filterCategory('Pinturas')" data-category="Pinturas"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">Pinturas</button>
+        <button onclick="window._cart.filterCategory('Electricidad')" data-category="Electricidad"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">Electricidad</button>
+        <button onclick="window._cart.filterCategory('Plomería')" data-category="Plomería"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">Plomería</button>
+        <button onclick="window._cart.filterCategory('Jardín')" data-category="Jardín"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">Jardín</button>
+        </div>
+        <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
+            <div class="col-span-full text-center py-20 text-text-muted">
+                <span class="material-symbols-outlined text-4xl mb-4 block animate-pulse">hourglass_top</span>
+                Cargando productos...
+            </div>
+        </div>
+    </section>
+
+<!-- ADS:CONTENT:END -->
+
+    <footer class="bg-white border-t border-gray-100 pt-16 pb-8">
+        <!-- ADS:FOOTER:START -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div class="flex items-center gap-3 mb-6 md:mb-0">
+                    <div class="w-8 h-8 rounded-md overflow-hidden bg-gray-100 flex items-center justify-center">
+                        <img src="img/charlone/contiinsumos_0.jpg" alt="Logo footer" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-bold tracking-tight text-secondary">Conti Insumos</span>
+                </div>
+                <div class="flex gap-6 text-sm font-medium text-gray-500">
+                    <a href="https://instagram.com/conti.insumos" target="_blank" class="hover:text-primary transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terminos</a>
+                </div>
+            </div>
+            <div class="text-center md:text-left border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between text-sm text-gray-400">
+                <p>&copy; 2026 Conti Insumos. Todos los derechos reservados.</p>
+                <p class="mt-2 md:mt-0">Desarrollado por <span class="font-semibold text-gray-900">ADS Labs</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ADS:SCRIPTS -->
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <!-- SIZE SELECTION MODAL (inyectado por marketplace upgrade) -->
+    <div id="size-modal" class="fixed inset-0 z-[60] items-center justify-center bg-black/40 backdrop-blur-sm hidden" onclick="if(event.target===this) window._cart.closeSizeModal()">
+        <div class="modal-panel bg-surface w-full max-w-md mx-4 p-8 shadow-2xl translate-y-8 opacity-0 transition-all duration-400">
+            <div id="size-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- VIDEO PLAYER MODAL -->
+    <div id="video-modal" class="fixed inset-0 z-[65] items-center justify-center bg-black/80 backdrop-blur-md hidden" onclick="if(event.target===this) window._cart.closeVideoModal()">
+        <div class="modal-panel w-full max-w-3xl mx-4 scale-95 opacity-0 transition-all duration-300 relative">
+            <button onclick="window._cart.closeVideoModal()" class="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors flex items-center gap-2 text-sm">
+                Cerrar <span class="material-symbols-outlined">close</span>
+            </button>
+            <div id="video-modal-content" class="rounded-lg overflow-hidden shadow-2xl bg-black"></div>
+        </div>
+    </div>
+
+    <!-- CART OVERLAY + DRAWER -->
+    <div id="cart-overlay" class="fixed inset-0 z-[55] bg-black/30 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" onclick="window._cart.closeCartDrawer()"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 z-[60] w-full max-w-md h-full bg-surface shadow-2xl translate-x-full flex flex-col" style="transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)">
+        <div class="flex justify-between items-center px-8 py-6 border-b border-black/5">
+            <div>
+                <h3 class="font-serif text-xl">Tu Carrito</h3>
+                <p id="cart-count-footer" class="text-xs text-text-muted font-light mt-0.5">0 artículos</p>
+            </div>
+            <button onclick="window._cart.closeCartDrawer()" class="hover:text-brand-accent transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="cart-body" class="flex-1 overflow-y-auto px-8"></div>
+        <div id="cart-footer" class="border-t border-black/10 px-8 py-6 hidden">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-xs tracking-[0.2em] uppercase font-medium">Total</span>
+                <span id="cart-total" class="font-serif text-2xl">$0</span>
+            </div>
+            <button onclick="window._cart.checkout()"
+                class="w-full bg-brand text-surface py-4 text-xs tracking-[0.2em] uppercase font-medium hover:bg-brand-accent transition-colors flex items-center justify-center gap-3">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                Enviar Pedido por WhatsApp
+            </button>
+            <p class="text-center text-[10px] text-text-muted mt-3 font-light">El pedido se envía como mensaje de WhatsApp. No se realizan cobros automáticos.</p>
+        </div>
+    </div>
+
+    <script src="whatsapp-cart.js"></script>
+
+    <!-- Acceso secreto al admin: ?gestion -->
+    <script>
+    (function() {
+      if (new URLSearchParams(window.location.search).has('gestion')) {
+        var fab = document.createElement('a');
+        fab.id = 'gestion-fab';
+        fab.href = 'admin.html';
+        fab.innerHTML = '⚙️';
+        fab.title = 'Panel de Gestión';
+        fab.style.cssText = 'position:fixed;bottom:24px;left:24px;z-index:999;width:52px;height:52px;'
+          + 'border-radius:50%;background:#111;color:white;display:flex;align-items:center;'
+          + 'justify-content:center;font-size:24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);'
+          + 'text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;'
+          + 'animation:gestionPulse 2s ease-in-out infinite;';
+        fab.onmouseenter = function() { fab.style.transform = 'scale(1.1)'; };
+        fab.onmouseleave = function() { fab.style.transform = 'scale(1)'; };
+        document.body.appendChild(fab);
+        var style = document.createElement('style');
+        style.textContent = '@keyframes gestionPulse { 0%,100% { box-shadow: 0 4px 20px rgba(0,0,0,0.3); } 50% { box-shadow: 0 4px 30px rgba(0,0,0,0.5), 0 0 15px rgba(37,211,102,0.3); } }';
+        document.head.appendChild(style);
+      }
+    })();
+    </script>
+</body>
+</html>

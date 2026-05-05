@@ -1,0 +1,92 @@
+{
+  "store": "Contiinsumos",
+  "whatsapp": "5493388000000",
+  "currency": "ARS",
+  "categories": [
+    "Herramientas",
+    "Pinturas",
+    "Electricidad",
+    "Plomería",
+    "Jardín"
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Producto 1",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Herramientas",
+      "price": 0,
+      "image": "img/contiinsumos_0.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Producto 2",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Pinturas",
+      "price": 0,
+      "image": "img/contiinsumos_1.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Producto 3",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Electricidad",
+      "price": 0,
+      "image": "img/contiinsumos_2.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Producto 4",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Plomería",
+      "price": 0,
+      "image": "img/contiinsumos_3.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Producto 5",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Jardín",
+      "price": 0,
+      "image": "img/contiinsumos_4.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Producto 6",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Herramientas",
+      "price": 0,
+      "image": "img/contiinsumos_5.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    }
+  ]
+}

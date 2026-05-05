@@ -207,11 +207,15 @@
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      .nav-links, .nav-cta { display: none; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: rgba(26,16,8,0.98); flex-direction: column; padding: 2rem; text-align: center; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+      .nav-links.active { display: flex; }
+      .nav-cta { display: none; }
       .nav-mobile-btn { display: flex; }
       .about-grid, .eventos-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
       .about-badge { bottom: 1rem; right: 1rem; }
-      .menu-grid { grid-template-columns: 1fr 1fr; }
+      .menu-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .menu-card { aspect-ratio: 4/3; border-radius: 8px; }
+      .menu-card-overlay { padding: 1.2rem; background: linear-gradient(to top, rgba(26,16,8,0.95) 0%, transparent 65%); }
       .gallery-masonry { columns: 2; }
       .features { grid-template-columns: 1fr; }
     }
@@ -446,6 +450,16 @@
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile Menu Toggle
+  const mobileBtn = document.querySelector('.nav-mobile-btn');
+  const navLinks = document.querySelector('.nav-links');
+  mobileBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('active'));
   });
 
   // Fade-in on scroll

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maxikiosco La Nona - Coronel Charlone</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#400014",
+                    "primary": "#b80049",
+                    "primary-fixed-dim": "#ffb2be",
+                    "surface-container-low": "#f6f3f2",
+                    "secondary-container": "#f9e534",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#fcf9f8",
+                    "primary-container": "#e2165f",
+                    "outline-variant": "#e4bdc2",
+                    "inverse-surface": "#303030",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#44d8f1",
+                    "secondary-fixed-dim": "#dbc90a",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container": "#f0eded",
+                    "on-secondary-fixed-variant": "#4f4800",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#008091",
+                    "on-secondary-fixed": "#201c00",
+                    "tertiary": "#006673",
+                    "surface-tint": "#bc004b",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fcf9f8",
+                    "inverse-on-surface": "#f3f0ef",
+                    "primary-fixed": "#ffd9de",
+                    "on-tertiary-container": "#f8fdff",
+                    "inverse-primary": "#ffb2be",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-container": "#706500",
+                    "on-primary-container": "#fffbff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#004e59",
+                    "surface-container-highest": "#e5e2e1",
+                    "outline": "#8f6f73",
+                    "on-surface": "#1b1c1c",
+                    "tertiary-fixed": "#a1efff",
+                    "surface-dim": "#dcd9d9",
+                    "surface": "#fcf9f8",
+                    "on-primary-fixed-variant": "#900038",
+                    "on-tertiary-fixed": "#001f25",
+                    "surface-container-high": "#eae7e7",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#f9e534",
+                    "secondary": "#695f00",
+                    "on-surface-variant": "#5b3f43"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "xl": "80px",
+                    "md": "24px",
+                    "unit": "8px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "label-bold": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-bold": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bubbly-shadow {
+            box-shadow: 0 20px 40px rgba(184, 0, 73, 0.15);
+        }
+        .inner-border {
+            box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8);
+        }
+        .floating-product {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface overflow-x-hidden">
+<header class="bg-surface dark:bg-surface-container flex justify-between items-center w-full px-gutter py-md max-w-container-max mx-auto border-b-2 border-primary/10 shadow-[0_20px_40px_rgba(184,0,73,0.15)] sticky top-0 z-[60] rounded-b-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="storefront">storefront</span>
+<h1 class="font-headline-xl text-headline-md tracking-tighter text-primary dark:text-primary-fixed-dim">Maxikiosco La Nona</h1>
+</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-primary font-bold font-label-bold text-label-bold hover:scale-105 transition-transform duration-200" href="#">Inicio</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:scale-105 transition-transform duration-200" href="#categories">Toys</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:scale-105 transition-transform duration-200" href="#featured">Treats</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:scale-105 transition-transform duration-200" href="#visit">Visit</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:scale-105 transition-all p-2 rounded-full hover:bg-primary/5" data-icon="shopping_basket">shopping_basket</button>
+</div>
+</header>
+<main>
+<section class="relative overflow-hidden pt-xl pb-xl md:pt-lg md:pb-lg px-gutter max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+<div class="lg:col-span-6 space-y-md relative z-10">
+<span class="inline-block bg-secondary-container text-on-secondary-container px-6 py-2 rounded-full font-label-bold text-label-bold rotate-[-2deg] shadow-sm">BIENVENIDOS A LA NONA</span>
+<h1 class="font-headline-xl text-headline-xl text-primary leading-tight">Todo lo que buscás, a la vuelta de la esquina</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">El maxikiosco y juguetería más completo de Coronel Charlone. Calidad, alegría y los mejores regalitos en un solo lugar.</p>
+<div class="flex flex-wrap gap-md pt-sm">
+<button class="bg-primary text-on-primary px-xl py-md rounded-full font-headline-md text-headline-md shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-xs">
+                            Ver Juguetes
+                            <span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</button>
+<button class="bg-secondary-container text-on-secondary-container px-lg py-md rounded-full font-headline-md text-headline-md shadow-md hover:scale-105 active:scale-95 transition-all">
+                            Contacto
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-6 relative">
+<div class="relative w-full aspect-square md:aspect-video lg:aspect-square overflow-visible">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl"></div>
+<img alt="Hero" class="w-full h-full object-cover rounded-xl shadow-2xl relative z-10 floating-product" data-alt="A vibrant and playful storefront of a premium boutique toy store called Maxikiosco La Nona. The scene is bright and cheerful with high-key lighting, featuring large display windows filled with colorful plush toys and artisanal candies. The aesthetic is clean and modern, utilizing a color palette of vibrant magenta and soft yellow. Professional studio photography style with a shallow depth of field, emphasizing a high-end yet joyful atmosphere." src="img/maxikioscolanona_2.jpg"/>
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-secondary-container rounded-full flex items-center justify-center rotate-12 shadow-lg z-20 border-4 border-white">
+<span class="font-headline-md text-on-secondary-container text-center leading-tight">NEW<br/>TOYS!</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-xl px-gutter max-w-container-max mx-auto" id="categories">
+<div class="text-center mb-xl space-y-xs">
+<h2 class="font-headline-xl text-headline-lg text-primary">Nuestras Categorías</h2>
+<div class="w-24 h-2 bg-secondary-container mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-md">
+<div class="group bg-surface-container-lowest p-md rounded-xl border-2 border-primary/10 shadow-[0_20px_40px_rgba(184,0,73,0.05)] hover:scale-105 transition-all cursor-pointer text-center space-y-sm">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="icecream">icecream</span>
+</div>
+<h3 class="font-headline-md text-primary">Golosinas</h3>
+<p class="text-on-surface-variant text-body-md">Dulces y sorpresas para todos.</p>
+</div>
+<div class="group bg-surface-container-lowest p-md rounded-xl border-2 border-primary/10 shadow-[0_20px_40px_rgba(184,0,73,0.05)] hover:scale-105 transition-all cursor-pointer text-center space-y-sm">
+<div class="w-20 h-20 bg-secondary-container/20 rounded-full flex items-center justify-center mx-auto group-hover:bg-secondary-container/40 transition-colors">
+<span class="material-symbols-outlined text-on-secondary-container text-4xl" data-icon="smart_toy">smart_toy</span>
+</div>
+<h3 class="font-headline-md text-primary">Juguetes</h3>
+<p class="text-on-surface-variant text-body-md">Diversión para todas las edades.</p>
+</div>
+<div class="group bg-surface-container-lowest p-md rounded-xl border-2 border-primary/10 shadow-[0_20px_40px_rgba(184,0,73,0.05)] hover:scale-105 transition-all cursor-pointer text-center space-y-sm">
+<div class="w-20 h-20 bg-tertiary-fixed/20 rounded-full flex items-center justify-center mx-auto group-hover:bg-tertiary-fixed/40 transition-colors">
+<span class="material-symbols-outlined text-tertiary text-4xl" data-icon="pets">pets</span>
+</div>
+<h3 class="font-headline-md text-primary">Peluches</h3>
+<p class="text-on-surface-variant text-body-md">Amigos suaves y abrazables.</p>
+</div>
+<div class="group bg-surface-container-lowest p-md rounded-xl border-2 border-primary/10 shadow-[0_20px_40px_rgba(184,0,73,0.05)] hover:scale-105 transition-all cursor-pointer text-center space-y-sm">
+<div class="w-20 h-20 bg-on-secondary-fixed-variant/10 rounded-full flex items-center justify-center mx-auto group-hover:bg-on-secondary-fixed-variant/20 transition-colors">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="edit_note">edit_note</span>
+</div>
+<h3 class="font-headline-md text-primary">Escolares</h3>
+<p class="text-on-surface-variant text-body-md">Todo para el cole con onda.</p>
+</div>
+</div>
+</section>
+<section class="py-xl px-gutter bg-primary-fixed/30 rounded-xl max-w-container-max mx-auto mb-xl" id="featured">
+<div class="flex flex-col md:flex-row justify-between items-end mb-lg gap-md">
+<div class="space-y-xs">
+<h2 class="font-headline-xl text-headline-lg text-on-primary-fixed">Lo más pedido</h2>
+<p class="font-body-lg text-on-primary-fixed-variant">Descubrí por qué todos nos eligen.</p>
+</div>
+<button class="text-primary font-label-bold text-label-bold flex items-center gap-xs bg-white px-lg py-sm rounded-full shadow-sm hover:shadow-md transition-all">
+                    Ver Catálogo Completo <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-xl flex flex-col md:flex-row h-full">
+<div class="md:w-1/2 relative overflow-hidden">
+<img alt="Feature 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A close-up, high-detail shot of a gourmet candy assortment featuring vibrant, multi-colored gummies and premium chocolates. The lighting is soft and artistic, highlighting the textures and sugar coatings of the treats. The background is a soft, out-of-focus yellow that complements the vibrant magenta tones of the packaging. Professional product photography for a boutique candy store aesthetic." src="img/maxikioscolanona_3.jpg"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-4 py-1 rounded-full text-label-bold font-label-bold rotate-[-5deg] inner-border">FAVORITO</div>
+</div>
+<div class="md:w-1/2 p-lg flex flex-col justify-center space-y-sm">
+<h3 class="font-headline-md text-primary">Cajitas de Dulzura</h3>
+<p class="text-on-surface-variant text-body-md">Una selección artesanal de nuestras mejores golosinas importadas y nacionales.</p>
+<span class="text-primary font-headline-md text-headline-md">$1.500</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-xl flex flex-col md:flex-row h-full">
+<div class="md:w-1/2 relative overflow-hidden">
+<img alt="Feature 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A collection of designer wooden toys and plush characters arranged beautifully in a well-lit nursery setting. The lighting is warm and inviting, casting soft shadows. The color palette emphasizes rich yellows and deep magenta accents. High-end, premium craftsmanship is visible in the details of the toys, presented with a clean, joyful, and contemporary aesthetic." src="img/maxikioscolanona_1.jpg"/>
+<div class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-label-bold font-label-bold rotate-[5deg] inner-border">PREMIUM</div>
+</div>
+<div class="md:w-1/2 p-lg flex flex-col justify-center space-y-sm">
+<h3 class="font-headline-md text-primary">Colección Abrazable</h3>
+<p class="text-on-surface-variant text-body-md">Peluches de diseño exclusivo, ultra suaves y listos para un nuevo hogar.</p>
+<span class="text-primary font-headline-md text-headline-md">$4.200</span>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-xl px-gutter max-w-container-max mx-auto overflow-hidden rounded-xl" id="visit">
+<div class="absolute inset-0 z-0">
+<img alt="Accent Background" class="w-full h-full object-cover opacity-20" data-alt="An abstract, dreamy background of soft-focus magenta and yellow bubble shapes. The visual style is ethereal and joyful, with light-diffused gradients and a sense of depth created through blurred organic forms. It evokes the feeling of floating bubbles or soft candy textures, perfectly matching the premium playfulness brand identity." src="img/maxikioscolanona_4.jpg"/>
+</div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-xl items-center bg-white/60 backdrop-blur-lg p-lg rounded-xl border-4 border-white shadow-2xl">
+<div class="space-y-md">
+<h2 class="font-headline-xl text-headline-xl text-primary leading-none">¡Visitános hoy!</h2>
+<p class="font-body-lg text-on-surface text-lg">Te esperamos en el corazón de Coronel Charlone con la mejor atención y todas las novedades para vos y los más chicos.</p>
+<div class="space-y-sm">
+<div class="flex items-center gap-md">
+<div class="bg-primary p-3 rounded-full text-white">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-primary">DIRECCIÓN</p>
+<p class="font-body-lg">Coronel Charlone, Buenos Aires</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="bg-secondary-container p-3 rounded-full text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-primary">HORARIOS</p>
+<p class="font-body-lg">Lunes a Sábado: 8:00 - 21:00</p>
+</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-xl py-md rounded-full font-headline-md text-headline-md shadow-lg hover:scale-105 active:scale-95 transition-all w-full md:w-auto">
+                        Cómo Llegar
+                    </button>
+</div>
+<div class="h-[400px] rounded-xl overflow-hidden shadow-inner border-2 border-primary/10">
+<img alt="Location Map" class="w-full h-full object-cover" data-location="Coronel Charlone" src="img/maxikioscolanona_5.jpg"/>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-primary-container dark:bg-on-primary-fixed-variant w-full pt-xl pb-xl rounded-t-xl mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter gap-md max-w-container-max mx-auto text-center md:text-left">
+<div class="space-y-sm">
+<h2 class="font-headline-md text-on-primary-container">Maxikiosco La Nona</h2>
+<p class="font-body-md text-body-md text-on-primary-container opacity-80 max-w-xs">Premium Playfulness. Llevando alegría a cada rincón de Charlone desde hace años.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-lg">
+<div class="space-y-xs">
+<p class="font-label-bold text-on-primary-container">EXPLORÁ</p>
+<a class="block text-on-primary-container font-body-md text-body-md opacity-80 hover:opacity-100 hover:scale-105 transition-all" href="#">Nuestra Historia</a>
+<a class="block text-on-primary-container font-body-md text-body-md opacity-80 hover:opacity-100 hover:scale-105 transition-all" href="#">Catalog</a>
+</div>
+<div class="space-y-xs">
+<p class="font-label-bold text-on-primary-container">AYUDA</p>
+<a class="block text-on-primary-container font-body-md text-body-md opacity-80 hover:opacity-100 hover:scale-105 transition-all" href="#">Safety</a>
+<a class="block text-on-primary-container font-body-md text-body-md opacity-80 hover:opacity-100 hover:scale-105 transition-all" href="#">Contacto</a>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter mt-lg pt-lg border-t border-white/10 text-center">
+<p class="text-on-primary-container font-body-md text-body-md opacity-70">© 2025 Maxikiosco La Nona. Premium Playfulness.</p>
+</div>
+<p class="text-center text-xs text-stone-600 mt-4 pb-2">Desarrollado por ADS Labs</p></footer>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md md:hidden border-t-2 border-outline-variant shadow-[0_-10px_30px_rgba(184,0,73,0.1)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-2 scale-110 shadow-md">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-bold text-label-bold">Inicio</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-bold text-label-bold">Toys</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="candy">cake</span>
+<span class="font-label-bold text-label-bold">Treats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-label-bold text-label-bold">Visit</span>
+</button>
+</nav>
+</body></html>

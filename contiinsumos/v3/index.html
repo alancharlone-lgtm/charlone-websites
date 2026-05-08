@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conti Insumos | Potencia Industrial — v3</title>
+    <meta name="description" content="Conti Insumos — Herramientas de nivel profesional y marcas premium internacionales para agro e industria.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Inconsolata:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ═══ CLICKHOUSE-INSPIRED DESIGN SYSTEM ═══
+           Pure black canvas (#000000) — NEVER dark gray
+           Neon Volt accent (#faff69) — the sole chromatic accent
+           Inter weight 900 for hero — extreme typographic weight
+           Charcoal borders rgba(65,65,65,0.8) — primary depth mechanism
+           4px sharp radius — database precision
+           Inset shadows for pressed states
+           Uppercase labels with 1.4px letter-spacing (wider than most systems)
+        */
+        :root {
+            --ch-black: #000000;
+            --ch-near-black: #141414;
+            --ch-charcoal-border: rgba(65, 65, 65, 0.8);
+            --ch-deep-charcoal: #343434;
+            --ch-hover-gray: #3a3a3a;
+            --ch-neon: #faff69;
+            --ch-pale-yellow: #f4f692;
+            --ch-olive: #4f5100;
+            --ch-forest: #166534;
+            --ch-forest-dark: #14572f;
+            --ch-white: #ffffff;
+            --ch-silver: #a0a0a0;
+            
+            --font-primary: 'Inter', system-ui, sans-serif;
+            --font-code: 'Inconsolata', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-primary);
+            background: var(--ch-black);
+            color: var(--ch-white);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ═══ NAVIGATION — Dark topbar ═══ */
+        .ch-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--ch-black);
+            border-bottom: 1px solid var(--ch-charcoal-border);
+            padding: 0 48px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+        }
+        .ch-nav-logo {
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--ch-white);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ch-nav-logo .neon-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--ch-neon);
+            border-radius: 2px;
+            display: inline-block;
+        }
+        .ch-nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .ch-nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ch-silver);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            transition: color 0.2s;
+        }
+        .ch-nav-links a:hover { color: var(--ch-neon); }
+        .btn-neon {
+            background: var(--ch-neon);
+            color: var(--ch-near-black);
+            padding: 0 16px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 4px;
+            border: 1px solid var(--ch-neon);
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background 0.2s;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .btn-neon:hover { background: var(--ch-pale-yellow); }
+        .btn-forest {
+            background: var(--ch-forest);
+            color: var(--ch-white);
+            padding: 12px 24px;
+            border-radius: 4px;
+            border: 1px solid var(--ch-near-black);
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-forest:hover { background: var(--ch-forest-dark); }
+        .btn-ghost {
+            background: transparent;
+            color: var(--ch-white);
+            padding: 12px 32px;
+            border-radius: 4px;
+            border: 1px solid var(--ch-olive);
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .btn-ghost:hover { border-color: var(--ch-neon); color: var(--ch-neon); }
+
+        /* ═══ HERO — Massive typography ═══ */
+        .ch-hero {
+            padding: 200px 48px 120px;
+            text-align: center;
+            background: var(--ch-black);
+            border-bottom: 1px solid var(--ch-charcoal-border);
+        }
+        .ch-hero h1 {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 900;
+            line-height: 1.0;
+            margin-bottom: 32px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .ch-hero h1 span {
+            color: var(--ch-neon);
+        }
+        .ch-hero p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.56;
+            color: var(--ch-silver);
+            max-width: 640px;
+            margin: 0 auto 48px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ═══ PERFORMANCE STATS — Oversized numbers ═══ */
+        .ch-stats {
+            padding: 80px 48px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--ch-charcoal-border);
+            border-bottom: 1px solid var(--ch-charcoal-border);
+        }
+        .ch-stat {
+            background: var(--ch-black);
+            padding: 48px 32px;
+            text-align: center;
+        }
+        .ch-stat-num {
+            font-size: clamp(40px, 5vw, 72px);
+            font-weight: 700;
+            line-height: 1;
+            color: var(--ch-neon);
+            margin-bottom: 12px;
+        }
+        .ch-stat-label {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--ch-silver);
+        }
+
+        /* ═══ FEATURES — Bordered dark cards ═══ */
+        .ch-features {
+            padding: 96px 48px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .ch-features-header {
+            margin-bottom: 64px;
+        }
+        .ch-overline {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--ch-neon);
+            margin-bottom: 16px;
+        }
+        .ch-features-header h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .feature-card {
+            background: transparent;
+            border: 1px solid var(--ch-charcoal-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--ch-neon);
+        }
+        .feature-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        .feature-card-body {
+            padding: 32px;
+        }
+        .feature-card-body h3 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.17;
+            margin-bottom: 12px;
+        }
+        .feature-card-body p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--ch-silver);
+        }
+
+        /* ═══ GALLERY — Dark grid with neon highlights ═══ */
+        .ch-gallery {
+            padding: 96px 48px;
+            border-top: 1px solid var(--ch-charcoal-border);
+        }
+        .ch-gallery h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        .gallery-masonry img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border: 1px solid var(--ch-deep-charcoal);
+            transition: opacity 0.3s;
+            opacity: 0.7;
+        }
+        .gallery-masonry img:hover { opacity: 1; }
+
+        /* ═══ CTA — Neon-highlighted ═══ */
+        .ch-cta {
+            padding: 120px 48px;
+            text-align: center;
+            border-top: 1px solid var(--ch-charcoal-border);
+            position: relative;
+        }
+        .ch-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: var(--ch-neon);
+        }
+        .ch-cta h2 {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+        .ch-cta p {
+            font-size: 18px;
+            color: var(--ch-silver);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ═══ FOOTER ═══ */
+        .ch-footer {
+            border-top: 1px solid var(--ch-charcoal-border);
+            padding: 48px;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--ch-neon);
+            margin-bottom: 16px;
+        }
+        .footer-col p, .footer-col a {
+            font-size: 14px;
+            color: var(--ch-silver);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .footer-col a:hover { color: var(--ch-neon); }
+        .footer-credits {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--ch-deep-charcoal);
+            font-size: 12px;
+            color: var(--ch-silver);
+        }
+
+        /* ═══ ANIMATIONS ═══ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ═══ MOBILE ═══ */
+        @media (max-width: 768px) {
+            .ch-nav { padding: 0 20px; }
+            .ch-nav-links { display: none; }
+            .ch-hero { padding: 140px 20px 80px; }
+            .ch-stats { grid-template-columns: 1fr 1fr; }
+            .ch-features { padding: 48px 20px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .ch-gallery { padding: 48px 20px; }
+            .gallery-masonry { grid-template-columns: 1fr; }
+            .ch-cta { padding: 80px 20px; }
+            .ch-footer { padding: 32px 20px; }
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+<style id="premium-effects">
+
+/* ═══ GLOBAL PREMIUM POLISH ═══ */
+html {
+  scroll-behavior: smooth;
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection {
+  background: var(--selection-bg, rgba(233, 30, 99, 0.2));
+  color: var(--selection-color, inherit);
+}
+img {
+  transition: opacity 0.3s ease;
+}
+img[loading="lazy"] {
+  opacity: 0;
+}
+img.loaded, img:not([loading="lazy"]) {
+  opacity: 1;
+}
+
+/* Premium button hover shine */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 100%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.btn-shine:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Smooth image loading */
+img {
+  image-rendering: auto;
+}
+
+
+:root {
+  --primary-rgb: 233, 30, 99;
+  --mesh-color-1: #E91E63;
+  --mesh-color-2: #FFEB3B;
+  --mesh-color-3: #00BCD4;
+  --gradient-start: #E91E63;
+  --gradient-end: #FFEB3B;
+  --glow-color: rgba(233, 30, 99, 0.08);
+  --selection-bg: rgba(233, 30, 99, 0.2);
+}
+
+
+/* ═══ SCROLL REVEAL ═══ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-left] {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-left].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+[data-reveal-scale] {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-scale].revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* ═══ ANIMATED GRADIENT MESH ═══ */
+.gradient-mesh-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gradient-mesh-bg::before,
+.gradient-mesh-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: meshFloat 20s ease-in-out infinite;
+}
+.gradient-mesh-bg::before {
+  width: 60vw; height: 60vw;
+  top: -20%; left: -10%;
+  background: var(--mesh-color-1, #E91E63);
+  animation-delay: 0s;
+}
+.gradient-mesh-bg::after {
+  width: 50vw; height: 50vw;
+  bottom: -20%; right: -10%;
+  background: var(--mesh-color-2, #FFEB3B);
+  animation-delay: -10s;
+}
+.gradient-mesh-blob-3 {
+  position: fixed;
+  width: 40vw; height: 40vw;
+  top: 40%; left: 30%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.1;
+  background: var(--mesh-color-3, #00BCD4);
+  animation: meshFloat 25s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes meshFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5%, -8%) scale(1.05); }
+  50% { transform: translate(-3%, 5%) scale(0.95); }
+  75% { transform: translate(8%, 3%) scale(1.02); }
+}
+
+
+/* ═══ HOVER TILT 3D ═══ */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ═══ COUNTER ANIMATION ═══ */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ═══ INFINITE MARQUEE ═══ */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marqueeScroll var(--marquee-speed, 30s) linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+</style>
+</head>
+<body>
+
+    <!-- NAVIGATION: Minimal dark nav -->
+    <nav class="ch-nav">
+        <a href="#" class="ch-nav-logo">
+            <span class="neon-dot"></span>
+            CONTI
+        </a>
+        <ul class="ch-nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#soluciones">Soluciones</a></li>
+            <li><a href="#galeria">Equipamiento</a></li>
+            <li><a href="https://wa.me/5491100000000" class="btn-neon" target="_blank">Cotizar</a></li>
+        </ul>
+        <!-- ADS:NAV:END -->
+    </nav>
+
+    <!-- HERO: Massive typography on pure black -->
+    <section id="inicio" class="ch-hero fade-in">
+        <h1>Potencia <span>industrial</span> para tu campo.</h1>
+        <p>Herramientas de nivel profesional y marcas premium internacionales con respaldo local. Equipamos a constructoras, industrias y productores agropecuarios.</p>
+        <div class="hero-actions">
+            <a href="#soluciones" class="btn-forest">Explorar Catálogo</a>
+            <a href="https://wa.me/5491100000000" class="btn-ghost" target="_blank">Contactar Asesor</a>
+        </div>
+    </section>
+<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
+    </div>
+  </div>
+</div>
+
+
+    <!-- STATS: Oversized performance numbers -->
+    <section class="ch-stats fade-in">
+        <div class="ch-stat">
+            <div class="ch-stat-num">+10K</div>
+            <div class="ch-stat-label">Herramientas</div>
+        </div>
+        <div class="ch-stat">
+            <div class="ch-stat-num">100%</div>
+            <div class="ch-stat-label">Garantía Oficial</div>
+        </div>
+        <div class="ch-stat">
+            <div class="ch-stat-num">15+</div>
+            <div class="ch-stat-label">Marcas Premium</div>
+        </div>
+        <div class="ch-stat">
+            <div class="ch-stat-num">24h</div>
+            <div class="ch-stat-label">Soporte Técnico</div>
+        </div>
+    </section>
+
+    <!-- FEATURES: Bordered dark cards -->
+    <section id="soluciones" class="ch-features">
+        <div class="ch-features-header fade-in">
+            <p class="ch-overline">Nuestras Soluciones</p>
+            <h2>Insumos que rinden al máximo.</h2>
+        </div>
+        <div class="feature-grid fade-in">
+            <div class="feature-card">
+                <img src="img/ai_detail.png" alt="Insumos Agropecuarios" loading="lazy">
+                <div class="feature-card-body">
+                    <h3>Equipamiento Agropecuario</h3>
+                    <p>Semillas premium, fertilizantes orgánicos y maquinaria pesada. Todo lo que tu campo necesita para producir al máximo rendimiento.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img src="img/contiinsumos_1.jpg" alt="Herramientas Profesionales" loading="lazy">
+                <div class="feature-card-body">
+                    <h3>Herramientas Profesionales</h3>
+                    <p>Taladros, amoladoras, soldadoras y herramientas de medición de precisión. Nivel industrial para proyectos que exigen el máximo.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img src="img/ai_product.png" alt="Campo Argentino" loading="lazy">
+                <div class="feature-card-body">
+                    <h3>Insumos Industriales</h3>
+                    <p>Fijaciones, abrasivos, lubricantes y materiales de soldadura. Stock permanente de las marcas más confiables del mercado.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img src="img/contiinsumos_4.jpg" alt="Asesoramiento" loading="lazy">
+                <div class="feature-card-body">
+                    <h3>Asesoramiento Técnico</h3>
+                    <p>Nuestro equipo te asesora en la selección correcta de herramientas y equipamiento para optimizar tu inversión.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY: Neon-highlight grid -->
+    <section id="galeria" class="ch-gallery">
+        <p class="ch-overline">Nuestro Local</p>
+        <h2>Conocé <span style="color: var(--ch-neon)">Conti</span>.</h2>
+        <div class="gallery-masonry fade-in">
+            <img src="img/contiinsumos_0.jpg" alt="Frente del local" loading="lazy">
+            <img src="img/contiinsumos_2.jpg" alt="Productos en estantería" loading="lazy">
+            <img src="img/contiinsumos_3.jpg" alt="Maquinaria disponible" loading="lazy">
+            <img src="img/contiinsumos_5.jpg" alt="Detalle de productos" loading="lazy">
+            <img src="img/ai_hero.png" alt="Warehouse industrial" loading="lazy">
+            <img src="img/contiinsumos_4.jpg" alt="Herramientas" loading="lazy">
+        </div>
+    </section>
+
+    <!-- ADS:CONTENT:END -->
+
+    <!-- CTA: Neon-accented -->
+    <section class="ch-cta fade-in">
+        <h2>¿Listo para <span style="color: var(--ch-neon)">potenciar</span> tu proyecto?</h2>
+        <p>Hablá con un asesor y recibí la cotización que necesitás.</p>
+        <div class="hero-actions">
+            <a href="https://wa.me/5491100000000" class="btn-neon" target="_blank" style="height: 48px; font-size: 16px; padding: 0 24px;">Contactar por WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="ch-footer">
+        <!-- ADS:FOOTER:START -->
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>Conti Insumos</h4>
+                <p>Tu aliado estratégico en ferretería industrial, agropecuaria y herramientas de alta gama.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <a href="https://wa.me/5491100000000">WhatsApp</a>
+                <a href="https://instagram.com/conti.insumos">@conti.insumos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Horarios</h4>
+                <p>Lun–Vie: 8:00–18:00</p>
+                <p>Sábados: 8:00–13:00</p>
+            </div>
+        </div>
+        <div class="footer-credits">
+            <p>Desarrollado por ADS Labs © 2026</p>
+        </div>
+    </footer>
+
+    <!-- ADS:SCRIPTS -->
+    <script>
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    </script>
+<script id="premium-effects-js">
+
+// ═══ GLOBAL PREMIUM POLISH ═══
+// Lazy image loading with fade-in
+document.querySelectorAll('img').forEach(img => {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  }
+});
+
+// Add shine effect to primary buttons
+document.querySelectorAll('button, a[href]').forEach(btn => {
+  const bg = getComputedStyle(btn).backgroundColor;
+  if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+    btn.classList.add('btn-shine');
+  }
+});
+
+
+// ═══ SCROLL REVEAL ═══
+(function() {
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]');
+  if (!revealElements.length) {
+    // Auto-apply to sections and cards if no data-reveal attributes found
+    document.querySelectorAll('section, [class*="card"], [class*="rounded"]').forEach((el, i) => {
+      if (el.tagName === 'SECTION') {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = '0.1s';
+      } else if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = (i % 4) * 0.1 + 's';
+      }
+    });
+  }
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  
+  document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]').forEach(el => {
+    observer.observe(el);
+  });
+})();
+
+
+// ═══ GRADIENT MESH (JS companion — injects the blob element) ═══
+(function() {
+  if (!document.querySelector('.gradient-mesh-bg')) {
+    const mesh = document.createElement('div');
+    mesh.className = 'gradient-mesh-bg';
+    document.body.prepend(mesh);
+    
+    const blob3 = document.createElement('div');
+    blob3.className = 'gradient-mesh-blob-3';
+    document.body.prepend(blob3);
+  }
+})();
+
+
+// ═══ HOVER 3D TILT ═══
+(function() {
+  const cards = document.querySelectorAll('.tilt-card');
+  if (!cards.length) {
+    // Auto-apply to product/category cards
+    document.querySelectorAll('[class*="card"], [class*="rounded-xl"]').forEach(el => {
+      if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        if (el.querySelector('img') || el.querySelector('h3')) {
+          el.classList.add('tilt-card');
+        }
+      }
+    });
+  }
+  
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / centerY * -6;
+      const rotateY = (x - centerX) / centerX * 6;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
+  });
+})();
+
+
+// ═══ COUNTER ANIMATION ═══
+(function() {
+  const counters = document.querySelectorAll('.counter-value, [data-counter]');
+  if (!counters.length) {
+    // Auto-detect numbers that look like stats
+    document.querySelectorAll('*').forEach(el => {
+      const text = el.textContent.trim();
+      if (/^[+]?\d{2,}[+%]?$/.test(text) && el.children.length === 0) {
+        const num = parseInt(text.replace(/[^0-9]/g, ''));
+        if (num >= 10) {
+          el.dataset.counter = num;
+          el.dataset.counterSuffix = text.replace(/[0-9]/g, '').replace(/^\+/, '');
+          if (text.startsWith('+')) el.dataset.counterPrefix = '+';
+          el.classList.add('counter-value');
+          el.textContent = '0' + (el.dataset.counterSuffix || '');
+        }
+      }
+    });
+  }
+  
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.counter);
+    const prefix = el.dataset.counterPrefix || '';
+    const suffix = el.dataset.counterSuffix || '';
+    const duration = 2000;
+    const startTime = performance.now();
+    
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+      const current = Math.floor(eased * target);
+      el.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('.counter-value, [data-counter]').forEach(el => observer.observe(el));
+})();
+
+</script>
+</body>
+</html>

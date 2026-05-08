@@ -1,0 +1,183 @@
+{
+  "store": "Laestrellacharlone",
+  "whatsapp": "5403388490008",
+  "currency": "ARS",
+  "categories": [
+    "Herramientas",
+    "Pinturas",
+    "Electricidad",
+    "Plomería",
+    "Jardín"
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Producto 1",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Herramientas",
+      "price": 0,
+      "image": "img/laestrellacharlone_0.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Producto 2",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Pinturas",
+      "price": 0,
+      "image": "img/laestrellacharlone_0_poster.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Producto 3",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Electricidad",
+      "price": 0,
+      "image": "img/laestrellacharlone_1.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Producto 4",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Plomería",
+      "price": 0,
+      "image": "img/laestrellacharlone_10.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Producto 5",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Jardín",
+      "price": 0,
+      "image": "img/laestrellacharlone_11.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Producto 6",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Herramientas",
+      "price": 0,
+      "image": "img/laestrellacharlone_2.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Producto 7",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Pinturas",
+      "price": 0,
+      "image": "img/laestrellacharlone_3.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "Producto 8",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Electricidad",
+      "price": 0,
+      "image": "img/laestrellacharlone_4.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 9,
+      "name": "Producto 9",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Plomería",
+      "price": 0,
+      "image": "img/laestrellacharlone_5.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 10,
+      "name": "Producto 10",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Jardín",
+      "price": 0,
+      "image": "img/laestrellacharlone_6.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 11,
+      "name": "Producto 11",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Herramientas",
+      "price": 0,
+      "image": "img/laestrellacharlone_7.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 12,
+      "name": "Producto 12",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Pinturas",
+      "price": 0,
+      "image": "img/laestrellacharlone_8.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 13,
+      "name": "Producto 13",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Electricidad",
+      "price": 0,
+      "image": "img/laestrellacharlone_9.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Gestión — Laestrellacharlone</title>
+  <link rel="stylesheet" href="admin-panel.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <!-- STORE CONFIG (específica de este comercio) -->
+  <script>
+    const STORE_CONFIG = {
+      SHEET_ID: '',  // Se completa automáticamente en el primer login
+      storeName: 'Laestrellacharlone',
+      storeId: 'laestrellacharlone',
+      categories: ["Herramientas", "Pinturas", "Electricidad", "Plomería", "Jardín"],
+      ownerEmail: 'alan@adslabs.co',
+    };
+  </script>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="logo">🛒</div>
+      <h1>Panel de Gestión</h1>
+      <p class="subtitle">Iniciá sesión con tu cuenta de Google para administrar tus productos, fotos y precios.</p>
+      <button class="btn-google" onclick="adminLogin()">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+        Iniciar sesión con Google
+      </button>
+      <p class="login-footer">Solo el dueño de la tienda puede acceder</p>
+    </div>
+  </div>
+
+  <!-- ADMIN LAYOUT (hidden until login) -->
+  <div id="admin-layout" class="admin-layout">
+    <header class="admin-header">
+      <span class="store-name" id="admin-store-name">Mi Tienda</span>
+      <div class="user-info">
+        <span id="admin-user-name"></span>
+        <img id="admin-user-avatar" class="user-avatar" src="" alt="">
+        <button class="btn-logout" onclick="AdminPanel.logout()">Salir</button>
+      </div>
+    </header>
+    <nav class="admin-nav">
+      <button class="nav-tab active" data-tab="dashboard" onclick="AdminPanel.showTab('dashboard')">📊 Dashboard</button>
+      <button class="nav-tab" data-tab="products" onclick="AdminPanel.showTab('products')">📦 Productos</button>
+      <button class="nav-tab" data-tab="photos" onclick="AdminPanel.showTab('photos')">📸 Fotos</button>
+    </nav>
+    <div class="admin-content">
+      <div id="tab-dashboard" class="tab-content"></div>
+      <div id="tab-products" class="tab-content" style="display:none"></div>
+      <div id="tab-photos" class="tab-content" style="display:none"></div>
+    </div>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay" onclick="if(event.target===this) AdminPanel.closeModal()"></div>
+
+  <script src="admin-panel.js"></script>
+  <script>AdminPanel.init();</script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Punto Ferretero Charlone - Premium Industrial Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#f8ddd2",
+                        "surface-dim": "#1d100a",
+                        "primary-fixed": "#ffdbcc",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#351000",
+                        "error-container": "#93000a",
+                        "outline": "#a98a7d",
+                        "tertiary-fixed-dim": "#9ccaff",
+                        "surface-container-highest": "#41312a",
+                        "inverse-on-surface": "#3d2d26",
+                        "on-surface-variant": "#e2bfb0",
+                        "surface-container": "#2b1c16",
+                        "surface-container-low": "#261812",
+                        "on-tertiary": "#003257",
+                        "primary-container": "#ff6b00",
+                        "surface-container-lowest": "#170b06",
+                        "tertiary-container": "#059eff",
+                        "on-surface": "#f8ddd2",
+                        "tertiary": "#9ccaff",
+                        "on-primary": "#561f00",
+                        "on-tertiary-fixed-variant": "#00497b",
+                        "on-secondary-fixed-variant": "#7c2e00",
+                        "inverse-primary": "#a04100",
+                        "secondary-container": "#f16613",
+                        "inverse-surface": "#f8ddd2",
+                        "on-primary-container": "#572000",
+                        "on-secondary-container": "#4c1a00",
+                        "surface": "#1d100a",
+                        "secondary-fixed-dim": "#ffb695",
+                        "on-tertiary-fixed": "#001d35",
+                        "surface-variant": "#41312a",
+                        "on-secondary": "#571e00",
+                        "outline-variant": "#5a4136",
+                        "surface-container-high": "#362720",
+                        "on-tertiary-container": "#003357",
+                        "secondary": "#ffb695",
+                        "primary-fixed-dim": "#ffb693",
+                        "on-secondary-fixed": "#351000",
+                        "primary": "#ffb693",
+                        "tertiary-fixed": "#d0e4ff",
+                        "surface-bright": "#46362e",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "surface-tint": "#ffb693",
+                        "background": "#1d100a",
+                        "secondary-fixed": "#ffdbcc",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "inter": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #170b06;
+            color: #f8ddd2;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes subtle-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 107, 0, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(255, 107, 0, 0.7); }
+        }
+        .animate-glow {
+            animation: subtle-glow 3s infinite ease-in-out;
+        }
+        .glass {
+            background: rgba(43, 28, 22, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(169, 138, 125, 0.1);
+        }
+        .industrial-grid {
+            background-image: radial-gradient(rgba(255, 107, 0, 0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<nav class="fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-6 h-20 bg-black/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+<button class="flex items-center justify-center p-2 text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl" data-icon="menu">menu</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-black uppercase tracking-[0.2em] text-sm text-primary">
+            Punto Ferretero
+        </h1>
+<span class="text-[10px] tracking-[0.4em] text-on-surface-variant uppercase font-medium">Charlone</span>
+</div>
+<button class="flex items-center justify-center p-2 text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-[100vh] w-full flex items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Professional Tools" class="w-full h-full object-cover scale-110" src="img/puntoferreterocharlone_8.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#170b06]"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60"></div>
+</div>
+<div class="relative z-10 w-full px-6 max-w-4xl flex flex-col items-center text-center">
+<div class="mb-6 reveal">
+<span class="px-4 py-1.5 border border-primary/30 text-primary text-[10px] font-bold tracking-[0.3em] uppercase bg-primary/5 rounded-full">
+                Professional Excellence
+            </span>
+</div>
+<h2 class="text-[64px] sm:text-[80px] leading-[0.9] font-black uppercase tracking-tighter text-primary-fixed mb-6 reveal">
+            PUNTO<br/><span class="text-white">FERRETERO</span>
+</h2>
+<p class="text-lg sm:text-xl font-light text-on-surface-variant max-w-md mb-12 leading-relaxed tracking-wide reveal">
+            Elevando el estándar de la construcción con herramientas de precisión y asesoramiento de élite.
+        </p>
+<div class="w-full max-w-xs reveal">
+<a class="group relative flex items-center justify-center gap-4 w-full bg-primary-container text-on-primary py-5 px-8 rounded-xl font-bold text-base active:scale-95 transition-all animate-glow shadow-2xl shadow-primary-container/20 overflow-hidden" href="#">
+<span class="relative z-10 flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                    CONTACTO WHATSAPP
+                </span>
+<div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+</a>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50">
+<span class="text-[10px] uppercase tracking-widest font-semibold">Scroll</span>
+<span class="material-symbols-outlined" data-icon="keyboard_double_arrow_down">keyboard_double_arrow_down</span>
+</div>
+</header>
+<!-- Stats / Benefits Section -->
+<section class="py-24 px-6 industrial-grid">
+<div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="reveal glass p-8 rounded-2xl flex flex-col items-center text-center group hover:bg-white/5 transition-all">
+<div class="w-16 h-16 bg-primary-container/20 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-icon="local_shipping">local_shipping</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 uppercase tracking-tight">Envíos a domicilio</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Logística eficiente para que tu obra nunca se detenga. Entrega inmediata en zona.</p>
+</div>
+<!-- Feature 2 -->
+<div class="reveal glass p-8 rounded-2xl flex flex-col items-center text-center group hover:bg-white/5 transition-all" style="transition-delay: 100ms;">
+<div class="w-16 h-16 bg-primary-container/20 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-icon="verified">verified</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 uppercase tracking-tight">Las mejores marcas</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Selección curada de herramientas profesionales con garantía internacional.</p>
+</div>
+<!-- Feature 3 -->
+<div class="reveal glass p-8 rounded-2xl flex flex-col items-center text-center group hover:bg-white/5 transition-all" style="transition-delay: 200ms;">
+<div class="w-16 h-16 bg-primary-container/20 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-icon="engineering">engineering</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 uppercase tracking-tight">Asesoramiento Pro</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Expertos técnicos a tu disposición para optimizar cada detalle de tu proyecto.</p>
+</div>
+</div>
+</section>
+<!-- Categories (Rubros) -->
+<section class="py-24 px-6 bg-surface-container-lowest">
+<div class="max-w-screen-xl mx-auto">
+<div class="flex items-center justify-between mb-16 reveal">
+<div>
+<h3 class="text-4xl font-black text-on-surface uppercase tracking-tighter">Nuestros<br/><span class="text-primary">Especialidades</span></h3>
+</div>
+<div class="hidden md:block h-[1px] flex-1 mx-12 bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Herramientas -->
+<div class="reveal group relative overflow-hidden rounded-2xl aspect-[4/5]">
+<img alt="Herramientas" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="img/puntoferreterocharlone_9.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h4 class="text-2xl font-bold text-white mb-2">Herramientas</h4>
+<p class="text-sm text-white/70 mb-4 font-light">Precisión para el profesional exigente.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold text-xs tracking-widest uppercase" href="#">Explorar <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+<!-- Construcción -->
+<div class="reveal group relative overflow-hidden rounded-2xl aspect-[4/5]" style="transition-delay: 100ms;">
+<img alt="Construcción" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="img/puntoferreterocharlone_10.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h4 class="text-2xl font-bold text-white mb-2">Construcción</h4>
+<p class="text-sm text-white/70 mb-4 font-light">Materiales de alta resistencia estructural.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold text-xs tracking-widest uppercase" href="#">Explorar <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+<!-- Pinturería -->
+<div class="reveal group relative overflow-hidden rounded-2xl aspect-[4/5]" style="transition-delay: 200ms;">
+<img alt="Pinturería" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="img/puntoferreterocharlone_11.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h4 class="text-2xl font-bold text-white mb-2">Terminaciones</h4>
+<p class="text-sm text-white/70 mb-4 font-light">Pinturas y revestimientos de tendencia.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold text-xs tracking-widest uppercase" href="#">Explorar <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery Section - Premium Asymmetric Masonry -->
+<section class="py-24 px-6">
+<div class="max-w-screen-xl mx-auto">
+<h3 class="text-3xl font-black text-on-surface mb-12 reveal uppercase tracking-tight">Nuestra Casa</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[300px]">
+<!-- Item 1: Wide -->
+<div class="reveal col-span-2 row-span-1 rounded-[12px] overflow-hidden shadow-lg group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Modern hardware store interior" src="img/puntoferreterocharlone_9.jpg"/>
+</div>
+<!-- Item 2: Tall -->
+<div class="reveal col-span-1 row-span-2 rounded-[12px] overflow-hidden shadow-lg group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Technical hardware components" src="img/puntoferreterocharlone_10.jpg"/>
+</div>
+<!-- Item 3: Square -->
+<div class="reveal col-span-1 row-span-1 rounded-[12px] overflow-hidden shadow-lg group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="img/puntoferreterocharlone_11.jpg"/>
+</div>
+<!-- Item 4: Wide/Tall Mixed -->
+<div class="reveal col-span-2 row-span-1 rounded-[12px] overflow-hidden shadow-lg group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="img/puntoferreterocharlone_8.jpg"/>
+</div>
+<!-- Item 5 -->
+<div class="reveal col-span-1 row-span-1 rounded-[12px] overflow-hidden shadow-lg group">
+<div class="w-full h-full bg-surface-container flex items-center justify-center p-6 text-center">
+<span class="text-primary text-xs font-bold tracking-[0.2em] uppercase italic">Calidad Premium en cada detalle</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24 px-6 bg-surface-container-high relative">
+<div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+<div class="reveal">
+<h3 class="text-4xl font-black text-on-surface uppercase mb-8">Ubicación y Contacto</h3>
+<div class="space-y-6">
+<div class="flex gap-6 items-start p-6 rounded-2xl glass hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+<div>
+<h4 class="font-bold text-on-surface text-lg uppercase tracking-tight">Casa Central</h4>
+<p class="text-on-surface-variant">San Martin 538, Coronel Charlone<br/>Provincia de Buenos Aires, Argentina</p>
+</div>
+</div>
+<div class="flex gap-6 items-start p-6 rounded-2xl glass hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">call</span>
+<div>
+<h4 class="font-bold text-on-surface text-lg uppercase tracking-tight">Teléfono</h4>
+<p class="text-on-surface-variant">+54 3388 432100</p>
+</div>
+</div>
+<div class="flex gap-6 items-start p-6 rounded-2xl glass hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">chat_bubble</span>
+<div>
+<h4 class="font-bold text-on-surface text-lg uppercase tracking-tight">Atención Digital</h4>
+<p class="text-on-surface-variant">Lun a Vie: 08:00 - 18:00 hs<br/>Sábados: 08:00 - 12:30 hs</p>
+</div>
+</div>
+</div>
+</div>
+<div class="reveal h-full min-h-[400px] rounded-3xl overflow-hidden border border-outline-variant/20 shadow-2xl">
+<!-- Google Maps Embed Placeholder -->
+<iframe allowfullscreen="" class="w-full h-full grayscale invert opacity-80" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3314.5422891965687!2d-63.351642!3d-34.692233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDQxJzMyLjAiUyA2M8KwMjEnMDYuMCJX!5e0!3m2!1ses-419!2sar!4v1716312345678!5m2!1ses-419!2sar" style="border:0;">
+</iframe>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-16 px-6 bg-black border-t border-white/5">
+<div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between gap-12">
+<div class="flex flex-col gap-6 max-w-sm">
+<div class="flex flex-col">
+<span class="text-primary font-black uppercase tracking-[0.3em] text-xl">Punto Ferretero</span>
+<span class="text-on-surface-variant text-[10px] tracking-[0.6em] uppercase">Excelencia Industrial</span>
+</div>
+<p class="text-sm text-zinc-500 leading-relaxed font-light">
+                Brindamos soluciones integrales para la construcción y el mantenimiento industrial con un enfoque premium en calidad y servicio.
+            </p>
+</div>
+<div class="grid grid-cols-2 gap-12">
+<div class="flex flex-col gap-4">
+<h5 class="text-white text-xs font-bold uppercase tracking-widest mb-2">Seguinos</h5>
+<a class="flex items-center gap-3 text-zinc-500 hover:text-primary transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-lg">camera_alt</span> Instagram
+                </a>
+<a class="flex items-center gap-3 text-zinc-500 hover:text-primary transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-lg">facebook</span> Facebook
+                </a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-white text-xs font-bold uppercase tracking-widest mb-2">Legal</h5>
+<a class="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Privacidad</a>
+<a class="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Términos</a>
+</div>
+</div>
+</div>
+<div class="max-w-screen-xl mx-auto mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[10px] text-zinc-600 font-medium tracking-wider">
+            © 2024 PUNTO FERRETERO CHARLONE. TODOS LOS DERECHOS RESERVADOS.
+        </p>
+<p class="text-[10px] text-zinc-600 font-medium tracking-widest uppercase">
+            Desarrollado por <span class="text-zinc-400">AlanDev</span>
+</p>
+</div>
+</footer>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-[100] flex justify-around items-center h-20 pb-safe px-4 bg-black/90 backdrop-blur-xl border-t border-white/5">
+<a class="flex flex-col items-center justify-center text-primary group" href="#">
+<span class="material-symbols-outlined text-2xl group-active:scale-90 transition-transform" data-icon="home">home</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 group" href="#">
+<span class="material-symbols-outlined text-2xl group-active:scale-90 transition-transform" data-icon="category">grid_view</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter mt-1">Rubros</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 group" href="#">
+<span class="material-symbols-outlined text-2xl group-active:scale-90 transition-transform" data-icon="collections">perm_media</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter mt-1">Galería</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 group" href="#">
+<span class="material-symbols-outlined text-2xl group-active:scale-90 transition-transform" data-icon="contact_support">contact_page</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter mt-1">Contacto</span>
+</a>
+</nav>
+<script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+        observer.observe(el);
+    });
+</script>
+</body></html>

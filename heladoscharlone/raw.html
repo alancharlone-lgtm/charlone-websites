@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Helados Charlone | Artesanal por Naturaleza</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .wavy-divider {
+            aspect-ratio: 900/100;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 900 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q 225 100 450 50 T 900 50 V 100 H 0 Z' fill='%23fff8f2'/%3E%3C/svg%3E");
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#f0e7dc",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#795335",
+                      "on-surface": "#1f1b15",
+                      "secondary-fixed": "#ffdcc4",
+                      "secondary-container": "#fecaa4",
+                      "on-secondary-fixed": "#2f1500",
+                      "outline-variant": "#d1c5b2",
+                      "on-secondary": "#ffffff",
+                      "surface-container-low": "#fbf2e7",
+                      "tertiary": "#7e4457",
+                      "tertiary-container": "#9a5c6f",
+                      "surface-bright": "#fff8f2",
+                      "surface-tint": "#795900",
+                      "primary-fixed-dim": "#ecc165",
+                      "on-error-container": "#93000a",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#4e4637",
+                      "on-primary-fixed": "#261a00",
+                      "surface-dim": "#e1d9ce",
+                      "on-tertiary-fixed-variant": "#6c3648",
+                      "on-primary-fixed-variant": "#5c4300",
+                      "on-tertiary-fixed": "#370a1d",
+                      "secondary": "#7c5638",
+                      "inverse-on-surface": "#f8efe5",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#ffeef1",
+                      "primary-fixed": "#ffdfa0",
+                      "surface-container": "#f5ede2",
+                      "primary-container": "#8b6914",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#eae1d7",
+                      "on-secondary-fixed-variant": "#623f22",
+                      "outline": "#807665",
+                      "surface-variant": "#eae1d7",
+                      "on-primary-container": "#fff0da",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#fff8f2",
+                      "primary": "#6f5100",
+                      "tertiary-fixed": "#ffd9e2",
+                      "on-background": "#1f1b15",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#fcb2c7",
+                      "secondary-fixed-dim": "#efbc97",
+                      "inverse-primary": "#ecc165",
+                      "inverse-surface": "#343029",
+                      "surface": "#fff8f2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "unit": "8px",
+                      "margin-desktop": "64px",
+                      "container-max": "1200px",
+                      "section-padding": "120px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "h2": ["Noto Serif"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "h1": ["Noto Serif"],
+                      "h3": ["Noto Serif"],
+                      "label-caps": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "h2": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-stone-50/90 dark:bg-stone-950/90 backdrop-blur-md border-b border-amber-100/20 dark:border-amber-900/20 shadow-sm z-50">
+<div class="font-serif text-2xl font-bold text-amber-900 dark:text-amber-400 italic">Helados Charlone</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-amber-800 dark:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/30 transition-colors p-2 rounded-full">shopping_bag</button>
+<button class="material-symbols-outlined text-amber-800 dark:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/30 transition-colors p-2 rounded-full">menu</button>
+</div>
+</header>
+<main>
+<section class="relative pt-32 pb-24 overflow-hidden bg-gradient-to-b from-[#FFF8F0] to-[#f5ede2]" id="hero">
+<div class="px-6 relative z-10 max-w-container-max mx-auto text-center">
+<h1 class="font-h1 text-h1 text-primary mb-6">El sabor artesanal de Charlone</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-md mx-auto">Helados elaborados con pasión desde el corazón del pueblo.</p>
+<div class="flex flex-col gap-4 sm:flex-row justify-center items-center">
+<a class="bg-primary-fixed text-on-primary-fixed px-8 py-4 rounded-full font-bold flex items-center gap-2 shadow-lg shadow-primary-container/20 hover:scale-105 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">location_on</span>
+                        Maestro Lobos 880
+                    </a>
+<a class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-bold flex items-center gap-2 shadow-lg shadow-primary-container/20 hover:scale-105 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">chat</span>
+                        Pedí por WhatsApp
+                    </a>
+</div>
+</div>
+<div class="mt-16 flex justify-center px-4">
+<div class="relative w-72 h-72 rounded-full overflow-hidden border-8 border-white shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="A macro close-up of three beautifully sculpted artisanal ice cream scoops resting in a ceramic bowl. The scene is bathed in warm, golden afternoon sunlight filtering through a window, creating soft shadows and highlights on the creamy texture. The color palette is rich with caramel browns, milky whites, and soft pinks, reflecting a premium boutique creamery aesthetic. The lighting is high-key and inviting, suggesting a high-end gourmet experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ61HoroydX45hbWISFHUjw39gNjll1ZbqIC5-zewT6GSy3B_OCLITlFJidMzw44E-Xn4Ryt_6fW9E4BPSyTl4_31dFPc21y4KgYkkxYcCaKBXauBN5kBI7a0GFZ5nFEH50gVy2l_BdITAONfj0P2IGg5k4Z4NcyAtx5Kv01RSEuGr-fObYnTZXdK7kH-QxXLeZ82G1iS6MUeMdG0IymM9ZVAze6Vh1V-0V7a-5ZVeMfWUUaFbtwm1Iu_rS7MtCTpXpex7xlw2PZo"/>
+</div>
+</div>
+<div class="wavy-divider absolute bottom-0 left-0"></div>
+</section>
+<section class="py-20 px-6 max-w-container-max mx-auto" id="sabores">
+<div class="text-center mb-16">
+<span class="font-label-caps text-label-caps text-primary uppercase mb-2 block">Nuestra Selección</span>
+<h2 class="font-h2 text-h2 text-on-surface">Sabores Destacados</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_8px_30px_rgb(139,105,20,0.08)] flex flex-col items-center text-center">
+<div class="w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A luxurious, close-up shot of a perfect scoop of Dulce de Leche ice cream, showing its thick, velvety texture and swirls of golden caramel. The lighting is soft and warm, emphasizing the rich, creamy brown tones. The background is a minimalist, warm cream color, maintaining a high-end boutique aesthetic with a focus on artisanal quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4Gkht4cir1p-6diJjRLWPeXEXS4dqKBJiPcfC1so3G1URsK3qxbYnc9SJADMpBcbNHFg8l1xbAC4eTyjRsINqU3v1enwm3Zm6z9xX32nwRgxSC1frUgyYykiWJYmmIg2lHnbxyVar6UsRYOwEP4ObHupcudKHK7RZSZq2unZ3qhZo-C088eTjAaqEnrT6R_0xrbwc4ENZbT8-loJfWoiJS2ZC5-artwlYavkmLT50ygpSlk3H1DXzacBPFWapVlPtIWYpowrVT3Y"/>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Dulce de Leche</h3>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Un tributo a nuestra tradición, cocinado lentamente hasta alcanzar la perfección dorada.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_8px_30px_rgb(139,105,20,0.08)] flex flex-col items-center text-center">
+<div class="w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="An exquisite scoop of dark artisanal chocolate ice cream, featuring small flecks of premium cocoa and a matte, dense texture. The lighting is moody yet warm, highlighting the deep mahogany and espresso tones of the chocolate. The overall style is editorial and sophisticated, evoking the sense of a handcrafted small-batch delicacy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGVqWk76RFtNN2FGiM8KWAwAvvRc-yUczbyNSpIxOQ3ZP7oZ0mObehGz56tm4Ay6pTjLLqB7QHflb0YnauPYHRACClVQ7HEI8GXfmVQAfH5vbmTgoPzwSg6KHOoW1VVt-S0CppzGJ9MfL1Kdc3PGpeN0b9X_JL46Jh45wazaRXJKYSyM9DhBPxM3XltvDso53WUF-nHWLTm7oXz7x8ok6q0Qoix9J8tiJ6gJGs1-2iFKDoDcfGgC2V4YJRpsjTzjc8_MKPNid_S6k"/>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Chocolate Artesanal</h3>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Cacao puro de origen, fundido en una textura tan profunda y oscura como el mismo placer.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_8px_30px_rgb(139,105,20,0.08)] flex flex-col items-center text-center">
+<div class="w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A fresh, vibrant scoop of strawberry and cream ice cream with visible pieces of sun-ripened fruit and delicate pink swirls. The scene is bright and airy, lit with natural morning light that emphasizes the freshness and organic quality of the ingredients. The aesthetic is clean, modern, and delightfully tactile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZeIHc6Ecg5AClby4_UZNeXeSK_r2AbbKVOcvGGL_lrI5uK09kdBnD9FDPVwCpUw_p-H5jGFXdfaCLFJNBJgzL5_MZf74BYqnQnWO5FtoEJwfb0S5WiOcv-TmrnIeixWmd98dX5z2osE4SN511Zc1lNQw6NHLkdUsy7fSPUd9CpxOI2crZNrFzKqo6WeH15xGlVUVh_c_UNIWs225T8wjFdJM89ngd6RTvjhqW-AjfMg9VC6pRVEvFqvD_pfFwemASopvsyMzfeaM"/>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Frutilla con Crema</h3>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Frutos frescos de estación abrazados por la suavidad de la crema de campo más pura.</p>
+</div>
+</div>
+</section>
+<section class="py-20 px-6 bg-surface-container-low" id="galeria">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-h2 text-h2 text-on-surface mb-12 text-center">Nuestros Helados</h2>
+<div class="columns-2 md:columns-3 gap-4 space-y-4">
+<div class="rounded-xl overflow-hidden shadow-md group">
+<img class="w-full h-auto group-hover:scale-105 transition-transform duration-500" data-alt="A beautifully presented ice cream cone with three different pastel-colored scoops, held against a minimalist soft brown background. The lighting is diffused and professional, showcasing the smooth texture and artisanal craftsmanship of the gelato. The image exudes a calm, luxury boutique vibe with warm tonal layers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKgNqz4TUpB8tOtvTJGqhfRERwHxjUumwUAirktW9TMDw-C5EETJy4d4TarRnApV9wlMIIaZptQFgz1pqa1GFlviJXmkbh-mrSp3MyayqAG2UudMWHnWq_VEOVb9y8hWlLPaOljyrNekhV-FVzxTLTUHEQevRMeNhCv3CKS3VIAOECkPuRz31biy3tli8a35ZTnE_pjKy8X3pWBNj3Ai7jQo20hFATjXyoqzOY4rSlBYrX-fRnyFz78k-riDxri0CrzIcI2CK-ho4"/>
+</div>
+<div class="rounded-xl overflow-hidden shadow-md group">
+<img class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An artistic shot of a metal spatula swirling fresh, thick ice cream in a professional churner. The movement creates organic, fluid patterns in the cream. The scene is lit with warm, workshop-style lighting that emphasizes the tactile and handcrafted nature of the production process." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFBnlh3esgQcFpuTE1GNsnZuRSXzrJCnLGD5GKM_WB6CRxCFfSQZ8ItL2UTYsCsDXxnezNatlagjhCjGh0cPTZpvPHLMkURAosfEXBfN89ck21VldZrcmnP9RlgXcKGgQMXYysFUHpEZ9JgKiXvw25TLfINXlKZ2bU-vJKBRJqyh5swG6n-921ORuiGMlfQ50f1HzVoLfX9LtFkfgt21j_vcXzOIHSqVUmslLFZYc9IEqcIDJAKx1tr3dRoejZpZMYECirlaoMKR4"/>
+</div>
+<div class="rounded-xl overflow-hidden shadow-md group">
+<img class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a rustic wooden table featuring several artisanal ice cream sundaes topped with fresh berries and nuts. The environment is a cozy, sun-lit boutique shop with a warm cream and brown color palette. The mood is nostalgic and inviting, celebrating local artisanal culture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx1N_LEehiU5YatOZF9WIwkLfItZDqmhp_fsdJyZFLydyxb66HahCI9-75kXb87rnSkncO3m9a_flS5g34i1YQQ1cYtFEctbkfGTGB84UgNi7j6knb48GEeq2onlb6mABsNCi52W0W8mXzhCamsITm-SqrFvAbXsqEycBma6nNNbbqZtZnY0sQAPVus-YyVkRzdnh2n2AEpctG4OTdf0FFlkm4NKXrGRPbDAMHqG6LLlJmXBcIAi-G4NcdKicpx8Uzc60fq3XH5MI"/>
+</div>
+<div class="rounded-xl overflow-hidden shadow-md group">
+<img class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist composition of a single scoop of white vanilla ice cream on a designer ceramic plate, accented by a single mint leaf. The lighting is high-end and sculptural, creating soft shadows and a pristine, luxury feel that aligns with a high-end editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDung_iHptSoYvLDBkq2z75cLMTgcvVoWqTzd39e1RJL6tD122hdAKcAJYk5Vff6gveclrE7SWl9YKVvALB_PDffteSHh2cy8T9LoQlltavLpgtmBSkgzBpwUgw8jQ2GHxReVLunyTyDUf1RntCMqxgpWNN66TgeFKm1PSpLtaRkJ9go94Gx2JTIZdifPcerZyTsNLHwlO7LQz-5D8UL0dZqy7wel55L7W2mG34Eqcr7E5numUpmFmVUU2SSn9NMCHf6gC9se2AFSk"/>
+</div>
+<div class="rounded-xl overflow-hidden shadow-md group">
+<img class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A row of colorful gelato containers in a sleek, glass-fronted display case. Each container features a different flavor with artisanal garnishes like chocolate shavings or fruit slices. The lighting is bright and clean, emphasizing the vibrant, natural colors of the products in a modern boutique setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrf2qt9_JUwuEazlJKtHepyAgOQL6G9SFE9Y0o--4cRFYLsNOz00CvNvSfbX1jQFPcS5_yRV8MTfmU1P_pKELdsW8ARAvc945qyh0XrWDcJhab-UgwjZmo8N1QmM3lWoEAM_odSI-gS0pTNfuJ-Jh9n6-eDqvva3bCKx85x4vg92nXh6wOUYQDy22xosrT47ebEz9LwzMaB0KFqOlulD_dNQ3uqV_ULyAhXoZnyvQM-0FVHpOPnGuLAiTCPpycUEKbPbdd8B-lEec"/>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 bg-surface-container-high overflow-hidden" id="nosotros">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row gap-12 items-center">
+<div class="md:w-1/2">
+<span class="font-label-caps text-label-caps text-primary uppercase mb-4 block">Nuestra Historia</span>
+<h2 class="font-h2 text-h2 text-on-surface mb-6">Artesanal por Naturaleza</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        En el corazón de Coronel Charlone, nace una pasión que se derrite en el paladar. Helados Charlone no es solo una heladería; es el resultado de años de perfeccionamiento en el arte de la cremosidad. 
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                        Utilizamos solo ingredientes nobles, respetando los tiempos de maduración y el batido lento que nos caracteriza. Cada kilo que sale de nuestro taller lleva consigo el compromiso de calidad que nuestro pueblo merece.
+                    </p>
+<div class="flex items-center gap-4 p-4 bg-white/50 rounded-xl border border-white/20 backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary text-3xl">storefront</span>
+<div>
+<p class="font-bold text-on-surface">Visitanos en el local</p>
+<p class="text-sm text-on-surface-variant">Lunes a Domingo de 12:00 a 00:00 hs</p>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 w-full">
+<div class="aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-primary-container/10 border-8 border-white bg-white">
+<img class="w-full h-full object-cover" data-alt="A stylized, boutique-style map showing the charming town of Coronel Charlone with a custom marker on Maestro Lobos 880. The map uses a warm, parchment-like color palette with soft browns and ambers, matching the brand's aesthetic. The design is clean and intentional, focusing on the local, community-centered identity of the shop." data-location="Coronel Charlone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjfDHtkWJ09JCwHvbySvRnMHCEdfzwJbQcLFVIvV4DZxJs-AD8BSsjVFyp6gumWv2DNrUm6Z9B7IiZtWrHuWaSg2k8_ti1aCVPXdzPpDCqjl52WLk6lnv7ubCxerGqNZxinm5jqWsYgv6KrVkIHITqTY_zNizOGdGnETl1ulPlTOxYbdmSudRynGDwleETd-dyBTvl6lG4TFQ2SpcLf1-mkRljp3o0D5yfSOPVg5SQ7cEsB_C9ToRts0ppEfV6-vCDVrAqVeG_lOg"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full px-8 py-12 flex flex-col items-center text-center space-y-8 bg-[#3D2216] text-white border-t border-amber-900/30">
+<div class="font-serif text-3xl font-bold italic text-amber-200">Helados Charlone</div>
+<div class="space-y-2">
+<p class="font-serif text-sm leading-relaxed opacity-90">Maestro Lobos 880, Coronel Charlone</p>
+<p class="font-serif text-sm leading-relaxed opacity-90">General Villegas, Buenos Aires</p>
+</div>
+<div class="flex gap-8">
+<a class="flex flex-col items-center gap-1 hover:text-amber-300 transition-colors" href="#">
+<span class="font-serif text-sm">Instagram</span>
+<span class="text-xs opacity-60">@heladoscharlone</span>
+</a>
+<a class="flex flex-col items-center gap-1 hover:text-amber-300 transition-colors" href="#">
+<span class="font-serif text-sm">WhatsApp</span>
+<span class="text-xs opacity-60">+54 9 3388 ...</span>
+</a>
+</div>
+<div class="pt-8 border-t border-white/10 w-full max-w-md">
+<p class="text-[10px] uppercase tracking-widest opacity-50 mb-2">© 2024 Helados Charlone. Artesanal por Naturaleza.</p>
+<p class="text-[10px] uppercase tracking-widest opacity-30">Desarrollado por ADS Labs</p>
+</div>
+</footer>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-safe-bottom bg-stone-50 dark:bg-stone-900 border-t border-amber-100 dark:border-amber-900 shadow-[0_-4px_20px_rgba(139,105,20,0.1)] md:hidden">
+<a class="flex flex-col items-center justify-center bg-amber-100 dark:bg-amber-900/50 text-amber-900 dark:text-amber-100 rounded-xl px-3 py-1 scale-110 transition-transform duration-300 ease-out" href="#sabores">
+<span class="material-symbols-outlined">icecream</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-tighter">Sabores</span>
+</a>
+<a class="flex flex-col items-center justify-center text-amber-700/60 dark:text-stone-500 px-3 py-1 hover:text-amber-900 dark:hover:text-amber-200" href="#galeria">
+<span class="material-symbols-outlined">auto_awesome_motion</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-tighter">Galería</span>
+</a>
+<a class="flex flex-col items-center justify-center text-amber-700/60 dark:text-stone-500 px-3 py-1 hover:text-amber-900 dark:hover:text-amber-200" href="#nosotros">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-tighter">Nosotros</span>
+</a>
+<a class="flex flex-col items-center justify-center text-amber-700/60 dark:text-stone-500 px-3 py-1 hover:text-amber-900 dark:hover:text-amber-200" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-tighter">Pedir</span>
+</a>
+</nav>
+<a class="fixed bottom-24 right-6 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl z-40 animate-bounce active:scale-90 transition-transform duration-200" href="#">
+<svg fill="currentColor" height="32" viewbox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.437 2.503 1.171 3.466l-.767 2.801 2.863-.751c.905.525 1.954.826 3.076.827l.003.001c3.182 0 5.767-2.587 5.768-5.766.002-3.18-2.585-5.764-5.766-5.764zm4.411 8.202c-.187.525-.916.963-1.441 1.025-.475.057-1.096.088-1.758-.125-.438-.142-1.012-.345-1.744-.662-3.109-1.345-5.116-4.513-5.271-4.719-.155-.205-1.258-1.673-1.258-3.192 0-1.519.794-2.266 1.077-2.573.283-.307.618-.384.824-.384.206 0 .412.001.593.01.196.009.46.031.706.598.254.587.87 2.124.946 2.279.076.155.127.334.025.537-.103.202-.155.33-.309.507-.154.177-.324.394-.463.528-.155.15-.317.314-.136.626.181.312.805 1.328 1.725 2.149.92 1.042 1.696 1.365 2.008 1.52.312.156.495.129.679-.082.185-.21.791-.917.997-1.229.206-.312.412-.26.697-.155.285.105 1.808.853 2.117 1.008.31.155.516.232.593.36.077.128.077.74-.11 1.265z"></path>
+</svg>
+</a>
+</body></html>

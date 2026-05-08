@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Google Sans', Arial, sans-serif; padding: 20px; color: #202124; }
+    h2 { font-size: 18px; margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 500; color: #5f6368; margin-bottom: 6px; margin-top: 16px; }
+    input, textarea, select {
+      width: 100%; padding: 10px 12px; border: 1px solid #dadce0; border-radius: 8px;
+      font-size: 14px; outline: none; transition: border 0.2s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: #1a73e8; }
+    textarea { resize: vertical; min-height: 60px; }
+    .btn {
+      display: block; width: 100%; padding: 12px; margin-top: 24px;
+      background: #1a73e8; color: white; border: none; border-radius: 8px;
+      font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.2s;
+    }
+    .btn:hover { background: #1557b0; }
+    .btn:disabled { background: #dadce0; cursor: not-allowed; }
+    .success { color: #137333; background: #e6f4ea; padding: 10px; border-radius: 8px; margin-top: 16px; font-size: 13px; }
+    .hint { font-size: 11px; color: #80868b; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <h2>➕ Agregar Producto</h2>
+
+  <label>Nombre del producto *</label>
+  <input type="text" id="name" placeholder="Ej: Conjunto Encaje Noir">
+
+  <label>Descripción</label>
+  <textarea id="description" placeholder="Ej: Diseño en encaje floral con detalles de transparencia"></textarea>
+
+  <label>Categoría *</label>
+  <select id="category">
+    <option value="">— Elegí una —</option>
+    <option>Conjuntos</option>
+    <option>Bralettes</option>
+    <option>Bodies</option>
+    <option>Pijamas</option>
+    <option>Bikinis</option>
+    <option>Medias</option>
+    <option>Accesorios</option>
+  </select>
+
+  <label>Precio *</label>
+  <input type="number" id="price" placeholder="18500" min="1">
+
+  <label>Talles disponibles</label>
+  <input type="text" id="sizes" placeholder="S, M, L, XL">
+  <p class="hint">Separar con comas. Ej: S, M, L, XL o 85B, 90B, 95C</p>
+
+  <label>URL de la foto</label>
+  <input type="text" id="imageUrl" placeholder="Se completa al subir foto">
+  <p class="hint">Usá el botón "📸 Subir Foto" del menú para obtener el link automáticamente.</p>
+
+  <button class="btn" id="submitBtn" onclick="submitProduct()">Agregar Producto</button>
+  <div id="result"></div>
+
+  <script>
+    function submitProduct() {
+      var data = {
+        name: document.getElementById('name').value.trim(),
+        description: document.getElementById('description').value.trim(),
+        category: document.getElementById('category').value,
+        price: document.getElementById('price').value,
+        sizes: document.getElementById('sizes').value.trim(),
+        imageUrl: document.getElementById('imageUrl').value.trim()
+      };
+
+      if (!data.name || !data.category || !data.price) {
+        document.getElementById('result').innerHTML = '<p style="color:#c5221f;margin-top:12px;">Completá nombre, categoría y precio.</p>';
+        return;
+      }
+
+      document.getElementById('submitBtn').disabled = true;
+      document.getElementById('submitBtn').textContent = 'Agregando...';
+
+      google.script.run
+        .withSuccessHandler(function(res) {
+          document.getElementById('result').innerHTML = '<div class="success">✅ Producto agregado en fila ' + res.row + '</div>';
+          document.getElementById('submitBtn').disabled = false;
+          document.getElementById('submitBtn').textContent = 'Agregar Producto';
+          // Reset form
+          document.getElementById('name').value = '';
+          document.getElementById('description').value = '';
+          document.getElementById('price').value = '';
+          document.getElementById('sizes').value = '';
+          document.getElementById('imageUrl').value = '';
+        })
+        .withFailureHandler(function(err) {
+          document.getElementById('result').innerHTML = '<p style="color:#c5221f;margin-top:12px;">Error: ' + err.message + '</p>';
+          document.getElementById('submitBtn').disabled = false;
+          document.getElementById('submitBtn').textContent = 'Agregar Producto';
+        })
+        .addProduct(data);
+    }
+  </script>
+</body>
+</html>

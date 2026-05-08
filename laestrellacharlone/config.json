@@ -1,0 +1,11 @@
+{
+  "storeId": "laestrellacharlone",
+  "plan": "free",
+  "features": {
+    "maxProducts": 20,
+    "maxPhotos": 1,
+    "carousel": false,
+    "video": false,
+    "aiAutoFill": false
+  }
+}

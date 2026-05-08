@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conti Insumos | Ferretería Industrial y Agro</title>
+    <meta name="description" content="Conti Insumos es tu aliado estratégico en ferretería industrial, agropecuaria y herramientas de alta gama. Representamos a marcas líderes mundiales.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cds-primary: #FECE14;
+            --cds-primary-hover: #e5b800;
+            --cds-background: #161616;
+            --cds-layer-01: #262626;
+            --cds-layer-02: #393939;
+            --cds-text-primary: #f4f4f4;
+            --cds-text-secondary: #c6c6c6;
+            --cds-border-subtle: #393939;
+            
+            --font-sans: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+            --font-mono: 'IBM Plex Mono', Menlo, Courier, monospace;
+            
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 32px;
+            --spacing-lg: 48px;
+            --spacing-xl: 96px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--cds-background);
+            color: var(--cds-text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Nav Sidebar / Topbar */
+        .corporate-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--cds-background);
+            border-right: 1px solid var(--cds-border-subtle);
+            padding: var(--spacing-md);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nav-logo h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--cds-primary);
+            margin-bottom: var(--spacing-xl);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .nav-links a {
+            color: var(--cds-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s;
+            display: block;
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--cds-text-primary);
+        }
+
+        .nav-contact {
+            margin-top: auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--cds-primary);
+            color: #161616;
+            padding: 14px 24px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--cds-primary-hover);
+        }
+
+        /* Main Content Area */
+        main {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+        /* Hero Asymmetric */
+        .hero-asymmetric {
+            display: flex;
+            min-height: 90vh;
+            border-bottom: 1px solid var(--cds-border-subtle);
+        }
+
+        .hero-text {
+            flex: 0 0 50%;
+            padding: var(--spacing-xl) var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-image {
+            flex: 0 0 50%;
+            position: relative;
+            background-color: var(--cds-layer-01);
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .trust-badge {
+            position: absolute;
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            background-color: var(--cds-primary);
+            color: #161616;
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .display-01 {
+            font-size: clamp(40px, 5vw, 60px);
+            font-weight: 300;
+            line-height: 1.17;
+            margin-bottom: var(--spacing-md);
+            color: var(--cds-text-primary);
+        }
+
+        .body-long-01 {
+            font-size: 16px;
+            color: var(--cds-text-secondary);
+            max-width: 500px;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Data Bar */
+        .data-bar {
+            background-color: var(--cds-layer-01);
+            padding: var(--spacing-lg) var(--spacing-md);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            border-bottom: 1px solid var(--cds-border-subtle);
+        }
+
+        .data-item {
+            border-left: 2px solid var(--cds-primary);
+            padding-left: var(--spacing-sm);
+        }
+
+        .data-number {
+            font-size: 48px;
+            font-weight: 300;
+            color: var(--cds-primary);
+            font-family: var(--font-mono);
+            line-height: 1;
+        }
+
+        .data-label {
+            font-size: 14px;
+            color: var(--cds-text-secondary);
+            margin-top: var(--spacing-xs);
+            letter-spacing: 0.16px;
+        }
+
+        /* Staggered List (Services) */
+        .staggered-list {
+            padding: var(--spacing-xl) 0;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid var(--cds-border-subtle);
+        }
+
+        .staggered-row {
+            display: flex;
+            min-height: 500px;
+            border-bottom: 1px solid var(--cds-border-subtle);
+        }
+
+        .staggered-row:last-child {
+            border-bottom: none;
+        }
+
+        .staggered-text {
+            flex: 1;
+            padding: var(--spacing-xl) var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .staggered-img {
+            flex: 1;
+        }
+
+        .staggered-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .staggered-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .heading-02 {
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Gallery Grid */
+        .gallery-section {
+            padding: var(--spacing-xl) var(--spacing-md);
+            background-color: var(--cds-layer-01);
+            border-bottom: 1px solid var(--cds-border-subtle);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1px; /* Hairline gap */
+            background-color: var(--cds-border-subtle);
+            border: 1px solid var(--cds-border-subtle);
+        }
+
+        .gallery-item {
+            background-color: var(--cds-layer-01);
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            opacity: 0.8;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        /* Massive CTA */
+        .massive-cta {
+            padding: var(--spacing-xl) var(--spacing-md);
+            text-align: center;
+            background: linear-gradient(rgba(22, 22, 22, 0.9), rgba(22, 22, 22, 0.9)), url('img/ai_product.png') center/cover;
+            border-bottom: 1px solid var(--cds-border-subtle);
+        }
+
+        .massive-cta h2 {
+            font-size: 42px;
+            font-weight: 300;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Corporate Footer */
+        .corporate-footer {
+            background-color: var(--cds-layer-02);
+            padding: var(--spacing-lg) var(--spacing-md);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            color: var(--cds-text-primary);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        .footer-col p, .footer-col a {
+            font-size: 14px;
+            color: var(--cds-text-secondary);
+            margin-bottom: var(--spacing-xs);
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: var(--cds-primary);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--cds-border-subtle);
+            text-align: center;
+            font-size: 12px;
+            color: var(--cds-text-secondary);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .corporate-sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--cds-border-subtle);
+            }
+            main {
+                margin-left: 0;
+            }
+            .hero-asymmetric, .staggered-row {
+                flex-direction: column !important;
+            }
+            .hero-text, .hero-image, .staggered-text, .staggered-img {
+                flex: none;
+                width: 100%;
+            }
+            .hero-image {
+                height: 400px;
+            }
+        }
+    </style>
+<style id="premium-effects">
+
+/* ═══ GLOBAL PREMIUM POLISH ═══ */
+html {
+  scroll-behavior: smooth;
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection {
+  background: var(--selection-bg, rgba(233, 30, 99, 0.2));
+  color: var(--selection-color, inherit);
+}
+img {
+  transition: opacity 0.3s ease;
+}
+img[loading="lazy"] {
+  opacity: 0;
+}
+img.loaded, img:not([loading="lazy"]) {
+  opacity: 1;
+}
+
+/* Premium button hover shine */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 100%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.btn-shine:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Smooth image loading */
+img {
+  image-rendering: auto;
+}
+
+
+:root {
+  --primary-rgb: 233, 30, 99;
+  --mesh-color-1: #E91E63;
+  --mesh-color-2: #FFEB3B;
+  --mesh-color-3: #00BCD4;
+  --gradient-start: #E91E63;
+  --gradient-end: #FFEB3B;
+  --glow-color: rgba(233, 30, 99, 0.08);
+  --selection-bg: rgba(233, 30, 99, 0.2);
+}
+
+
+/* ═══ SCROLL REVEAL ═══ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-left] {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-left].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+[data-reveal-scale] {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-scale].revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* ═══ ANIMATED GRADIENT MESH ═══ */
+.gradient-mesh-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gradient-mesh-bg::before,
+.gradient-mesh-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: meshFloat 20s ease-in-out infinite;
+}
+.gradient-mesh-bg::before {
+  width: 60vw; height: 60vw;
+  top: -20%; left: -10%;
+  background: var(--mesh-color-1, #E91E63);
+  animation-delay: 0s;
+}
+.gradient-mesh-bg::after {
+  width: 50vw; height: 50vw;
+  bottom: -20%; right: -10%;
+  background: var(--mesh-color-2, #FFEB3B);
+  animation-delay: -10s;
+}
+.gradient-mesh-blob-3 {
+  position: fixed;
+  width: 40vw; height: 40vw;
+  top: 40%; left: 30%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.1;
+  background: var(--mesh-color-3, #00BCD4);
+  animation: meshFloat 25s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes meshFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5%, -8%) scale(1.05); }
+  50% { transform: translate(-3%, 5%) scale(0.95); }
+  75% { transform: translate(8%, 3%) scale(1.02); }
+}
+
+
+/* ═══ HOVER TILT 3D ═══ */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ═══ COUNTER ANIMATION ═══ */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ═══ INFINITE MARQUEE ═══ */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marqueeScroll var(--marquee-speed, 30s) linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+</style>
+</head>
+<body>
+
+    <nav class="corporate-sidebar">
+        <div class="nav-logo">
+            <h1>Conti Insumos.</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Soluciones</a></li>
+            <li><a href="#galeria">Equipamiento</a></li>
+            <li><a href="#estadisticas">Datos Técnicos</a></li>
+        </ul>
+        <!-- ADS:NAV:END -->
+        <div class="nav-contact">
+            <a href="https://wa.me/5491100000000" class="btn-primary" target="_blank">Contactar Asesor</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="inicio" class="hero-asymmetric">
+            <div class="hero-text fade-in">
+                <h2 class="display-01">Precisión industrial para tu campo.</h2>
+                <p class="body-long-01">Representamos a las marcas líderes mundiales en herramientas eléctricas, agropecuarias e industriales. Potencia y durabilidad garantizada.</p>
+                <div>
+                    <a href="#servicios" class="btn-primary" style="width: auto; margin-right: 16px;">Ver Catálogo</a>
+                    <a href="https://instagram.com/conti.insumos" target="_blank" style="color: var(--cds-text-secondary); text-decoration: none; font-size: 14px;">Seguinos en Instagram</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
+                <img src="img/ai_hero.png" alt="Warehouse Conti Insumos" loading="lazy">
+                <div class="trust-badge">Distribuidor Oficial 2026</div>
+            </div>
+        </section>
+<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
+    </div>
+  </div>
+</div>
+
+
+        <section id="estadisticas" class="data-bar fade-in">
+            <div class="data-item">
+                <div class="data-number">+10K</div>
+                <div class="data-label">HERRAMIENTAS EN STOCK</div>
+            </div>
+            <div class="data-item">
+                <div class="data-number">100%</div>
+                <div class="data-label">GARANTÍA OFICIAL</div>
+            </div>
+            <div class="data-item">
+                <div class="data-number">24h</div>
+                <div class="data-label">ASESORAMIENTO TÉCNICO</div>
+            </div>
+        </section>
+
+        <section id="servicios" class="staggered-list">
+            <div class="staggered-row fade-in">
+                <div class="staggered-text">
+                    <h3 class="heading-02">Equipamiento Agropecuario</h3>
+                    <p class="body-long-01">Insumos de alto rendimiento para optimizar la producción rural. Contamos con semillas premium, fertilizantes orgánicos y maquinaria pesada preparada para el terreno argentino.</p>
+                </div>
+                <div class="staggered-img">
+                    <img src="img/ai_detail.png" alt="Insumos Agropecuarios" loading="lazy">
+                </div>
+            </div>
+            <div class="staggered-row reverse fade-in">
+                <div class="staggered-text">
+                    <h3 class="heading-02">Herramientas Profesionales</h3>
+                    <p class="body-long-01">Taladros, amoladoras, soldadoras y herramientas de medición de precisión. Equipamos a empresas constructoras e industrias con la última tecnología del mercado.</p>
+                </div>
+                <div class="staggered-img">
+                    <img src="img/contiinsumos_1.jpg" alt="Herramientas Industriales" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="gallery-section fade-in">
+            <h3 class="heading-02" style="margin-bottom: var(--spacing-lg);">Nuestro Equipamiento</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="img/contiinsumos_0.jpg" loading="lazy" alt="Instalaciones"></div>
+                <div class="gallery-item"><img src="img/contiinsumos_2.jpg" loading="lazy" alt="Producto"></div>
+                <div class="gallery-item"><img src="img/contiinsumos_3.jpg" loading="lazy" alt="Maquinaria"></div>
+                <div class="gallery-item"><img src="img/contiinsumos_4.jpg" loading="lazy" alt="Insumos"></div>
+            </div>
+        </section>
+        
+        <!-- ADS:CONTENT:END -->
+
+        <section id="cta" class="massive-cta fade-in">
+            <h2>Llevá tu producción al siguiente nivel.</h2>
+            <p class="body-long-01" style="margin: 0 auto var(--spacing-lg) auto;">Cotizá tus herramientas hoy mismo con un experto.</p>
+            <a href="https://wa.me/5491100000000" class="btn-primary" style="width: auto;">Contactar por WhatsApp</a>
+        </section>
+
+        <footer class="corporate-footer">
+            <!-- ADS:FOOTER:START -->
+            <div class="footer-col">
+                <h4>Conti Insumos</h4>
+                <p>Tu aliado en herramientas industriales y agropecuarias.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <a href="https://wa.me/5491100000000">WhatsApp</a>
+                <a href="https://instagram.com/conti.insumos">Instagram</a>
+            </div>
+            <div class="footer-col">
+                <h4>Horarios</h4>
+                <p>Lun a Vie: 8:00 - 18:00<br>Sábados: 8:00 - 13:00</p>
+            </div>
+            <div class="footer-bottom">
+                <p>Desarrollado por ADS Labs &copy; 2026. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ADS:SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+<script id="premium-effects-js">
+
+// ═══ GLOBAL PREMIUM POLISH ═══
+// Lazy image loading with fade-in
+document.querySelectorAll('img').forEach(img => {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  }
+});
+
+// Add shine effect to primary buttons
+document.querySelectorAll('button, a[href]').forEach(btn => {
+  const bg = getComputedStyle(btn).backgroundColor;
+  if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+    btn.classList.add('btn-shine');
+  }
+});
+
+
+// ═══ SCROLL REVEAL ═══
+(function() {
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]');
+  if (!revealElements.length) {
+    // Auto-apply to sections and cards if no data-reveal attributes found
+    document.querySelectorAll('section, [class*="card"], [class*="rounded"]').forEach((el, i) => {
+      if (el.tagName === 'SECTION') {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = '0.1s';
+      } else if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = (i % 4) * 0.1 + 's';
+      }
+    });
+  }
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  
+  document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]').forEach(el => {
+    observer.observe(el);
+  });
+})();
+
+
+// ═══ GRADIENT MESH (JS companion — injects the blob element) ═══
+(function() {
+  if (!document.querySelector('.gradient-mesh-bg')) {
+    const mesh = document.createElement('div');
+    mesh.className = 'gradient-mesh-bg';
+    document.body.prepend(mesh);
+    
+    const blob3 = document.createElement('div');
+    blob3.className = 'gradient-mesh-blob-3';
+    document.body.prepend(blob3);
+  }
+})();
+
+
+// ═══ HOVER 3D TILT ═══
+(function() {
+  const cards = document.querySelectorAll('.tilt-card');
+  if (!cards.length) {
+    // Auto-apply to product/category cards
+    document.querySelectorAll('[class*="card"], [class*="rounded-xl"]').forEach(el => {
+      if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        if (el.querySelector('img') || el.querySelector('h3')) {
+          el.classList.add('tilt-card');
+        }
+      }
+    });
+  }
+  
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / centerY * -6;
+      const rotateY = (x - centerX) / centerX * 6;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
+  });
+})();
+
+
+// ═══ COUNTER ANIMATION ═══
+(function() {
+  const counters = document.querySelectorAll('.counter-value, [data-counter]');
+  if (!counters.length) {
+    // Auto-detect numbers that look like stats
+    document.querySelectorAll('*').forEach(el => {
+      const text = el.textContent.trim();
+      if (/^[+]?\d{2,}[+%]?$/.test(text) && el.children.length === 0) {
+        const num = parseInt(text.replace(/[^0-9]/g, ''));
+        if (num >= 10) {
+          el.dataset.counter = num;
+          el.dataset.counterSuffix = text.replace(/[0-9]/g, '').replace(/^\+/, '');
+          if (text.startsWith('+')) el.dataset.counterPrefix = '+';
+          el.classList.add('counter-value');
+          el.textContent = '0' + (el.dataset.counterSuffix || '');
+        }
+      }
+    });
+  }
+  
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.counter);
+    const prefix = el.dataset.counterPrefix || '';
+    const suffix = el.dataset.counterSuffix || '';
+    const duration = 2000;
+    const startTime = performance.now();
+    
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+      const current = Math.floor(eased * target);
+      el.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('.counter-value, [data-counter]').forEach(el => observer.observe(el));
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LA ESTRELLA | Ferretería y Hogar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#894c16",
+                        "on-primary-fixed-variant": "#004e59",
+                        "surface-variant": "#dfe3e4",
+                        "surface-bright": "#f6fafb",
+                        "secondary-fixed": "#c8e7fd",
+                        "on-tertiary-fixed": "#301400",
+                        "on-surface": "#181c1d",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#c5e4fa",
+                        "surface-dim": "#d7dbdc",
+                        "error": "#ba1a1a",
+                        "outline": "#6e797b",
+                        "on-secondary-container": "#496679",
+                        "secondary": "#446274",
+                        "on-tertiary-container": "#fffbff",
+                        "background": "#f6fafb",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#a7642d",
+                        "surface-container-high": "#e5e9ea",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f1f4f5",
+                        "primary-fixed-dim": "#77d4e5",
+                        "surface-tint": "#006876",
+                        "secondary-fixed-dim": "#accbe0",
+                        "on-tertiary-fixed-variant": "#6f3801",
+                        "inverse-primary": "#77d4e5",
+                        "on-primary-fixed": "#001f24",
+                        "on-primary-container": "#f6fdff",
+                        "primary-container": "#028090",
+                        "on-background": "#181c1d",
+                        "inverse-on-surface": "#eef1f2",
+                        "tertiary-fixed-dim": "#ffb782",
+                        "primary-fixed": "#9eefff",
+                        "on-secondary-fixed": "#001e2d",
+                        "surface-container": "#ebeeef",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#3e494b",
+                        "surface-container-highest": "#dfe3e4",
+                        "surface": "#f6fafb",
+                        "primary": "#006572",
+                        "outline-variant": "#bdc8cb",
+                        "inverse-surface": "#2d3132",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#2c4a5c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "24px",
+                        "container-max": "1280px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"],
+                        "h1": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h3": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "h1": ["30px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F8F9FA;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="flex justify-between items-center px-4 md:px-8 h-16 w-full max-w-[1280px] mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-600 dark:text-teal-400" data-icon="storefront">storefront</span>
+<span class="text-lg font-black text-teal-700 dark:text-teal-500 font-['Inter'] tracking-tight">LA ESTRELLA</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-teal-600 dark:text-teal-400 border-b-2 border-teal-600 transition-colors" href="#">Inicio</a>
+<a class="font-label-md text-label-md text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-300 transition-colors" href="#">Productos</a>
+<a class="font-label-md text-label-md text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-300 transition-colors" href="#">Galería</a>
+<a class="font-label-md text-label-md text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-300 transition-colors" href="#">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-gray-600 active:opacity-80 transition-opacity" data-icon="search">search</button>
+<button class="material-symbols-outlined text-gray-600 active:opacity-80 transition-opacity md:hidden" data-icon="menu">menu</button>
+<button class="hidden md:flex material-symbols-outlined text-gray-600 active:opacity-80 transition-opacity" data-icon="shopping_cart">shopping_cart</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative h-[870px] w-full mt-16 overflow-hidden flex items-center">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A cinematic, wide-angle shot of a professional hardware store interior with organized rows of tools and building supplies. The scene is illuminated by atmospheric industrial lighting with warm orange highlights and cool teal shadows. Soft volumetric fog drifts through the aisles, creating a sense of depth and professionalism. The overall mood is reliable and high-end, featuring a sophisticated color palette of navy blues and deep grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEwrFky88QXNzABu1KTTSRmTetnDxmbngnhxkr5EexzpQHwW_idIy6RVVXI3ivZzwFg9cGbPh6kQzN-t2imSQn_WB80oVFv3pMdT84vlZ6R2DTAUclFWImmW3Nl7bIpOGCjamgFYXPC9YVv3Rl25rgAZFaubi3nKSLp7-iYR8DhTKu87KUe-HV_kN8c_vKbB2o26W56xBFIPen_xsZdBQSYgMwCsd-5oIVdoua1EFOgnT1gv2nUlrLk9msztGY3xpB7IPmq3zBI2PK"/>
+<div class="absolute inset-0 bg-gradient-to-r from-[#1B3A4B]/90 to-[#1B3A4B]/40"></div>
+</div>
+<div class="relative z-10 container max-w-[1280px] mx-auto px-4 md:px-8">
+<div class="max-w-2xl">
+<h1 class="font-h1 text-h1 text-white mb-4 leading-tight">Construí, Reparás, Creás</h1>
+<p class="font-body-lg text-body-lg text-gray-200 mb-8 max-w-lg">Todo en ferretería, herramientas y artículos para el hogar en Coronel Charlone.</p>
+<div class="flex flex-wrap gap-4">
+<a class="inline-flex items-center justify-center px-8 py-3 bg-[#F0A500] text-white font-bold rounded-lg hover:brightness-110 active:scale-95 transition-all shadow-lg" href="#">
+                        Ver Productos
+                    </a>
+<a class="inline-flex items-center justify-center px-8 py-3 bg-white/10 backdrop-blur-md text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 active:scale-95 transition-all" href="#">
+                        Nuestra Galería
+                    </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Categorías Section -->
+<section class="py-20 bg-background">
+<div class="container max-w-[1280px] mx-auto px-4 md:px-8">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="text-primary font-bold tracking-widest text-xs uppercase">Explorá por Sector</span>
+<h2 class="font-h2 text-h2 mt-2">Nuestros Rubros</h2>
+</div>
+<div class="hidden md:block h-px flex-1 mx-8 bg-outline-variant"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Herramientas Eléctricas -->
+<div class="group relative h-[400px] rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer bg-white">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A professional flat-lay of modern high-end cordless power tools including a drill, circular saw, and impact driver on a dark industrial workbench. The lighting is crisp and detailed, highlighting metallic textures and ergonomic teal grips. The style is clean and commercial, reminiscent of high-end home improvement catalogs with a focused and efficient atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOetlpqeSiFiNsMKuBePzKoZsNzoIN26fjVnqgfWgaTscdX9t7W24EyLNXe-Wd11TCNiWZh09TXBiMUKJCdaG4UfukuE2VAxRIlBYvSIPS-XCE5fUFL_V1hmzHValPuBpC1C4wWQgVfvwnYYY1L9jIfp3k4Gjl_RRUntWcQy5TJQT1HVp-CsRLA05GNkBo0KZA8oQgMELbyg_BsVMjW5Vz17nyqmrvgL9FJTkBap7FGu-SwhcjAhAKF2Pwmz0YEEOcMnStTT4nHw20"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="font-h3 text-h3 text-white mb-2">Herramientas Eléctricas</h3>
+<p class="text-gray-300 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">Calidad profesional para cada proyecto.</p>
+<span class="text-[#F0A500] font-bold flex items-center gap-2">Explorar <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></span>
+</div>
+</div>
+<!-- Hogar y Camping -->
+<div class="group relative h-[400px] rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer bg-white">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A curated display of premium camping equipment and home utility items arranged in a modern, well-lit showroom. The collection includes high-quality lanterns, insulated containers, and outdoor gear in earthy tones. The lighting is soft and inviting, emphasizing reliability and adventure. The aesthetic is clean and organized, targeting high-end retail consumers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx8grvmK1TQdYvdheAd6ibSdPZTGpshFbjxIjA2gfNE4o7r8jD1jM0JcWT9Ah0_HGQ91DyET6QdKgrYlzp5NDdNiMCmyUnfuWMooYN9LuXRMgGyzlbTI19pORLqxBjjhhRuDYg8a4wXQKYjpMOKPDHWcFKAL7qS7U8K9QIdvVe_3EZH0WGOj0-lZ6Q3wRAN6SEbpRlUj9w6VYSyytCCTqfCHOIh3Y1HUaN2fzV14afOQFlYYBBRtFke2BfHTlJ5ECwP-5JkJxIQbid"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="font-h3 text-h3 text-white mb-2">Hogar y Camping</h3>
+<p class="text-gray-300 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">Equipate para la aventura y el día a día.</p>
+<span class="text-[#F0A500] font-bold flex items-center gap-2">Explorar <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></span>
+</div>
+</div>
+<!-- Pinturería -->
+<div class="group relative h-[400px] rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer bg-white">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="An artistic composition of high-quality paint buckets and professional brushes arranged against a minimalist background. The buckets feature clean labels and a sophisticated color palette of teals and ochres. The lighting is bright and high-key, creating a fresh and inspirational mood. The overall visual style is corporate yet creative, highlighting precision and variety." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfi2055BOZprGx9rxBOqfW_Tag5ng_grBg9lU5mj0fZImJTF9jArpjJ7bLhVQLIXobqiU_hSevcIMPPHZddSTa42KxLfXAza4tR14-d8R7WiZno_2_NTr8dcfUf4Gmd5XEL0_9HHTHGEI8Hu59IXo6dB0bQP2Dy4o9ugvNzQc3-R2rZCngfuVXeWjSO6d9ieZIiF10eKG73cPqBYxdQQ7m5KnDdSxGYsvTjQqYCVHcSM7tSTdxuz8yRsdpDk-qwmd5cAM5pVuQwZU7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="font-h3 text-h3 text-white mb-2">Pinturería</h3>
+<p class="text-gray-300 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">Colores que transforman tus espacios.</p>
+<span class="text-[#F0A500] font-bold flex items-center gap-2">Explorar <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Productos Section -->
+<section class="py-20 bg-white">
+<div class="container max-w-[1280px] mx-auto px-4 md:px-8">
+<div class="text-center mb-16">
+<span class="text-[#F0A500] font-bold tracking-widest text-xs uppercase">Elegidos para vos</span>
+<h2 class="font-h2 text-h2 mt-2">Ofertas Destacadas</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+<!-- Product Card Loop (Static for HTML demo) -->
+<div class="group bg-white border border-gray-100 rounded-xl p-4 hover:shadow-lg transition-all duration-300">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-gray-50 relative">
+<img class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform" data-alt="A high-resolution studio photograph of a professional-grade power drill with a sleek teal and black design. The product is shot against a clean white background with soft, diffused lighting. It features realistic textures, metallic accents, and ergonomic detailing. The style is modern e-commerce photography with a focus on durability and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB43ydfi1TtYZv-_gpnXgEDpdD7CpsZLaAECIUvTMZeF9oQICUIsvGOyyHrIvmvT9nBCW2diZFgNi_KQZYbI2CA4CkgTeNtVJZ4hmCGV2Hk8Ut1JUdE5l3uVS-jUlr9Gra8IPeUldFWAh0W5cs95l_wuDX0fBaBBHXTDClmoV1-Cjd3O78m71UqJIatLwwh6nD1XhLASV-pwq8h0SLHvJ8J5BzNJpYVo507AcN_MCHc6OSuq9ktTfVwolfBmHzIjjs8xBqaT921wchO"/>
+<span class="absolute top-2 left-2 bg-[#F0A500] text-white text-[10px] font-bold px-2 py-1 rounded">OFERTA</span>
+</div>
+<h4 class="font-label-md text-label-md mb-1 text-on-surface line-clamp-1">Taladro Percutor 20V</h4>
+<p class="text-teal-700 font-bold">$45.900</p>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-bold text-xs rounded hover:bg-primary hover:text-white transition-colors">Añadir</button>
+</div>
+<div class="group bg-white border border-gray-100 rounded-xl p-4 hover:shadow-lg transition-all duration-300">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-gray-50">
+<img class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform" data-alt="A collection of professional-grade hand tools, including pliers and wrenches, neatly arranged for a high-end catalog. The tools feature chrome-vanadium finishes and teal-colored handles. The lighting is sharp and technical, emphasizing the high-quality construction. The background is a soft, neutral gray." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLcrlN-l4UqZuiTGuZtSuz3mC8fYecNON7G3iCaFIqrpO101uoyvi4viB9H0H4TCc2MmkfJEnbT53mU2fNUZCo1v938G7m_yCa0npgwq4RuoIvTAbPGH242Yu6RBZxz0JJ3NdZ3NTAvlrfdvvICHFzYasQvzQwfVsCOI0SAKScxHz2UExYohbXoyUKzvoRnb98nHvBOPx9MGU17ec0-GZnphbEg2W3G0l3ulxf5gYeQ4Zyn3B2JyAdap65qvgPKky9DABBc3_GOppS"/>
+</div>
+<h4 class="font-label-md text-label-md mb-1 text-on-surface line-clamp-1">Kit Pinzas Prof.</h4>
+<p class="text-teal-700 font-bold">$12.400</p>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-bold text-xs rounded hover:bg-primary hover:text-white transition-colors">Añadir</button>
+</div>
+<div class="group bg-white border border-gray-100 rounded-xl p-4 hover:shadow-lg transition-all duration-300">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-gray-50 relative">
+<img class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform" data-alt="A clean product shot of a premium 20L paint bucket with a contemporary label design featuring teal and orange accents. The setting is bright and professional, highlighting the high-quality satin finish of the product. The style is consistent with a modern hardware store's inventory photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA561nrBYQSc_3te_d1UPxa1BJ6_7SgutwwWFPgPIV5HdOOTMlWT-EDVXtNJu4iGUqxx33wyxGqTe5RCCSGo_XERaOFeMFXGitEF2dceWfcGY_eUzhcXws_MoJcGhEFFEL2-whwZcyFtO2ssSmWTBJOpnf2mW8RZX5u6df3mRDR4w8G30oS54m9iqavKPUvqlKUsec5sFk5YwaCgx4QwkGCskiYW2pNo5_xoSi0y5tfRoCw1-2-zk-U5EZRNxhbI7A8WdVnNaaaimk7"/>
+</div>
+<h4 class="font-label-md text-label-md mb-1 text-on-surface line-clamp-1">Látex Premium 20L</h4>
+<p class="text-teal-700 font-bold">$68.200</p>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-bold text-xs rounded hover:bg-primary hover:text-white transition-colors">Añadir</button>
+</div>
+<div class="group bg-white border border-gray-100 rounded-xl p-4 hover:shadow-lg transition-all duration-300">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-gray-50">
+<img class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform" data-alt="A professional heavy-duty tool box in a matte black finish with teal latches, positioned against a minimalist background. The lighting highlights the rugged texture and sturdy build of the product. The overall presentation is clean, technical, and high-end, focusing on reliability and storage efficiency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPjBrjEdrgdA4yX0TrRHPC9iYZUtq9ar-WNLL7DGKDEqM86P6uWaHsiMglLng9J2lIN7iukTNIyUhvJtfdnid4pPiG8p2CkWXa3rQhh2yHNVwjk-qLMjOEKwB5CBJFBGdLNf293zPRgvFDsJHDIbbV7ADmfA_6W8gIH0l_QJhNGHoMDktbUGUUiA4PgaTmW1l9EXhUJXoV9QvkFOmj_D637hlBj-UUy00uH4svgxY515cd8_mqwt_woFi_kJpHU7qaDHNw6cB1J8iL"/>
+</div>
+<h4 class="font-label-md text-label-md mb-1 text-on-surface line-clamp-1">Caja de Herramientas</h4>
+<p class="text-teal-700 font-bold">$18.900</p>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-bold text-xs rounded hover:bg-primary hover:text-white transition-colors">Añadir</button>
+</div>
+<div class="group bg-white border border-gray-100 rounded-xl p-4 hover:shadow-lg transition-all duration-300">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-gray-50">
+<img class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform" data-alt="A sleek, modern portable spotlight with advanced LED technology. The product has a durable industrial design with a teal-accented handle and a robust black body. The photography style is high-key and commercial, emphasizing its powerful luminosity and utility features." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxxWL9PTYTAo3GQqGL_y3rqvOWnvZOUybDTNrb3tNyHuwH-zUV57Cx6d-ujaiM0PR_bTWO1_KXitUUYm7fM-aYBTTDOi9mlfpkWY032SLmZ2rGY7IVLAU2XkgnGtXDYzfLgLZnq9CrTmpetMMHwZ0cyFiPXGk7ovVmrk9CDHNrag3JEeZZH6nghOMEngevYROSedbybcVUdy0cgkx2NQHSfmkipm-SjfTtlrePKlGhC0RukwnLPnbjguc3wVBNJpZ81DRIt9hjrPrF"/>
+</div>
+<h4 class="font-label-md text-label-md mb-1 text-on-surface line-clamp-1">Reflector LED Portátil</h4>
+<p class="text-teal-700 font-bold">$9.100</p>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-bold text-xs rounded hover:bg-primary hover:text-white transition-colors">Añadir</button>
+</div>
+<div class="group bg-white border border-gray-100 rounded-xl p-4 hover:shadow-lg transition-all duration-300">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-gray-50">
+<img class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform" data-alt="A high-quality level and measuring tape set for professional construction. The tools are finished in a vibrant teal with black rubberized grips. The scene is shot with sharp focus and professional studio lighting against a soft-neutral background, conveying accuracy and professional standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Do1c-uWfZtBgV2aPYVI0wOwUMfoeFRqM_YzQF8lBPAEffJf91JhtejP2Lov4wmgqw0M72NNqgFlyekklXJtnzGga8Dp1AqoAFNMOUcivXfKRlI0QXVjMYiDiR-y8-Km86xk22zQbYb7x6W_SQdf32vnlt8TE9bVE1dNl_mwiQetPXFToJIlWsQrNYXTpYDDHMOey4ujorpnIi7uAgylpVq9rnP7yt-eyeXYoupdalMN5UQnd3tduVlFMfaqW-DaKytUyUOtJloO_"/>
+</div>
+<h4 class="font-label-md text-label-md mb-1 text-on-surface line-clamp-1">Set de Medición</h4>
+<p class="text-teal-700 font-bold">$14.500</p>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-bold text-xs rounded hover:bg-primary hover:text-white transition-colors">Añadir</button>
+</div>
+</div>
+<div class="mt-12 text-center">
+<button class="inline-flex items-center gap-2 px-8 py-3 text-primary font-bold hover:bg-primary-container/10 rounded-lg transition-all">
+                    Ver catálogo completo <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Ubicación Section -->
+<section class="py-20 bg-surface-container-low">
+<div class="container max-w-[1280px] mx-auto px-4 md:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1">
+<span class="text-primary font-bold tracking-widest text-xs uppercase">Visitanos</span>
+<h2 class="font-h2 text-h2 mt-2 mb-6">Encontranos en Coronel Charlone</h2>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary p-3 bg-white rounded-full shadow-sm" data-icon="location_on">location_on</span>
+<div>
+<p class="font-bold text-on-surface">Dirección</p>
+<p class="text-gray-600">Dr Vega 1111, Coronel Charlone</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary p-3 bg-white rounded-full shadow-sm" data-icon="schedule">schedule</span>
+<div>
+<p class="font-bold text-on-surface">Horarios</p>
+<p class="text-gray-600">Lunes a Sábado: 08:00 - 12:30 | 16:00 - 20:00</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary p-3 bg-white rounded-full shadow-sm" data-icon="phone">phone</span>
+<div>
+<p class="font-bold text-on-surface">Teléfono</p>
+<p class="text-gray-600">+54 9 3388 XXXX</p>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2 h-[400px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+<img class="w-full h-full object-cover" data-alt="A professional architectural map view rendered in a modern digital style, highlighting the location of Coronel Charlone. The map uses a clean, minimal palette with teal accents for the primary destination. The layout is structured and easy to read, with soft shadows and sharp typography that aligns with the corporate hardware store aesthetic." data-location="Coronel Charlone, Argentina" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn2-e6eIdHvq8BvnsTkjmZYKnvkPzFbkhSG-y258g3j5bK7M1yz0n3epCzX1oMoXTLZp2oxENjLW-3prKjGADL4HCYYfC4LplZH-t7rPfR1edcgoCwi5MUTU22Ep3zM_ah2iDjsGJ80Y24bSc0ZX-e6UqLpJzrzfKh0A0SVkArAW9QbThgQFJoEs8dkqOc5tVivAWmyE7GsbKFekN9-wCr1NvxuDI3rFpqf8IypvSAEYzXCykGOLnKa0g_LaohYiKhlbkgTOp9fBmH"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#1B3A4B] text-white pt-20 pb-8 mt-auto w-full border-t border-gray-800">
+<div class="container max-w-[1280px] mx-auto px-6 text-center md:text-left">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<span class="text-xl font-black text-white mb-4 block">LA ESTRELLA Ferretería</span>
+<p class="text-gray-400 font-['Inter'] text-sm leading-relaxed">
+                        Comprometidos con la excelencia y el servicio al cliente en cada rincón de Coronel Charlone. Calidad que construye confianza.
+                    </p>
+</div>
+<div class="col-span-1">
+<h5 class="font-bold mb-6 text-orange-500 uppercase tracking-widest text-xs">Enlaces</h5>
+<ul class="space-y-4">
+<li><a class="text-gray-400 hover:text-orange-400 transition-colors font-['Inter'] text-sm" href="#">Inicio</a></li>
+<li><a class="text-gray-400 hover:text-orange-400 transition-colors font-['Inter'] text-sm" href="#">Productos</a></li>
+<li><a class="text-gray-400 hover:text-orange-400 transition-colors font-['Inter'] text-sm" href="#">Galería</a></li>
+<li><a class="text-gray-400 hover:text-orange-400 transition-colors font-['Inter'] text-sm" href="#">Contacto</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h5 class="font-bold mb-6 text-orange-500 uppercase tracking-widest text-xs">Contacto Directo</h5>
+<ul class="space-y-4">
+<li>
+<a class="flex items-center justify-center md:justify-start gap-2 text-gray-400 hover:text-orange-400 transition-colors font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span> WhatsApp
+                            </a>
+</li>
+<li class="text-gray-400 font-['Inter'] text-sm flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="mail">mail</span> info@laestrella.com
+                        </li>
+</ul>
+</div>
+<div class="col-span-1">
+<h5 class="font-bold mb-6 text-orange-500 uppercase tracking-widest text-xs">Newsletter</h5>
+<p class="text-gray-400 text-sm mb-4">Recibí ofertas y novedades en tu mail.</p>
+<div class="flex gap-2">
+<input class="bg-white/5 border-white/10 rounded px-3 py-2 text-sm w-full focus:ring-1 focus:ring-orange-500" placeholder="Tu email" type="email"/>
+<button class="bg-orange-500 px-4 py-2 rounded text-sm font-bold active:scale-95 transition-transform">OK</button>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 text-center">
+<p class="text-gray-500 text-xs font-['Inter'] mb-2">© 2024 LA ESTRELLA - Coronel Charlone. Todos los derechos reservados.</p>
+<div class="text-gray-500 text-xs font-['Inter']"><p>Desarrollado por ADS Labs</p></div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] flex justify-around items-center w-full px-2 py-2">
+<a class="flex flex-col items-center justify-center text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/20 rounded-lg py-1 px-3 scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] text-[10px] font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 py-1 px-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-['Inter'] text-[10px] font-medium">Productos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 py-1 px-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="collections">collections</span>
+<span class="font-['Inter'] text-[10px] font-medium">Galería</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 py-1 px-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-['Inter'] text-[10px] font-medium">Contacto</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) - Only relevant for product context -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-[#F0A500] text-white rounded-full shadow-2xl flex items-center justify-center z-40 md:bottom-8 md:right-8 group active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="chat" data-weight="fill" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="absolute right-16 bg-white text-on-surface px-4 py-2 rounded-lg text-sm font-bold shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap">¿Necesitás ayuda?</span>
+</button>
+</body></html>

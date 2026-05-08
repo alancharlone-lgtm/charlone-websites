@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Dorita II | Ropa para Chicos</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🎨 BENTO GRID SYSTEM - KIDS BOUTIQUE */
+        :root {
+            /* Pastel Palette */
+            --primary: #FF9EAA;      /* Pastel Pink */
+            --secondary: #3AC1A3;    /* Mint Green */
+            --accent: #F9E795;       /* Soft Yellow */
+            --background: #FFF5F6;   /* Very light pink background */
+            --surface: #FFFFFF;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            
+            /* Bubbly Typography */
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Nunito', sans-serif;
+            
+            /* Extreme Border Radius for Kids Vibe */
+            --radius-bento: 32px;
+            --radius-pill: 50px;
+            
+            /* Shadows */
+            --shadow-bento: 0 10px 30px rgba(255, 158, 170, 0.15);
+            --shadow-hover: 0 20px 40px rgba(255, 158, 170, 0.25);
+            
+            /* Layout */
+            --gap-bento: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        a { text-decoration: none; }
+
+        /* 🌐 1. NAV PILL (GLASSMORPHISM) */
+        nav.floating-pill {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 2px solid white;
+            border-radius: var(--radius-pill);
+            padding: 12px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: var(--shadow-bento);
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--secondary); }
+
+        .btn-nav {
+            background: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-pill);
+            font-weight: 800;
+            font-family: var(--font-display);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(58, 193, 163, 0.3);
+        }
+
+        /* 🚀 2. HERO DYNAMIC */
+        section.hero-dynamic {
+            padding: 180px 5% 80px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+        
+        .hero-title span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: -5%;
+            width: 110%;
+            height: 30%;
+            background: var(--accent);
+            z-index: -1;
+            border-radius: 20px;
+            transform: rotate(-2deg);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 600;
+        }
+
+        .btn-hero {
+            display: inline-flex;
+            background: var(--primary);
+            color: white;
+            padding: 20px 48px;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.2rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid white;
+            box-shadow: var(--shadow-bento);
+        }
+
+        .btn-hero:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            background: var(--secondary);
+        }
+
+        /* ♾️ 3. MARQUESINA (PREMIUM INJECTOR) */
+        .marquee-container {
+            width: 100%;
+            background: var(--text-main);
+            color: white;
+            padding: 20px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            transform: rotate(-2deg) scale(1.05);
+            margin: 40px 0 80px;
+            z-index: 5;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .marquee-content span {
+            margin: 0 40px;
+        }
+        
+        .marquee-content span.star {
+            color: var(--accent);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* 🍱 4. BENTO GRID */
+        section.bento-section {
+            padding: 40px 5% 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 320px;
+            gap: var(--gap-bento);
+        }
+
+        .bento-item {
+            background: var(--surface);
+            border-radius: var(--radius-bento);
+            padding: 32px;
+            box-shadow: var(--shadow-bento);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid white;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .bento-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bento-item h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+
+        .bento-item p {
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        .bento-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        .bento-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .bento-item:hover .bento-image img {
+            transform: scale(1.08);
+        }
+
+        /* Span Helpers for Bento */
+        .col-2 { grid-column: span 2; }
+        .row-2 { grid-row: span 2; }
+
+        /* Variations */
+        .bento-highlight { background: var(--primary); color: white; }
+        .bento-highlight h3, .bento-highlight p { color: white; }
+        .bento-secondary { background: var(--secondary); color: white; }
+        .bento-secondary h3, .bento-secondary p { color: white; }
+        .bento-accent { background: var(--accent); }
+
+        .bento-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        
+        /* Metric block */
+        .bento-metric {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        .bento-metric .number {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        
+        .bento-with-text-overlay::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            z-index: 1;
+        }
+        .bento-with-text-overlay h3 {
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin-top: auto; /* Push to bottom */
+            z-index: 2;
+            position: relative;
+        }
+
+        /* 📱 5. FOOTER DASHBOARD */
+        footer {
+            background: white;
+            padding: 80px 5% 40px;
+            border-top-left-radius: 60px;
+            border-top-right-radius: 60px;
+            margin-top: 40px;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.05);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li { margin-bottom: 12px; font-weight: 600; }
+        .footer-links a { color: var(--text-muted); }
+        .footer-links a:hover { color: var(--secondary); }
+
+        /* Premium Injector: Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 280px;
+            }
+            .col-2 { grid-column: span 1; }
+            .col-2.mobile-col-2 { grid-column: span 2; }
+            .hero-title { font-size: 4rem; }
+        }
+
+        @media (max-width: 768px) {
+            nav.floating-pill {
+                padding: 12px 20px;
+                width: 95%;
+            }
+            .nav-links { display: none; }
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .col-2, .row-2, .mobile-col-2 {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+            .bento-metric .number { font-size: 4rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            section.hero-dynamic { padding-top: 140px; }
+            .hero-title { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. NAV PILL -->
+    <nav class="floating-pill">
+        <a href="#" class="nav-logo">Dorita II</a>
+        <div class="nav-links">
+            <a href="#novedades">Novedades</a>
+            <a href="#catalogo">Catálogo</a>
+        </div>
+        <a href="https://wa.me/5403388442589" class="btn-nav">¡Hablemos!</a>
+    </nav>
+
+    <!-- 2. HERO DYNAMIC -->
+    <section class="hero-dynamic reveal">
+        <h1 class="hero-title">Ropa Mágica para<br><span>Chicos Geniales</span></h1>
+        <p class="hero-subtitle">La tienda de ropa y calzado infantil más linda de Charlone. Vestimos la diversión desde bebés hasta los 12 años.</p>
+        <a href="#catalogo" class="btn-hero">Ver Catálogo de Temporada</a>
+    </section>
+
+    <!-- 3. MARQUESINA INFINITA -->
+    <div class="marquee-container reveal">
+        <div class="marquee-content">
+            ROPA DE BEBÉS <span class="star">★</span> INDUMENTARIA INFANTIL <span class="star">★</span> CALZADO DIVERTIDO <span class="star">★</span> ROPA DE BEBÉS <span class="star">★</span> INDUMENTARIA INFANTIL <span class="star">★</span> CALZADO DIVERTIDO <span class="star">★</span> ROPA DE BEBÉS <span class="star">★</span> INDUMENTARIA INFANTIL <span class="star">★</span> CALZADO DIVERTIDO <span class="star">★</span>
+        </div>
+    </div>
+
+    <!-- 4. BENTO GRID -->
+    <section id="catalogo" class="bento-section">
+        <div class="bento-grid">
+            
+            <!-- Bento 1: Foto Grande Horizontal -->
+            <div class="bento-item col-2 mobile-col-2 bento-with-text-overlay reveal">
+                <div class="bento-image">
+                    <img src="img/dorita_1_1778191019195.png" alt="Interior Tienda Dorita II">
+                </div>
+                <div class="bento-content">
+                    <h3>Nuestra Boutique</h3>
+                </div>
+            </div>
+
+            <!-- Bento 2: Métrica Colorida -->
+            <div class="bento-item bento-highlight bento-metric reveal" style="transition-delay: 0.1s">
+                <div class="bento-icon">👶</div>
+                <div class="number">0 a 12</div>
+                <h3>Años</h3>
+                <p>Talles para todas las etapas</p>
+            </div>
+
+            <!-- Bento 3: Foto Zapatos -->
+            <div class="bento-item row-2 bento-with-text-overlay reveal" style="transition-delay: 0.2s">
+                <div class="bento-image">
+                    <img src="img/dorita_3_1778191061085.png" alt="Calzado Infantil">
+                </div>
+                <div class="bento-content">
+                    <h3>Calzado Súper Cómodo</h3>
+                </div>
+            </div>
+
+            <!-- Bento 4: Bloque Secundario -->
+            <div class="bento-item bento-secondary reveal" style="transition-delay: 0.3s">
+                <div class="bento-icon">👗</div>
+                <h3>Nueva Colección</h3>
+                <p>Llegaron los ingresos de temporada. ¡Colores pasteles y telas súper suaves!</p>
+            </div>
+
+            <!-- Bento 5: Foto Bebés -->
+            <div class="bento-item bento-with-text-overlay reveal" style="transition-delay: 0.4s">
+                <div class="bento-image">
+                    <img src="img/dorita_2_1778191039693.png" alt="Ropa de bebé premium">
+                </div>
+                <div class="bento-content">
+                    <h3>Para Recién Nacidos</h3>
+                </div>
+            </div>
+
+            <!-- Bento 6: Bloque Acento Amarillo Horizontal -->
+            <div class="bento-item col-2 mobile-col-2 bento-accent reveal" style="transition-delay: 0.5s; display: flex; flex-direction: row; align-items: center; gap: 20px;">
+                <div style="flex: 1;">
+                    <h3 style="font-size: 2.5rem; margin-bottom: 10px;">Envíos a Domicilio</h3>
+                    <p>Enviamos tu compra a todo Charlone. ¡Escribinos por WhatsApp y te armamos el pedido!</p>
+                </div>
+                <div style="font-size: 5rem;">🛵</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. FOOTER DASHBOARD -->
+    <footer class="reveal">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>Dorita II</h2>
+                <p>Tu tienda de confianza para vestir a los más chicos con estilo, calidad y mucha diversión.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>📍 B6223 Charlone, Bs. As.</li>
+                    <li>📞 03388 44-2589</li>
+                    <li>📱 Instagram @tiendadorita2.kids</li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align: center; color: var(--text-muted); font-weight: 600; padding-top: 20px;">
+            Desarrollado por ADS Labs
+        </div>
+    </footer>
+
+    <!-- Premium JS Effects -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

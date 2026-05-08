@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA ESTRELLA | Ferretería Industrial Premium</title>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🎨 ASYMMETRICAL FLOW DESIGN SYSTEM - FESTOOL INSPIRED */
+        :root {
+            /* Colors: Dark & Industrial */
+            --primary: #23AA08;     /* Festool Green Accent */
+            --on-primary: #FFFFFF;
+            --secondary: #3F3C39;   /* Industrial Gray */
+            --background: #111622;  /* Deep Navy/Black Background */
+            --surface: #191E2B;     /* Slightly lighter surface */
+            --text-main: #EFEFEF;   /* Off-white text */
+            --text-muted: #7B909D;  /* Cool gray text */
+            --border: #263240;      /* Dark border */
+            
+            /* Typography */
+            --font-display: 'Teko', sans-serif; /* Condensed industrial font */
+            --font-body: 'Inter', sans-serif;
+            
+            /* Spacing & Layout */
+            --radius-sm: 3px;
+            --radius-md: 8px; 
+            
+            /* Shadows */
+            --shadow-glow: 0 0 20px rgba(35, 170, 8, 0.2);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+            
+            /* Transitions */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 🧹 RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 🌐 1. NAV CORPORATE SIDEBAR / TOP-HEAVY */
+        nav.top-heavy {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(17, 22, 34, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition-smooth);
+        }
+
+        .top-bar {
+            background: var(--surface);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 24px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 2.2rem;
+            color: var(--text-main);
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1;
+        }
+        
+        .nav-logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-nav {
+            background: var(--primary);
+            color: var(--background) !important;
+            padding: 10px 28px;
+            border-radius: var(--radius-sm);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: var(--transition-smooth);
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+
+        .btn-nav:hover {
+            background: var(--text-main);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* 🚀 2. HERO ASYMMETRIC (DARK INDUSTRIAL) */
+        section.hero-asymmetric {
+            padding-top: 130px; 
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            background: var(--background);
+            position: relative;
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(25, 30, 43, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(25, 30, 43, 0.5) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            width: 100%;
+            height: calc(100vh - 130px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            padding: 0 10% 0 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 8vw, 7rem);
+            font-weight: 700;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--primary);
+            color: var(--background);
+            padding: 18px 48px;
+            border-radius: var(--radius-sm);
+            font-size: 1.2rem;
+            font-weight: 900;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: var(--transition-smooth);
+            align-self: flex-start;
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+        }
+
+        .btn-primary:hover {
+            background: var(--text-main);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            background: var(--surface);
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.1) brightness(0.9);
+        }
+
+        .trust-badge {
+            position: absolute;
+            bottom: 60px;
+            left: -20px;
+            background: var(--surface);
+            color: var(--text-main);
+            padding: 30px;
+            border-left: 5px solid var(--primary);
+            box-shadow: var(--shadow-md);
+            z-index: 10;
+        }
+
+        .trust-badge-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--primary);
+            line-height: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .trust-badge-text {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        /* 📊 3. DATA BAR (ESTADÍSTICAS) */
+        section#estadisticas.data-bar {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 60px 5%;
+            position: relative;
+            z-index: 5;
+        }
+
+        .data-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .data-item {
+            position: relative;
+        }
+        
+        .data-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .data-number {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            color: var(--text-main);
+            line-height: 1;
+        }
+
+        .data-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary);
+            margin-top: -5px;
+        }
+
+        /* ⚡ 4. STAGGERED LIST (SERVICIOS) */
+        section#servicios.staggered-list {
+            padding: 140px 5%;
+            background: var(--background);
+        }
+
+        .section-header-left {
+            margin-bottom: 100px;
+            max-width: 800px;
+            border-left: 5px solid var(--primary);
+            padding-left: 30px;
+        }
+
+        .section-header-left h2 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        .section-header-left p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .staggered-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 120px;
+        }
+
+        .staggered-row {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .staggered-row:nth-child(even) {
+            grid-template-columns: 7fr 5fr;
+        }
+
+        .staggered-row:nth-child(even) .staggered-content {
+            order: 2;
+        }
+        
+        .staggered-row:nth-child(even) .staggered-image {
+            order: 1;
+        }
+
+        .staggered-content h3 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            line-height: 1;
+            text-transform: uppercase;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        .staggered-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .staggered-list-items {
+            list-style: none;
+            display: grid;
+            gap: 16px;
+        }
+        
+        .staggered-list-items li {
+            position: relative;
+            padding-left: 30px;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+        
+        .staggered-list-items li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .staggered-image {
+            height: 600px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 5% 100%);
+        }
+        
+        .staggered-row:nth-child(even) .staggered-image {
+            clip-path: polygon(0 5%, 100% 0, 95% 100%, 0% 100%);
+        }
+
+        .staggered-image img {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(20%) contrast(1.2);
+            transition: transform 0.7s ease, filter 0.7s ease;
+        }
+        
+        .staggered-row:hover .staggered-image img {
+            transform: scale(1.03);
+            filter: grayscale(0%) contrast(1.1);
+        }
+
+        /* 🚀 5. MASSIVE CTA */
+        section#cta.massive-cta {
+            background: var(--primary);
+            padding: 100px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 7vw, 6rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            color: var(--background);
+            margin-bottom: 24px;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            color: var(--surface);
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+
+        .btn-massive {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--background);
+            color: var(--text-main);
+            padding: 24px 56px;
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition-smooth);
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+        }
+
+        .btn-massive:hover {
+            background: var(--text-main);
+            color: var(--background);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* 📱 6. CORPORATE FOOTER */
+        footer.corporate-footer {
+            background: var(--background);
+            color: var(--text-muted);
+            padding: 100px 5% 40px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            line-height: 1;
+            color: var(--text-main);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-brand h3 span {
+            color: var(--primary);
+        }
+
+        .footer-brand p {
+            max-width: 350px;
+            margin-bottom: 32px;
+            font-size: 1rem;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Utils */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .staggered-row, .staggered-row:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .staggered-row .staggered-content, .staggered-row:nth-child(even) .staggered-content {
+                order: 2;
+            }
+            .staggered-row .staggered-image, .staggered-row:nth-child(even) .staggered-image {
+                order: 1;
+                height: 400px;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .hero-content {
+                padding: 60px 5%;
+                order: 2;
+            }
+            .hero-image-wrapper {
+                height: 400px;
+                order: 1;
+                clip-path: none;
+            }
+            .trust-badge {
+                bottom: auto;
+                top: -30px;
+                left: 5%;
+            }
+            .data-container {
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 40px;
+            }
+            .data-item:nth-child(2)::after {
+                display: none;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            .data-container {
+                grid-template-columns: 1fr;
+            }
+            .data-item::after {
+                display: none;
+            }
+            .btn-massive {
+                font-size: 1.2rem;
+                padding: 20px 32px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌐 1. NAV TOP HEAVY -->
+    <nav class="top-heavy" id="navbar">
+        <div class="top-bar">
+            <span>📞 03388 49-0008</span>
+            <span>📍 Dr Vega 1111, Charlone</span>
+        </div>
+        <div class="main-nav">
+            <a href="#" class="nav-logo">LA <span>ESTRELLA</span></a>
+            <div class="nav-links">
+                <a href="#estadisticas">Trayectoria</a>
+                <a href="#servicios">Equipamiento</a>
+            </div>
+            <a href="#cta" class="btn-nav">Cotizar Stock</a>
+            <!-- ADS:NAV:END -->
+        </div>
+    </nav>
+
+    <!-- 🚀 2. HERO ASYMMETRIC -->
+    <section class="hero-asymmetric">
+        <div class="hero-pattern"></div>
+        <div class="hero-container fade-in">
+            <div class="hero-content">
+                <h1>Ferretería<br><span>Industrial</span></h1>
+                <p>Equipamiento y herramientas premium para la industria de la construcción y el agro. Distribuidor oficial de marcas internacionales.</p>
+                <a href="#servicios" class="btn-primary">Ver Catálogo Técnico</a>
+            </div>
+            <div class="hero-image-wrapper">
+                <!-- AI Generated Image 1 -->
+                <img src="img/estrella_1_1778180842585.png" alt="Interior Ferretería La Estrella" loading="eager">
+                <div class="trust-badge">
+                    <div class="trust-badge-number">+20</div>
+                    <div class="trust-badge-text">Años de<br>Servicio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📊 3. DATA BAR -->
+    <section id="estadisticas" class="data-bar">
+        <div class="data-container fade-in">
+            <div class="data-item">
+                <div class="data-number">+10k</div>
+                <div class="data-label">Ítems en Stock</div>
+            </div>
+            <div class="data-item">
+                <div class="data-number">100%</div>
+                <div class="data-label">Garantía Oficial</div>
+            </div>
+            <div class="data-item">
+                <div class="data-number">Top</div>
+                <div class="data-label">Marcas Globales</div>
+            </div>
+            <div class="data-item">
+                <div class="data-number">24h</div>
+                <div class="data-label">Envíos a Zona</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⚡ 4. STAGGERED LIST -->
+    <section id="servicios" class="staggered-list">
+        <div class="section-header-left fade-in">
+            <h2>Herramientas de Nivel Profesional</h2>
+            <p>Proveemos soluciones técnicas tanto para el contratista independiente como para proyectos a escala industrial.</p>
+        </div>
+        
+        <div class="staggered-container">
+            <!-- Row 1 -->
+            <div class="staggered-row fade-in">
+                <div class="staggered-content">
+                    <h3>Potencia sin límites</h3>
+                    <p>Herramientas eléctricas y a batería diseñadas para rendir bajo las condiciones de obra más exigentes, garantizando seguridad y precisión.</p>
+                    <ul class="staggered-list-items">
+                        <li>Taladros y percutores industriales</li>
+                        <li>Sierras circulares y de precisión</li>
+                        <li>Sistemas de medición láser</li>
+                    </ul>
+                </div>
+                <div class="staggered-image">
+                    <!-- AI Generated Image 2 -->
+                    <img src="img/estrella_2_1778180863363.png" alt="Herramientas eléctricas premium" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="staggered-row fade-in">
+                <div class="staggered-content">
+                    <h3>Fijaciones y Bulonería</h3>
+                    <p>Stock completo de piezas de alta resistencia. Materiales galvanizados, acero inoxidable y aleaciones específicas para uso industrial pesado.</p>
+                    <ul class="staggered-list-items">
+                        <li>Bulones de alta resistencia térmica</li>
+                        <li>Tornillería especializada y anclajes</li>
+                        <li>Rodamientos y engranajes mecánicos</li>
+                    </ul>
+                </div>
+                <div class="staggered-image">
+                    <!-- AI Generated Image 3 -->
+                    <img src="img/estrella_3_1778180883319.png" alt="Bulones y piezas industriales" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADS:CONTENT:END -->
+
+    <!-- 🚀 5. MASSIVE CTA -->
+    <section id="cta" class="massive-cta fade-in">
+        <div class="cta-content">
+            <h2>¿Buscando equipamiento específico?</h2>
+            <p>Consultá nuestro stock por WhatsApp y recibí asesoramiento de nuestros técnicos.</p>
+            <a href="https://wa.me/5403388490008" target="_blank" class="btn-massive">
+                Contactar a Ventas
+            </a>
+        </div>
+    </section>
+
+    <!-- 📱 6. CORPORATE FOOTER -->
+    <footer class="corporate-footer fade-in">
+        <!-- ADS:FOOTER:START -->
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>LA <span>ESTRELLA</span></h3>
+                <p>Proveedor líder en herramientas y equipamiento industrial para Charlone y la región.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#navbar">Nosotros</a></li>
+                    <li><a href="#estadisticas">Trayectoria</a></li>
+                    <li><a href="#servicios">Productos</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>📍 Dr Vega 1111, B6223 Charlone</li>
+                    <li>📞 03388 49-0008</li>
+                    <li>📱 @laestrellacharlone</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Horarios</h4>
+                <ul>
+                    <li>Lunes a Viernes</li>
+                    <li>Mañana y Tarde</li>
+                    <li>Sábados medio día</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 La Estrella Ferretería Industrial. Todos los derechos reservados.</p>
+            <p>Desarrollado por ADS Labs</p>
+        </div>
+    </footer>
+
+    <!-- ADS:SCRIPTS -->
+    <script>
+        // Intersection Observer for Fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

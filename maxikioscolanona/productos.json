@@ -1,0 +1,78 @@
+{
+  "store": "Maxikioscolanona",
+  "whatsapp": "",
+  "currency": "ARS",
+  "categories": [
+    "General",
+    "Destacados",
+    "Nuevos",
+    "Ofertas"
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Producto 1",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "General",
+      "price": 0,
+      "image": "img/maxikioscolanona_1.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Producto 2",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Destacados",
+      "price": 0,
+      "image": "img/maxikioscolanona_2.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Producto 3",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Nuevos",
+      "price": 0,
+      "image": "img/maxikioscolanona_3.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Producto 4",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "Ofertas",
+      "price": 0,
+      "image": "img/maxikioscolanona_4.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Producto 5",
+      "description": "Descripción del producto. Editá desde Google Sheets.",
+      "category": "General",
+      "price": 0,
+      "image": "img/maxikioscolanona_5.jpg",
+      "video": "",
+      "sizes": [
+        "Único"
+      ],
+      "active": true
+    }
+  ]
+}

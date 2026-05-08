@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siempre Reyna | Lencería Fina y Diseño</title>
+    <meta name="description" content="Siempre Reyna Lencería — Lencería fina, conjuntos de encaje, bralettes, bodies y pijamas en Coronel Charlone. Comprá online y recibí por WhatsApp.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..300,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#111111',
+                        surface: '#FAFAFA',
+                        'brand-accent': '#D4AF37',
+                        'text-muted': '#666666',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'slow-fade': 'fadeIn 2s ease-in-out',
+                        'slide-up': 'slideUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAFAFA;
+            color: #111111;
+        }
+        .border-thin { border-width: 0.5px; }
+        .img-hover-zoom { overflow: hidden; }
+        .img-hover-zoom img { transition: transform 1.5s ease; }
+        .img-hover-zoom:hover img { transform: scale(1.05); }
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24; }
+
+        /* Category pills */
+        .category-pill {
+            transition: all 0.3s ease;
+        }
+
+        /* Product card add-to-cart reveal */
+        .product-card:hover .add-btn {
+            transform: translateY(0);
+        }
+
+        /* Cart drawer */
+        #cart-drawer {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Size modal */
+        .modal-panel {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand selection:text-surface">
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR con Carrito Badge -->
+    <!-- ============================================================ -->
+    <nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-black/5 transition-all duration-500">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 h-24 flex justify-between items-center">
+            
+            <div class="hidden md:flex gap-8 text-xs tracking-[0.2em] uppercase font-medium">
+                <a href="#tienda" class="hover:text-brand-accent transition-colors">Tienda</a>
+                <a href="#lookbook" class="hover:text-brand-accent transition-colors">Lookbook</a>
+                <a href="#boutique" class="hover:text-brand-accent transition-colors">Boutique</a>
+            </div>
+
+            <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
+                <h1 class="font-serif text-3xl md:text-4xl tracking-wide">Siempre Reyna</h1>
+                <span class="text-[9px] tracking-[0.3em] uppercase text-text-muted mt-1">Lencería Fina</span>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <span class="material-symbols-outlined cursor-pointer hover:text-brand-accent transition-colors hidden md:block">search</span>
+                <button onclick="window._cart.openCartDrawer()" class="relative cursor-pointer hover:text-brand-accent transition-colors" id="cart-fab">
+                    <span class="material-symbols-outlined transition-transform duration-300">shopping_bag</span>
+                    <span id="cart-badge" 
+                          class="absolute -top-2 -right-2 w-5 h-5 bg-brand-accent text-white text-[10px] font-bold rounded-full items-center justify-center"
+                          style="display: none;">0</span>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- HERO (Sin cambios) -->
+    <!-- ============================================================ -->
+    <header class="relative w-full h-screen flex items-center justify-center bg-brand overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="img/siemprereynalenceria_4.jpg" alt="Campaña Lencería" class="w-full h-full object-cover opacity-80 object-top animate-slow-fade">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand/90 via-transparent to-black/30"></div>
+        </div>
+
+        <div class="relative z-10 text-center flex flex-col items-center px-6 mt-32">
+            <h2 class="text-surface font-serif text-5xl md:text-7xl lg:text-8xl italic font-light tracking-tight mb-6 opacity-0 animate-slide-up" style="animation-delay: 0.2s;">
+                Esencia Intima
+            </h2>
+            <p class="text-surface/80 text-sm md:text-base tracking-widest uppercase font-light max-w-lg mb-12 opacity-0 animate-slide-up" style="animation-delay: 0.5s;">
+                Descubre la nueva colección otoño-invierno. Diseño, confort y elegancia para resaltar tu belleza natural.
+            </p>
+            <a href="#tienda" class="border border-surface text-surface px-10 py-4 text-xs tracking-[0.2em] uppercase hover:bg-surface hover:text-brand transition-all duration-500 opacity-0 animate-slide-up" style="animation-delay: 0.8s;">
+                Comprar Ahora
+            </a>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- QUOTE (Sin cambios) -->
+    <!-- ============================================================ -->
+    <section class="py-32 px-6 bg-surface flex justify-center text-center">
+        <div class="max-w-3xl">
+            <span class="material-symbols-outlined text-brand-accent text-4xl mb-8 block">water_drop</span>
+            <h3 class="font-serif text-3xl md:text-5xl leading-tight text-brand font-light">
+                "La verdadera elegancia comienza por lo que está más cerca de tu piel. Diseños que abrazan tu figura y empoderan tu día a día."
+            </h3>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TIENDA DINÁMICA (Reemplaza #coleccion) -->
+    <!-- ============================================================ -->
+    <section id="tienda" class="pb-32 px-6 lg:px-12 max-w-screen-2xl mx-auto">
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 border-b border-black/10 pb-8 gap-6">
+            <div>
+                <h2 class="font-serif text-3xl md:text-4xl mb-2">Nuestra Colección</h2>
+                <p class="text-sm text-text-muted font-light">Elegí tu favorito y agregalo al carrito. Finalizás tu pedido por WhatsApp.</p>
+            </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-3 mb-12">
+            <button onclick="window._cart.filterCategory('all')" data-category="all"
+                class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-brand text-surface">
+                Todo
+            </button>
+            <button onclick="window._cart.filterCategory('Conjuntos')" data-category="Conjuntos"
+                class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">
+                Conjuntos
+            </button>
+            <button onclick="window._cart.filterCategory('Bralettes')" data-category="Bralettes"
+                class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">
+                Bralettes
+            </button>
+            <button onclick="window._cart.filterCategory('Bodies')" data-category="Bodies"
+                class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">
+                Bodies
+            </button>
+            <button onclick="window._cart.filterCategory('Pijamas')" data-category="Pijamas"
+                class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">
+                Pijamas
+            </button>
+            <button onclick="window._cart.filterCategory('Bikinis')" data-category="Bikinis"
+                class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border border-black/15 bg-transparent text-brand hover:bg-brand hover:text-surface">
+                Bikinis
+            </button>
+        </div>
+
+        <!-- Dynamic Product Grid (filled by JS) -->
+        <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
+            <!-- Products will be injected here by whatsapp-cart.js -->
+            <div class="col-span-full text-center py-20 text-text-muted">
+                <span class="material-symbols-outlined text-4xl mb-4 block animate-pulse">hourglass_top</span>
+                Cargando productos...
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- LOOKBOOK (Sin cambios) -->
+    <!-- ============================================================ -->
+    <section id="lookbook" class="bg-brand text-surface py-32">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 text-center mb-16">
+            <h2 class="font-serif text-4xl md:text-5xl font-light mb-6">Lookbook</h2>
+            <p class="text-surface/60 font-light max-w-xl mx-auto">Inspiración para combinar nuestras prendas. Seguinos en <a href="https://instagram.com/siempre.reyna.lenceria" class="text-surface border-b border-surface/30 pb-1 hover:border-surface transition-colors">@siempre.reyna.lenceria</a></p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-1">
+            <div class="aspect-square img-hover-zoom"><img src="img/siemprereynalenceria_0.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"></div>
+            <div class="aspect-square img-hover-zoom"><img src="img/siemprereynalenceria_2.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"></div>
+            <div class="aspect-square img-hover-zoom"><img src="img/siemprereynalenceria_3.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"></div>
+            <div class="aspect-square img-hover-zoom"><img src="img/siemprereynalenceria_13.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- BOUTIQUE (Sin cambios) -->
+    <!-- ============================================================ -->
+    <section id="boutique" class="py-32 px-6 lg:px-12 max-w-screen-2xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        <div class="md:w-1/2 img-hover-zoom aspect-[3/4] w-full max-w-md mx-auto">
+            <img src="img/siemprereynalenceria_1.jpg" alt="Interior Boutique" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="md:w-1/2 space-y-10">
+            <div>
+                <h2 class="font-serif text-4xl mb-4">Nuestra Boutique</h2>
+                <p class="text-text-muted font-light leading-relaxed">
+                    Un espacio diseñado para que te sientas cómoda y encuentres la prenda perfecta. Te brindamos asesoramiento personalizado en talles y calces, porque sabemos que cada cuerpo es único.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8 border-t border-black/10 pt-8">
+                <div>
+                    <h4 class="text-xs tracking-[0.2em] uppercase font-medium mb-3">Ubicación</h4>
+                    <p class="text-sm text-text-muted font-light">Dr. Jorge, B6223<br>Coronel Charlone<br>Buenos Aires</p>
+                </div>
+                <div>
+                    <h4 class="text-xs tracking-[0.2em] uppercase font-medium mb-3">Contacto</h4>
+                    <p class="text-sm text-text-muted font-light">Tel: 0358 512-0009<br>Atención por WhatsApp para pedidos y consultas.</p>
+                </div>
+            </div>
+
+            <a href="https://wa.me/5403585120009" class="inline-flex items-center gap-4 bg-brand text-surface px-8 py-4 text-xs tracking-widest uppercase hover:bg-brand-accent transition-colors duration-500">
+                Agendar Asesoramiento
+                <span class="material-symbols-outlined">arrow_right_alt</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER (Sin cambios) -->
+    <!-- ============================================================ -->
+    <footer class="bg-surface border-t border-black/10 pt-24 pb-12 px-6 lg:px-12">
+        <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-24">
+            <div class="max-w-xs">
+                <h2 class="font-serif text-2xl mb-6">Siempre Reyna</h2>
+                <p class="text-sm text-text-muted font-light leading-relaxed">Lencería fina, ropa interior de diseño y asesoramiento experto para realzar tu belleza.</p>
+            </div>
+
+            <div class="flex gap-16">
+                <div class="flex flex-col gap-4">
+                    <span class="text-xs tracking-[0.2em] uppercase font-medium mb-2">Colecciones</span>
+                    <a href="#" class="text-sm text-text-muted hover:text-brand transition-colors">Encaje & Seda</a>
+                    <a href="#" class="text-sm text-text-muted hover:text-brand transition-colors">Deportivos</a>
+                    <a href="#" class="text-sm text-text-muted hover:text-brand transition-colors">Pijamas</a>
+                    <a href="#" class="text-sm text-text-muted hover:text-brand transition-colors">Trajes de Baño</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <span class="text-xs tracking-[0.2em] uppercase font-medium mb-2">Ayuda</span>
+                    <a href="#" class="text-sm text-text-muted hover:text-brand transition-colors">Guía de Talles</a>
+                    <a href="#" class="text-sm text-text-muted hover:text-brand transition-colors">Envíos</a>
+                    <a href="#" class="text-sm text-text-muted hover:text-brand transition-colors">Cambios</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-black/5 text-xs text-text-muted font-light">
+            <p>&copy; 2026 Siempre Reyna Lencería.</p>
+            <div class="flex gap-6">
+                <a href="https://instagram.com/siempre.reyna.lenceria" class="hover:text-brand">Instagram</a>
+                <a href="#" class="hover:text-brand">Facebook</a>
+            </div>
+            <p>Desarrollado por <span class="font-medium text-brand tracking-widest uppercase">ADS Labs</span></p>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SIZE SELECTION MODAL -->
+    <!-- ============================================================ -->
+    <div id="size-modal" class="fixed inset-0 z-[60] items-center justify-center bg-black/40 backdrop-blur-sm hidden" onclick="if(event.target===this) window._cart.closeSizeModal()">
+        <div class="modal-panel bg-surface w-full max-w-md mx-4 p-8 shadow-2xl translate-y-8 opacity-0 transition-all duration-400">
+            <div id="size-modal-content">
+                <!-- Filled dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VIDEO PLAYER MODAL -->
+    <!-- ============================================================ -->
+    <div id="video-modal" class="fixed inset-0 z-[65] items-center justify-center bg-black/80 backdrop-blur-md hidden" onclick="if(event.target===this) window._cart.closeVideoModal()">
+        <div class="modal-panel w-full max-w-3xl mx-4 scale-95 opacity-0 transition-all duration-300 relative">
+            <button onclick="window._cart.closeVideoModal()" 
+                class="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors flex items-center gap-2 text-sm">
+                Cerrar <span class="material-symbols-outlined">close</span>
+            </button>
+            <div id="video-modal-content" class="rounded-lg overflow-hidden shadow-2xl bg-black">
+                <!-- YouTube iframe or video element injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CART DRAWER (Panel lateral derecho) -->
+    <!-- ============================================================ -->
+    <div id="cart-overlay" class="fixed inset-0 z-[55] bg-black/30 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" onclick="window._cart.closeCartDrawer()"></div>
+    
+    <div id="cart-drawer" class="fixed top-0 right-0 z-[60] w-full max-w-md h-full bg-surface shadow-2xl translate-x-full flex flex-col">
+        <!-- Header -->
+        <div class="flex justify-between items-center px-8 py-6 border-b border-black/5">
+            <div>
+                <h3 class="font-serif text-xl">Tu Carrito</h3>
+                <p id="cart-count-footer" class="text-xs text-text-muted font-light mt-0.5">0 artículos</p>
+            </div>
+            <button onclick="window._cart.closeCartDrawer()" class="hover:text-brand-accent transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Body (scrollable) -->
+        <div id="cart-body" class="flex-1 overflow-y-auto px-8">
+            <!-- Filled dynamically -->
+        </div>
+
+        <!-- Footer (Total + Checkout) -->
+        <div id="cart-footer" class="border-t border-black/10 px-8 py-6 hidden">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-xs tracking-[0.2em] uppercase font-medium">Total</span>
+                <span id="cart-total" class="font-serif text-2xl">$0</span>
+            </div>
+            <button onclick="window._cart.checkout()"
+                class="w-full bg-brand text-surface py-4 text-xs tracking-[0.2em] uppercase font-medium hover:bg-brand-accent transition-colors flex items-center justify-center gap-3">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Enviar Pedido por WhatsApp
+            </button>
+            <p class="text-center text-[10px] text-text-muted mt-3 font-light">El pedido se envía como mensaje de WhatsApp. No se realizan cobros automáticos.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS -->
+    <!-- ============================================================ -->
+    <script src="whatsapp-cart.js"></script>
+
+</body>
+</html>

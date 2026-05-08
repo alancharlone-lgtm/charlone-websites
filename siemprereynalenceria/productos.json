@@ -1,0 +1,130 @@
+{
+  "store": "Siempre Reyna Lencería",
+  "whatsapp": "5403585120009",
+  "currency": "ARS",
+  "categories": ["Conjuntos", "Bralettes", "Bodies", "Pijamas", "Bikinis"],
+  "products": [
+    {
+      "id": 1,
+      "name": "Conjunto Encaje Noir",
+      "description": "Diseño en encaje floral con detalles de transparencia. Corpiño con aro y bombacha colaless.",
+      "category": "Conjuntos",
+      "price": 18500,
+      "images": [
+        "img/siemprereynalenceria_11.jpg",
+        "img/siemprereynalenceria_2.jpg",
+        "img/siemprereynalenceria_3.jpg"
+      ],
+      "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "sizes": ["85B", "90B", "85C", "90C", "95C"],
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Bralette Essential",
+      "description": "Microfibra sin costuras para confort total. Ideal para uso diario.",
+      "category": "Bralettes",
+      "price": 12900,
+      "image": "img/siemprereynalenceria_12.jpg",
+      "video": "",
+      "sizes": ["S", "M", "L", "XL"],
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Body Sculpt",
+      "description": "Silueta ceñida con efecto moldeador. Escote profundo y espalda descubierta.",
+      "category": "Bodies",
+      "price": 22800,
+      "images": [
+        "img/siemprereynalenceria_5.jpg",
+        "img/siemprereynalenceria_8.jpg"
+      ],
+      "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "sizes": ["S", "M", "L"],
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Pijama Set Seda Rosa",
+      "description": "Conjunto de short y camisola en satén de seda. Toque de lujo para tu descanso.",
+      "category": "Pijamas",
+      "price": 27500,
+      "image": "img/siemprereynalenceria_10.jpg",
+      "video": "",
+      "sizes": ["S", "M", "L", "XL"],
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Conjunto Romántico Blush",
+      "description": "Encaje francés en tono rosa empolvado. Push-up con relleno extraíble.",
+      "category": "Conjuntos",
+      "price": 21900,
+      "images": [
+        "img/siemprereynalenceria_2.jpg",
+        "img/siemprereynalenceria_11.jpg",
+        "img/siemprereynalenceria_6.jpg",
+        "img/siemprereynalenceria_9.jpg"
+      ],
+      "video": "",
+      "sizes": ["85B", "90B", "85C", "90C"],
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Bralette Triangular",
+      "description": "Diseño triangular con tirantes ajustables y base elástica. Sin aro.",
+      "category": "Bralettes",
+      "price": 10500,
+      "image": "img/siemprereynalenceria_3.jpg",
+      "video": "",
+      "sizes": ["S", "M", "L"],
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Body Lace Dream",
+      "description": "Body de encaje completo con cierre inferior. Para ocasiones especiales.",
+      "category": "Bodies",
+      "price": 25900,
+      "image": "img/siemprereynalenceria_8.jpg",
+      "video": "",
+      "sizes": ["S", "M", "L"],
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "Pijama Remera Oversize",
+      "description": "Remera larga de algodón premium con estampa sutil. Ultra cómoda.",
+      "category": "Pijamas",
+      "price": 15800,
+      "image": "img/siemprereynalenceria_6.jpg",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 9,
+      "name": "Bikini Amalfi",
+      "description": "Triángulo con nudos laterales y bombacha colaless regulable.",
+      "category": "Bikinis",
+      "price": 19900,
+      "image": "img/siemprereynalenceria_7.jpg",
+      "video": "",
+      "sizes": ["S", "M", "L"],
+      "active": true
+    },
+    {
+      "id": 10,
+      "name": "Conjunto Everyday Black",
+      "description": "Básico premium en algodón y lycra. Corpiño deportivo + bombacha clásica.",
+      "category": "Conjuntos",
+      "price": 14500,
+      "image": "img/siemprereynalenceria_9.jpg",
+      "video": "",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "active": true
+    }
+  ]
+}

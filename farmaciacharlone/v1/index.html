@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmacia Charlone</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+    :root {
+      --primary: #2e7d32;
+      --primary-light: #4caf50;
+      --bg: #ffffff;
+      --surface: #f5f5f5;
+      --text: #333333;
+      --border: #e0e0e0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--primary);
+    }
+    .nav-links a {
+      color: #666;
+      text-decoration: none;
+      margin-left: 24px;
+      font-weight: 500;
+    }
+    .hero {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h1 {
+      font-size: 4.5rem;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      color: #111;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+    .btn {
+      display: inline-flex;
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: var(--primary-light);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto 6rem;
+      padding: 0 2rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .features {
+      background: var(--surface);
+      padding: 6rem 2rem;
+    }
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+    .feature h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+    .feature p {
+      color: #666;
+      line-height: 1.6;
+    }
+    footer {
+      padding: 4rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: #888;
+    }
+  </style>
+<style id="premium-effects">
+
+/* ═══ GLOBAL PREMIUM POLISH ═══ */
+html {
+  scroll-behavior: smooth;
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection {
+  background: var(--selection-bg, rgba(233, 30, 99, 0.2));
+  color: var(--selection-color, inherit);
+}
+img {
+  transition: opacity 0.3s ease;
+}
+img[loading="lazy"] {
+  opacity: 0;
+}
+img.loaded, img:not([loading="lazy"]) {
+  opacity: 1;
+}
+
+/* Premium button hover shine */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 100%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.btn-shine:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Smooth image loading */
+img {
+  image-rendering: auto;
+}
+
+
+:root {
+  --primary-rgb: 233, 30, 99;
+  --mesh-color-1: #E91E63;
+  --mesh-color-2: #FFEB3B;
+  --mesh-color-3: #00BCD4;
+  --gradient-start: #E91E63;
+  --gradient-end: #FFEB3B;
+  --glow-color: rgba(233, 30, 99, 0.08);
+  --selection-bg: rgba(233, 30, 99, 0.2);
+}
+
+
+/* ═══ SCROLL REVEAL ═══ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-left] {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-left].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+[data-reveal-scale] {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-scale].revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* ═══ ANIMATED GRADIENT MESH ═══ */
+.gradient-mesh-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gradient-mesh-bg::before,
+.gradient-mesh-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: meshFloat 20s ease-in-out infinite;
+}
+.gradient-mesh-bg::before {
+  width: 60vw; height: 60vw;
+  top: -20%; left: -10%;
+  background: var(--mesh-color-1, #E91E63);
+  animation-delay: 0s;
+}
+.gradient-mesh-bg::after {
+  width: 50vw; height: 50vw;
+  bottom: -20%; right: -10%;
+  background: var(--mesh-color-2, #FFEB3B);
+  animation-delay: -10s;
+}
+.gradient-mesh-blob-3 {
+  position: fixed;
+  width: 40vw; height: 40vw;
+  top: 40%; left: 30%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.1;
+  background: var(--mesh-color-3, #00BCD4);
+  animation: meshFloat 25s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes meshFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5%, -8%) scale(1.05); }
+  50% { transform: translate(-3%, 5%) scale(0.95); }
+  75% { transform: translate(8%, 3%) scale(1.02); }
+}
+
+
+/* ═══ HOVER TILT 3D ═══ */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ═══ COUNTER ANIMATION ═══ */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ═══ INFINITE MARQUEE ═══ */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marqueeScroll var(--marquee-speed, 30s) linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.11 21 21 20.1 21 19V5C21 3.9 20.11 3 19 3M17 13H13V17H11V13H7V11H11V7H13V11H17V13Z"/></svg>
+      Farmacia Charlone
+    </div>
+    <div class="nav-links">
+      <a href="#">Servicios</a>
+      <a href="#">Productos</a>
+      <a href="#">Contacto</a>
+      <!-- ADS:NAV:END -->
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Cuidamos tu salud, siempre cerca.</h1>
+    <p>Atención farmacéutica personalizada, medicamentos de confianza y productos de bienestar en el corazón de Coronel Charlone.</p>
+    <a href="#" class="btn">Hacé tu pedido</a>
+  </section>
+<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
+    </div>
+  </div>
+</div>
+
+
+  <section class="gallery">
+    <img src="img/ai_hero.png" alt="Farmacia Interior" style="height: 500px;">
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <img src="img/ai_detail.png" alt="Dermocosmética" style="height: calc(250px - 12px);">
+      <img src="img/ai_product.png" alt="Cuidado Personal" style="height: calc(250px - 12px);">
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Atención Profesional</h3>
+        <p>Nuestro equipo farmacéutico está siempre disponible para brindarte el mejor asesoramiento para vos y tu familia.</p>
+      </div>
+      <div class="feature">
+        <h3>Amplio Stock</h3>
+        <p>Contamos con una gran variedad de medicamentos, productos de perfumería, higiene y dermocosmética de primeras marcas.</p>
+      </div>
+      <div class="feature">
+        <h3>Comodidad Local</h3>
+        <p>No hace falta viajar para conseguir lo que necesitás. Trabajamos para tener siempre disponibilidad de los productos más solicitados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADS:CONTENT:END -->
+  <footer>
+    <!-- ADS:FOOTER:START -->
+    <p>Manuel Ugarte, B6223 Charlone, Provincia de Buenos Aires</p>
+    <p>&copy; 2026 Farmacia Charlone</p>
+  <p class="text-center text-xs text-stone-600 mt-4 pb-2">Desarrollado por ADS Labs</p></footer>
+  <!-- ADS:SCRIPTS -->
+<script id="premium-effects-js">
+
+// ═══ GLOBAL PREMIUM POLISH ═══
+// Lazy image loading with fade-in
+document.querySelectorAll('img').forEach(img => {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  }
+});
+
+// Add shine effect to primary buttons
+document.querySelectorAll('button, a[href]').forEach(btn => {
+  const bg = getComputedStyle(btn).backgroundColor;
+  if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+    btn.classList.add('btn-shine');
+  }
+});
+
+
+// ═══ SCROLL REVEAL ═══
+(function() {
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]');
+  if (!revealElements.length) {
+    // Auto-apply to sections and cards if no data-reveal attributes found
+    document.querySelectorAll('section, [class*="card"], [class*="rounded"]').forEach((el, i) => {
+      if (el.tagName === 'SECTION') {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = '0.1s';
+      } else if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = (i % 4) * 0.1 + 's';
+      }
+    });
+  }
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  
+  document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]').forEach(el => {
+    observer.observe(el);
+  });
+})();
+
+
+// ═══ GRADIENT MESH (JS companion — injects the blob element) ═══
+(function() {
+  if (!document.querySelector('.gradient-mesh-bg')) {
+    const mesh = document.createElement('div');
+    mesh.className = 'gradient-mesh-bg';
+    document.body.prepend(mesh);
+    
+    const blob3 = document.createElement('div');
+    blob3.className = 'gradient-mesh-blob-3';
+    document.body.prepend(blob3);
+  }
+})();
+
+
+// ═══ HOVER 3D TILT ═══
+(function() {
+  const cards = document.querySelectorAll('.tilt-card');
+  if (!cards.length) {
+    // Auto-apply to product/category cards
+    document.querySelectorAll('[class*="card"], [class*="rounded-xl"]').forEach(el => {
+      if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        if (el.querySelector('img') || el.querySelector('h3')) {
+          el.classList.add('tilt-card');
+        }
+      }
+    });
+  }
+  
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / centerY * -6;
+      const rotateY = (x - centerX) / centerX * 6;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
+  });
+})();
+
+
+// ═══ COUNTER ANIMATION ═══
+(function() {
+  const counters = document.querySelectorAll('.counter-value, [data-counter]');
+  if (!counters.length) {
+    // Auto-detect numbers that look like stats
+    document.querySelectorAll('*').forEach(el => {
+      const text = el.textContent.trim();
+      if (/^[+]?\d{2,}[+%]?$/.test(text) && el.children.length === 0) {
+        const num = parseInt(text.replace(/[^0-9]/g, ''));
+        if (num >= 10) {
+          el.dataset.counter = num;
+          el.dataset.counterSuffix = text.replace(/[0-9]/g, '').replace(/^\+/, '');
+          if (text.startsWith('+')) el.dataset.counterPrefix = '+';
+          el.classList.add('counter-value');
+          el.textContent = '0' + (el.dataset.counterSuffix || '');
+        }
+      }
+    });
+  }
+  
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.counter);
+    const prefix = el.dataset.counterPrefix || '';
+    const suffix = el.dataset.counterSuffix || '';
+    const duration = 2000;
+    const startTime = performance.now();
+    
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+      const current = Math.floor(eased * target);
+      el.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('.counter-value, [data-counter]').forEach(el => observer.observe(el));
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helados Charlone — Artesanal desde Coronel Charlone</title>
+    <meta name="description" content="Heladería artesanal en Coronel Charlone. Sabores caseros que enamoran. Cuatro Lobos 880.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4A843;
+            --gold-soft: #E8D5A8;
+            --brown: #8B5E3C;
+            --brown-deep: #5C3A20;
+            --cream: #FDF8F0;
+            --cream-warm: #F7EFE2;
+            --dark: #1C1410;
+            --darker: #0F0A06;
+            --white: #FFFFFF;
+            --text: #2D2016;
+            --text-muted: #8C7B6A;
+            --serif: 'Playfair Display', Georgia, serif;
+            --sans: 'Outfit', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            background: var(--cream);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ── SIDEBAR NAV ── */
+        .sidebar-nav {
+            position: fixed;
+            top: 0; left: 0; bottom: 0;
+            width: 80px;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 32px 0;
+            z-index: 1000;
+        }
+        .sidebar-logo {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: var(--serif);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            list-style: none;
+        }
+        .sidebar-links a {
+            writing-mode: vertical-rl;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .sidebar-links a:hover { color: var(--gold); }
+        .sidebar-ig {
+            color: rgba(255,255,255,0.3);
+            text-decoration: none;
+            font-size: 11px;
+            writing-mode: vertical-rl;
+            letter-spacing: 0.1em;
+        }
+        <!-- ADS:NAV:END -->
+
+        .main-content { margin-left: 80px; }
+
+        /* ── MEGA HERO ── */
+        .mega-hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+        .mega-hero-visual {
+            position: relative;
+            overflow: hidden;
+        }
+        .mega-hero-visual img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 8s ease;
+        }
+        .mega-hero-visual:hover img { transform: scale(1.08); }
+        .mega-hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 64px;
+            background: var(--cream-warm);
+        }
+        .mega-hero-text .kicker {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+        .mega-hero-text h1 {
+            font-family: var(--serif);
+            font-size: clamp(40px, 6vw, 80px);
+            line-height: 1.05;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 24px;
+        }
+        .mega-hero-text h1 em {
+            font-style: italic;
+            color: var(--brown);
+        }
+        .mega-hero-text .lead {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 380px;
+            margin-bottom: 48px;
+            line-height: 1.8;
+        }
+        .pill-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 36px;
+            background: var(--dark);
+            color: var(--cream);
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            width: fit-content;
+            transition: all 0.3s;
+        }
+        .pill-link:hover { background: var(--brown-deep); transform: translateX(4px); }
+        .pill-link .arrow { transition: transform 0.3s; }
+        .pill-link:hover .arrow { transform: translateX(4px); }
+
+        /* ── ZIGZAG SECTION ── */
+        .zigzag {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .zigzag-image { overflow: hidden; min-height: 500px; }
+        .zigzag-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .zigzag-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 64px;
+        }
+        .zigzag-text.bg-dark {
+            background: var(--dark);
+            color: var(--white);
+        }
+        .zigzag-text.bg-dark .text-muted { color: rgba(255,255,255,0.5); }
+        .zigzag-text.bg-cream { background: var(--cream-warm); }
+        .zigzag-text h2 {
+            font-family: var(--serif);
+            font-size: clamp(28px, 3.5vw, 44px);
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .zigzag-text p {
+            font-size: 16px;
+            line-height: 1.9;
+            max-width: 420px;
+        }
+        .zigzag-text p.text-muted { color: var(--text-muted); }
+        .divider-line {
+            width: 48px;
+            height: 2px;
+            background: var(--gold);
+            margin: 24px 0;
+        }
+
+        /* ── SABORES LIST ── */
+        .sabores-section {
+            padding: 120px 64px;
+            background: var(--cream);
+        }
+        .sabores-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 64px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            padding-bottom: 24px;
+        }
+        .sabores-header h2 {
+            font-family: var(--serif);
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 400;
+        }
+        .sabores-header span {
+            color: var(--text-muted);
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .sabor-row {
+            display: grid;
+            grid-template-columns: 40px 1fr auto;
+            gap: 32px;
+            align-items: center;
+            padding: 28px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: background 0.3s;
+        }
+        .sabor-row:hover { background: var(--cream-warm); margin: 0 -24px; padding: 28px 24px; }
+        .sabor-num {
+            font-family: var(--serif);
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        .sabor-name {
+            font-family: var(--serif);
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .sabor-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-style: italic;
+            text-align: right;
+        }
+
+        /* ── FULL IMAGE ── */
+        .full-image {
+            height: 70vh;
+            overflow: hidden;
+        }
+        .full-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        /* ── FOOTER ── */
+        .warm-footer {
+            /* ADS:FOOTER:START */
+            background: var(--darker);
+            padding: 80px 64px;
+            color: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-col h3 {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--gold);
+        }
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            line-height: 2;
+            text-decoration: none;
+            display: block;
+        }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom {
+            background: var(--darker);
+            padding: 24px 64px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: rgba(255,255,255,0.2);
+            font-size: 12px;
+        }
+        .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
+
+        /* ── WHATSAPP ── */
+        .wa-btn {
+            position: fixed; bottom: 24px; right: 24px;
+            width: 56px; height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+            z-index: 999;
+            text-decoration: none;
+            animation: glow 2.5s infinite;
+        }
+        .wa-btn svg { width: 28px; height: 28px; fill: white; }
+        @keyframes glow {
+            0%,100% { box-shadow: 0 4px 16px rgba(37,211,102,0.35); }
+            50% { box-shadow: 0 4px 32px rgba(37,211,102,0.55); }
+        }
+
+        /* ── FADE ── */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s, transform 0.8s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            .sidebar-nav { display: none; }
+            .main-content { margin-left: 0; }
+            .mega-hero { grid-template-columns: 1fr; height: auto; }
+            .mega-hero-visual { height: 50vh; }
+            .mega-hero-text { padding: 48px 24px; }
+            .zigzag { grid-template-columns: 1fr; }
+            .zigzag-image { min-height: 300px; }
+            .zigzag-text { padding: 48px 24px; }
+            .sabores-section { padding: 64px 24px; }
+            .sabores-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .sabor-row { grid-template-columns: 30px 1fr; gap: 16px; }
+            .sabor-desc { display: none; }
+            .warm-footer { grid-template-columns: 1fr; padding: 48px 24px; }
+            .footer-bottom { padding: 20px 24px; }
+        }
+    </style>
+<style id="premium-effects">
+
+/* ═══ GLOBAL PREMIUM POLISH ═══ */
+html {
+  scroll-behavior: smooth;
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection {
+  background: var(--selection-bg, rgba(233, 30, 99, 0.2));
+  color: var(--selection-color, inherit);
+}
+img {
+  transition: opacity 0.3s ease;
+}
+img[loading="lazy"] {
+  opacity: 0;
+}
+img.loaded, img:not([loading="lazy"]) {
+  opacity: 1;
+}
+
+/* Premium button hover shine */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 100%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.btn-shine:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Smooth image loading */
+img {
+  image-rendering: auto;
+}
+
+
+:root {
+  --primary-rgb: 233, 30, 99;
+  --mesh-color-1: #E91E63;
+  --mesh-color-2: #FFEB3B;
+  --mesh-color-3: #00BCD4;
+  --gradient-start: #E91E63;
+  --gradient-end: #FFEB3B;
+  --glow-color: rgba(233, 30, 99, 0.08);
+  --selection-bg: rgba(233, 30, 99, 0.2);
+}
+
+
+/* ═══ SCROLL REVEAL ═══ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-left] {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-left].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+[data-reveal-scale] {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-scale].revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* ═══ ANIMATED GRADIENT MESH ═══ */
+.gradient-mesh-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gradient-mesh-bg::before,
+.gradient-mesh-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: meshFloat 20s ease-in-out infinite;
+}
+.gradient-mesh-bg::before {
+  width: 60vw; height: 60vw;
+  top: -20%; left: -10%;
+  background: var(--mesh-color-1, #E91E63);
+  animation-delay: 0s;
+}
+.gradient-mesh-bg::after {
+  width: 50vw; height: 50vw;
+  bottom: -20%; right: -10%;
+  background: var(--mesh-color-2, #FFEB3B);
+  animation-delay: -10s;
+}
+.gradient-mesh-blob-3 {
+  position: fixed;
+  width: 40vw; height: 40vw;
+  top: 40%; left: 30%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.1;
+  background: var(--mesh-color-3, #00BCD4);
+  animation: meshFloat 25s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes meshFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5%, -8%) scale(1.05); }
+  50% { transform: translate(-3%, 5%) scale(0.95); }
+  75% { transform: translate(8%, 3%) scale(1.02); }
+}
+
+
+/* ═══ HOVER TILT 3D ═══ */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ═══ COUNTER ANIMATION ═══ */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ═══ INFINITE MARQUEE ═══ */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marqueeScroll var(--marquee-speed, 30s) linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+</style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAV -->
+    <nav class="sidebar-nav">
+        <a href="#" class="sidebar-logo">Helados Charlone</a>
+        <ul class="sidebar-links">
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#sabores">Sabores</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="https://instagram.com/heladoscharlone" class="sidebar-ig" target="_blank" rel="noopener">@heladoscharlone</a>
+        <!-- ADS:NAV:END -->
+    </nav>
+
+    <div class="main-content">
+
+        <!-- MEGA HERO -->
+        <section class="mega-hero">
+            <div class="mega-hero-visual">
+                <img src="img/heladoscharlone_0.jpg" alt="Helado artesanal dulce de leche" loading="eager">
+            </div>
+            <div class="mega-hero-text">
+                <span class="kicker">Heladería Artesanal</span>
+                <h1>El sabor de lo <em>auténtico</em></h1>
+                <p class="lead">Elaboramos cada helado con la dedicación de siempre, usando ingredientes naturales y recetas que enamoran.</p>
+                <a href="#sabores" class="pill-link">
+                    Descubrí nuestros sabores
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </section>
+<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
+    </div>
+  </div>
+</div>
+
+
+        <!-- ZIGZAG 1 -->
+        <section class="zigzag" id="historia">
+            <div class="zigzag-text bg-dark fade-in">
+                <h2>Tradición y pasión en cada cucharada</h2>
+                <div class="divider-line"></div>
+                <p class="text-muted">Desde nuestro local en Cuatro Lobos 880, Coronel Charlone, elaboramos helados artesanales con la misma pasión de siempre. Cada sabor es una invitación a disfrutar de lo simple y lo genuino.</p>
+            </div>
+            <div class="zigzag-image">
+                <img src="img/heladoscharlone_4.jpg" alt="Chocolate artesanal" loading="lazy">
+            </div>
+        </section>
+
+        <!-- ZIGZAG 2 -->
+        <section class="zigzag">
+            <div class="zigzag-image">
+                <img src="img/heladoscharlone_7.jpg" alt="Cucuruchos con dulce de leche" loading="lazy">
+            </div>
+            <div class="zigzag-text bg-cream fade-in">
+                <h2>Ingredientes naturales, sabor inigualable</h2>
+                <div class="divider-line"></div>
+                <p class="text-muted">Seleccionamos las mejores materias primas de la región. Leche fresca, frutas de estación y chocolate de primera calidad. Sin conservantes, sin artificiales.</p>
+            </div>
+        </section>
+
+        <!-- SABORES -->
+        <section class="sabores-section" id="sabores">
+            <div class="sabores-header fade-in">
+                <h2>Nuestros Sabores</h2>
+                <span>Temporada 2026</span>
+            </div>
+            <div class="sabor-row fade-in">
+                <span class="sabor-num">01</span>
+                <span class="sabor-name">Dulce de Leche</span>
+                <span class="sabor-desc">Nuestro clásico estrella</span>
+            </div>
+            <div class="sabor-row fade-in">
+                <span class="sabor-num">02</span>
+                <span class="sabor-name">Chocolate Intenso</span>
+                <span class="sabor-desc">Cacao puro, textura sedosa</span>
+            </div>
+            <div class="sabor-row fade-in">
+                <span class="sabor-num">03</span>
+                <span class="sabor-name">Crema Americana</span>
+                <span class="sabor-desc">Vainilla con caramelo</span>
+            </div>
+            <div class="sabor-row fade-in">
+                <span class="sabor-num">04</span>
+                <span class="sabor-name">Frutilla de Estación</span>
+                <span class="sabor-desc">Frescura natural</span>
+            </div>
+            <div class="sabor-row fade-in">
+                <span class="sabor-num">05</span>
+                <span class="sabor-name">Sambayón</span>
+                <span class="sabor-desc">Receta clásica con marsala</span>
+            </div>
+            <div class="sabor-row fade-in">
+                <span class="sabor-num">06</span>
+                <span class="sabor-name">Mascarpone & Berries</span>
+                <span class="sabor-desc">Cremosidad italiana</span>
+            </div>
+            <div class="sabor-row fade-in">
+                <span class="sabor-num">07</span>
+                <span class="sabor-name">Granizado de Limón</span>
+                <span class="sabor-desc">Refrescante y natural</span>
+            </div>
+            <div class="sabor-row fade-in">
+                <span class="sabor-num">08</span>
+                <span class="sabor-name">Paleta Bañada</span>
+                <span class="sabor-desc">Chocolate y almendras</span>
+            </div>
+        </section>
+
+        <!-- FULL IMAGE -->
+        <section class="full-image">
+            <img src="img/heladoscharlone_8.jpg" alt="Helados artesanales variedad" loading="lazy">
+        </section>
+
+        <!-- ADS:CONTENT:END -->
+
+        <!-- FOOTER -->
+        <footer class="warm-footer" id="contacto">
+            <!-- ADS:FOOTER:START -->
+            <div class="footer-col">
+                <h3>Helados Charlone</h3>
+                <p>Heladería artesanal desde Coronel Charlone. Sabores que enamoran.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Visitanos</h3>
+                <p>Cuatro Lobos 880</p>
+                <p>Coronel Charlone, Buenos Aires</p>
+                <a href="https://wa.me/5492355000000">Pedir por WhatsApp</a>
+            </div>
+            <div class="footer-col">
+                <h3>Seguinos</h3>
+                <a href="https://instagram.com/heladoscharlone" target="_blank" rel="noopener">@heladoscharlone</a>
+            </div>
+        </footer>
+        <div class="footer-bottom">
+            Desarrollado por <a href="#">ADS Labs</a>
+        </div>
+
+    </div>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/5492355000000?text=Hola!" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.625.78.78-2.625-.149-.252A8 8 0 1112 20z"/></svg>
+    </a>
+
+    <!-- ADS:SCRIPTS -->
+    <script>
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    </script>
+<script id="premium-effects-js">
+
+// ═══ GLOBAL PREMIUM POLISH ═══
+// Lazy image loading with fade-in
+document.querySelectorAll('img').forEach(img => {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  }
+});
+
+// Add shine effect to primary buttons
+document.querySelectorAll('button, a[href]').forEach(btn => {
+  const bg = getComputedStyle(btn).backgroundColor;
+  if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+    btn.classList.add('btn-shine');
+  }
+});
+
+
+// ═══ SCROLL REVEAL ═══
+(function() {
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]');
+  if (!revealElements.length) {
+    // Auto-apply to sections and cards if no data-reveal attributes found
+    document.querySelectorAll('section, [class*="card"], [class*="rounded"]').forEach((el, i) => {
+      if (el.tagName === 'SECTION') {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = '0.1s';
+      } else if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = (i % 4) * 0.1 + 's';
+      }
+    });
+  }
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  
+  document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]').forEach(el => {
+    observer.observe(el);
+  });
+})();
+
+
+// ═══ GRADIENT MESH (JS companion — injects the blob element) ═══
+(function() {
+  if (!document.querySelector('.gradient-mesh-bg')) {
+    const mesh = document.createElement('div');
+    mesh.className = 'gradient-mesh-bg';
+    document.body.prepend(mesh);
+    
+    const blob3 = document.createElement('div');
+    blob3.className = 'gradient-mesh-blob-3';
+    document.body.prepend(blob3);
+  }
+})();
+
+
+// ═══ HOVER 3D TILT ═══
+(function() {
+  const cards = document.querySelectorAll('.tilt-card');
+  if (!cards.length) {
+    // Auto-apply to product/category cards
+    document.querySelectorAll('[class*="card"], [class*="rounded-xl"]').forEach(el => {
+      if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        if (el.querySelector('img') || el.querySelector('h3')) {
+          el.classList.add('tilt-card');
+        }
+      }
+    });
+  }
+  
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / centerY * -6;
+      const rotateY = (x - centerX) / centerX * 6;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
+  });
+})();
+
+
+// ═══ COUNTER ANIMATION ═══
+(function() {
+  const counters = document.querySelectorAll('.counter-value, [data-counter]');
+  if (!counters.length) {
+    // Auto-detect numbers that look like stats
+    document.querySelectorAll('*').forEach(el => {
+      const text = el.textContent.trim();
+      if (/^[+]?\d{2,}[+%]?$/.test(text) && el.children.length === 0) {
+        const num = parseInt(text.replace(/[^0-9]/g, ''));
+        if (num >= 10) {
+          el.dataset.counter = num;
+          el.dataset.counterSuffix = text.replace(/[0-9]/g, '').replace(/^\+/, '');
+          if (text.startsWith('+')) el.dataset.counterPrefix = '+';
+          el.classList.add('counter-value');
+          el.textContent = '0' + (el.dataset.counterSuffix || '');
+        }
+      }
+    });
+  }
+  
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.counter);
+    const prefix = el.dataset.counterPrefix || '';
+    const suffix = el.dataset.counterSuffix || '';
+    const duration = 2000;
+    const startTime = performance.now();
+    
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+      const current = Math.floor(eased * target);
+      el.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('.counter-value, [data-counter]').forEach(el => observer.observe(el));
+})();
+
+</script>
+</body>
+</html>

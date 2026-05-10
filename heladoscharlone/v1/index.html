@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helados Charlone — Helados Artesanales en Coronel Charlone</title>
+    <meta name="description" content="Heladería artesanal en Coronel Charlone. Helados caseros de dulce de leche, chocolate y sabores clásicos argentinos. Cuatro Lobos 880.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4A843;
+            --primary-dark: #B8912E;
+            --secondary: #8B5E3C;
+            --surface: #FBF7F0;
+            --surface-warm: #F5EDE0;
+            --surface-dark: #2C1810;
+            --surface-darker: #1A0E08;
+            --text-primary: rgba(0,0,0,0.87);
+            --text-secondary: rgba(0,0,0,0.58);
+            --text-light: #FFFFFF;
+            --text-light-soft: rgba(255,255,255,0.70);
+            --card-bg: #FFFFFF;
+            --card-shadow: 0 0 0.5px rgba(0,0,0,0.14), 0 1px 1px rgba(0,0,0,0.24);
+            --radius-card: 12px;
+            --radius-pill: 50px;
+            --font-serif: 'Lora', Georgia, serif;
+            --font-sans: 'Inter', 'Helvetica Neue', sans-serif;
+            --transition-smooth: 0.8s ease-in-out;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 62.5%; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--surface);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        .editorial-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.6rem 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+        .editorial-nav.scrolled {
+            background: rgba(251, 247, 240, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            transition: color 0.4s ease;
+        }
+        .editorial-nav.scrolled .nav-logo { color: var(--surface-dark); }
+        .nav-links { display: flex; gap: 3.2rem; list-style: none; }
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.4s ease;
+        }
+        .editorial-nav.scrolled .nav-links a { color: var(--text-primary); }
+        .nav-links a:hover { color: var(--primary); }
+        <!-- ADS:NAV:END -->
+
+        /* ── HERO ── */
+        .hero-portrait {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-portrait::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(26,14,8,0.6) 0%, rgba(26,14,8,0.4) 50%, rgba(26,14,8,0.8) 100%);
+            z-index: 1;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 0 2rem;
+        }
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 700;
+            color: var(--text-light);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+        .hero-content h1 span { color: var(--primary); }
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-light-soft);
+            font-weight: 300;
+            margin-bottom: 4rem;
+            letter-spacing: 0.05em;
+        }
+        .btn-outline {
+            display: inline-block;
+            padding: 1.4rem 4rem;
+            border: 1px solid var(--text-light);
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: var(--radius-pill);
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--surface-dark);
+            transform: scale(0.95);
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 4rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            width: 2px;
+            height: 60px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .scroll-indicator::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            width: 100%;
+            height: 50%;
+            background: var(--primary);
+            animation: scrollDown 2s ease-in-out infinite;
+        }
+        @keyframes scrollDown {
+            0% { top: -50%; }
+            100% { top: 100%; }
+        }
+
+        /* ── HISTORIA ── */
+        .split-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+        }
+        .story-text {
+            padding: 12rem 8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .story-text h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 4vw, 4.5rem);
+            font-weight: 400;
+            color: var(--surface-dark);
+            margin-bottom: 3rem;
+            line-height: 1.2;
+        }
+        .story-text p {
+            font-size: 1.7rem;
+            line-height: 2;
+            color: var(--text-secondary);
+            max-width: 480px;
+        }
+        .story-text p::first-letter {
+            font-family: var(--font-serif);
+            font-size: 5.6rem;
+            float: left;
+            line-height: 1;
+            padding-right: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .story-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .story-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-smooth);
+        }
+        .story-image:hover img { transform: scale(1.03); }
+
+        /* ── MENÚ ── */
+        .magazine-menu {
+            padding: 12rem 4rem;
+            background: var(--surface-dark);
+            color: var(--text-light);
+        }
+        .menu-header {
+            text-align: center;
+            margin-bottom: 8rem;
+        }
+        .menu-header h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 1.6rem;
+        }
+        .menu-header p {
+            color: var(--text-light-soft);
+            font-size: 1.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .menu-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .menu-item {
+            display: flex;
+            align-items: baseline;
+            padding: 2.4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .menu-item-name {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+        .menu-item-dots {
+            flex: 1;
+            border-bottom: 1px dotted rgba(255,255,255,0.2);
+            margin: 0 1.6rem;
+            min-width: 40px;
+            align-self: flex-end;
+            margin-bottom: 6px;
+        }
+        .menu-item-desc {
+            text-align: right;
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-style: italic;
+            max-width: 220px;
+        }
+
+        /* ── GALERÍA ── */
+        .masonry-editorial {
+            padding: 12rem 0;
+        }
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+        .gallery-title h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-weight: 400;
+            color: var(--surface-dark);
+        }
+        .masonry-grid {
+            columns: 3;
+            column-gap: 4px;
+            padding: 0 4px;
+        }
+        .masonry-grid img {
+            width: 100%;
+            display: block;
+            margin-bottom: 4px;
+            transition: opacity 0.6s ease;
+            opacity: 0;
+        }
+        .masonry-grid img.visible { opacity: 1; }
+
+        /* ── FEATURE BAND ── */
+        .feature-band {
+            background: var(--secondary);
+            padding: 10rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            align-items: center;
+        }
+        .feature-band-text h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 4vw, 4.5rem);
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        .feature-band-text p {
+            color: var(--text-light-soft);
+            font-size: 1.6rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 1.2rem 3.2rem;
+            background: var(--primary);
+            color: var(--surface-dark);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius-pill);
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { transform: scale(0.95); background: var(--primary-dark); }
+        .feature-band-image img {
+            width: 100%;
+            border-radius: var(--radius-card);
+        }
+
+        /* ── FOOTER ── */
+        .minimal-footer {
+            /* ADS:FOOTER:START */
+            padding: 8rem 4rem;
+            text-align: center;
+            background: var(--surface-darker);
+            color: var(--text-light);
+        }
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        .footer-address {
+            color: var(--text-light-soft);
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 2.4rem;
+            margin-bottom: 4rem;
+        }
+        .footer-socials a {
+            color: var(--text-light-soft);
+            text-decoration: none;
+            font-size: 1.3rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .footer-socials a:hover { color: var(--primary); }
+        .footer-credit {
+            color: rgba(255,255,255,0.3);
+            font-size: 1.2rem;
+        }
+        .footer-credit a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+        /* ── WHATSAPP FAB ── */
+        .wa-fab {
+            position: fixed;
+            bottom: 2.4rem;
+            right: 2.4rem;
+            width: 56px; height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+            z-index: 999;
+            text-decoration: none;
+            animation: waPulse 2s infinite;
+            transition: transform 0.2s;
+        }
+        .wa-fab:hover { transform: scale(1.1); }
+        .wa-fab svg { width: 28px; height: 28px; fill: white; }
+        @keyframes waPulse {
+            0%, 100% { box-shadow: 0 4px 12px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 4px 24px rgba(37,211,102,0.6); }
+        }
+
+        /* ── FADE IN ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            .editorial-nav { padding: 1.6rem 2rem; }
+            .nav-links { display: none; }
+            .split-story { grid-template-columns: 1fr; }
+            .story-text { padding: 6rem 2.4rem; }
+            .story-image { min-height: 50vh; }
+            .magazine-menu { padding: 8rem 2.4rem; }
+            .menu-item-name { font-size: 1.8rem; }
+            .masonry-grid { columns: 2; }
+            .masonry-editorial { padding: 8rem 0; }
+            .feature-band { grid-template-columns: 1fr; padding: 6rem 2.4rem; gap: 4rem; }
+            .minimal-footer { padding: 6rem 2.4rem; }
+            .hero-content h1 { letter-spacing: -1px; }
+        }
+    </style>
+<style id="premium-effects">
+
+/* ═══ GLOBAL PREMIUM POLISH ═══ */
+html {
+  scroll-behavior: smooth;
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection {
+  background: var(--selection-bg, rgba(233, 30, 99, 0.2));
+  color: var(--selection-color, inherit);
+}
+img {
+  transition: opacity 0.3s ease;
+}
+img[loading="lazy"] {
+  opacity: 0;
+}
+img.loaded, img:not([loading="lazy"]) {
+  opacity: 1;
+}
+
+/* Premium button hover shine */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 100%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.btn-shine:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Smooth image loading */
+img {
+  image-rendering: auto;
+}
+
+
+:root {
+  --primary-rgb: 233, 30, 99;
+  --mesh-color-1: #E91E63;
+  --mesh-color-2: #FFEB3B;
+  --mesh-color-3: #00BCD4;
+  --gradient-start: #E91E63;
+  --gradient-end: #FFEB3B;
+  --glow-color: rgba(233, 30, 99, 0.08);
+  --selection-bg: rgba(233, 30, 99, 0.2);
+}
+
+
+/* ═══ SCROLL REVEAL ═══ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-left] {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-left].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+[data-reveal-scale] {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-scale].revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* ═══ ANIMATED GRADIENT MESH ═══ */
+.gradient-mesh-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gradient-mesh-bg::before,
+.gradient-mesh-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: meshFloat 20s ease-in-out infinite;
+}
+.gradient-mesh-bg::before {
+  width: 60vw; height: 60vw;
+  top: -20%; left: -10%;
+  background: var(--mesh-color-1, #E91E63);
+  animation-delay: 0s;
+}
+.gradient-mesh-bg::after {
+  width: 50vw; height: 50vw;
+  bottom: -20%; right: -10%;
+  background: var(--mesh-color-2, #FFEB3B);
+  animation-delay: -10s;
+}
+.gradient-mesh-blob-3 {
+  position: fixed;
+  width: 40vw; height: 40vw;
+  top: 40%; left: 30%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.1;
+  background: var(--mesh-color-3, #00BCD4);
+  animation: meshFloat 25s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes meshFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5%, -8%) scale(1.05); }
+  50% { transform: translate(-3%, 5%) scale(0.95); }
+  75% { transform: translate(8%, 3%) scale(1.02); }
+}
+
+
+/* ═══ HOVER TILT 3D ═══ */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ═══ COUNTER ANIMATION ═══ */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ═══ INFINITE MARQUEE ═══ */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marqueeScroll var(--marquee-speed, 30s) linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+</style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="editorial-nav" id="main-nav">
+        <a href="#" class="nav-logo">Helados Charlone</a>
+        <ul class="nav-links">
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#menu">Sabores</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <!-- ADS:NAV:END -->
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-portrait" id="inicio">
+        <img src="img/heladoscharlone_0.jpg" alt="Helados artesanales Charlone" class="hero-bg" loading="eager">
+        <div class="hero-content">
+            <h1>Helados <span>Artesanales</span></h1>
+            <p class="hero-subtitle">Tradición y sabor en cada bocado · Coronel Charlone</p>
+            <a href="#menu" class="btn-outline">Descubrí Nuestros Sabores</a>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
+    </div>
+  </div>
+</div>
+
+
+    <!-- HISTORIA -->
+    <section id="historia" class="split-story">
+        <div class="story-text fade-in">
+            <h2>Nuestra Historia</h2>
+            <p>Cada helado que servimos lleva el amor y la dedicación de quien elige los mejores ingredientes. En Helados Charlone elaboramos de manera artesanal, con recetas que combinan la tradición de la heladería argentina con la frescura de los productos locales. Desde nuestro rincón en Cuatro Lobos 880, endulzamos los días de Coronel Charlone con sabores que se sienten como en casa.</p>
+        </div>
+        <div class="story-image">
+            <img src="img/heladoscharlone_7.jpg" alt="Helados de cucurucho con dulce de leche" loading="lazy">
+        </div>
+    </section>
+
+    <!-- MENÚ -->
+    <section id="menu" class="magazine-menu">
+        <div class="menu-header fade-in">
+            <h2>Nuestros Sabores</h2>
+            <p>Elaborados con ingredientes de primera</p>
+        </div>
+        <div class="menu-list">
+            <div class="menu-item fade-in">
+                <span class="menu-item-name">Dulce de Leche</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-desc">Nuestro clásico estrella, cremoso y auténtico</span>
+            </div>
+            <div class="menu-item fade-in">
+                <span class="menu-item-name">Chocolate Intenso</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-desc">Cacao puro con trozos de chocolate belga</span>
+            </div>
+            <div class="menu-item fade-in">
+                <span class="menu-item-name">Crema Americana</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-desc">Vainilla natural con un toque de caramelo</span>
+            </div>
+            <div class="menu-item fade-in">
+                <span class="menu-item-name">Frutilla de Estación</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-desc">Frutillas frescas de producción local</span>
+            </div>
+            <div class="menu-item fade-in">
+                <span class="menu-item-name">Sambayón</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-desc">Receta clásica con un toque de marsala</span>
+            </div>
+            <div class="menu-item fade-in">
+                <span class="menu-item-name">Granizado de Limón</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-desc">Refrescante y natural, ideal para el verano</span>
+            </div>
+            <div class="menu-item fade-in">
+                <span class="menu-item-name">Mascarpone con Frutos Rojos</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-desc">Cremosidad italiana con berries seleccionados</span>
+            </div>
+            <div class="menu-item fade-in">
+                <span class="menu-item-name">Paleta Bañada</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-desc">Cobertura de chocolate con almendras</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="masonry-editorial">
+        <div class="gallery-title fade-in">
+            <h2>Galería</h2>
+        </div>
+        <div class="masonry-grid">
+            <img src="img/heladoscharlone_0.jpg" alt="Helado de dulce de leche con frutillas" loading="lazy" class="fade-in">
+            <img src="img/heladoscharlone_4.jpg" alt="Helado de chocolate artesanal" loading="lazy" class="fade-in">
+            <img src="img/heladoscharlone_2.jpg" alt="Variedad de helados" loading="lazy" class="fade-in">
+            <img src="img/heladoscharlone_5.jpg" alt="Helados preparación artesanal" loading="lazy" class="fade-in">
+            <img src="img/heladoscharlone_7.jpg" alt="Cucuruchos con dulce de leche" loading="lazy" class="fade-in">
+            <img src="img/heladoscharlone_8.jpg" alt="Postres helados especiales" loading="lazy" class="fade-in">
+        </div>
+    </section>
+
+    <!-- FEATURE BAND -->
+    <section class="feature-band" id="contacto">
+        <div class="feature-band-text fade-in">
+            <h2>Pedí tu helado favorito</h2>
+            <p>Hacé tu pedido por WhatsApp y te lo preparamos al instante. También podés pasar por nuestro local en Cuatro Lobos 880, Coronel Charlone. ¡Te esperamos!</p>
+            <a href="https://wa.me/5492355000000?text=Hola!%20Quiero%20hacer%20un%20pedido" class="btn-primary" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+        <div class="feature-band-image fade-in">
+            <img src="img/heladoscharlone_1.jpg" alt="Helados Charlone local" loading="lazy">
+        </div>
+    </section>
+
+    <!-- ADS:CONTENT:END -->
+
+    <!-- FOOTER -->
+    <footer class="minimal-footer">
+        <!-- ADS:FOOTER:START -->
+        <div class="footer-logo">Helados Charlone</div>
+        <div class="footer-address">
+            Cuatro Lobos 880, Coronel Charlone<br>
+            Buenos Aires, Argentina
+        </div>
+        <div class="footer-socials">
+            <a href="https://instagram.com/heladoscharlone" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <p class="footer-credit">Desarrollado por <a href="#">ADS Labs</a></p>
+    </footer>
+
+    <!-- WHATSAPP FAB -->
+    <a href="https://wa.me/5492355000000?text=Hola!%20Quiero%20consultar%20sobre%20helados" class="wa-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.625.78.78-2.625-.149-.252A8 8 0 1112 20z"/></svg>
+    </a>
+
+    <!-- ADS:SCRIPTS -->
+    <script>
+        // Nav glassmorphism on scroll
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Intersection Observer for fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+<script id="premium-effects-js">
+
+// ═══ GLOBAL PREMIUM POLISH ═══
+// Lazy image loading with fade-in
+document.querySelectorAll('img').forEach(img => {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  }
+});
+
+// Add shine effect to primary buttons
+document.querySelectorAll('button, a[href]').forEach(btn => {
+  const bg = getComputedStyle(btn).backgroundColor;
+  if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+    btn.classList.add('btn-shine');
+  }
+});
+
+
+// ═══ SCROLL REVEAL ═══
+(function() {
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]');
+  if (!revealElements.length) {
+    // Auto-apply to sections and cards if no data-reveal attributes found
+    document.querySelectorAll('section, [class*="card"], [class*="rounded"]').forEach((el, i) => {
+      if (el.tagName === 'SECTION') {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = '0.1s';
+      } else if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = (i % 4) * 0.1 + 's';
+      }
+    });
+  }
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  
+  document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]').forEach(el => {
+    observer.observe(el);
+  });
+})();
+
+
+// ═══ GRADIENT MESH (JS companion — injects the blob element) ═══
+(function() {
+  if (!document.querySelector('.gradient-mesh-bg')) {
+    const mesh = document.createElement('div');
+    mesh.className = 'gradient-mesh-bg';
+    document.body.prepend(mesh);
+    
+    const blob3 = document.createElement('div');
+    blob3.className = 'gradient-mesh-blob-3';
+    document.body.prepend(blob3);
+  }
+})();
+
+
+// ═══ HOVER 3D TILT ═══
+(function() {
+  const cards = document.querySelectorAll('.tilt-card');
+  if (!cards.length) {
+    // Auto-apply to product/category cards
+    document.querySelectorAll('[class*="card"], [class*="rounded-xl"]').forEach(el => {
+      if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        if (el.querySelector('img') || el.querySelector('h3')) {
+          el.classList.add('tilt-card');
+        }
+      }
+    });
+  }
+  
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / centerY * -6;
+      const rotateY = (x - centerX) / centerX * 6;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
+  });
+})();
+
+
+// ═══ COUNTER ANIMATION ═══
+(function() {
+  const counters = document.querySelectorAll('.counter-value, [data-counter]');
+  if (!counters.length) {
+    // Auto-detect numbers that look like stats
+    document.querySelectorAll('*').forEach(el => {
+      const text = el.textContent.trim();
+      if (/^[+]?\d{2,}[+%]?$/.test(text) && el.children.length === 0) {
+        const num = parseInt(text.replace(/[^0-9]/g, ''));
+        if (num >= 10) {
+          el.dataset.counter = num;
+          el.dataset.counterSuffix = text.replace(/[0-9]/g, '').replace(/^\+/, '');
+          if (text.startsWith('+')) el.dataset.counterPrefix = '+';
+          el.classList.add('counter-value');
+          el.textContent = '0' + (el.dataset.counterSuffix || '');
+        }
+      }
+    });
+  }
+  
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.counter);
+    const prefix = el.dataset.counterPrefix || '';
+    const suffix = el.dataset.counterSuffix || '';
+    const duration = 2000;
+    const startTime = performance.now();
+    
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+      const current = Math.floor(eased * target);
+      el.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('.counter-value, [data-counter]').forEach(el => observer.observe(el));
+})();
+
+</script>
+</body>
+</html>

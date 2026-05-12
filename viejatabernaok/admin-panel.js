@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ============================================================
  * ADMIN PANEL — ADS Labs Marketplace
  * Motor compartido para todos los comerciantes.
@@ -144,24 +144,43 @@
       userInfo = { name: 'Admin', picture: '' };
     }
 
-    // Validate owner email via hash (email not stored in source code)
-    if (STORE_CONFIG._ownerHash && userInfo.email) {
-      const isOwner = typeof STORE_CONFIG.checkOwner === 'function'
-        ? await STORE_CONFIG.checkOwner(userInfo.email)
-        : false;
-      if (!isOwner) {
+    // ═══ VALIDACIÓN SERVER-SIDE (imposible de bypassear) ═══
+    // Verificamos el token con Cloudflare Worker, NO en el navegador.
+    // El Worker tiene la lista de emails permitidos hardcodeada.
+    try {
+      const verifyRes = await fetch('/api/verify-admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          accessToken: accessToken,
+          storeId: STORE_CONFIG.storeId
+        })
+      });
+      const verifyData = await verifyRes.json();
+      if (!verifyData.allowed) {
         toast('⛔ No tenés permiso para acceder a este panel.', 'error');
         accessToken = null;
         sessionStorage.removeItem('admin_token');
+        try { google.accounts.oauth2.revoke(accessToken); } catch(e) {}
         return;
       }
-    }
-
-    // If first login and no SHEET_ID, auto-provision
-    if (!STORE_CONFIG.SHEET_ID) {
-      document.getElementById('login-screen').style.display = 'none';
-      // Auto-provisioning deshabilitado por seguridad
-      // Auto-provisioning deshabilitado por seguridad
+      // Server confirmed identity — use server-provided info
+      if (verifyData.name) userInfo.name = verifyData.name;
+      if (verifyData.email) userInfo.email = verifyData.email;
+    } catch (serverErr) {
+      // Fallback: si el Worker no está disponible, usar hash local
+      console.warn('⚠️ Server verification unavailable, using local hash fallback');
+      if (STORE_CONFIG._ownerHash && userInfo.email) {
+        const isOwner = typeof STORE_CONFIG.checkOwner === 'function'
+          ? await STORE_CONFIG.checkOwner(userInfo.email)
+          : false;
+        if (!isOwner) {
+          toast('⛔ No tenés permiso para acceder a este panel.', 'error');
+          accessToken = null;
+          sessionStorage.removeItem('admin_token');
+          return;
+        }
+      }
     }
 
     // Show admin layout

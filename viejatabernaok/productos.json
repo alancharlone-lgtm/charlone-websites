@@ -1,0 +1,553 @@
+{
+  "store": "La Vieja Taberna",
+  "whatsapp": "",
+  "currency": "ARS",
+  "categories": ["Minutas", "Pizzas", "Empanadas", "Parrilla", "Especiales", "Bebidas", "Postres"],
+  "products": [
+    {
+      "id": 1,
+      "name": "Milanesa con papas fritas",
+      "description": "Clásica milanesa de carne a caballo con papas fritas doradas y crocantes.",
+      "category": "Minutas",
+      "price": 0,
+      "image": "img/img_milanesa_1778621587738.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Milanesa napolitana con papas",
+      "description": "Milanesa gratinada con salsa de tomate, jamón y queso muzzarella, acompañada de papas fritas.",
+      "category": "Minutas",
+      "price": 0,
+      "image": "img/img_milanesa_1778621587738.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Suprema con papas fritas",
+      "description": "Suprema de pollo crocante con papas fritas.",
+      "category": "Minutas",
+      "price": 0,
+      "image": "img/img_milanesa_1778621587738.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Suprema napolitana con papas",
+      "description": "Suprema de pollo gratinada con salsa, jamón y queso, con papas fritas.",
+      "category": "Minutas",
+      "price": 0,
+      "image": "img/img_milanesa_1778621587738.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Lomo con papas fritas",
+      "description": "Medallón de lomo a la plancha con papas fritas.",
+      "category": "Minutas",
+      "price": 0,
+      "image": "img/img_milanesa_1778621587738.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Hamburguesa completa con papas",
+      "description": "Hamburguesa casera con lechuga, tomate, huevo, queso y papas fritas.",
+      "category": "Minutas",
+      "price": 0,
+      "image": "img/img_milanesa_1778621587738.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Tortilla de papas",
+      "description": "Tortilla española esponjosa de papa y cebolla.",
+      "category": "Minutas",
+      "price": 0,
+      "image": "img/img_milanesa_1778621587738.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "Papas fritas",
+      "description": "Porción generosa de papas fritas doradas.",
+      "category": "Minutas",
+      "price": 0,
+      "image": "img/img_milanesa_1778621587738.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+
+    {
+      "id": 10,
+      "name": "Pizza muzzarella",
+      "description": "Pizza clásica con abundante muzzarella dorada.",
+      "category": "Pizzas",
+      "price": 0,
+      "image": "img/img_pizza_1778621601090.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 11,
+      "name": "Pizza de roquefort",
+      "description": "Pizza con queso roquefort fundido, sabor intenso y cremoso.",
+      "category": "Pizzas",
+      "price": 0,
+      "image": "img/img_pizza_1778621601090.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 12,
+      "name": "Pizza napolitana",
+      "description": "Pizza con rodajas de tomate, ajo y aceitunas verdes.",
+      "category": "Pizzas",
+      "price": 0,
+      "image": "img/img_pizza_1778621601090.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 13,
+      "name": "Pizza fugazzeta",
+      "description": "Pizza con doble capa de muzzarella y cebolla caramelizada.",
+      "category": "Pizzas",
+      "price": 0,
+      "image": "img/img_pizza_1778621601090.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 14,
+      "name": "Pizza calabresa",
+      "description": "Pizza con longaniza calabresa, morrón y aceitunas.",
+      "category": "Pizzas",
+      "price": 0,
+      "image": "img/img_pizza_1778621601090.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 15,
+      "name": "Pizza especial de la casa",
+      "description": "Combinación especial del chef con ingredientes de estación.",
+      "category": "Pizzas",
+      "price": 0,
+      "image": "img/img_pizza_1778621601090.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 16,
+      "name": "Pizza jamón y morrones",
+      "description": "Pizza con jamón cocido, morrones asados y aceitunas.",
+      "category": "Pizzas",
+      "price": 0,
+      "image": "img/img_pizza_1778621601090.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 17,
+      "name": "Fainá",
+      "description": "Fainá de garbanzos crocante para acompañar tu pizza.",
+      "category": "Pizzas",
+      "price": 0,
+      "image": "img/img_pizza_1778621601090.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+
+    {
+      "id": 20,
+      "name": "Empanadas de carne",
+      "description": "Empanadas criollas de carne cortada a cuchillo.",
+      "category": "Empanadas",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 21,
+      "name": "Empanadas de pollo",
+      "description": "Empanadas de pollo desmenuzado con cebolla y morrón.",
+      "category": "Empanadas",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 22,
+      "name": "Empanadas de jamón y queso",
+      "description": "Empanadas de jamón cocido y queso derretido.",
+      "category": "Empanadas",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 23,
+      "name": "Empanadas de verdura",
+      "description": "Empanadas de acelga, cebolla y huevo.",
+      "category": "Empanadas",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 24,
+      "name": "Empanadas de humita",
+      "description": "Empanadas de choclo cremoso con salsa blanca.",
+      "category": "Empanadas",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 25,
+      "name": "Empanadas de roquefort",
+      "description": "Empanadas rellenas de queso roquefort cremoso.",
+      "category": "Empanadas",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 26,
+      "name": "Docena surtida",
+      "description": "12 empanadas surtidas a elección del cliente.",
+      "category": "Empanadas",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+
+    {
+      "id": 30,
+      "name": "Asado de tira",
+      "description": "Asado de tira a la parrilla con carbón, cocción lenta. Porción individual.",
+      "category": "Parrilla",
+      "price": 0,
+      "image": "img/img_asado_1778621638290.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 31,
+      "name": "Vacío a la parrilla",
+      "description": "Vacío tierno y jugoso cocinado a las brasas.",
+      "category": "Parrilla",
+      "price": 0,
+      "image": "img/img_asado_1778621638290.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 32,
+      "name": "Chorizo a la parrilla",
+      "description": "Chorizo criollo a las brasas, bien jugoso.",
+      "category": "Parrilla",
+      "price": 0,
+      "image": "img/img_asado_1778621638290.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 33,
+      "name": "Morcilla",
+      "description": "Morcilla crocante por fuera, cremosa por dentro.",
+      "category": "Parrilla",
+      "price": 0,
+      "image": "img/img_asado_1778621638290.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 34,
+      "name": "Tabla parrillera para 2",
+      "description": "Selección de cortes de parrilla para compartir: asado, vacío, chorizo y morcilla.",
+      "category": "Parrilla",
+      "price": 0,
+      "image": "img/img_asado_1778621638290.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+
+    {
+      "id": 40,
+      "name": "Bondiola con papas",
+      "description": "Bondiola de cerdo braseada, tierna y jugosa, con papas al horno.",
+      "category": "Especiales",
+      "price": 0,
+      "image": "img/img_asado_1778621638290.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 41,
+      "name": "Vacío al horno",
+      "description": "Vacío cocinado lentamente al horno, desmenuzable y sabroso.",
+      "category": "Especiales",
+      "price": 0,
+      "image": "img/img_asado_1778621638290.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 42,
+      "name": "Matambre a la pizza",
+      "description": "Matambre arrollado gratinado con salsa de tomate, jamón y muzzarella.",
+      "category": "Especiales",
+      "price": 0,
+      "image": "img/img_asado_1778621638290.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 43,
+      "name": "Pollo al horno con papas",
+      "description": "Pollo entero al horno con hierbas y papas rústicas doradas.",
+      "category": "Especiales",
+      "price": 0,
+      "image": "img/img_milanesa_1778621587738.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 44,
+      "name": "Sorrentinos de jamón y queso",
+      "description": "Sorrentinos caseros rellenos de jamón y queso con salsa a elección.",
+      "category": "Especiales",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 45,
+      "name": "Ravioles de verdura",
+      "description": "Ravioles caseros de ricota y verdura con salsa bolognesa o tuco.",
+      "category": "Especiales",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 46,
+      "name": "Ñoquis de papa",
+      "description": "Ñoquis caseros de papa con salsa a elección: tuco, bolognesa o fileto.",
+      "category": "Especiales",
+      "price": 0,
+      "image": "img/img_empanadas_1778621618215.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+
+    {
+      "id": 50,
+      "name": "Coca-Cola 500ml",
+      "description": "Coca-Cola línea regular 500ml.",
+      "category": "Bebidas",
+      "price": 0,
+      "image": "img/barra_chapas.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 51,
+      "name": "Coca-Cola 1.5L",
+      "description": "Coca-Cola línea regular 1.5 litros.",
+      "category": "Bebidas",
+      "price": 0,
+      "image": "img/barra_chapas.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 52,
+      "name": "Agua mineral 500ml",
+      "description": "Agua mineral con o sin gas.",
+      "category": "Bebidas",
+      "price": 0,
+      "image": "img/barra_chapas.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 53,
+      "name": "Cerveza artesanal",
+      "description": "Pinta de cerveza artesanal tirada. Consultá las variedades del día.",
+      "category": "Bebidas",
+      "price": 0,
+      "image": "img/barra_lvt_bartender.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 54,
+      "name": "Cerveza Quilmes 1L",
+      "description": "Cerveza Quilmes retornable de 1 litro, bien fría.",
+      "category": "Bebidas",
+      "price": 0,
+      "image": "img/barra_lvt_bartender.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 55,
+      "name": "Fernet con Coca",
+      "description": "Fernet Branca con Coca-Cola. El clásico argentino.",
+      "category": "Bebidas",
+      "price": 0,
+      "image": "img/barra_lvt_real_retocada.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 56,
+      "name": "Vino tinto (copa)",
+      "description": "Copa de vino tinto de la casa.",
+      "category": "Bebidas",
+      "price": 0,
+      "image": "img/barra_lvt_real_retocada.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 57,
+      "name": "Jarra de limonada",
+      "description": "Limonada casera bien fresca. Ideal para compartir.",
+      "category": "Bebidas",
+      "price": 0,
+      "image": "img/barra_chapas.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+
+    {
+      "id": 60,
+      "name": "Flan casero con dulce de leche",
+      "description": "Flan casero de huevo con dulce de leche y crema.",
+      "category": "Postres",
+      "price": 0,
+      "image": "img/img_flan_1778621660462.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 61,
+      "name": "Panqueques con dulce de leche",
+      "description": "Panqueques rellenos de dulce de leche, espolvoreados con azúcar impalpable.",
+      "category": "Postres",
+      "price": 0,
+      "image": "img/img_flan_1778621660462.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 62,
+      "name": "Brownie con helado",
+      "description": "Brownie de chocolate tibio con bocha de helado de crema americana.",
+      "category": "Postres",
+      "price": 0,
+      "image": "img/img_flan_1778621660462.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 63,
+      "name": "Tiramisú",
+      "description": "Tiramisú casero con café, mascarpone y cacao.",
+      "category": "Postres",
+      "price": 0,
+      "image": "img/img_flan_1778621660462.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 64,
+      "name": "Copa helada",
+      "description": "Copa de helado con 3 gustos a elección, crema y salsa de chocolate.",
+      "category": "Postres",
+      "price": 0,
+      "image": "img/img_flan_1778621660462.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    },
+    {
+      "id": 65,
+      "name": "Ensalada de frutas",
+      "description": "Ensalada de frutas de estación con crema y helado opcional.",
+      "category": "Postres",
+      "price": 0,
+      "image": "img/img_flan_1778621660462.png",
+      "video": "",
+      "sizes": ["Único"],
+      "active": true
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /config.json
+Disallow: /productos.json
+
+Sitemap: https://viejataberna.com/sitemap.xml

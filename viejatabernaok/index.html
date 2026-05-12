@@ -4,8 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="store-id" content="viejatabernaok">
-  <title>La Vieja Taberna — Restaurante & Salón de Eventos | Charlone</title>
-  <meta name="description" content="Restaurante parrillero y salón de eventos en Coronel Charlone. Asados a la llama, cocina artesanal y el mejor salón para tus celebraciones.">
+  
+  <!-- SEO: Title & Description -->
+  <title>La Vieja Taberna | Catering, Parrilla y Eventos en Coronel Charlone, Buenos Aires</title>
+  <meta name="description" content="La Vieja Taberna: servicio de catering, parrilla a la leña y eventos en Coronel Charlone, Buenos Aires. Asados, minutas, pizzas, empanadas y más. Pedí tu menú online.">
+  <meta name="keywords" content="La Vieja Taberna, catering Charlone, parrilla Charlone, restaurante Coronel Charlone, asado, eventos Charlone, pizzas Charlone, empanadas Charlone, delivery Charlone, General Villegas">
+  <link rel="canonical" href="https://viejataberna.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="geo.region" content="AR-B">
+  <meta name="geo.placename" content="Coronel Charlone, General Villegas, Buenos Aires">
+  <meta name="geo.position" content="-34.95;-63.03">
+  <meta name="ICBM" content="-34.95, -63.03">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:title" content="La Vieja Taberna - Catering y Parrilla en Charlone">
+  <meta property="og:description" content="Servicio de catering, asados a la leña y eventos en Coronel Charlone. Minutas, pizzas, empanadas, parrilla y más.">
+  <meta property="og:url" content="https://viejataberna.com/">
+  <meta property="og:site_name" content="La Vieja Taberna">
+  <meta property="og:image" content="https://viejataberna.com/img/hero.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_AR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="La Vieja Taberna - Catering y Parrilla en Charlone">
+  <meta name="twitter:description" content="Asados a la leña, minutas, pizzas, empanadas. Catering para eventos. Coronel Charlone, Buenos Aires.">
+  <meta name="twitter:image" content="https://viejataberna.com/img/hero.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Restaurant","name":"La Vieja Taberna","alternateName":"La Vieja Taberna Charlone","description":"Servicio de catering, parrilla a la leña y eventos en Coronel Charlone, Buenos Aires.","url":"https://viejataberna.com/","image":"https://viejataberna.com/img/hero.png","priceRange":"$$","servesCuisine":["Argentina","Parrilla","Criolla"],"address":{"@type":"PostalAddress","addressLocality":"Coronel Charlone","addressRegion":"Buenos Aires","addressCountry":"AR"},"geo":{"@type":"GeoCoordinates","latitude":-34.95,"longitude":-63.03},"hasMenu":{"@type":"Menu","name":"Menu","hasMenuSection":[{"@type":"MenuSection","name":"Minutas"},{"@type":"MenuSection","name":"Pizzas"},{"@type":"MenuSection","name":"Empanadas"},{"@type":"MenuSection","name":"Parrilla"},{"@type":"MenuSection","name":"Especiales"},{"@type":"MenuSection","name":"Bebidas"},{"@type":"MenuSection","name":"Postres"}]},"sameAs":["https://instagram.com/viejatabernaok"]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -42,7 +67,6 @@
     .nav-cta:hover { background: var(--ember-light); }
     .nav-mobile-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
     .nav-mobile-btn span { display: block; width: 24px; height: 2px; background: var(--text-light); transition: 0.3s; }
-    <!-- ADS:NAV:END -->
 
     /* HERO */
     .hero {
@@ -220,6 +244,8 @@
       .features { grid-template-columns: 1fr; }
     }
   </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..300,0..1&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -229,11 +255,16 @@
   <ul class="nav-links">
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#menu">Menú</a></li>
+    <li><a href="#tienda">Tienda</a></li>
     <li><a href="#eventos">Eventos</a></li>
     <li><a href="#galeria">Galería</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <a href="https://wa.me/54XXXXXXXXXX" class="nav-cta" target="_blank">Reservar Mesa</a>
+  <button onclick="window._cart.openCartDrawer()" class="relative cursor-pointer" id="cart-fab" style="background:none;border:none;color:var(--text-light);margin-left:1rem;">
+    <span class="material-symbols-outlined">shopping_bag</span>
+    <span id="cart-badge" class="absolute -top-2 -right-2 w-5 h-5 bg-brand-accent text-white text-[10px] font-bold rounded-full items-center justify-center" style="display:none;">0</span>
+  </button>
   <button class="nav-mobile-btn" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -417,6 +448,45 @@
   </div>
 </section>
 
+
+    <!-- ============================================================ -->
+    <!-- TIENDA — Catálogo Dinámico (inyectado por marketplace upgrade) -->
+    <!-- ============================================================ -->
+    <section id="tienda" style="background:var(--smoke);padding-top:6rem;padding-bottom:6rem;padding-left:2rem;padding-right:2rem;">
+      <div style="max-width:1400px;margin:0 auto;">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 border-b border-black/10 pb-8 gap-6">
+            <div>
+                <h2 class="font-serif text-3xl md:text-4xl mb-2" style="font-family:'Playfair Display',serif;color:var(--cream);">Nuestro Menú</h2>
+                <p class="text-sm font-light" style="color:var(--text-muted);">Elegí tus platos favoritos y armá tu pedido. Finalizás por WhatsApp.</p>
+            </div>
+        </div>
+        <div class="flex flex-wrap gap-3 mb-12">
+        <button onclick="window._cart.filterCategory('all')" data-category="all"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border" style="border-color:var(--gold);background:var(--ember);color:var(--cream);">Todo</button>
+        <button onclick="window._cart.filterCategory('Minutas')" data-category="Minutas"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border" style="border-color:rgba(212,168,67,0.3);background:transparent;color:var(--gold);">Minutas</button>
+        <button onclick="window._cart.filterCategory('Pizzas')" data-category="Pizzas"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border" style="border-color:rgba(212,168,67,0.3);background:transparent;color:var(--gold);">Pizzas</button>
+        <button onclick="window._cart.filterCategory('Empanadas')" data-category="Empanadas"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border" style="border-color:rgba(212,168,67,0.3);background:transparent;color:var(--gold);">Empanadas</button>
+        <button onclick="window._cart.filterCategory('Parrilla')" data-category="Parrilla"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border" style="border-color:rgba(212,168,67,0.3);background:transparent;color:var(--gold);">Parrilla</button>
+        <button onclick="window._cart.filterCategory('Especiales')" data-category="Especiales"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border" style="border-color:rgba(212,168,67,0.3);background:transparent;color:var(--gold);">Especiales</button>
+        <button onclick="window._cart.filterCategory('Bebidas')" data-category="Bebidas"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border" style="border-color:rgba(212,168,67,0.3);background:transparent;color:var(--gold);">Bebidas</button>
+        <button onclick="window._cart.filterCategory('Postres')" data-category="Postres"
+            class="category-pill px-5 py-2.5 text-xs tracking-[0.15em] uppercase font-medium border" style="border-color:rgba(212,168,67,0.3);background:transparent;color:var(--gold);">Postres</button>
+        </div>
+        <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
+            <div class="col-span-full text-center py-20 text-text-muted">
+                <span class="material-symbols-outlined text-4xl mb-4 block animate-pulse">hourglass_top</span>
+                Cargando productos...
+            </div>
+        </div>
+      </div>
+    </section>
+
 <!-- ADS:CONTENT:END -->
 
 <!-- FOOTER -->
@@ -468,5 +538,75 @@
   }, { threshold: 0.15 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
+    <!-- SIZE SELECTION MODAL (inyectado por marketplace upgrade) -->
+    <div id="size-modal" class="fixed inset-0 z-[60] items-center justify-center bg-black/40 backdrop-blur-sm hidden" onclick="if(event.target===this) window._cart.closeSizeModal()">
+        <div class="modal-panel bg-surface w-full max-w-md mx-4 p-8 shadow-2xl translate-y-8 opacity-0 transition-all duration-400">
+            <div id="size-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- VIDEO PLAYER MODAL -->
+    <div id="video-modal" class="fixed inset-0 z-[65] items-center justify-center bg-black/80 backdrop-blur-md hidden" onclick="if(event.target===this) window._cart.closeVideoModal()">
+        <div class="modal-panel w-full max-w-3xl mx-4 scale-95 opacity-0 transition-all duration-300 relative">
+            <button onclick="window._cart.closeVideoModal()" class="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors flex items-center gap-2 text-sm">
+                Cerrar <span class="material-symbols-outlined">close</span>
+            </button>
+            <div id="video-modal-content" class="rounded-lg overflow-hidden shadow-2xl bg-black"></div>
+        </div>
+    </div>
+
+    <!-- CART OVERLAY + DRAWER -->
+    <div id="cart-overlay" class="fixed inset-0 z-[55] bg-black/30 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" onclick="window._cart.closeCartDrawer()"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 z-[60] w-full max-w-md h-full bg-surface shadow-2xl translate-x-full flex flex-col" style="transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)">
+        <div class="flex justify-between items-center px-8 py-6 border-b border-black/5">
+            <div>
+                <h3 class="font-serif text-xl">Tu Carrito</h3>
+                <p id="cart-count-footer" class="text-xs text-text-muted font-light mt-0.5">0 artículos</p>
+            </div>
+            <button onclick="window._cart.closeCartDrawer()" class="hover:text-brand-accent transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="cart-body" class="flex-1 overflow-y-auto px-8"></div>
+        <div id="cart-footer" class="border-t border-black/10 px-8 py-6 hidden">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-xs tracking-[0.2em] uppercase font-medium">Total</span>
+                <span id="cart-total" class="font-serif text-2xl">$0</span>
+            </div>
+            <button onclick="window._cart.checkout()"
+                class="w-full bg-brand text-surface py-4 text-xs tracking-[0.2em] uppercase font-medium hover:bg-brand-accent transition-colors flex items-center justify-center gap-3">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                Enviar Pedido por WhatsApp
+            </button>
+            <p class="text-center text-[10px] text-text-muted mt-3 font-light">El pedido se envía como mensaje de WhatsApp. No se realizan cobros automáticos.</p>
+        </div>
+    </div>
+
+    <script src="whatsapp-cart.js"></script>
+
+    <!-- Acceso secreto al admin: ?gestion -->
+    <script>
+    (function() {
+      if (new URLSearchParams(window.location.search).has('gestion')) {
+        var fab = document.createElement('a');
+        fab.id = 'gestion-fab';
+        fab.href = 'admin.html';
+        fab.innerHTML = '⚙️';
+        fab.title = 'Panel de Gestión';
+        fab.style.cssText = 'position:fixed;bottom:24px;left:24px;z-index:999;width:52px;height:52px;'
+          + 'border-radius:50%;background:#111;color:white;display:flex;align-items:center;'
+          + 'justify-content:center;font-size:24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);'
+          + 'text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;'
+          + 'animation:gestionPulse 2s ease-in-out infinite;';
+        fab.onmouseenter = function() { fab.style.transform = 'scale(1.1)'; };
+        fab.onmouseleave = function() { fab.style.transform = 'scale(1)'; };
+        document.body.appendChild(fab);
+        var style = document.createElement('style');
+        style.textContent = '@keyframes gestionPulse { 0%,100% { box-shadow: 0 4px 20px rgba(0,0,0,0.3); } 50% { box-shadow: 0 4px 30px rgba(0,0,0,0.5), 0 0 15px rgba(37,211,102,0.3); } }';
+        document.head.appendChild(style);
+      }
+    })();
+    </script>
 </body>
 </html>

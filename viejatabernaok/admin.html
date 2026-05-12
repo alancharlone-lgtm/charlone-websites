@@ -12,16 +12,57 @@
   <!-- STORE CONFIG (específica de este comercio) -->
   <script>
     const STORE_CONFIG = {
-      SHEET_ID: '',  // Se completa automáticamente en el primer login
+      SHEET_ID: '',
       storeName: 'La Vieja Taberna',
       storeId: 'viejatabernaok',
       categories: ["Minutas", "Pizzas", "Empanadas", "Parrilla", "Especiales", "Bebidas", "Postres"],
-      ownerEmail: 'alancharlone@gmail.com',
+      // Email hasheado para no exponerlo en el código fuente
+      _ownerHash: 'baebfd1bb13d5ddf70baf615e7cec61dd757fe4b2cebe5b573ab62814251823e',
+      ADMIN_PIN: '2835',  // PIN de acceso al panel
+    };
+    // Función para verificar email sin exponerlo
+    STORE_CONFIG.checkOwner = async function(email) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(email.toLowerCase().trim());
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      return hashHex === this._ownerHash;
     };
   </script>
 
-  <!-- LOGIN SCREEN -->
-  <div id="login-screen" class="login-screen">
+  <!-- PIN GATE -->
+  <div id="pin-screen" class="login-screen">
+    <div class="login-card">
+      <div class="logo">🔒</div>
+      <h1>Acceso Restringido</h1>
+      <p class="subtitle">Ingresá el PIN de administrador para continuar.</p>
+      <input type="password" id="pin-input" maxlength="6" placeholder="PIN" 
+        style="width:120px;text-align:center;font-size:24px;letter-spacing:8px;padding:12px;border:2px solid #d1d5db;border-radius:8px;margin:16px auto;display:block;font-family:monospace;"
+        onkeydown="if(event.key==='Enter') checkPin()">
+      <button class="btn-google" onclick="checkPin()" style="background:#111;color:#fff;border:none;">
+        Ingresar
+      </button>
+      <p id="pin-error" style="color:#e74c3c;font-size:12px;margin-top:8px;display:none;">PIN incorrecto</p>
+      <p class="login-footer">Contactá al administrador si olvidaste el PIN</p>
+    </div>
+  </div>
+  <script>
+    function checkPin() {
+      const pin = document.getElementById('pin-input').value;
+      if (pin === STORE_CONFIG.ADMIN_PIN) {
+        document.getElementById('pin-screen').style.display = 'none';
+        document.getElementById('login-screen').style.display = 'flex';
+      } else {
+        document.getElementById('pin-error').style.display = 'block';
+        document.getElementById('pin-input').value = '';
+        document.getElementById('pin-input').style.borderColor = '#e74c3c';
+      }
+    }
+  </script>
+
+  <!-- LOGIN SCREEN (oculto hasta pasar el PIN) -->
+  <div id="login-screen" class="login-screen" style="display:none;">
     <div class="login-card">
       <div class="logo">🛒</div>
       <h1>Panel de Gestión</h1>

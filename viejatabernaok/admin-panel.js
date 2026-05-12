@@ -144,12 +144,12 @@
       userInfo = { name: 'Admin', picture: '' };
     }
 
-    // Validate owner email (if configured)
-    if (STORE_CONFIG.ownerEmail && userInfo.email) {
-      const allowed = Array.isArray(STORE_CONFIG.ownerEmail)
-        ? STORE_CONFIG.ownerEmail
-        : [STORE_CONFIG.ownerEmail];
-      if (!allowed.includes(userInfo.email)) {
+    // Validate owner email via hash (email not stored in source code)
+    if (STORE_CONFIG._ownerHash && userInfo.email) {
+      const isOwner = typeof STORE_CONFIG.checkOwner === 'function'
+        ? await STORE_CONFIG.checkOwner(userInfo.email)
+        : false;
+      if (!isOwner) {
         toast('⛔ No tenés permiso para acceder a este panel.', 'error');
         accessToken = null;
         sessionStorage.removeItem('admin_token');

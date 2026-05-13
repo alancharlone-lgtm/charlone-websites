@@ -145,10 +145,14 @@
 
   function onTokenResponse(resp) {
     if (resp.error) {
-      toast('Error de autenticación', 'error');
+      toast('Error de autenticación: ' + (resp.error_description || resp.error), 'error');
+      reportError(`OAuth error: ${resp.error} - ${resp.error_description}`, 'onTokenResponse');
       return;
     }
     accessToken = resp.access_token;
+    // ═══ CRÍTICO: Asociar el token al cliente gapi ═══
+    // Sin esto, gapi.client.sheets NO puede hacer llamadas autenticadas.
+    gapi.client.setToken({ access_token: accessToken });
     sessionStorage.setItem('admin_token', accessToken);
     onLoginSuccess();
   }
@@ -358,6 +362,7 @@
       }
 
       STORE_CONFIG.SHEET_ID = sheetId;
+      loadingDiv.remove(); // Quitar pantalla de carga
       toast('✅ ¡Tienda configurada! Ya podés cargar productos.', 'success');
       alert(
         '✅ ¡Tu tienda está lista!\n\n' +

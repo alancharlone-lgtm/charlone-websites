@@ -509,27 +509,47 @@
   // ============================================================
   async function init() {
     try {
-      // 1. Intentar obtener SHEET_ID desde config.json local
-      try {
-        const cfgRes = await fetch('config.json');
-        if (cfgRes.ok) {
-          const localConfig = await cfgRes.json();
-          if (localConfig && localConfig.SHEET_ID) {
-            CONFIG.SHEET_ID = localConfig.SHEET_ID;
-            console.log('🔗 Conectado al Google Sheet desde config.json:', CONFIG.SHEET_ID);
+      // 1. Intentar obtener SHEET_ID desde el servidor (Cloudflare KV)
+      //    Esto se guarda automáticamente cuando el admin conecta su Google Sheet
+      const storeId = document.querySelector('meta[name="store-id"]')?.content;
+      if (storeId && !CONFIG.SHEET_ID) {
+        try {
+          const apiRes = await fetch(`/api/store-config?store=${storeId}`);
+          if (apiRes.ok) {
+            const apiConfig = await apiRes.json();
+            if (apiConfig && apiConfig.SHEET_ID) {
+              CONFIG.SHEET_ID = apiConfig.SHEET_ID;
+              console.log('🔗 SHEET_ID obtenido del servidor:', CONFIG.SHEET_ID);
+            }
           }
+        } catch (err) {
+          console.warn('⚠️ No se pudo consultar /api/store-config:', err);
         }
-      } catch (err) {
-        console.warn('⚠️ No se pudo leer config.json, usando productos.json local...', err);
       }
 
-      // 2. Cargar datos
+      // 2. Fallback: intentar obtener SHEET_ID desde config.json local
+      if (!CONFIG.SHEET_ID) {
+        try {
+          const cfgRes = await fetch('config.json');
+          if (cfgRes.ok) {
+            const localConfig = await cfgRes.json();
+            if (localConfig && localConfig.SHEET_ID) {
+              CONFIG.SHEET_ID = localConfig.SHEET_ID;
+              console.log('🔗 Conectado al Google Sheet desde config.json:', CONFIG.SHEET_ID);
+            }
+          }
+        } catch (err) {
+          console.warn('⚠️ No se pudo leer config.json:', err);
+        }
+      }
+
+      // 3. Cargar datos
       if (CONFIG.SHEET_ID) {
         console.log('📊 Cargando productos desde Google Sheets...');
         storeData = await loadFromGoogleSheets(CONFIG.SHEET_ID, CONFIG.SHEET_TAB);
         console.log(`✅ ${storeData.products.length} productos cargados desde Sheets`);
       } else {
-        console.log('📄 Cargando productos desde JSON local...');
+        console.log('📄 Cargando productos desde JSON local (sin Sheet conectado)...');
         const res = await fetch(CONFIG.LOCAL_JSON);
         storeData = await res.json();
         console.log(`✅ ${storeData.products.length} productos cargados desde JSON`);

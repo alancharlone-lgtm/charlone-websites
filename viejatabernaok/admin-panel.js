@@ -366,13 +366,26 @@
       }
 
       STORE_CONFIG.SHEET_ID = sheetId;
-      loadingDiv.remove(); // Quitar pantalla de carga
+
+      // ═══ PERSISTIR SHEET_ID en servidor (para que la web pública lo lea) ═══
+      try {
+        await fetch('/api/store-config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ store: STORE_CONFIG.storeId, SHEET_ID: sheetId })
+        });
+        console.log('✅ SHEET_ID guardado en servidor para web pública');
+      } catch (kvErr) {
+        console.warn('⚠️ No se pudo persistir SHEET_ID en servidor:', kvErr);
+        reportError(`autoProvision KV save: ${kvErr.message}`, 'store-config');
+      }
+
+      loadingDiv.remove();
       toast('✅ ¡Tienda configurada! Ya podés cargar productos.', 'success');
       alert(
         '✅ ¡Tu tienda está lista!\n\n' +
         'Se creó tu Google Sheet con los ' + localProducts.length + ' productos.\n\n' +
-        'Link del Sheet:\nhttps://docs.google.com/spreadsheets/d/' + sheetId + '\n\n' +
-        'Guardá este ID: ' + sheetId
+        'Link del Sheet:\nhttps://docs.google.com/spreadsheets/d/' + sheetId
       );
     } catch (err) {
       let detail = 'Error desconocido';

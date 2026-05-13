@@ -1,4 +1,10 @@
 {
     "store_id": "viejatabernaok",
-    "plan": "free"
+    "plan": "pro",
+    "features": {
+        "maxProducts": 100,
+        "carousel": true,
+        "video": true,
+        "aiAutoFill": false
+    }
 }

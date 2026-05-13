@@ -2,7 +2,7 @@
  * ============================================================
  * ADMIN PANEL — ADS Labs Marketplace
  * Motor compartido para todos los comerciantes.
- * Se carga desde la raíz de Netlify: /admin-panel.js
+ * Se carga desde la raíz de Cloudflare: /admin-panel.js
  *
  * DOS FUENTES DE CONFIGURACIÓN:
  *   1. STORE_CONFIG (global, definida inline en admin.html)
@@ -24,6 +24,26 @@
   let products = [];
   let currentTab = 'dashboard';
   let demoMode = false;
+
+  // ============================================================
+  // ERROR REPORTING — Envía errores al servidor para monitoreo
+  // ============================================================
+  function reportError(error, context) {
+    const storeId = (typeof STORE_CONFIG !== 'undefined' && STORE_CONFIG.storeId) || 'unknown';
+    try {
+      fetch('/api/report-error', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          storeId,
+          error: String(error),
+          context: context || '',
+          userAgent: navigator.userAgent,
+          timestamp: new Date().toISOString(),
+        })
+      }).catch(() => {}); // Silencioso, nunca bloquear por esto
+    } catch (e) { /* ignore */ }
+  }
 
   // ============================================================
   // INIT
@@ -145,16 +165,11 @@
     }
 
     // ═══ VALIDACIÓN SERVER-SIDE (imposible de bypassear) ═══
-    // Verificamos el token con Cloudflare Worker, NO en el navegador.
-    // El Worker tiene la lista de emails permitidos hardcodeada.
     try {
       const verifyRes = await fetch('/api/verify-admin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          accessToken: accessToken,
-          storeId: STORE_CONFIG.storeId
-        })
+        body: JSON.stringify({ accessToken, storeId: STORE_CONFIG.storeId })
       });
       const verifyData = await verifyRes.json();
       if (!verifyData.allowed) {
@@ -164,16 +179,14 @@
         try { google.accounts.oauth2.revoke(accessToken); } catch(e) {}
         return;
       }
-      // Server confirmed identity — use server-provided info
       if (verifyData.name) userInfo.name = verifyData.name;
       if (verifyData.email) userInfo.email = verifyData.email;
     } catch (serverErr) {
-      // Fallback: si el Worker no está disponible, usar hash local
+      // Fallback: hash local si el Worker no está disponible
       console.warn('⚠️ Server verification unavailable, using local hash fallback');
       if (STORE_CONFIG._ownerHash && userInfo.email) {
         const isOwner = typeof STORE_CONFIG.checkOwner === 'function'
-          ? await STORE_CONFIG.checkOwner(userInfo.email)
-          : false;
+          ? await STORE_CONFIG.checkOwner(userInfo.email) : false;
         if (!isOwner) {
           toast('⛔ No tenés permiso para acceder a este panel.', 'error');
           accessToken = null;
@@ -182,10 +195,7 @@
         }
       }
     }
-
     // ═══ AUTO-PROVISIONING (seguro: solo llega acá después del Worker) ═══
-    // Si no hay SHEET_ID, crear el Sheet automáticamente.
-    // Esto es SEGURO porque el Cloudflare Worker ya verificó que el email es correcto.
     if (!STORE_CONFIG.SHEET_ID || STORE_CONFIG.SHEET_ID.length < 5) {
       document.getElementById('login-screen').style.display = 'none';
       await autoProvisionSheet();
@@ -214,47 +224,62 @@
   async function autoProvisionSheet() {
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'login-screen';
-    loadingDiv.style.cssText = 'flex-direction:column;align-items:center;justify-content:center;';
+    loadingDiv.style.cssText = 'flex-direction:column;align-items:center;justify-content:center;z-index:9999;';
     loadingDiv.innerHTML = `
       <div style="font-size:48px;animation:spin 2s linear infinite;">⏳</div>
       <h2 style="margin-top:20px;font-weight:600;">Configurando tu tienda...</h2>
       <p style="color:#666;margin-top:8px;">Creando Google Sheet y conectando catálogo</p>
+      <p id="provision-status" style="color:#999;margin-top:4px;font-size:12px;">Paso 1/5: Creando planilla...</p>
       <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
     `;
     document.body.appendChild(loadingDiv);
 
+    const updateStatus = (msg) => {
+      const el = document.getElementById('provision-status');
+      if (el) el.textContent = msg;
+    };
+
     try {
       // 1. Crear Google Sheet
-      const createRes = await gapi.client.sheets.spreadsheets.create({
-        properties: { title: `Productos - ${STORE_CONFIG.storeName}` }
-      });
+      updateStatus('Paso 1/5: Creando planilla de Google...');
+      let createRes;
+      try {
+        createRes = await gapi.client.sheets.spreadsheets.create({
+          properties: { title: `Productos - ${STORE_CONFIG.storeName}` }
+        });
+      } catch (sheetsErr) {
+        const detail = sheetsErr?.result?.error?.message || sheetsErr.message || String(sheetsErr);
+        reportError(`autoProvision STEP1 crear Sheet: ${detail}`, 'sheets.create');
+        if (detail.includes('not enabled') || detail.includes('has not been used')) {
+          toast('❌ La API de Google Sheets no está habilitada. Pedile al administrador que la active en Google Cloud Console.', 'error');
+        } else if (detail.includes('insufficient')) {
+          toast('❌ No se otorgaron los permisos necesarios. Cerrá sesión y volvé a intentar aceptando TODOS los permisos.', 'error');
+        } else {
+          toast(`❌ Error creando la planilla: ${detail}`, 'error');
+        }
+        return;
+      }
       const sheetId = createRes.result.spreadsheetId;
 
       // 2. Agregar headers
+      updateStatus('Paso 2/5: Configurando columnas...');
       await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: sheetId,
-        range: 'Sheet1!A1:I1',
-        valueInputOption: 'RAW',
+        spreadsheetId: sheetId, range: 'Sheet1!A1:I1', valueInputOption: 'RAW',
         resource: { values: [['ID', 'Nombre', 'Descripción', 'Categoría', 'Precio', 'Talles', 'Foto URL', 'Video URL', 'Activo']] }
       });
 
-      // 3. Renombrar pestaña a "Productos"
+      // 3. Renombrar pestaña
+      updateStatus('Paso 3/5: Renombrando pestaña...');
       try {
         const sheet = createRes.result.sheets[0];
         await gapi.client.sheets.spreadsheets.batchUpdate({
           spreadsheetId: sheetId,
-          resource: {
-            requests: [{
-              updateSheetProperties: {
-                properties: { sheetId: sheet.properties.sheetId, title: 'Productos' },
-                fields: 'title'
-              }
-            }]
-          }
+          resource: { requests: [{ updateSheetProperties: { properties: { sheetId: sheet.properties.sheetId, title: 'Productos' }, fields: 'title' } }] }
         });
-      } catch (e) { console.warn('No se pudo renombrar pestaña', e); }
+      } catch (e) { console.warn('No se pudo renombrar pestaña:', e); }
 
       // 4. Copiar productos locales al Sheet
+      updateStatus('Paso 4/5: Copiando productos...');
       let localProducts = [];
       try {
         const res = await fetch('productos.json');
@@ -265,45 +290,43 @@
       if (localProducts.length > 0) {
         const rows = localProducts.map(p => [
           p.id, p.name, p.description, p.category, p.price,
-          (p.sizes || []).join(', '),
-          (p.images || [p.image]).filter(Boolean).join(', '),
-          p.video || '',
-          p.active ? 'TRUE' : 'FALSE'
+          (p.sizes || []).join(', '), (p.images || [p.image]).filter(Boolean).join(', '),
+          p.video || '', p.active ? 'TRUE' : 'FALSE'
         ]);
         await gapi.client.sheets.spreadsheets.values.append({
-          spreadsheetId: sheetId,
-          range: 'Productos!A2',
-          valueInputOption: 'USER_ENTERED',
-          insertDataOption: 'INSERT_ROWS',
+          spreadsheetId: sheetId, range: 'Productos!A2',
+          valueInputOption: 'USER_ENTERED', insertDataOption: 'INSERT_ROWS',
           resource: { values: rows }
         });
       }
 
       // 5. Hacer público (solo lectura)
-      await fetch(`https://www.googleapis.com/drive/v3/files/${sheetId}/permissions`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ role: 'reader', type: 'anyone' })
-      });
+      updateStatus('Paso 5/5: Publicando planilla...');
+      try {
+        await fetch(`https://www.googleapis.com/drive/v3/files/${sheetId}/permissions`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ role: 'reader', type: 'anyone' })
+        });
+      } catch (driveErr) {
+        reportError(`autoProvision STEP5 Drive permissions: ${driveErr.message}`, 'drive.permissions');
+        console.warn('No se pudo hacer público el Sheet:', driveErr);
+        // No fatal — el sheet existe, solo no es público aún
+      }
 
-      // 6. Guardar en memoria para esta sesión
       STORE_CONFIG.SHEET_ID = sheetId;
-      toast('¡Tienda configurada!', 'success');
-      
-      // 7. Mostrar el ID para que lo guarde
+      toast('✅ ¡Tienda configurada exitosamente!', 'success');
       alert(
-        '✅ ¡Tu tienda está configurada!\\n\\n' +
-        'Tu Google Sheet ID es:\\n' + sheetId + '\\n\\n' +
-        'Link del Sheet:\\nhttps://docs.google.com/spreadsheets/d/' + sheetId + '\\n\\n' +
-        'Avisale a tu administrador este ID para que lo guarde en config.json.'
+        '✅ ¡Tu tienda está configurada!\n\n' +
+        'Tu Google Sheet ID es:\n' + sheetId + '\n\n' +
+        'Link del Sheet:\nhttps://docs.google.com/spreadsheets/d/' + sheetId + '\n\n' +
+        'Avisale a tu administrador este ID para que lo guarde.'
       );
-
     } catch (err) {
+      const detail = err?.result?.error?.message || err.message || String(err);
       console.error('Error en auto-provisioning:', err);
-      toast('Error configurando la tienda. Recargá e intentá de nuevo.', 'error');
+      reportError(`autoProvision GENERAL: ${detail}`, 'autoProvisionSheet');
+      toast(`❌ Error configurando la tienda: ${detail}`, 'error');
     } finally {
       loadingDiv.remove();
     }
@@ -328,9 +351,7 @@
     }
   }
 
-  // SHEET_ID: solo configurable via git push a config.json (seguridad)
-  // No hay auto-provisioning para evitar ataques de Sheet injection.
-
+  // ============================================================
   // DEMO MODE — Funciona sin Google OAuth ni Sheets
   // ============================================================
   async function demoLogin() {
@@ -934,7 +955,9 @@
     el.textContent = msg;
     container.appendChild(el);
 
-    setTimeout(() => el.remove(), 3000);
+    // Errores se muestran más tiempo para que el usuario pueda leerlos
+    const duration = type === 'error' ? 8000 : 3000;
+    setTimeout(() => el.remove(), duration);
   }
 
 })();

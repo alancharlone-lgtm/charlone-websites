@@ -229,7 +229,8 @@
       <div style="font-size:48px;animation:spin 2s linear infinite;">⏳</div>
       <h2 style="margin-top:20px;font-weight:600;">Configurando tu tienda...</h2>
       <p style="color:#666;margin-top:8px;">Creando Google Sheet y conectando catálogo</p>
-      <p id="provision-status" style="color:#999;margin-top:4px;font-size:12px;">Paso 1/5: Creando planilla...</p>
+      <p id="provision-status" style="color:#999;margin-top:4px;font-size:12px;">Verificando APIs...</p>
+      <div id="provision-error" style="display:none;margin-top:16px;padding:16px;background:#fee2e2;color:#991b1b;border-radius:8px;font-size:13px;max-width:500px;text-align:left;"></div>
       <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
     `;
     document.body.appendChild(loadingDiv);
@@ -238,6 +239,35 @@
       const el = document.getElementById('provision-status');
       if (el) el.textContent = msg;
     };
+
+    const showProvisionError = (title, details, steps) => {
+      const el = document.getElementById('provision-error');
+      if (el) {
+        el.style.display = 'block';
+        el.innerHTML = `
+          <strong style="display:block;margin-bottom:8px;font-size:14px;">${title}</strong>
+          <p style="margin-bottom:8px;">${details}</p>
+          ${steps ? `<div style="margin-top:8px;padding:8px;background:#fef3c7;color:#92400e;border-radius:4px;font-size:12px;">${steps}</div>` : ''}
+          <button onclick="location.reload()" style="margin-top:12px;padding:8px 16px;background:#991b1b;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px;">Reintentar</button>
+        `;
+      }
+      // Stop spinner
+      const spinner = loadingDiv.querySelector('div[style*="animation"]');
+      if (spinner) spinner.style.animation = 'none';
+      if (spinner) spinner.textContent = '❌';
+    };
+
+    // PRE-CHECK: Verificar que gapi.client.sheets está disponible
+    if (!gapi || !gapi.client || !gapi.client.sheets || !gapi.client.sheets.spreadsheets) {
+      const errMsg = 'La API de Google Sheets no se cargó correctamente. Puede que no esté habilitada en Google Cloud Console.';
+      reportError(errMsg, 'gapi.client.sheets missing');
+      showProvisionError(
+        '❌ API de Google Sheets no disponible',
+        'La API no se cargó. Esto pasa cuando la API no está habilitada en tu proyecto de Google Cloud.',
+        '👉 Pedile al administrador que habilite "Google Sheets API" y "Google Drive API" en <a href="https://console.cloud.google.com/apis/library" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Google Cloud Console</a>'
+      );
+      return;
+    }
 
     try {
       // 1. Crear Google Sheet
@@ -248,14 +278,28 @@
           properties: { title: `Productos - ${STORE_CONFIG.storeName}` }
         });
       } catch (sheetsErr) {
-        const detail = sheetsErr?.result?.error?.message || sheetsErr.message || String(sheetsErr);
-        reportError(`autoProvision STEP1 crear Sheet: ${detail}`, 'sheets.create');
-        if (detail.includes('not enabled') || detail.includes('has not been used')) {
-          toast('❌ La API de Google Sheets no está habilitada. Pedile al administrador que la active en Google Cloud Console.', 'error');
-        } else if (detail.includes('insufficient')) {
-          toast('❌ No se otorgaron los permisos necesarios. Cerrá sesión y volvé a intentar aceptando TODOS los permisos.', 'error');
+        let detail = 'Error desconocido';
+        try { detail = sheetsErr?.result?.error?.message || sheetsErr?.message || JSON.stringify(sheetsErr); } catch(e) { detail = String(sheetsErr); }
+        reportError(`autoProvision STEP1: ${detail}`, 'sheets.create');
+
+        if (detail.includes('not enabled') || detail.includes('has not been used') || detail.includes('disabled')) {
+          showProvisionError(
+            '❌ Google Sheets API no está habilitada',
+            'Necesitás habilitar la API en Google Cloud Console antes de poder crear la planilla.',
+            '👉 Abrí este link y hacé clic en "Habilitar": <a href="https://console.cloud.google.com/apis/library/sheets.googleapis.com" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Habilitar Google Sheets API</a>'
+          );
+        } else if (detail.includes('insufficient') || detail.includes('PERMISSION_DENIED')) {
+          showProvisionError(
+            '❌ Permisos insuficientes',
+            'No se otorgaron los permisos de Google Sheets. Cerrá sesión, recargá la página y volvé a intentar. Asegurate de tildar TODAS las casillas.',
+            'Si el problema persiste, borrar cookies del navegador y volver a entrar.'
+          );
         } else {
-          toast(`❌ Error creando la planilla: ${detail}`, 'error');
+          showProvisionError(
+            '❌ Error creando la planilla',
+            `Detalle técnico: ${detail}`,
+            'Intentá recargar la página. Si sigue fallando, contactá al administrador.'
+          );
         }
         return;
       }
@@ -279,7 +323,7 @@
       } catch (e) { console.warn('No se pudo renombrar pestaña:', e); }
 
       // 4. Copiar productos locales al Sheet
-      updateStatus('Paso 4/5: Copiando productos...');
+      updateStatus('Paso 4/5: Copiando los 49 productos al Sheet...');
       let localProducts = [];
       try {
         const res = await fetch('productos.json');
@@ -309,26 +353,28 @@
           body: JSON.stringify({ role: 'reader', type: 'anyone' })
         });
       } catch (driveErr) {
-        reportError(`autoProvision STEP5 Drive permissions: ${driveErr.message}`, 'drive.permissions');
-        console.warn('No se pudo hacer público el Sheet:', driveErr);
-        // No fatal — el sheet existe, solo no es público aún
+        reportError(`autoProvision STEP5: ${driveErr.message}`, 'drive.permissions');
+        // No fatal
       }
 
       STORE_CONFIG.SHEET_ID = sheetId;
-      toast('✅ ¡Tienda configurada exitosamente!', 'success');
+      toast('✅ ¡Tienda configurada! Ya podés cargar productos.', 'success');
       alert(
-        '✅ ¡Tu tienda está configurada!\n\n' +
-        'Tu Google Sheet ID es:\n' + sheetId + '\n\n' +
+        '✅ ¡Tu tienda está lista!\n\n' +
+        'Se creó tu Google Sheet con los ' + localProducts.length + ' productos.\n\n' +
         'Link del Sheet:\nhttps://docs.google.com/spreadsheets/d/' + sheetId + '\n\n' +
-        'Avisale a tu administrador este ID para que lo guarde.'
+        'Guardá este ID: ' + sheetId
       );
     } catch (err) {
-      const detail = err?.result?.error?.message || err.message || String(err);
+      let detail = 'Error desconocido';
+      try { detail = err?.result?.error?.message || err?.message || JSON.stringify(err); } catch(e) { detail = String(err); }
       console.error('Error en auto-provisioning:', err);
       reportError(`autoProvision GENERAL: ${detail}`, 'autoProvisionSheet');
-      toast(`❌ Error configurando la tienda: ${detail}`, 'error');
-    } finally {
-      loadingDiv.remove();
+      showProvisionError(
+        '❌ Error configurando la tienda',
+        `Detalle: ${detail}`,
+        'Intentá recargar la página (Ctrl+F5). Si sigue fallando, contactá al administrador.'
+      );
     }
   }
 

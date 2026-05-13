@@ -309,22 +309,26 @@
       }
       const sheetId = createRes.result.spreadsheetId;
 
-      // 2. Agregar headers
-      updateStatus('Paso 2/5: Configurando columnas...');
-      await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: sheetId, range: 'Sheet1!A1:I1', valueInputOption: 'RAW',
-        resource: { values: [['ID', 'Nombre', 'Descripción', 'Categoría', 'Precio', 'Talles', 'Foto URL', 'Video URL', 'Activo']] }
-      });
-
-      // 3. Renombrar pestaña
-      updateStatus('Paso 3/5: Renombrando pestaña...');
+      // 2. Renombrar pestaña inicial a "Productos" (Soluciona el bug de "Hoja 1" vs "Sheet1" en cuentas en español)
+      updateStatus('Paso 2/5: Configurando pestaña...');
+      let targetSheetName = 'Productos';
       try {
         const sheet = createRes.result.sheets[0];
         await gapi.client.sheets.spreadsheets.batchUpdate({
           spreadsheetId: sheetId,
           resource: { requests: [{ updateSheetProperties: { properties: { sheetId: sheet.properties.sheetId, title: 'Productos' }, fields: 'title' } }] }
         });
-      } catch (e) { console.warn('No se pudo renombrar pestaña:', e); }
+      } catch (e) { 
+        console.warn('No se pudo renombrar pestaña:', e);
+        targetSheetName = createRes.result.sheets[0].properties.title; // Fallback al nombre original (ej: "Hoja 1")
+      }
+
+      // 3. Agregar headers
+      updateStatus('Paso 3/5: Configurando columnas...');
+      await gapi.client.sheets.spreadsheets.values.update({
+        spreadsheetId: sheetId, range: `${targetSheetName}!A1:I1`, valueInputOption: 'RAW',
+        resource: { values: [['ID', 'Nombre', 'Descripción', 'Categoría', 'Precio', 'Talles', 'Foto URL', 'Video URL', 'Activo']] }
+      });
 
       // 4. Copiar productos locales al Sheet
       updateStatus('Paso 4/5: Copiando los 49 productos al Sheet...');

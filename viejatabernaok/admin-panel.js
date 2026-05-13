@@ -346,7 +346,7 @@
           p.video || '', p.active ? 'TRUE' : 'FALSE'
         ]);
         await gapi.client.sheets.spreadsheets.values.append({
-          spreadsheetId: sheetId, range: 'Productos!A2',
+          spreadsheetId: sheetId, range: 'A2',
           valueInputOption: 'USER_ENTERED', insertDataOption: 'INSERT_ROWS',
           resource: { values: rows }
         });
@@ -488,7 +488,7 @@
     try {
       const response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        range: 'Productos!A1:I100',
+        range: 'A1:I100',
       });
 
       const rows = response.result.values || [];
@@ -748,7 +748,7 @@
     try {
       await gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        range: 'Productos!A:I',
+        range: 'A:I',
         valueInputOption: 'USER_ENTERED',
         resource: { values: [newRow] },
       });
@@ -758,7 +758,10 @@
       await loadProducts();
       renderProductList();
     } catch (e) {
-      toast('Error: ' + e.message, 'error');
+      let detail = 'Error desconocido';
+      try { detail = e?.result?.error?.message || e?.message || JSON.stringify(e); } catch(err) { detail = String(e); }
+      reportError(`addProduct error: ${detail}`, 'addProduct');
+      toast('Error agregando producto: ' + detail, 'error');
     }
   }
 
@@ -801,7 +804,7 @@
     try {
       await gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        range: `Productos!A${rowIndex}:I${rowIndex}`,
+        range: `A${rowIndex}:I${rowIndex}`,
         valueInputOption: 'USER_ENTERED',
         resource: { values: [updatedRow] },
       });
@@ -945,7 +948,7 @@
 
       await gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        range: `Productos!G${targetRow}`,
+        range: `G${targetRow}`,
         valueInputOption: 'USER_ENTERED',
         resource: { values: [[imageStr]] },
       });

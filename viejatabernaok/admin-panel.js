@@ -205,6 +205,20 @@
       await autoProvisionSheet();
     }
 
+    // ═══ SIEMPRE persistir SHEET_ID en servidor (por si no se guardó antes) ═══
+    if (STORE_CONFIG.SHEET_ID && STORE_CONFIG.SHEET_ID.length > 5) {
+      try {
+        await fetch('/api/store-config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ store: STORE_CONFIG.storeId, SHEET_ID: STORE_CONFIG.SHEET_ID })
+        });
+        console.log('✅ SHEET_ID sincronizado con servidor');
+      } catch (e) {
+        console.warn('⚠️ No se pudo sincronizar SHEET_ID:', e);
+      }
+    }
+
     // Show admin layout
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('admin-layout').style.display = 'block';

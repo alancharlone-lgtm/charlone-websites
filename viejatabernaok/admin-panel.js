@@ -193,8 +193,6 @@
       const verifyData = await verifyRes.json();
       console.log('🔐 verify-admin response:', JSON.stringify(verifyData), 'status:', verifyRes.status);
       if (!verifyData.allowed) {
-        console.error('❌ Acceso denegado. Email de Google:', userInfo.email, 'Store:', STORE_CONFIG.storeId);
-        alert('DEBUG: Acceso denegado.\nEmail con el que entraste: ' + (userInfo.email || 'desconocido') + '\nStore ID: ' + STORE_CONFIG.storeId + '\nRespuesta del servidor: ' + JSON.stringify(verifyData));
         toast('⛔ No tenés permiso para acceder a este panel.', 'error');
         accessToken = null;
         sessionStorage.removeItem('admin_token');

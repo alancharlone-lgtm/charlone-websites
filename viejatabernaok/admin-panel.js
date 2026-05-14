@@ -176,18 +176,20 @@
         body: JSON.stringify({ accessToken, storeId: STORE_CONFIG.storeId })
       });
       const verifyData = await verifyRes.json();
+      console.log('🔐 verify-admin response:', JSON.stringify(verifyData), 'status:', verifyRes.status);
       if (!verifyData.allowed) {
+        console.error('❌ Acceso denegado. Email de Google:', userInfo.email, 'Store:', STORE_CONFIG.storeId);
+        alert('DEBUG: Acceso denegado.\nEmail con el que entraste: ' + (userInfo.email || 'desconocido') + '\nStore ID: ' + STORE_CONFIG.storeId + '\nRespuesta del servidor: ' + JSON.stringify(verifyData));
         toast('⛔ No tenés permiso para acceder a este panel.', 'error');
         accessToken = null;
         sessionStorage.removeItem('admin_token');
-        try { google.accounts.oauth2.revoke(accessToken); } catch(e) {}
         return;
       }
       if (verifyData.name) userInfo.name = verifyData.name;
       if (verifyData.email) userInfo.email = verifyData.email;
     } catch (serverErr) {
       // Fallback: hash local si el Worker no está disponible
-      console.warn('⚠️ Server verification unavailable, using local hash fallback');
+      console.warn('⚠️ Server verification unavailable, using local hash fallback:', serverErr);
       if (STORE_CONFIG._ownerHash && userInfo.email) {
         const isOwner = typeof STORE_CONFIG.checkOwner === 'function'
           ? await STORE_CONFIG.checkOwner(userInfo.email) : false;

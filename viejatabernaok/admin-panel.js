@@ -115,9 +115,24 @@
       // Check if already logged in (session storage)
       const savedToken = sessionStorage.getItem('admin_token');
       if (savedToken) {
-        accessToken = savedToken;
-        gapi.client.setToken({ access_token: accessToken });
-        await onLoginSuccess();
+        // Verificar que el token NO esté expirado antes de usarlo
+        try {
+          const checkRes = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+            headers: { Authorization: `Bearer ${savedToken}` }
+          });
+          if (checkRes.ok) {
+            accessToken = savedToken;
+            gapi.client.setToken({ access_token: accessToken });
+            await onLoginSuccess();
+          } else {
+            // Token expirado — limpiar y que el usuario se loguee de nuevo
+            console.warn('🔑 Token guardado expirado, limpiando...');
+            sessionStorage.removeItem('admin_token');
+          }
+        } catch (e) {
+          console.warn('🔑 Error verificando token guardado:', e);
+          sessionStorage.removeItem('admin_token');
+        }
       }
     } catch (e) {
       console.warn('Google APIs no disponibles:', e.message);

@@ -15,7 +15,7 @@
   'use strict';
 
   const CLIENT_ID = '3959192869-dp0lcvlmhfmkglgdvf94u3vl5hi9hscj.apps.googleusercontent.com';
-  const SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.file';
+  const SCOPES = 'email profile https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.file';
 
   let tokenClient;
   let accessToken = null;

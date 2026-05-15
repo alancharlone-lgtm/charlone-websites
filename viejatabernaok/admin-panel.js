@@ -890,12 +890,22 @@
       return;
     }
 
+    // Verificar que tenemos SHEET_ID
+    if (!STORE_CONFIG.SHEET_ID || STORE_CONFIG.SHEET_ID.length < 5) {
+      toast('❌ No hay Sheet configurado. No se puede eliminar.', 'error');
+      return;
+    }
+
+    toast('⏳ Eliminando producto...');
+
     try {
-      // Get spreadsheet ID to find sheet GID
+      // Get spreadsheet info to find the numeric sheet GID
       const ssInfo = await gapi.client.sheets.spreadsheets.get({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
       });
       const sheetId = ssInfo.result.sheets[0].properties.sheetId;
+      const sheetTitle = ssInfo.result.sheets[0].properties.title;
+      console.log(`🗑️ Eliminando fila ${rowIndex} de pestaña "${sheetTitle}" (GID: ${sheetId})`);
 
       await gapi.client.sheets.spreadsheets.batchUpdate({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
@@ -912,7 +922,17 @@
       await loadProducts();
       renderProductList();
     } catch (e) {
-      toast('Error: ' + e.message, 'error');
+      const detail = e?.result?.error?.message || e?.message || String(e);
+      console.error('❌ Error eliminando producto:', detail, e);
+      reportError(`deleteProduct row ${rowIndex}: ${detail}`, 'deleteProduct');
+      
+      if (detail.includes('insufficient') || detail.includes('PERMISSION_DENIED')) {
+        toast('❌ Sin permiso para editar el Sheet. Cerrá sesión y volvé a entrar aceptando todos los permisos.', 'error');
+      } else if (detail.includes('not found') || detail.includes('Unable to parse range')) {
+        toast('❌ La planilla no se encontró. Puede que haya sido eliminada.', 'error');
+      } else {
+        toast('❌ Error eliminando: ' + detail, 'error');
+      }
     }
   }
 

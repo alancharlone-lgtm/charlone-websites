@@ -45,6 +45,12 @@
     } catch (e) { /* ignore */ }
   }
 
+  // Helper: escapar HTML para evitar XSS y rotura de atributos
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  }
+
   // ============================================================
   // INIT
   // ============================================================
@@ -724,12 +730,19 @@
     const isEdit = !!rowIndex;
     const product = isEdit ? products.find(p => p.rowIndex === rowIndex) : {};
 
+    // Guard: si es edición pero no se encontró el producto, recargar
+    if (isEdit && (!product || !product.name)) {
+      toast('⚠️ Producto no encontrado. Recargando lista...', 'error');
+      loadProducts().then(() => renderProductList());
+      return;
+    }
+
     // Categories from STORE_CONFIG (inline in admin.html)
     const categories = (typeof STORE_CONFIG !== 'undefined' && STORE_CONFIG.categories)
       ? STORE_CONFIG.categories
       : ['General'];
     const catOptions = categories.map(c =>
-      `<option value="${c}" ${product.category === c ? 'selected' : ''}>${c}</option>`
+      `<option value="${escapeHtml(c)}" ${product.category === c ? 'selected' : ''}>${escapeHtml(c)}</option>`
     ).join('');
 
     document.getElementById('modal-overlay').innerHTML = `
@@ -737,11 +750,11 @@
         <h3>${isEdit ? 'Editar' : 'Agregar'} Producto</h3>
         <div class="form-group">
           <label>Nombre</label>
-          <input type="text" id="form-name" value="${product.name || ''}" placeholder="Ej: Taladro Bosch 13mm">
+          <input type="text" id="form-name" placeholder="Ej: Taladro Bosch 13mm">
         </div>
         <div class="form-group">
           <label>Descripción</label>
-          <textarea id="form-desc" placeholder="Descripción breve del producto">${product.description || ''}</textarea>
+          <textarea id="form-desc" placeholder="Descripción breve del producto"></textarea>
         </div>
         <div class="form-group">
           <label>Categoría</label>
@@ -749,11 +762,11 @@
         </div>
         <div class="form-group">
           <label>Precio ($)</label>
-          <input type="number" id="form-price" value="${product.price || 0}" min="0">
+          <input type="number" id="form-price" min="0">
         </div>
         <div class="form-group">
           <label>Talles (separados por coma, o "Único")</label>
-          <input type="text" id="form-sizes" value="${product.sizes || 'Único'}" placeholder="S, M, L, XL">
+          <input type="text" id="form-sizes" placeholder="S, M, L, XL">
         </div>
         <div class="form-actions">
           <button class="btn-sm" onclick="AdminPanel.closeModal()">Cancelar</button>
@@ -761,6 +774,13 @@
         </div>
       </div>
     `;
+
+    // Asignar valores via DOM (evita problemas con comillas/caracteres especiales en HTML)
+    document.getElementById('form-name').value = product.name || '';
+    document.getElementById('form-desc').value = product.description || '';
+    document.getElementById('form-price').value = product.price || 0;
+    document.getElementById('form-sizes').value = product.sizes || 'Único';
+
     document.getElementById('modal-overlay').classList.add('show');
   }
 

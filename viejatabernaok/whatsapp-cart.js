@@ -548,6 +548,33 @@
         console.log('📊 Cargando productos desde Google Sheets...');
         storeData = await loadFromGoogleSheets(CONFIG.SHEET_ID, CONFIG.SHEET_TAB);
         console.log(`✅ ${storeData.products.length} productos cargados desde Sheets`);
+
+        // 4. Merge imágenes locales (productos.json) si existen
+        //    Las fotos IA del JSON local sobreescriben las genéricas del Sheet
+        try {
+          const localRes = await fetch(CONFIG.LOCAL_JSON);
+          if (localRes.ok) {
+            const localData = await localRes.json();
+            const localMap = {};
+            (localData.products || []).forEach(lp => {
+              localMap[lp.name?.toLowerCase().trim()] = lp;
+            });
+            let mergedCount = 0;
+            storeData.products.forEach(p => {
+              const local = localMap[p.name?.toLowerCase().trim()];
+              if (local && local.image) {
+                p.image = local.image;
+                p.images = local.images || [local.image];
+                mergedCount++;
+              }
+            });
+            if (mergedCount > 0) {
+              console.log(`🖼️ ${mergedCount} imágenes actualizadas desde productos.json`);
+            }
+          }
+        } catch (imgErr) {
+          console.warn('⚠️ No se pudo cargar productos.json para imágenes:', imgErr);
+        }
       } else {
         console.log('📄 Cargando productos desde JSON local (sin Sheet conectado)...');
         const res = await fetch(CONFIG.LOCAL_JSON);

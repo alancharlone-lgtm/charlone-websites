@@ -897,27 +897,49 @@
     }
 
     toast('⏳ Eliminando producto...');
+    console.log(`🗑️ Intentando eliminar fila ${rowIndex} del Sheet ${STORE_CONFIG.SHEET_ID.substring(0, 8)}...`);
 
     try {
-      // Get spreadsheet info to find the numeric sheet GID
-      const ssInfo = await gapi.client.sheets.spreadsheets.get({
-        spreadsheetId: STORE_CONFIG.SHEET_ID,
-      });
-      const sheetId = ssInfo.result.sheets[0].properties.sheetId;
-      const sheetTitle = ssInfo.result.sheets[0].properties.title;
-      console.log(`🗑️ Eliminando fila ${rowIndex} de pestaña "${sheetTitle}" (GID: ${sheetId})`);
+      // ESTRATEGIA 1: Intentar eliminar la fila con deleteDimension
+      try {
+        const ssInfo = await gapi.client.sheets.spreadsheets.get({
+          spreadsheetId: STORE_CONFIG.SHEET_ID,
+        });
+        const sheetId = ssInfo.result.sheets[0].properties.sheetId;
+        const sheetTitle = ssInfo.result.sheets[0].properties.title;
+        console.log(`🗑️ Sheet: "${sheetTitle}" (GID: ${sheetId}), eliminando fila ${rowIndex}`);
 
-      await gapi.client.sheets.spreadsheets.batchUpdate({
+        await gapi.client.sheets.spreadsheets.batchUpdate({
+          spreadsheetId: STORE_CONFIG.SHEET_ID,
+          resource: {
+            requests: [{
+              deleteDimension: {
+                range: { sheetId, dimension: 'ROWS', startIndex: rowIndex - 1, endIndex: rowIndex }
+              }
+            }]
+          }
+        });
+
+        console.log('✅ Fila eliminada con deleteDimension');
+        toast('🗑️ Producto eliminado');
+        await loadProducts();
+        renderProductList();
+        return;
+      } catch (deleteErr) {
+        const detail1 = deleteErr?.result?.error?.message || deleteErr?.message || String(deleteErr);
+        console.warn('⚠️ deleteDimension falló, intentando con clear:', detail1);
+      }
+
+      // ESTRATEGIA 2: Fallback — borrar contenido de la fila (más permisivo)
+      console.log(`🗑️ Fallback: limpiando contenido de fila ${rowIndex}`);
+      await gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        resource: {
-          requests: [{
-            deleteDimension: {
-              range: { sheetId, dimension: 'ROWS', startIndex: rowIndex - 1, endIndex: rowIndex }
-            }
-          }]
-        }
+        range: `A${rowIndex}:I${rowIndex}`,
+        valueInputOption: 'RAW',
+        resource: { values: [['', '', '', '', '', '', '', '', '']] }
       });
 
+      console.log('✅ Fila vaciada con values.update');
       toast('🗑️ Producto eliminado');
       await loadProducts();
       renderProductList();

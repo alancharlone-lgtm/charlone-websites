@@ -69,6 +69,25 @@
       storeConfig = { plan: 'free', features: { maxProducts: 20, carousel: false, video: false, aiAutoFill: false } };
     }
 
+    // ═══ RECUPERAR SHEET_ID DESDE SERVIDOR (KV) ═══
+    // Si el SHEET_ID está vacío en el HTML, intentar recuperarlo del KV
+    // donde fue guardado durante el auto-provisioning anterior.
+    if (typeof STORE_CONFIG !== 'undefined' && STORE_CONFIG.storeId &&
+        (!STORE_CONFIG.SHEET_ID || STORE_CONFIG.SHEET_ID.length < 5)) {
+      try {
+        const kvRes = await fetch(`/api/store-config?store=${STORE_CONFIG.storeId}`);
+        if (kvRes.ok) {
+          const kvData = await kvRes.json();
+          if (kvData.SHEET_ID && kvData.SHEET_ID.length > 5) {
+            STORE_CONFIG.SHEET_ID = kvData.SHEET_ID;
+            console.log('🔑 SHEET_ID recuperado desde servidor:', kvData.SHEET_ID.substring(0, 8) + '...');
+          }
+        }
+      } catch (kvErr) {
+        console.warn('⚠️ No se pudo recuperar SHEET_ID del servidor:', kvErr);
+      }
+    }
+
     // Check if demo mode via URL param
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('demo') === '1') {

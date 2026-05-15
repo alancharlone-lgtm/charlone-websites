@@ -583,7 +583,38 @@
         </div>
     </div>
 
-    <script src="whatsapp-cart.js?v=20260515-2"></script>
+    <script src="whatsapp-cart.js?v=20260515-3"></script>
+    <script>
+    // Override imágenes del Sheet con las locales de productos.json
+    (function() {
+      const origInit = window.addEventListener;
+      let attempts = 0;
+      function overrideImages() {
+        const cards = document.querySelectorAll('.product-card');
+        if (cards.length === 0 && attempts < 20) {
+          attempts++;
+          setTimeout(overrideImages, 500);
+          return;
+        }
+        fetch('productos.json').then(r => r.json()).then(data => {
+          const map = {};
+          (data.products || []).forEach(p => { map[p.name] = p.image; });
+          cards.forEach(card => {
+            const img = card.querySelector('img');
+            if (img && map[img.alt]) {
+              img.src = map[img.alt];
+            }
+          });
+          console.log('🖼️ Imágenes override aplicado:', Object.keys(map).length, 'productos');
+        }).catch(e => console.warn('⚠️ No se pudo aplicar override de imágenes:', e));
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => setTimeout(overrideImages, 1500));
+      } else {
+        setTimeout(overrideImages, 1500);
+      }
+    })();
+    </script>
 
     <!-- Acceso secreto al admin: ?gestion -->
     <script>

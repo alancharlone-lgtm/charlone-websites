@@ -10,7 +10,7 @@
       "description": "Clásica milanesa de carne a caballo con papas fritas doradas y crocantes.",
       "category": "Minutas",
       "price": 0,
-      "image": "img/img_milanesa_1778621587738.png",
+      "image": "img/milanesa_papas_fritas.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -21,7 +21,7 @@
       "description": "Milanesa gratinada con salsa de tomate, jamón y queso muzzarella, acompañada de papas fritas.",
       "category": "Minutas",
       "price": 0,
-      "image": "img/img_milanesa_1778621587738.png",
+      "image": "img/milanesa_napolitana.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -32,7 +32,7 @@
       "description": "Suprema de pollo crocante con papas fritas.",
       "category": "Minutas",
       "price": 0,
-      "image": "img/img_milanesa_1778621587738.png",
+      "image": "img/suprema_papas_fritas.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -43,7 +43,7 @@
       "description": "Suprema de pollo gratinada con salsa, jamón y queso, con papas fritas.",
       "category": "Minutas",
       "price": 0,
-      "image": "img/img_milanesa_1778621587738.png",
+      "image": "img/suprema_napolitana.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -54,7 +54,7 @@
       "description": "Medallón de lomo a la plancha con papas fritas.",
       "category": "Minutas",
       "price": 0,
-      "image": "img/img_milanesa_1778621587738.png",
+      "image": "img/lomo_papas_fritas.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -65,7 +65,7 @@
       "description": "Hamburguesa casera con lechuga, tomate, huevo, queso y papas fritas.",
       "category": "Minutas",
       "price": 0,
-      "image": "img/img_milanesa_1778621587738.png",
+      "image": "img/hamburguesa_completa.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -76,7 +76,7 @@
       "description": "Tortilla española esponjosa de papa y cebolla.",
       "category": "Minutas",
       "price": 0,
-      "image": "img/img_milanesa_1778621587738.png",
+      "image": "img/tortilla_papas.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -87,7 +87,7 @@
       "description": "Porción generosa de papas fritas doradas.",
       "category": "Minutas",
       "price": 0,
-      "image": "img/img_milanesa_1778621587738.png",
+      "image": "img/papas_fritas.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -99,7 +99,7 @@
       "description": "Pizza clásica con abundante muzzarella dorada.",
       "category": "Pizzas",
       "price": 0,
-      "image": "img/img_pizza_1778621601090.png",
+      "image": "img/pizza_muzzarella.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -110,7 +110,7 @@
       "description": "Pizza con queso roquefort fundido, sabor intenso y cremoso.",
       "category": "Pizzas",
       "price": 0,
-      "image": "img/img_pizza_1778621601090.png",
+      "image": "img/pizza_roquefort.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -121,7 +121,7 @@
       "description": "Pizza con rodajas de tomate, ajo y aceitunas verdes.",
       "category": "Pizzas",
       "price": 0,
-      "image": "img/img_pizza_1778621601090.png",
+      "image": "img/pizza_napolitana.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -132,7 +132,7 @@
       "description": "Pizza con doble capa de muzzarella y cebolla caramelizada.",
       "category": "Pizzas",
       "price": 0,
-      "image": "img/img_pizza_1778621601090.png",
+      "image": "img/pizza_fugazzeta.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -143,7 +143,7 @@
       "description": "Pizza con longaniza calabresa, morrón y aceitunas.",
       "category": "Pizzas",
       "price": 0,
-      "image": "img/img_pizza_1778621601090.png",
+      "image": "img/pizza_calabresa.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -154,7 +154,7 @@
       "description": "Combinación especial del chef con ingredientes de estación.",
       "category": "Pizzas",
       "price": 0,
-      "image": "img/img_pizza_1778621601090.png",
+      "image": "img/pizza_especial.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -165,7 +165,7 @@
       "description": "Pizza con jamón cocido, morrones asados y aceitunas.",
       "category": "Pizzas",
       "price": 0,
-      "image": "img/img_pizza_1778621601090.png",
+      "image": "img/pizza_jamon_morrones.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -176,7 +176,7 @@
       "description": "Fainá de garbanzos crocante para acompañar tu pizza.",
       "category": "Pizzas",
       "price": 0,
-      "image": "img/img_pizza_1778621601090.png",
+      "image": "img/faina.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -188,7 +188,7 @@
       "description": "Empanadas criollas de carne cortada a cuchillo.",
       "category": "Empanadas",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/empanadas_carne.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -199,7 +199,7 @@
       "description": "Empanadas de pollo desmenuzado con cebolla y morrón.",
       "category": "Empanadas",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/empanadas_pollo.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -210,7 +210,7 @@
       "description": "Empanadas de jamón cocido y queso derretido.",
       "category": "Empanadas",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/empanadas_jamon_queso.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -221,7 +221,7 @@
       "description": "Empanadas de acelga, cebolla y huevo.",
       "category": "Empanadas",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/empanadas_verdura.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -232,7 +232,7 @@
       "description": "Empanadas de choclo cremoso con salsa blanca.",
       "category": "Empanadas",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/empanadas_humita.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -243,7 +243,7 @@
       "description": "Empanadas rellenas de queso roquefort cremoso.",
       "category": "Empanadas",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/empanadas_roquefort.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -254,7 +254,7 @@
       "description": "12 empanadas surtidas a elección del cliente.",
       "category": "Empanadas",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/docena_surtida.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -266,7 +266,7 @@
       "description": "Asado de tira a la parrilla con carbón, cocción lenta. Porción individual.",
       "category": "Parrilla",
       "price": 0,
-      "image": "img/img_asado_1778621638290.png",
+      "image": "img/asado_tira.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -277,7 +277,7 @@
       "description": "Vacío tierno y jugoso cocinado a las brasas.",
       "category": "Parrilla",
       "price": 0,
-      "image": "img/img_asado_1778621638290.png",
+      "image": "img/vacio_parrilla.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -288,7 +288,7 @@
       "description": "Chorizo criollo a las brasas, bien jugoso.",
       "category": "Parrilla",
       "price": 0,
-      "image": "img/img_asado_1778621638290.png",
+      "image": "img/chorizo_parrilla.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -299,7 +299,7 @@
       "description": "Morcilla crocante por fuera, cremosa por dentro.",
       "category": "Parrilla",
       "price": 0,
-      "image": "img/img_asado_1778621638290.png",
+      "image": "img/morcilla.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -310,7 +310,7 @@
       "description": "Selección de cortes de parrilla para compartir: asado, vacío, chorizo y morcilla.",
       "category": "Parrilla",
       "price": 0,
-      "image": "img/img_asado_1778621638290.png",
+      "image": "img/tabla_parrillera.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -322,7 +322,7 @@
       "description": "Bondiola de cerdo braseada, tierna y jugosa, con papas al horno.",
       "category": "Especiales",
       "price": 0,
-      "image": "img/img_asado_1778621638290.png",
+      "image": "img/bondiola_papas.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -333,7 +333,7 @@
       "description": "Vacío cocinado lentamente al horno, desmenuzable y sabroso.",
       "category": "Especiales",
       "price": 0,
-      "image": "img/img_asado_1778621638290.png",
+      "image": "img/vacio_horno.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -344,7 +344,7 @@
       "description": "Matambre arrollado gratinado con salsa de tomate, jamón y muzzarella.",
       "category": "Especiales",
       "price": 0,
-      "image": "img/img_asado_1778621638290.png",
+      "image": "img/matambre_pizza.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -355,7 +355,7 @@
       "description": "Pollo entero al horno con hierbas y papas rústicas doradas.",
       "category": "Especiales",
       "price": 0,
-      "image": "img/img_milanesa_1778621587738.png",
+      "image": "img/pollo_horno_papas.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -366,7 +366,7 @@
       "description": "Sorrentinos caseros rellenos de jamón y queso con salsa a elección.",
       "category": "Especiales",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/sorrentinos.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -377,7 +377,7 @@
       "description": "Ravioles caseros de ricota y verdura con salsa bolognesa o tuco.",
       "category": "Especiales",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/ravioles_verdura.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -388,7 +388,7 @@
       "description": "Ñoquis caseros de papa con salsa a elección: tuco, bolognesa o fileto.",
       "category": "Especiales",
       "price": 0,
-      "image": "img/img_empanadas_1778621618215.png",
+      "image": "img/noquis_papa.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -489,7 +489,7 @@
       "description": "Flan casero de huevo con dulce de leche y crema.",
       "category": "Postres",
       "price": 0,
-      "image": "img/img_flan_1778621660462.png",
+      "image": "img/flan_dulce_leche.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -500,7 +500,7 @@
       "description": "Panqueques rellenos de dulce de leche, espolvoreados con azúcar impalpable.",
       "category": "Postres",
       "price": 0,
-      "image": "img/img_flan_1778621660462.png",
+      "image": "img/panqueques_dulce_leche.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -511,7 +511,7 @@
       "description": "Brownie de chocolate tibio con bocha de helado de crema americana.",
       "category": "Postres",
       "price": 0,
-      "image": "img/img_flan_1778621660462.png",
+      "image": "img/brownie_helado.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -522,7 +522,7 @@
       "description": "Tiramisú casero con café, mascarpone y cacao.",
       "category": "Postres",
       "price": 0,
-      "image": "img/img_flan_1778621660462.png",
+      "image": "img/tiramisu.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -533,7 +533,7 @@
       "description": "Copa de helado con 3 gustos a elección, crema y salsa de chocolate.",
       "category": "Postres",
       "price": 0,
-      "image": "img/img_flan_1778621660462.png",
+      "image": "img/copa_helada.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -544,7 +544,7 @@
       "description": "Ensalada de frutas de estación con crema y helado opcional.",
       "category": "Postres",
       "price": 0,
-      "image": "img/img_flan_1778621660462.png",
+      "image": "img/ensalada_frutas.png",
       "video": "",
       "sizes": ["Único"],
       "active": true

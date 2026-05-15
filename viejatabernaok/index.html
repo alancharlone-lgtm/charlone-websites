@@ -587,31 +587,47 @@
     <script>
     // Override imágenes del Sheet con las locales de productos.json
     (function() {
-      const origInit = window.addEventListener;
-      let attempts = 0;
-      function overrideImages() {
+      let imageMap = null;
+      
+      function applyImageOverrides() {
+        if (!imageMap) return;
         const cards = document.querySelectorAll('.product-card');
-        if (cards.length === 0 && attempts < 20) {
-          attempts++;
-          setTimeout(overrideImages, 500);
-          return;
+        cards.forEach(card => {
+          const img = card.querySelector('img');
+          if (img && imageMap[img.alt] && !img.src.includes(imageMap[img.alt])) {
+            img.src = imageMap[img.alt];
+          }
+        });
+      }
+      
+      // Cargar el mapa de imágenes una vez
+      fetch('productos.json').then(r => r.json()).then(data => {
+        imageMap = {};
+        (data.products || []).forEach(p => { if (p.image) imageMap[p.name] = p.image; });
+        console.log('🖼️ Mapa de imágenes cargado:', Object.keys(imageMap).length, 'productos');
+        applyImageOverrides();
+        
+        // Observar cambios en el grid (filtros de categoría, búsqueda)
+        const grid = document.getElementById('products-grid');
+        if (grid) {
+          new MutationObserver(() => setTimeout(applyImageOverrides, 50)).observe(grid, { childList: true, subtree: true });
         }
-        fetch('productos.json').then(r => r.json()).then(data => {
-          const map = {};
-          (data.products || []).forEach(p => { map[p.name] = p.image; });
-          cards.forEach(card => {
-            const img = card.querySelector('img');
-            if (img && map[img.alt]) {
-              img.src = map[img.alt];
-            }
-          });
-          console.log('🖼️ Imágenes override aplicado:', Object.keys(map).length, 'productos');
-        }).catch(e => console.warn('⚠️ No se pudo aplicar override de imágenes:', e));
+      }).catch(e => console.warn('⚠️ No se pudo cargar mapa de imágenes:', e));
+      
+      // También aplicar cuando el carrito termine de cargar (backup)
+      let attempts = 0;
+      function waitAndApply() {
+        if (document.querySelectorAll('.product-card').length > 0) {
+          applyImageOverrides();
+        } else if (attempts < 30) {
+          attempts++;
+          setTimeout(waitAndApply, 500);
+        }
       }
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => setTimeout(overrideImages, 1500));
+        document.addEventListener('DOMContentLoaded', () => setTimeout(waitAndApply, 1000));
       } else {
-        setTimeout(overrideImages, 1500);
+        setTimeout(waitAndApply, 1000);
       }
     })();
     </script>

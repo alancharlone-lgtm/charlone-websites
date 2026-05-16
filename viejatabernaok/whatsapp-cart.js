@@ -455,6 +455,9 @@
         return idx >= 0 && cells[idx] ? (cells[idx].v || '') : '';
       };
 
+      const name = get('nombre') || get('name') || '';
+      if (!name) continue; // Skip empty rows (e.g., from deleted products)
+
       const activeRaw = get('activo');
       const isActive = !(activeRaw === false || activeRaw === 'FALSE' || activeRaw === 'No' || activeRaw === '0');
 
@@ -467,7 +470,7 @@
 
       products.push({
         id: get('id') || (i + 1),
-        name: get('nombre') || get('name') || '',
+        name: name,
         description: get('descripción') || get('descripcion') || get('description') || '',
         category: get('categoría') || get('categoria') || get('category') || 'General',
         price: parseFloat(get('precio') || get('price') || 0),

@@ -511,27 +511,29 @@
     <!-- CART OVERLAY + DRAWER -->
     <div id="cart-overlay" class="fixed inset-0 z-[55] bg-black/30 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" onclick="window._cart.closeCartDrawer()"></div>
     <div id="cart-drawer" class="fixed top-0 right-0 z-[60] w-full max-w-md h-full bg-surface shadow-2xl translate-x-full flex flex-col" style="transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)">
-        <div class="flex justify-between items-center px-8 py-6 border-b border-black/5">
+        <div class="flex justify-between items-center px-6 py-6 pt-8 border-b border-black/5 flex-shrink-0">
             <div>
                 <h3 class="font-serif text-xl">Tu Carrito</h3>
                 <p id="cart-count-footer" class="text-xs text-text-muted font-light mt-0.5">0 artículos</p>
             </div>
-            <button onclick="window._cart.closeCartDrawer()" class="hover:text-brand-accent transition-colors">
-                <span class="material-symbols-outlined">close</span>
+            <button onclick="window._cart.closeCartDrawer()" class="p-3 -mr-3 hover:text-brand-accent transition-colors" style="touch-action: manipulation;" aria-label="Cerrar carrito">
+                <span class="material-symbols-outlined text-3xl pointer-events-none">close</span>
             </button>
         </div>
-        <div id="cart-body" class="flex-1 overflow-y-auto px-8"></div>
-        <div id="cart-footer" class="border-t border-black/10 px-8 py-6 hidden">
+        <div id="cart-body" class="flex-1 overflow-y-auto px-6 py-2"></div>
+        <div id="cart-footer" class="border-t border-black/10 px-6 py-6 hidden flex-shrink-0">
             <div class="flex justify-between items-center mb-6">
                 <span class="text-xs tracking-[0.2em] uppercase font-medium">Total</span>
                 <span id="cart-total" class="font-serif text-2xl">$0</span>
             </div>
             <button onclick="window._cart.checkout()"
-                class="w-full bg-brand text-surface py-4 text-xs tracking-[0.2em] uppercase font-medium hover:bg-brand-accent transition-colors flex items-center justify-center gap-3">
+                class="w-full bg-brand text-surface py-4 rounded-md text-xs tracking-[0.2em] uppercase font-medium hover:bg-brand-accent transition-colors flex items-center justify-center gap-3">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-                Enviar Pedido por WhatsApp
+                Enviar Pedido
             </button>
-            <p class="text-center text-[10px] text-text-muted mt-3 font-light">El pedido se envía como mensaje de WhatsApp. No se realizan cobros automáticos.</p>
+            <button onclick="window._cart.closeCartDrawer()" class="w-full mt-4 py-2 text-sm text-text-muted hover:text-brand transition-colors underline" style="touch-action: manipulation;">
+                ← Seguir comprando
+            </button>
         </div>
     </div>
 

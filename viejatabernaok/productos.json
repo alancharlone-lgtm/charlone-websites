@@ -400,7 +400,7 @@
       "description": "Coca-Cola línea regular 500ml.",
       "category": "Bebidas",
       "price": 0,
-      "image": "img/barra_chapas.png",
+      "image": "img/coca_cola_500ml.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -411,7 +411,7 @@
       "description": "Coca-Cola línea regular 1.5 litros.",
       "category": "Bebidas",
       "price": 0,
-      "image": "img/barra_chapas.png",
+      "image": "img/coca_cola_15l.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -422,7 +422,7 @@
       "description": "Agua mineral con o sin gas.",
       "category": "Bebidas",
       "price": 0,
-      "image": "img/barra_chapas.png",
+      "image": "img/agua_mineral.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -433,7 +433,7 @@
       "description": "Pinta de cerveza artesanal tirada. Consultá las variedades del día.",
       "category": "Bebidas",
       "price": 0,
-      "image": "img/barra_lvt_bartender.png",
+      "image": "img/cerveza_artesanal.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -444,7 +444,7 @@
       "description": "Cerveza Quilmes retornable de 1 litro, bien fría.",
       "category": "Bebidas",
       "price": 0,
-      "image": "img/barra_lvt_bartender.png",
+      "image": "img/cerveza_quilmes.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -455,7 +455,7 @@
       "description": "Fernet Branca con Coca-Cola. El clásico argentino.",
       "category": "Bebidas",
       "price": 0,
-      "image": "img/barra_lvt_real_retocada.png",
+      "image": "img/fernet_con_coca.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -466,7 +466,7 @@
       "description": "Copa de vino tinto de la casa.",
       "category": "Bebidas",
       "price": 0,
-      "image": "img/barra_lvt_real_retocada.png",
+      "image": "img/vino_tinto_copa.png",
       "video": "",
       "sizes": ["Único"],
       "active": true
@@ -477,7 +477,7 @@
       "description": "Limonada casera bien fresca. Ideal para compartir.",
       "category": "Bebidas",
       "price": 0,
-      "image": "img/barra_chapas.png",
+      "image": "img/jarra_limonada.png",
       "video": "",
       "sizes": ["Único"],
       "active": true

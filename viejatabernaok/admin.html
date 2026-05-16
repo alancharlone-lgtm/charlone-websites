@@ -18,7 +18,7 @@
       categories: ["Minutas", "Pizzas", "Empanadas", "Parrilla", "Especiales", "Bebidas", "Postres"],
       // Email hasheado para no exponerlo en el código fuente
       _ownerHash: 'baebfd1bb13d5ddf70baf615e7cec61dd757fe4b2cebe5b573ab62814251823e',
-      ADMIN_PIN: '2835',  // PIN de acceso al panel
+      _pinHash: 'dfaab096bd21200516e6780b2dd4c5dbff2f8f1172b9dfc3741331d2fe6af997',  // PIN hasheado (SHA-256)
     };
     // Función para verificar email sin exponerlo
     STORE_CONFIG.checkOwner = async function(email) {
@@ -48,9 +48,14 @@
     </div>
   </div>
   <script>
-    function checkPin() {
+    async function checkPin() {
       const pin = document.getElementById('pin-input').value;
-      if (pin === STORE_CONFIG.ADMIN_PIN) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(pin);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      if (hashHex === STORE_CONFIG._pinHash) {
         document.getElementById('pin-screen').style.display = 'none';
         document.getElementById('login-screen').style.display = 'flex';
       } else {

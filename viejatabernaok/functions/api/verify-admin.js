@@ -4,25 +4,28 @@
  * Valida el token de Google OAuth en el SERVIDOR.
  * El atacante NO puede modificar este código — corre en Cloudflare, no en el navegador.
  * 
- * Flow:
- *   1. Cliente envía el access_token de Google
- *   2. Este Worker llama a Google para verificar el email
- *   3. Compara contra la lista de emails permitidos (hardcoded ACÁ, no en el cliente)
- *   4. Retorna allowed: true/false
+ * SECURITY: CORS restringido a dominios propios.
  */
 
-// ============================================================
-// EMAILS PERMITIDOS — Solo se pueden cambiar con git push
-// ============================================================
 const ALLOWED_ADMINS = {
   'viejatabernaok': ['alancharlone@gmail.com'],
-  // Agregar más tiendas acá:
-  // 'otratienda': ['otro@gmail.com'],
 };
 
+const ALLOWED_ORIGINS = [
+  'https://www.viejataberna.com',
+  'https://viejataberna.com',
+  'https://viejatabernaok.pages.dev',
+];
+
+function getCorsOrigin(request) {
+  const origin = request.headers.get('Origin') || '';
+  return ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+}
+
 export async function onRequestPost(context) {
+  const corsOrigin = getCorsOrigin(context.request);
   const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': corsOrigin,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Content-Type': 'application/json',
@@ -76,10 +79,11 @@ export async function onRequestPost(context) {
 }
 
 // Handle CORS preflight
-export async function onRequestOptions() {
+export async function onRequestOptions(context) {
+  const corsOrigin = getCorsOrigin(context.request);
   return new Response(null, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': corsOrigin,
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     }

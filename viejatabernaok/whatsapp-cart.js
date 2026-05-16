@@ -434,7 +434,8 @@
   // ============================================================
   async function loadFromGoogleSheets(sheetId, tabName) {
     // Usa la API pública de Google Visualization para leer el Sheet como JSON
-    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(tabName)}`;
+    // Se agrega un parámetro de cache-buster (&_cache=...) para asegurar lectura en tiempo real
+    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(tabName)}&_cache=${Date.now()}`;
     const res = await fetch(url);
     const text = await res.text();
     

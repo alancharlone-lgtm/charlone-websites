@@ -455,8 +455,8 @@
         return idx >= 0 && cells[idx] ? (cells[idx].v || '') : '';
       };
 
-      const active = get('activo');
-      if (active === false || active === 'FALSE' || active === 'No') continue;
+      const activeRaw = get('activo');
+      const isActive = !(activeRaw === false || activeRaw === 'FALSE' || activeRaw === 'No' || activeRaw === '0');
 
       const sizesRaw = get('talles') || get('sizes') || '';
       const sizes = sizesRaw ? sizesRaw.split(',').map(s => s.trim()).filter(Boolean) : ['Único'];
@@ -475,7 +475,7 @@
         image: imageUrls.length === 1 ? imageUrls[0] : (imageUrls[0] || ''),
         video: get('video url') || get('video') || '',
         sizes: sizes,
-        active: true,
+        active: isActive,
       });
     }
 

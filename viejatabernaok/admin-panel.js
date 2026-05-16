@@ -252,7 +252,7 @@
         await fetch('/api/store-config', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ store: STORE_CONFIG.storeId, SHEET_ID: STORE_CONFIG.SHEET_ID })
+          body: JSON.stringify({ store: STORE_CONFIG.storeId, SHEET_ID: STORE_CONFIG.SHEET_ID, accessToken })
         });
         console.log('✅ SHEET_ID sincronizado con servidor');
       } catch (e) {

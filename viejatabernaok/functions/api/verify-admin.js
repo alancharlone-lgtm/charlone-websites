@@ -8,7 +8,7 @@
  */
 
 const ALLOWED_ADMINS = {
-  'viejatabernaok': ['alancharlone@gmail.com'],
+  'viejatabernaok': ['alancharlone@gmail.com', 'luci.charlone@gmail.com'],
 };
 
 const ALLOWED_ORIGINS = [

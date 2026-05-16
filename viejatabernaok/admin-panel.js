@@ -808,7 +808,10 @@
   }
 
   function closeModal() {
-    document.getElementById('modal-overlay').classList.remove('show');
+    const overlay = document.getElementById('modal-overlay');
+    overlay.classList.remove('show');
+    // Clear modal content to prevent stale form data from affecting next edit
+    setTimeout(() => { overlay.innerHTML = ''; }, 300);
   }
 
   async function addProduct() {
@@ -870,7 +873,12 @@
   }
 
   async function editProduct(rowIndex) {
-    if (!document.getElementById('form-name')) {
+    // Check if modal is open AND it's for THIS product (same rowIndex in the save button)
+    const saveBtn = document.querySelector('.modal-card .btn-primary');
+    const modalIsForThisProduct = saveBtn && saveBtn.getAttribute('onclick') &&
+      saveBtn.getAttribute('onclick').includes(`editProduct(${rowIndex})`);
+
+    if (!document.getElementById('form-name') || !modalIsForThisProduct) {
       showAddModal(rowIndex);
       return;
     }

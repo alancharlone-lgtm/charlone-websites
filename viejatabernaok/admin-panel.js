@@ -597,7 +597,15 @@
         });
       }
     } catch (e) {
-      toast('Error cargando productos: ' + e.message, 'error');
+      let detail = e.message || '';
+      try { detail = e.result?.error?.message || detail; } catch(err) {}
+      
+      if (detail.includes('Permission') || detail.includes('insufficient') || detail.includes('403')) {
+        toast('❌ Permisos insuficientes. Cerrá sesión y volvé a entrar asegurándote de tildar las casillas de permiso de Google Sheets.', 'error');
+      } else {
+        toast('Error cargando productos: ' + detail, 'error');
+      }
+      console.error("loadProducts error:", e);
     }
   }
 

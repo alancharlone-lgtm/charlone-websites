@@ -58,7 +58,7 @@
     init,
     showTab,
     addProduct,
-    editProduct,
+    saveProduct,
     deleteProduct,
     toggleStock,
     showAddModal,
@@ -735,7 +735,7 @@
           <div><span class="${p.active ? 'badge-active' : 'badge-inactive'}">${p.active ? 'En Stock' : 'Sin Stock'}</span></div>
           <div style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;">
             <button style="${stockBtnStyle}" onclick="AdminPanel.toggleStock(${p.rowIndex})" title="${stockTitle}">${stockIcon}</button>
-            <button class="btn-sm" onclick="AdminPanel.editProduct(${p.rowIndex})">✏️</button>
+            <button class="btn-sm" onclick="AdminPanel.showAddModal(${p.rowIndex})">✏️</button>
             <button class="btn-danger" onclick="AdminPanel.deleteProduct(${p.rowIndex})" style="margin-left:0;">🗑️</button>
           </div>
         </div>
@@ -793,7 +793,7 @@
         </div>
         <div class="form-actions">
           <button class="btn-sm" onclick="AdminPanel.closeModal()">Cancelar</button>
-          <button class="btn-primary" onclick="AdminPanel.${isEdit ? 'editProduct' : 'addProduct'}(${rowIndex || 0})">${isEdit ? 'Guardar' : 'Agregar'}</button>
+          <button class="btn-primary" onclick="AdminPanel.${isEdit ? 'saveProduct' : 'addProduct'}(${rowIndex || 0})">${isEdit ? 'Guardar' : 'Agregar'}</button>
         </div>
       </div>
     `;
@@ -810,8 +810,7 @@
   function closeModal() {
     const overlay = document.getElementById('modal-overlay');
     overlay.classList.remove('show');
-    // Clear modal content to prevent stale form data from affecting next edit
-    setTimeout(() => { overlay.innerHTML = ''; }, 300);
+    overlay.innerHTML = '';
   }
 
   async function addProduct() {
@@ -872,21 +871,19 @@
     }
   }
 
-  async function editProduct(rowIndex) {
-    // Check if modal is open AND it's for THIS product (same rowIndex in the save button)
-    const saveBtn = document.querySelector('.modal-card .btn-primary');
-    const modalIsForThisProduct = saveBtn && saveBtn.getAttribute('onclick') &&
-      saveBtn.getAttribute('onclick').includes(`editProduct(${rowIndex})`);
-
-    if (!document.getElementById('form-name') || !modalIsForThisProduct) {
-      showAddModal(rowIndex);
-      return;
-    }
-
+  // saveProduct: ONLY called by the "Guardar" button inside the modal
+  async function saveProduct(rowIndex) {
     const name = document.getElementById('form-name').value.trim();
     if (!name) { toast('El nombre es obligatorio', 'error'); return; }
 
     const product = products.find(p => p.rowIndex === rowIndex);
+    if (!product) {
+      toast('⚠️ Producto no encontrado. Recargando...', 'error');
+      closeModal();
+      await loadProducts();
+      renderProductList();
+      return;
+    }
 
     // DEMO MODE: update in-memory
     if (demoMode) {

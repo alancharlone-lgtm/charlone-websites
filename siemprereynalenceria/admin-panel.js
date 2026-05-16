@@ -2,7 +2,7 @@
  * ============================================================
  * ADMIN PANEL — ADS Labs Marketplace
  * Motor compartido para todos los comerciantes.
- * Se carga desde la raíz de Netlify: /admin-panel.js
+ * Se carga desde la raíz de Cloudflare: /admin-panel.js
  *
  * DOS FUENTES DE CONFIGURACIÓN:
  *   1. STORE_CONFIG (global, definida inline en admin.html)
@@ -15,7 +15,7 @@
   'use strict';
 
   const CLIENT_ID = '3959192869-dp0lcvlmhfmkglgdvf94u3vl5hi9hscj.apps.googleusercontent.com';
-  const SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.file';
+  const SCOPES = 'email profile https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.file';
 
   let tokenClient;
   let accessToken = null;
@@ -26,13 +26,39 @@
   let demoMode = false;
 
   // ============================================================
+  // ERROR REPORTING — Envía errores al servidor para monitoreo
+  // ============================================================
+  function reportError(error, context) {
+    const storeId = (typeof STORE_CONFIG !== 'undefined' && STORE_CONFIG.storeId) || 'unknown';
+    try {
+      fetch('/api/report-error', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          storeId,
+          error: String(error),
+          context: context || '',
+          userAgent: navigator.userAgent,
+          timestamp: new Date().toISOString(),
+        })
+      }).catch(() => {}); // Silencioso, nunca bloquear por esto
+    } catch (e) { /* ignore */ }
+  }
+
+  // Helper: escapar HTML para evitar XSS y rotura de atributos
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  }
+
+  // ============================================================
   // INIT
   // ============================================================
   window.AdminPanel = {
     init,
     showTab,
     addProduct,
-    editProduct,
+    saveProduct,
     deleteProduct,
     showAddModal,
     closeModal,
@@ -50,6 +76,8 @@
     }
 
     // ═══ RECUPERAR SHEET_ID DESDE SERVIDOR (KV) ═══
+    // Si el SHEET_ID está vacío en el HTML, intentar recuperarlo del KV
+    // donde fue guardado durante el auto-provisioning anterior.
     if (typeof STORE_CONFIG !== 'undefined' && STORE_CONFIG.storeId &&
         (!STORE_CONFIG.SHEET_ID || STORE_CONFIG.SHEET_ID.length < 5)) {
       try {
@@ -112,9 +140,24 @@
       // Check if already logged in (session storage)
       const savedToken = sessionStorage.getItem('admin_token');
       if (savedToken) {
-        accessToken = savedToken;
-        gapi.client.setToken({ access_token: accessToken });
-        await onLoginSuccess();
+        // Verificar que el token NO esté expirado antes de usarlo
+        try {
+          const checkRes = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+            headers: { Authorization: `Bearer ${savedToken}` }
+          });
+          if (checkRes.ok) {
+            accessToken = savedToken;
+            gapi.client.setToken({ access_token: accessToken });
+            await onLoginSuccess();
+          } else {
+            // Token expirado — limpiar y que el usuario se loguee de nuevo
+            console.warn('🔑 Token guardado expirado, limpiando...');
+            sessionStorage.removeItem('admin_token');
+          }
+        } catch (e) {
+          console.warn('🔑 Error verificando token guardado:', e);
+          sessionStorage.removeItem('admin_token');
+        }
       }
     } catch (e) {
       console.warn('Google APIs no disponibles:', e.message);
@@ -142,10 +185,14 @@
 
   function onTokenResponse(resp) {
     if (resp.error) {
-      toast('Error de autenticación', 'error');
+      toast('Error de autenticación: ' + (resp.error_description || resp.error), 'error');
+      reportError(`OAuth error: ${resp.error} - ${resp.error_description}`, 'onTokenResponse');
       return;
     }
     accessToken = resp.access_token;
+    // ═══ CRÍTICO: Asociar el token al cliente gapi ═══
+    // Sin esto, gapi.client.sheets NO puede hacer llamadas autenticadas.
+    gapi.client.setToken({ access_token: accessToken });
     sessionStorage.setItem('admin_token', accessToken);
     onLoginSuccess();
   }
@@ -161,16 +208,53 @@
       userInfo = { name: 'Admin', picture: '' };
     }
 
-    // Validate owner email (if configured)
-    if (STORE_CONFIG.ownerEmail && userInfo.email) {
-      const allowed = Array.isArray(STORE_CONFIG.ownerEmail)
-        ? STORE_CONFIG.ownerEmail
-        : [STORE_CONFIG.ownerEmail];
-      if (!allowed.includes(userInfo.email)) {
+    // ═══ VALIDACIÓN SERVER-SIDE (imposible de bypassear) ═══
+    try {
+      const verifyRes = await fetch('/api/verify-admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ accessToken, storeId: STORE_CONFIG.storeId })
+      });
+      const verifyData = await verifyRes.json();
+      if (!verifyData.allowed) {
         toast('⛔ No tenés permiso para acceder a este panel.', 'error');
         accessToken = null;
         sessionStorage.removeItem('admin_token');
         return;
+      }
+      if (verifyData.name) userInfo.name = verifyData.name;
+      if (verifyData.email) userInfo.email = verifyData.email;
+    } catch (serverErr) {
+      // Fallback: hash local si el Worker no está disponible
+      console.warn('⚠️ Server verification unavailable, using local hash fallback');
+      if (STORE_CONFIG._ownerHash && userInfo.email) {
+        const isOwner = typeof STORE_CONFIG.checkOwner === 'function'
+          ? await STORE_CONFIG.checkOwner(userInfo.email) : false;
+        if (!isOwner) {
+          toast('⛔ No tenés permiso para acceder a este panel.', 'error');
+          accessToken = null;
+          sessionStorage.removeItem('admin_token');
+          return;
+        }
+      }
+    }
+    // ═══ AUTO-PROVISIONING (seguro: solo llega acá después del Worker) ═══
+    if (!STORE_CONFIG.SHEET_ID || STORE_CONFIG.SHEET_ID.length < 5) {
+      document.getElementById('login-screen').style.display = 'none';
+      await autoProvisionSheet();
+    }
+
+    // ═══ SIEMPRE persistir SHEET_ID en servidor (por si no se guardó antes) ═══
+    if (STORE_CONFIG.SHEET_ID && STORE_CONFIG.SHEET_ID.length > 5) {
+      try {
+        await fetch('/api/store-config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ store: STORE_CONFIG.storeId, SHEET_ID: STORE_CONFIG.SHEET_ID, accessToken })
+        });
+        console.log('✅ SHEET_ID sincronizado con servidor');
+      } catch (e) {
+        console.warn('⚠️ No se pudo sincronizar SHEET_ID:', e);
       }
     }
 
@@ -178,9 +262,16 @@
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('admin-layout').style.display = 'block';
 
-    // Update header — STORE_CONFIG comes from inline script in admin.html
+    // Update header
     document.getElementById('admin-store-name').textContent = STORE_CONFIG.storeName || 'Mi Tienda';
     document.getElementById('admin-user-name').textContent = userInfo.name || '';
+    if (STORE_CONFIG.SHEET_ID && STORE_CONFIG.SHEET_ID.length > 5) {
+      const sheetLink = document.getElementById('admin-sheet-link');
+      if (sheetLink) {
+        sheetLink.href = 'https://docs.google.com/spreadsheets/d/' + STORE_CONFIG.SHEET_ID;
+        sheetLink.style.display = 'inline-block';
+      }
+    }
     if (userInfo.picture) {
       document.getElementById('admin-user-avatar').src = userInfo.picture;
     }
@@ -188,6 +279,125 @@
     // Load products
     await loadProducts();
     showTab('dashboard');
+  }
+
+  // ============================================================
+  // AUTO-PROVISIONING — Crea el Google Sheet automáticamente
+  // SEGURO: solo se ejecuta después de validación server-side
+  // ============================================================
+  async function autoProvisionSheet() {
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'login-screen';
+    loadingDiv.style.cssText = 'flex-direction:column;align-items:center;justify-content:center;z-index:9999;';
+    loadingDiv.innerHTML = `
+      <div style="font-size:48px;animation:spin 2s linear infinite;">⏳</div>
+      <h2 style="margin-top:20px;font-weight:600;">Configurando tu tienda...</h2>
+      <p style="color:#666;margin-top:8px;">Creando Google Sheet y conectando catálogo</p>
+      <p id="provision-status" style="color:#999;margin-top:4px;font-size:12px;">Paso 1/5: Creando planilla...</p>
+      <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+    `;
+    document.body.appendChild(loadingDiv);
+
+    const updateStatus = (msg) => {
+      const el = document.getElementById('provision-status');
+      if (el) el.textContent = msg;
+    };
+
+    try {
+      // 1. Crear Google Sheet
+      updateStatus('Paso 1/5: Creando planilla de Google...');
+      let createRes;
+      try {
+        createRes = await gapi.client.sheets.spreadsheets.create({
+          properties: { title: `Productos - ${STORE_CONFIG.storeName}` }
+        });
+      } catch (sheetsErr) {
+        const detail = sheetsErr?.result?.error?.message || sheetsErr.message || String(sheetsErr);
+        reportError(`autoProvision STEP1 crear Sheet: ${detail}`, 'sheets.create');
+        if (detail.includes('not enabled') || detail.includes('has not been used')) {
+          toast('❌ La API de Google Sheets no está habilitada. Pedile al administrador que la active en Google Cloud Console.', 'error');
+        } else if (detail.includes('insufficient')) {
+          toast('❌ No se otorgaron los permisos necesarios. Cerrá sesión y volvé a intentar aceptando TODOS los permisos.', 'error');
+        } else {
+          toast(`❌ Error creando la planilla: ${detail}`, 'error');
+        }
+        return;
+      }
+      const sheetId = createRes.result.spreadsheetId;
+
+      // 2. Renombrar pestaña inicial a "Productos" (Soluciona el bug de "Hoja 1" vs "Sheet1" en cuentas en español)
+      updateStatus('Paso 2/5: Configurando pestaña...');
+      let targetSheetName = 'Productos';
+      try {
+        const sheet = createRes.result.sheets[0];
+        await gapi.client.sheets.spreadsheets.batchUpdate({
+          spreadsheetId: sheetId,
+          resource: { requests: [{ updateSheetProperties: { properties: { sheetId: sheet.properties.sheetId, title: 'Productos' }, fields: 'title' } }] }
+        });
+      } catch (e) { 
+        console.warn('No se pudo renombrar pestaña:', e);
+        targetSheetName = createRes.result.sheets[0].properties.title; // Fallback al nombre original (ej: "Hoja 1")
+      }
+
+      // 3. Agregar headers
+      updateStatus('Paso 3/5: Configurando columnas...');
+      await gapi.client.sheets.spreadsheets.values.update({
+        spreadsheetId: sheetId, range: `${targetSheetName}!A1:I1`, valueInputOption: 'RAW',
+        resource: { values: [['ID', 'Nombre', 'Descripción', 'Categoría', 'Precio', 'Talles', 'Foto URL', 'Video URL', 'Activo']] }
+      });
+
+      // 4. Copiar productos locales al Sheet
+      updateStatus('Paso 4/5: Copiando productos...');
+      let localProducts = [];
+      try {
+        const res = await fetch('productos.json');
+        const data = await res.json();
+        if (data && data.products) localProducts = data.products;
+      } catch (e) { console.warn('No se encontró productos.json'); }
+
+      if (localProducts.length > 0) {
+        const rows = localProducts.map(p => [
+          p.id, p.name, p.description, p.category, p.price,
+          (p.sizes || []).join(', '), (p.images || [p.image]).filter(Boolean).join(', '),
+          p.video || '', p.active ? 'TRUE' : 'FALSE'
+        ]);
+        await gapi.client.sheets.spreadsheets.values.append({
+          spreadsheetId: sheetId, range: 'A2',
+          valueInputOption: 'USER_ENTERED', insertDataOption: 'INSERT_ROWS',
+          resource: { values: rows }
+        });
+      }
+
+      // 5. Hacer público (solo lectura)
+      updateStatus('Paso 5/5: Publicando planilla...');
+      try {
+        await fetch(`https://www.googleapis.com/drive/v3/files/${sheetId}/permissions`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ role: 'reader', type: 'anyone' })
+        });
+      } catch (driveErr) {
+        reportError(`autoProvision STEP5 Drive permissions: ${driveErr.message}`, 'drive.permissions');
+        console.warn('No se pudo hacer público el Sheet:', driveErr);
+        // No fatal — el sheet existe, solo no es público aún
+      }
+
+      STORE_CONFIG.SHEET_ID = sheetId;
+      toast('✅ ¡Tienda configurada exitosamente!', 'success');
+      alert(
+        '✅ ¡Tu tienda está configurada!\n\n' +
+        'Tu Google Sheet ID es:\n' + sheetId + '\n\n' +
+        'Link del Sheet:\nhttps://docs.google.com/spreadsheets/d/' + sheetId + '\n\n' +
+        'Avisale a tu administrador este ID para que lo guarde.'
+      );
+    } catch (err) {
+      const detail = err?.result?.error?.message || err.message || String(err);
+      console.error('Error en auto-provisioning:', err);
+      reportError(`autoProvision GENERAL: ${detail}`, 'autoProvisionSheet');
+      toast(`❌ Error configurando la tienda: ${detail}`, 'error');
+    } finally {
+      loadingDiv.remove();
+    }
   }
 
   function logout() {
@@ -291,7 +501,7 @@
     try {
       const response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        range: 'Productos!A1:I100',
+        range: 'A1:I100',
       });
 
       const rows = response.result.values || [];
@@ -448,7 +658,7 @@
           <div class="product-price">${p.price > 0 ? '$' + p.price.toLocaleString('es-AR') : '<span style="color:var(--warning)">$0</span>'}</div>
           <div><span class="${p.active ? 'badge-active' : 'badge-inactive'}">${p.active ? 'Activo' : 'Inactivo'}</span></div>
           <div>
-            <button class="btn-sm" onclick="AdminPanel.editProduct(${p.rowIndex})">✏️</button>
+            <button class="btn-sm" onclick="AdminPanel.showAddModal(${p.rowIndex})">✏️</button>
             <button class="btn-danger" onclick="AdminPanel.deleteProduct(${p.rowIndex})" style="margin-left:4px;">🗑️</button>
           </div>
         </div>
@@ -466,12 +676,19 @@
     const isEdit = !!rowIndex;
     const product = isEdit ? products.find(p => p.rowIndex === rowIndex) : {};
 
+    // Guard: si es edición pero no se encontró el producto, recargar
+    if (isEdit && (!product || !product.name)) {
+      toast('⚠️ Producto no encontrado. Recargando lista...', 'error');
+      loadProducts().then(() => renderProductList());
+      return;
+    }
+
     // Categories from STORE_CONFIG (inline in admin.html)
     const categories = (typeof STORE_CONFIG !== 'undefined' && STORE_CONFIG.categories)
       ? STORE_CONFIG.categories
       : ['General'];
     const catOptions = categories.map(c =>
-      `<option value="${c}" ${product.category === c ? 'selected' : ''}>${c}</option>`
+      `<option value="${escapeHtml(c)}" ${product.category === c ? 'selected' : ''}>${escapeHtml(c)}</option>`
     ).join('');
 
     document.getElementById('modal-overlay').innerHTML = `
@@ -479,11 +696,11 @@
         <h3>${isEdit ? 'Editar' : 'Agregar'} Producto</h3>
         <div class="form-group">
           <label>Nombre</label>
-          <input type="text" id="form-name" value="${product.name || ''}" placeholder="Ej: Taladro Bosch 13mm">
+          <input type="text" id="form-name" placeholder="Ej: Taladro Bosch 13mm">
         </div>
         <div class="form-group">
           <label>Descripción</label>
-          <textarea id="form-desc" placeholder="Descripción breve del producto">${product.description || ''}</textarea>
+          <textarea id="form-desc" placeholder="Descripción breve del producto"></textarea>
         </div>
         <div class="form-group">
           <label>Categoría</label>
@@ -491,23 +708,32 @@
         </div>
         <div class="form-group">
           <label>Precio ($)</label>
-          <input type="number" id="form-price" value="${product.price || 0}" min="0">
+          <input type="number" id="form-price" min="0">
         </div>
         <div class="form-group">
           <label>Talles (separados por coma, o "Único")</label>
-          <input type="text" id="form-sizes" value="${product.sizes || 'Único'}" placeholder="S, M, L, XL">
+          <input type="text" id="form-sizes" placeholder="S, M, L, XL">
         </div>
         <div class="form-actions">
           <button class="btn-sm" onclick="AdminPanel.closeModal()">Cancelar</button>
-          <button class="btn-primary" onclick="AdminPanel.${isEdit ? 'editProduct' : 'addProduct'}(${rowIndex || 0})">${isEdit ? 'Guardar' : 'Agregar'}</button>
+          <button class="btn-primary" onclick="AdminPanel.${isEdit ? 'saveProduct' : 'addProduct'}(${rowIndex || 0})">${isEdit ? 'Guardar' : 'Agregar'}</button>
         </div>
       </div>
     `;
+
+    // Asignar valores via DOM (evita problemas con comillas/caracteres especiales en HTML)
+    document.getElementById('form-name').value = product.name || '';
+    document.getElementById('form-desc').value = product.description || '';
+    document.getElementById('form-price').value = product.price || 0;
+    document.getElementById('form-sizes').value = product.sizes || 'Único';
+
     document.getElementById('modal-overlay').classList.add('show');
   }
 
   function closeModal() {
-    document.getElementById('modal-overlay').classList.remove('show');
+    const overlay = document.getElementById('modal-overlay');
+    overlay.classList.remove('show');
+    overlay.innerHTML = '';
   }
 
   async function addProduct() {
@@ -551,7 +777,7 @@
     try {
       await gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        range: 'Productos!A:I',
+        range: 'A:I',
         valueInputOption: 'USER_ENTERED',
         resource: { values: [newRow] },
       });
@@ -565,16 +791,19 @@
     }
   }
 
-  async function editProduct(rowIndex) {
-    if (!document.getElementById('form-name')) {
-      showAddModal(rowIndex);
-      return;
-    }
-
+  // saveProduct: ONLY called by the "Guardar" button inside the modal
+  async function saveProduct(rowIndex) {
     const name = document.getElementById('form-name').value.trim();
     if (!name) { toast('El nombre es obligatorio', 'error'); return; }
 
     const product = products.find(p => p.rowIndex === rowIndex);
+    if (!product) {
+      toast('⚠️ Producto no encontrado. Recargando...', 'error');
+      closeModal();
+      await loadProducts();
+      renderProductList();
+      return;
+    }
 
     // DEMO MODE: update in-memory
     if (demoMode) {
@@ -604,7 +833,7 @@
     try {
       await gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        range: `Productos!A${rowIndex}:I${rowIndex}`,
+        range: `A${rowIndex}:I${rowIndex}`,
         valueInputOption: 'USER_ENTERED',
         resource: { values: [updatedRow] },
       });
@@ -629,29 +858,71 @@
       return;
     }
 
+    // Verificar que tenemos SHEET_ID
+    if (!STORE_CONFIG.SHEET_ID || STORE_CONFIG.SHEET_ID.length < 5) {
+      toast('❌ No hay Sheet configurado. No se puede eliminar.', 'error');
+      return;
+    }
+
+    toast('⏳ Eliminando producto...');
+    console.log(`🗑️ Intentando eliminar fila ${rowIndex} del Sheet ${STORE_CONFIG.SHEET_ID.substring(0, 8)}...`);
+
     try {
-      // Get spreadsheet ID to find sheet GID
-      const ssInfo = await gapi.client.sheets.spreadsheets.get({
-        spreadsheetId: STORE_CONFIG.SHEET_ID,
-      });
-      const sheetId = ssInfo.result.sheets[0].properties.sheetId;
+      // ESTRATEGIA 1: Intentar eliminar la fila con deleteDimension
+      try {
+        const ssInfo = await gapi.client.sheets.spreadsheets.get({
+          spreadsheetId: STORE_CONFIG.SHEET_ID,
+        });
+        const sheetId = ssInfo.result.sheets[0].properties.sheetId;
+        const sheetTitle = ssInfo.result.sheets[0].properties.title;
+        console.log(`🗑️ Sheet: "${sheetTitle}" (GID: ${sheetId}), eliminando fila ${rowIndex}`);
 
-      await gapi.client.sheets.spreadsheets.batchUpdate({
+        await gapi.client.sheets.spreadsheets.batchUpdate({
+          spreadsheetId: STORE_CONFIG.SHEET_ID,
+          resource: {
+            requests: [{
+              deleteDimension: {
+                range: { sheetId, dimension: 'ROWS', startIndex: rowIndex - 1, endIndex: rowIndex }
+              }
+            }]
+          }
+        });
+
+        console.log('✅ Fila eliminada con deleteDimension');
+        toast('🗑️ Producto eliminado');
+        await loadProducts();
+        renderProductList();
+        return;
+      } catch (deleteErr) {
+        const detail1 = deleteErr?.result?.error?.message || deleteErr?.message || String(deleteErr);
+        console.warn('⚠️ deleteDimension falló, intentando con clear:', detail1);
+      }
+
+      // ESTRATEGIA 2: Fallback — borrar contenido de la fila (más permisivo)
+      console.log(`🗑️ Fallback: limpiando contenido de fila ${rowIndex}`);
+      await gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        resource: {
-          requests: [{
-            deleteDimension: {
-              range: { sheetId, dimension: 'ROWS', startIndex: rowIndex - 1, endIndex: rowIndex }
-            }
-          }]
-        }
+        range: `A${rowIndex}:I${rowIndex}`,
+        valueInputOption: 'RAW',
+        resource: { values: [['', '', '', '', '', '', '', '', '']] }
       });
 
+      console.log('✅ Fila vaciada con values.update');
       toast('🗑️ Producto eliminado');
       await loadProducts();
       renderProductList();
     } catch (e) {
-      toast('Error: ' + e.message, 'error');
+      const detail = e?.result?.error?.message || e?.message || String(e);
+      console.error('❌ Error eliminando producto:', detail, e);
+      reportError(`deleteProduct row ${rowIndex}: ${detail}`, 'deleteProduct');
+      
+      if (detail.includes('insufficient') || detail.includes('PERMISSION_DENIED')) {
+        toast('❌ Sin permiso para editar el Sheet. Cerrá sesión y volvé a entrar aceptando todos los permisos.', 'error');
+      } else if (detail.includes('not found') || detail.includes('Unable to parse range')) {
+        toast('❌ La planilla no se encontró. Puede que haya sido eliminada.', 'error');
+      } else {
+        toast('❌ Error eliminando: ' + detail, 'error');
+      }
     }
   }
 
@@ -748,7 +1019,7 @@
 
       await gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: STORE_CONFIG.SHEET_ID,
-        range: `Productos!G${targetRow}`,
+        range: `G${targetRow}`,
         valueInputOption: 'USER_ENTERED',
         resource: { values: [[imageStr]] },
       });
@@ -813,7 +1084,9 @@
     el.textContent = msg;
     container.appendChild(el);
 
-    setTimeout(() => el.remove(), 3000);
+    // Errores se muestran más tiempo para que el usuario pueda leerlos
+    const duration = type === 'error' ? 8000 : 3000;
+    setTimeout(() => el.remove(), duration);
   }
 
 })();

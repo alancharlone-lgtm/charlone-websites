@@ -267,6 +267,13 @@
     // Update header
     document.getElementById('admin-store-name').textContent = STORE_CONFIG.storeName || 'Mi Tienda';
     document.getElementById('admin-user-name').textContent = userInfo.name || '';
+    if (STORE_CONFIG.SHEET_ID && STORE_CONFIG.SHEET_ID.length > 5) {
+      const sheetLink = document.getElementById('admin-sheet-link');
+      if (sheetLink) {
+        sheetLink.href = 'https://docs.google.com/spreadsheets/d/' + STORE_CONFIG.SHEET_ID;
+        sheetLink.style.display = 'inline-block';
+      }
+    }
     if (userInfo.picture) {
       document.getElementById('admin-user-avatar').src = userInfo.picture;
     }

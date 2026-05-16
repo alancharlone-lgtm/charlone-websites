@@ -60,6 +60,7 @@
     addProduct,
     editProduct,
     deleteProduct,
+    toggleStock,
     showAddModal,
     closeModal,
     logout,
@@ -697,12 +698,18 @@
     products.forEach(p => {
       const imgSrc = p.image || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect fill="%23eee" width="48" height="48"/></svg>';
       const photoCount = p.images.length;
+      const stockIcon = p.active ? '📦' : '🚫';
+      const stockTitle = p.active ? 'Marcar SIN STOCK' : 'Marcar EN STOCK';
+      const stockBtnStyle = p.active
+        ? 'background:#e8f5e9;border:1px solid #4caf50;cursor:pointer;border-radius:6px;padding:4px 8px;font-size:13px;'
+        : 'background:#ffebee;border:1px solid #f44336;cursor:pointer;border-radius:6px;padding:4px 8px;font-size:13px;';
 
       html += `
-        <div class="product-row">
+        <div class="product-row" style="${!p.active ? 'opacity:0.5;' : ''}">
           <div style="position:relative;">
-            <img class="product-thumb" src="${imgSrc}" alt="${p.name}">
+            <img class="product-thumb" src="${imgSrc}" alt="${p.name}" style="${!p.active ? 'filter:grayscale(1);' : ''}">
             ${photoCount > 1 ? `<span style="position:absolute;bottom:2px;right:2px;background:var(--brand);color:white;font-size:9px;padding:1px 4px;border-radius:3px;">${photoCount}📷</span>` : ''}
+            ${!p.active ? '<span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(244,67,54,0.85);color:white;font-size:8px;font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:0.5px;">SIN STOCK</span>' : ''}
           </div>
           <div class="product-name">
             ${p.name}
@@ -710,10 +717,11 @@
           </div>
           <div class="product-category">${p.category}</div>
           <div class="product-price">${p.price > 0 ? '$' + p.price.toLocaleString('es-AR') : '<span style="color:var(--warning)">$0</span>'}</div>
-          <div><span class="${p.active ? 'badge-active' : 'badge-inactive'}">${p.active ? 'Activo' : 'Inactivo'}</span></div>
-          <div>
+          <div><span class="${p.active ? 'badge-active' : 'badge-inactive'}">${p.active ? 'En Stock' : 'Sin Stock'}</span></div>
+          <div style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;">
+            <button style="${stockBtnStyle}" onclick="AdminPanel.toggleStock(${p.rowIndex})" title="${stockTitle}">${stockIcon}</button>
             <button class="btn-sm" onclick="AdminPanel.editProduct(${p.rowIndex})">✏️</button>
-            <button class="btn-danger" onclick="AdminPanel.deleteProduct(${p.rowIndex})" style="margin-left:4px;">🗑️</button>
+            <button class="btn-danger" onclick="AdminPanel.deleteProduct(${p.rowIndex})" style="margin-left:0;">🗑️</button>
           </div>
         </div>
       `;
@@ -975,6 +983,53 @@
       } else {
         toast('❌ Error eliminando: ' + detail, 'error');
       }
+    }
+  }
+
+  // ============================================================
+  // TOGGLE STOCK (Activo/Inactivo)
+  // ============================================================
+  async function toggleStock(rowIndex) {
+    const product = products.find(p => p.rowIndex === rowIndex);
+    if (!product) { toast('Producto no encontrado', 'error'); return; }
+
+    const newActive = !product.active;
+    const statusText = newActive ? 'EN STOCK' : 'SIN STOCK';
+
+    // DEMO MODE
+    if (demoMode) {
+      product.active = newActive;
+      toast(`${newActive ? '📦' : '🚫'} ${product.name} → ${statusText}`);
+      renderProductList();
+      return;
+    }
+
+    // Verificar Sheet
+    if (!STORE_CONFIG.SHEET_ID || STORE_CONFIG.SHEET_ID.length < 5) {
+      toast('❌ No hay Sheet configurado.', 'error');
+      return;
+    }
+
+    toast(`⏳ Actualizando stock...`);
+
+    try {
+      // Solo actualizar la columna I (Activo)
+      await gapi.client.sheets.spreadsheets.values.update({
+        spreadsheetId: STORE_CONFIG.SHEET_ID,
+        range: `I${rowIndex}`,
+        valueInputOption: 'USER_ENTERED',
+        resource: { values: [[newActive ? 'TRUE' : 'FALSE']] },
+      });
+
+      product.active = newActive;
+      toast(`${newActive ? '📦' : '🚫'} ${product.name} → ${statusText}`);
+      renderProductList();
+      if (currentTab === 'dashboard') renderDashboard();
+    } catch (e) {
+      const detail = e?.result?.error?.message || e?.message || String(e);
+      console.error('❌ Error cambiando stock:', detail);
+      reportError(`toggleStock row ${rowIndex}: ${detail}`, 'toggleStock');
+      toast('❌ Error actualizando stock: ' + detail, 'error');
     }
   }
 

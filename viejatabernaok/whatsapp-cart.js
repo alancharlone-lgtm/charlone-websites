@@ -142,7 +142,6 @@
     });
 
     const products = storeData.products.filter(p => {
-      if (!p.active) return false;
       if (!category || category === 'all') return true;
       return p.category === category;
     });
@@ -152,18 +151,28 @@
       const images = getProductImages(p);
       const totalSlides = images.length;
       const showCarousel = totalSlides > 1;
+      const outOfStock = p.active === false;
 
       return `
-      <div class="group product-card" data-id="${p.id}">
+      <div class="group product-card${outOfStock ? ' out-of-stock' : ''}" data-id="${p.id}" style="${outOfStock ? 'opacity:0.7;' : ''}">
         <div class="aspect-[3/4] bg-[#EAEAEA] mb-5 relative overflow-hidden">
           <!-- Carousel track -->
-          <div class="carousel-track flex h-full transition-transform duration-300 ease-out" data-current="0" style="width:${totalSlides * 100}%">
+          <div class="carousel-track flex h-full transition-transform duration-300 ease-out" data-current="0" style="width:${totalSlides * 100}%;${outOfStock ? 'filter:grayscale(0.8) brightness(0.7);' : ''}">
             ${images.map(img => `
               <div class="carousel-slide h-full flex-shrink-0" style="width:${100 / totalSlides}%">
                 <img src="${img}" alt="${p.name}" class="w-full h-full object-cover" loading="lazy">
               </div>
             `).join('')}
           </div>
+
+          ${outOfStock ? `
+          <!-- SIN STOCK overlay -->
+          <div class="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
+            <div style="background:rgba(0,0,0,0.75);backdrop-filter:blur(2px);padding:10px 28px;transform:rotate(-15deg);">
+              <span style="color:#ff4444;font-size:1.1rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,0.5);">SIN STOCK</span>
+            </div>
+          </div>
+          ` : ''}
 
           ${showCarousel ? `
           <!-- Arrows -->
@@ -191,19 +200,27 @@
           </button>
           ` : ''}
 
+          ${outOfStock ? `
+          <div class="absolute bottom-0 left-0 right-0 bg-gray-500 text-white/70 py-3 text-xs tracking-[0.15em] uppercase font-medium
+                 flex items-center justify-center gap-2 z-20 cursor-not-allowed">
+            <span class="material-symbols-outlined text-base">block</span>
+            No disponible
+          </div>
+          ` : `
           <button onclick="window._cart.openSizeModal(${p.id})"
             class="absolute bottom-0 left-0 right-0 bg-brand text-surface py-3 text-xs tracking-[0.15em] uppercase font-medium
                    translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex items-center justify-center gap-2 z-20">
             <span class="material-symbols-outlined text-base">add_shopping_cart</span>
             Agregar al carrito
           </button>
+          `}
         </div>
         <div class="flex justify-between items-start gap-4">
           <div>
             <h4 class="font-serif text-lg mb-1 group-hover:text-brand-accent transition-colors">${p.name}</h4>
             <p class="text-xs text-text-muted font-light leading-relaxed">${p.description}</p>
           </div>
-          <span class="text-sm font-medium whitespace-nowrap">${formatPrice(p.price)}</span>
+          <span class="text-sm font-medium whitespace-nowrap${outOfStock ? ' line-through text-text-muted' : ''}">${formatPrice(p.price)}</span>
         </div>
       </div>
     `}).join('');
@@ -215,6 +232,7 @@
   function openSizeModal(productId) {
     const product = storeData.products.find(p => p.id === productId);
     if (!product) return;
+    if (product.active === false) return; // Out of stock — no agregar
 
     // Skip modal if single size (e.g. "Único" or only 1 size available)
     if (!product.sizes || product.sizes.length === 0) {

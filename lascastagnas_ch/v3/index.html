@@ -1041,58 +1041,49 @@ img {
 
 </style>
 </head>
-<body>
-
-    <!-- 1. nav.floating-pill -->
-    <nav class="floating-pill">
-        <div class="nav-brand">
-            <img src="img/lascastagnas_ch_0.jpg" alt="Las Castañas Logo" class="logo-img">
-            <span class="logo-text">Las Castañas</span>
+    <!-- 1. App-Style Header Navigation -->
+    <nav class="floating-pill" style="position: sticky; top: 0; left: 0; transform: none; width: 100%; max-width: 100%; height: 68px; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 0; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--space-4); z-index: 100; box-shadow: none;">
+        <div class="nav-brand" style="display: flex; align-items: center; gap: 8px;">
+            <img src="img/lascastagnas_ch_0.jpg" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;">
+            <span style="font-family: var(--font-body); font-weight: 600; font-size: 16px; color: rgba(0,0,0,0.8);">@lascastagnas_ch</span>
         </div>
-        <div class="nav-links">
-            <a href="#destacados">Recomendados</a>
-            <a href="#galeria">Colección</a>
-            <a href="#tienda">Catálogo</a>
-            <a href="#contacto">Contacto</a>
+        <div style="flex-grow: 1; max-width: 400px; margin: 0 var(--space-4); position: relative; display: flex; align-items: center;">
+            <span class="material-symbols-outlined" style="position: absolute; left: 12px; font-size: 18px; color: rgba(0,0,0,0.4);">search</span>
+            <input type="text" placeholder="Buscar jeans, sweaters, abrigos..." style="width: 100%; height: 36px; background-color: #F5F5F5; border: none; border-radius: 9999px; padding-left: 38px; padding-right: 16px; font-size: 13px; font-family: var(--font-body); outline: none;">
         </div>
-        <div class="nav-actions">
-            <!-- Outlined Follow Style Pill Button -->
-            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 6px 16px; font-size: 13px; border-radius: 9999px;">
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 12px;">
+            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn" style="background-color: #FF2442; color: #FFFFFF; font-weight: 500; font-size: 13px; border-radius: 9999px; padding: 6px 16px; text-transform: none; border: none; transition: background 0.2s;">
                 + Seguir
             </a>
-            <!-- ADS:NAV:END -->
         </div>
     </nav>
 
-    <!-- 2. section.hero-dynamic -->
-    <section class="hero-dynamic">
-        <div class="container">
-            <div class="hero-inner">
-                <div class="hero-content">
-                    <span class="hero-tag"><span class="material-symbols-outlined" style="font-size:14px;">explore</span> Inspiración Diaria</span>
-                    <h1 class="hero-title">Tu armario, tus reglas. Elegí <span>Las Castañas</span>.</h1>
-                    <p class="hero-desc">Boutique de indumentaria y accesorios de moda de alta calidad en Coronel Charlone. Descubrí colecciones exclusivas de temporada, jeans premium, sweaters y el asesoramiento personalizado de Silvana y Sharon.</p>
-                    <div class="hero-btns">
-                        <a href="#destacados" class="btn btn-primary">Descubrir Looks</a>
-                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-secondary">Preguntanos</a>
-                    </div>
+    <!-- 2. Showroom Instagram/RED Profile Header -->
+    <header class="profile-header" style="background-color: #FFFFFF; padding: 48px 0 32px; border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <div class="container" style="max-width: 800px;">
+            <div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+                <div style="position: relative;">
+                    <img src="img/lascastagnas_ch_0.jpg" alt="Silvana y Sharon Profile" style="width: 96px; height: 96px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 15px rgba(0,0,0,0.1); object-fit: cover;">
+                    <span class="material-symbols-outlined" style="position: absolute; bottom: 0; right: 0; background-color: #1DA1F2; color: #FFF; font-size: 16px; border-radius: 50%; padding: 3px; font-weight: bold;">check</span>
                 </div>
-                <div class="hero-media">
-                    <div class="hero-img-container">
-                        <img src="img/lascastagnas_ch_2.jpg" alt="Las Castañas Lifestyle Outfit">
+                <div style="flex-grow: 1;">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+                        <h1 style="font-family: var(--font-body); font-size: 24px; font-weight: 600; color: rgba(0,0,0,0.8); text-transform: none; margin: 0; line-height: 1;">Las Castañas</h1>
+                        <span style="background-color: rgba(48,48,52,0.05); color: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 500;">Showroom Oficial</span>
                     </div>
+                    <div style="display: flex; gap: 24px; margin-bottom: 16px;">
+                        <div style="font-family: var(--font-body); font-size: 14px; color: rgba(0,0,0,0.6);"><strong style="color: rgba(0,0,0,0.8); font-weight: 600;">120</strong> Publicaciones</div>
+                        <div style="font-family: var(--font-body); font-size: 14px; color: rgba(0,0,0,0.6);"><strong style="color: rgba(0,0,0,0.8); font-weight: 600;">1.8K</strong> Seguidoras</div>
+                        <div style="font-family: var(--font-body); font-size: 14px; color: rgba(0,0,0,0.6);"><strong style="color: rgba(0,0,0,0.8); font-weight: 600;">4.6K</strong> Me Gusta</div>
+                    </div>
+                    <p style="font-family: var(--font-body); font-size: 14px; color: rgba(0,0,0,0.62); line-height: 1.6; max-width: 600px; margin: 0;">
+                        ✨ Boutique de indumentaria y accesorios de moda en Coronel Charlone.<br>
+                        Colecciones de última tendencia, sweaters premium super soft, jeans de calce soñado y la asesoría única de Sil y Shar. Envíos gratis locales 📦
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
-<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
-  <div class="marquee-container">
-    <div class="marquee-track">
-      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
-    </div>
-  </div>
-</div>
-
+    </header>
 
     <!-- 3. section#marquesina.marquee-scroll -->
     <section id="marquesina" class="marquee-scroll">
@@ -1134,74 +1125,89 @@ img {
             </div>
         </div>
     </section>
+<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
+    </div>
+  </div>
+</div>
 
-    <!-- 4. section#destacados.bento-grid -->
-    <section id="destacados" class="bento-grid">
+
+    <!-- 4. Muro Social UGC Masonry Grid -->
+    <section id="destacados" style="padding: 64px 0; background-color: #F5F5F5;">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Colecciones Compartidas</span>
-                <h2 class="section-title">Inspirate en nuestro Feed</h2>
+            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                <span class="section-tag" style="font-family: var(--font-body); text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; color: #FF2442; font-weight: 600; display: block; margin-bottom: 8px;">Comunidad</span>
+                <h2 style="font-family: var(--font-body); font-size: clamp(24px, 4vw, 32px); color: rgba(0,0,0,0.8); font-weight: 600; text-transform: none;">Looks del Showroom</h2>
             </div>
             
-            <div class="bento-container">
-                <!-- Large lifestyle bento image card -->
-                <div class="bento-card col-span-2 row-span-2 fade-in">
-                    <div class="bento-card-media">
-                        <img src="img/lascastagnas_ch_1.jpg" alt="Moda en Coronel Charlone">
+            <div class="social-feed-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <!-- Social Note Card 1 -->
+                <div class="note-card" style="background-color: #FFFFFF; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.06); cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+                    <div style="position: relative; width: 100%; aspect-ratio: 1;">
+                        <img src="img/lascastagnas_ch_1.jpg" alt="Moda Charlone" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span style="position: absolute; top: 12px; right: 12px; background-color: rgba(0,0,0,0.5); color: #FFF; font-size: 11px; padding: 4px 8px; border-radius: 20px; font-family: var(--font-body);">#OOTD</span>
                     </div>
-                    <div class="bento-card-overlay">
-                        <h3>Otoño e Invierno '25</h3>
-                        <p>Diseño, hilados nobles y una calidez pensada para el clima pampeano.</p>
-                    </div>
-                </div>
-
-                <!-- UGC Social-Text Bento Card -->
-                <div class="bento-card fade-in">
-                    <div class="bento-card-content">
-                        <div class="bento-icon-wrapper">
-                            <span class="material-symbols-outlined">explore</span>
-                        </div>
-                        <div>
-                            <h3 class="bento-title-small">Estilo Diario</h3>
-                            <p class="bento-desc-small">Prendas combinables para que armar tu outfit de cada día sea una experiencia divertida y relajada.</p>
+                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
+                        <h3 style="font-family: var(--font-body); font-size: 15px; font-weight: 600; color: rgba(0,0,0,0.8); text-transform: none; line-height: 1.4; margin: 0;">¡Nueva temporada Otoño Invierno! 🍁 Sweaters y abrigos suaves seleccionados de excelente confección.</h3>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 12px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <img src="img/lascastagnas_ch_0.jpg" alt="User" style="width: 24px; height: 24px; border-radius: 50%;">
+                                <span style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62);">lascastagnas_ch</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 4px;" class="like-button" onclick="toggleLike(this, event)">
+                                <span class="material-symbols-outlined heart-icon" style="font-size: 18px; color: rgba(0,0,0,0.4); transition: color 0.2s;">favorite</span>
+                                <span class="like-count" style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62); font-family: 'RED Number', var(--font-body);">42</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Social-Video Bento Card -->
-                <div class="bento-card row-span-2 fade-in">
-                    <div class="bento-card-media">
-                        <video src="img/lascastagnas_ch_4.mp4" autoplay loop muted playsinline></video>
+                <!-- Social Note Card 2 -->
+                <div class="note-card" style="background-color: #FFFFFF; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.06); cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+                    <div style="position: relative; width: 100%; aspect-ratio: 1;">
+                        <img src="img/lascastagnas_ch_8.jpg" alt="Jeans Tendencia" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span style="position: absolute; top: 12px; right: 12px; background-color: rgba(0,0,0,0.5); color: #FFF; font-size: 11px; padding: 4px 8px; border-radius: 20px; font-family: var(--font-body);">#Denim</span>
                     </div>
-                    <div class="bento-card-overlay">
-                        <h3>Look en Detalle</h3>
-                        <p>Moda dinámica.</p>
-                    </div>
-                </div>
-
-                <!-- Stat Bento Card -->
-                <div class="bento-card fade-in">
-                    <div class="bento-card-content">
-                        <span class="bento-stat">100%</span>
-                        <div>
-                            <h3 class="bento-title-small">Atención Personalizada</h3>
-                            <p class="bento-desc-small">Silvana y Sharon te ayudan a encontrar el talle, calce y outfit perfecto para vos.</p>
+                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
+                        <h3 style="font-family: var(--font-body); font-size: 15px; font-weight: 600; color: rgba(0,0,0,0.8); text-transform: none; line-height: 1.4; margin: 0;">Jeans Wide Leg de calce soñado 👖 Rígidos y elastizados de calce perfecto. Pasá a probarte tu talle ideal.</h3>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 12px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <img src="img/lascastagnas_ch_0.jpg" alt="User" style="width: 24px; height: 24px; border-radius: 50%;">
+                                <span style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62);">lascastagnas_ch</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 4px;" class="like-button" onclick="toggleLike(this, event)">
+                                <span class="material-symbols-outlined heart-icon" style="font-size: 18px; color: rgba(0,0,0,0.4); transition: color 0.2s;">favorite</span>
+                                <span class="like-count" style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62); font-family: 'RED Number', var(--font-body);">89</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Image Bento Card -->
-                <div class="bento-card col-span-2 fade-in">
-                    <div class="bento-card-media">
-                        <img src="img/lascastagnas_ch_6.jpg" alt="Accesorios Curados">
+                <!-- Social Note Card 3 -->
+                <div class="note-card" style="background-color: #FFFFFF; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.06); cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+                    <div style="position: relative; width: 100%; aspect-ratio: 1;">
+                        <img src="img/lascastagnas_ch_5.jpg" alt="Accesorios" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span style="position: absolute; top: 12px; right: 12px; background-color: rgba(0,0,0,0.5); color: #FFF; font-size: 11px; padding: 4px 8px; border-radius: 20px; font-family: var(--font-body);">#Accesorios</span>
                     </div>
-                    <div class="bento-card-overlay">
-                        <h3>Accesorios Seleccionados</h3>
-                        <p>Cinturones, carteras y complementos que realzan tu estilo natural.</p>
+                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
+                        <h3 style="font-family: var(--font-body); font-size: 15px; font-weight: 600; color: rgba(0,0,0,0.8); text-transform: none; line-height: 1.4; margin: 0;">Accesorios que marcan la diferencia ✨ Carteras exclusivas y cinturones seleccionados de diseño pampeano.</h3>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 12px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <img src="img/lascastagnas_ch_0.jpg" alt="User" style="width: 24px; height: 24px; border-radius: 50%;">
+                                <span style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62);">lascastagnas_ch</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 4px;" class="like-button" onclick="toggleLike(this, event)">
+                                <span class="material-symbols-outlined heart-icon" style="font-size: 18px; color: rgba(0,0,0,0.4); transition: color 0.2s;">favorite</span>
+                                <span class="like-count" style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62); font-family: 'RED Number', var(--font-body);">56</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>       </div>
     </section>
 
     <!-- 5. section#galeria.bento-gallery -->
@@ -1343,6 +1349,34 @@ img {
 
     <!-- ADS:SCRIPTS -->
     <script>
+        // Xiaohongshu Toggle Like function
+        function toggleLike(el, event) {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            var heart = el.querySelector('.heart-icon');
+            var countEl = el.querySelector('.like-count');
+            var count = parseInt(countEl.innerText);
+            
+            var isActive = heart.style.color === 'rgb(255, 36, 66)' || heart.style.color === '#FF2442';
+            
+            if (isActive) {
+                heart.style.color = 'rgba(0,0,0,0.4)';
+                heart.style.fontVariationSettings = "'FILL' 0";
+                countEl.innerText = count - 1;
+            } else {
+                heart.style.color = '#FF2442';
+                heart.style.fontVariationSettings = "'FILL' 1";
+                countEl.innerText = count + 1;
+                
+                heart.style.transform = 'scale(1.3)';
+                setTimeout(function() {
+                    heart.style.transform = 'scale(1)';
+                }, 200);
+            }
+        }
+
         // Update nav styling on scroll
         window.addEventListener('scroll', function() {
             var nav = document.querySelector('nav.floating-pill');

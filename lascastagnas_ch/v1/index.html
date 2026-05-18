@@ -159,47 +159,63 @@
             transform: scale(1.02);
         }
 
-        /* 1. nav.floating-pill */
+        /* 1. Classic Horizontal Sticky Nav with Top Utility Bar */
+        .utility-bar {
+            background-color: var(--nike-black);
+            color: var(--nike-white);
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 101;
+            position: relative;
+        }
+
         nav.floating-pill {
-            position: fixed;
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 48px);
-            max-width: 960px;
-            height: 64px;
-            background-color: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 9999px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            position: sticky;
+            top: 0;
+            left: 0;
+            transform: none;
+            width: 100%;
+            max-width: 100%;
+            height: 72px;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid var(--border-secondary);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 var(--space-5);
+            padding: 0 var(--space-8);
             z-index: 100;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: none;
+            transition: all 0.3s ease;
         }
 
         nav.floating-pill.scrolled {
-            top: 12px;
-            background-color: rgba(17, 17, 17, 0.9);
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--nike-black);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
 
         nav.floating-pill.scrolled .logo-text,
         nav.floating-pill.scrolled .nav-links a {
-            color: var(--nike-white);
+            color: var(--nike-black);
         }
 
         nav.floating-pill.scrolled .logo-img {
-            filter: invert(1);
+            filter: none;
         }
 
         nav.floating-pill.scrolled .nav-links a:hover {
-            color: var(--grey-300);
+            color: var(--orange-flash);
         }
 
         .nav-brand {
@@ -211,13 +227,13 @@
         .logo-img {
             width: 32px;
             height: 32px;
-            border-radius: 50%;
+            border-radius: 0%; /* Sharp square logo */
             object-fit: cover;
             transition: transform 0.3s ease;
         }
 
         nav.floating-pill:hover .logo-img {
-            transform: rotate(15deg);
+            transform: scale(1.05);
         }
 
         .logo-text {
@@ -337,17 +353,18 @@
             width: 100%;
             max-width: 440px;
             height: 520px;
-            border-radius: 32px;
+            border-radius: 0px; /* Sharp edges for Nike Brutalism */
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            box-shadow: none; /* Shadow-free flat elevation model */
             position: relative;
-            transform: rotate(2deg);
-            transition: all 0.6s ease;
+            transform: none; /* No rotation */
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-secondary);
         }
 
         .hero-img-container:hover {
-            transform: rotate(0deg) scale(1.03);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+            transform: scale(1.02);
+            border-color: var(--nike-black);
         }
 
         .hero-img-container img {
@@ -381,8 +398,8 @@
         .marquee-img {
             width: 80px;
             height: 80px;
-            border-radius: 50%;
-            border: 2px solid var(--orange-flash);
+            border-radius: 0px; /* Square marquee photos */
+            border: 1.5px solid var(--orange-flash);
             object-fit: cover;
         }
 
@@ -434,20 +451,19 @@
 
         .bento-card {
             background-color: var(--nike-white);
-            border-radius: 24px;
+            border-radius: 0px; /* Sharp cards for Nike flat editorial */
             overflow: hidden;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: none; /* Shadow-free flat elevation model */
+            transition: all 0.3s ease;
+            border: 1.5px solid var(--border-secondary);
             display: flex;
             flex-direction: column;
         }
 
         .bento-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border-color: var(--grey-300);
+            border-color: var(--nike-black);
+            transform: scale(1.01);
         }
 
         /* Grid spans settings */
@@ -553,17 +569,17 @@
 
         .gallery-card {
             background-color: var(--nike-white);
-            border-radius: 20px;
+            border-radius: 0px; /* Sharp cards for Nike flat editorial */
             overflow: hidden;
             position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: none; /* Shadow-free flat elevation model */
+            transition: all 0.3s ease;
+            border: 1.5px solid var(--border-secondary);
         }
 
         .gallery-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            border-color: var(--nike-black);
+            transform: scale(1.01);
         }
 
         .gallery-card-img {
@@ -1059,6 +1075,10 @@ img {
 </style>
 </head>
 <body>
+    <!-- Top Utility Promo Bar -->
+    <div class="utility-bar">
+        <span>Envíos gratis en Charlone • Asesoramiento personalizado</span>
+    </div>
 
     <!-- 1. nav.floating-pill -->
     <nav class="floating-pill">

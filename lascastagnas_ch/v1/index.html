@@ -3,881 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Las Castañas — Indumentaria y Accesorios</title>
-    <!-- SEO Optimization -->
-    <meta name="description" content="Las Castañas en Coronel Charlone. Vestite con la mejor selección de indumentaria y accesorios. Colección premium de Silvana y Sharon.">
+    <title>Las Castañas — Editorial</title>
     <meta name="store-id" content="lascastagnas_ch">
     
-    <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,500;0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Material Symbols for Premium Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..300,0..1&display=swap" rel="stylesheet">
-    
-    <!-- Custom Vanilla CSS — Nike-Inspired Podium Design System -->
     <style>
         :root {
-            /* Colors - Premium Stone & Sand Boutique Palette */
-            --nike-black: #1C1917;
-            --nike-white: #FFFFFF;
-            --grey-50: #FAF9F6;  /* Soft off-white linen canvas */
-            --grey-100: #E7E5E4; /* Sand / warm beige */
-            --grey-200: #D6D3D1; /* Mid stone beige */
-            --grey-300: #A8A29E;
-            --grey-700: #44403C;
-            --grey-800: #292524;
-            --grey-900: #1C1917;
-            
-            /* Text Hierarchy Colors */
-            --text-primary: #1C1917;
-            --text-secondary: #57534E;
-            --text-disabled: #78716C;
-            --border-primary: #57534E;
-            --border-secondary: #D6D3D1;
-            
-            /* Accent & Semantic */
-            --nike-red: #B91C1C;
-            --orange-flash: #EA580C; /* Burnt warm orange */
-            --success-green: #007D48;
-            --link-blue: #1151FF;
-            --focus-ring: rgba(39, 93, 197, 0.8);
-            
-            /* Spacing Grid (8px base) */
-            --space-1: 4px;
-            --space-2: 8px;
-            --space-3: 12px;
-            --space-4: 16px;
-            --space-5: 24px;
-            --space-6: 28px;
-            --space-7: 32px;
-            --space-8: 40px;
-            --space-9: 64px;
-            --space-10: 80px;
-            
-            /* Fonts */
-            --font-display: 'Archivo Narrow', 'Helvetica Neue', Arial, sans-serif;
-            --font-body: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
+            --brand-white: #FFFFFF;
+            --brand-black: #050505;
+            --brand-grey: #666666;
         }
 
-        /* Basic Resets & Aesthetics */
-        *, *::before, *::after {
-            box-sizing: border-box;
+        * {
             margin: 0;
             padding: 0;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-            background-color: var(--grey-50);
-            color: var(--text-primary);
+            box-sizing: border-box;
         }
 
         body {
-            font-family: var(--font-body);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Typography Custom Rules */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 0.95;
-            color: var(--nike-black);
-        }
-
-        p {
-            font-family: var(--font-body);
-            font-weight: 400;
-            color: var(--text-secondary);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s ease;
-        }
-
-        img, video {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* Global Classes & Utilities */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 var(--space-4);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-2);
-            font-family: var(--font-body);
-            font-weight: 600;
-            font-size: 15px;
-            text-transform: uppercase;
-            padding: 14px 28px;
-            border-radius: 9999px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            text-align: center;
-            touch-action: manipulation;
-        }
-
-        .btn-primary {
-            background-color: var(--nike-black);
-            color: var(--nike-white);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--text-secondary);
-            transform: scale(1.02);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--nike-black);
-            border-color: var(--border-secondary);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--nike-black);
-            background-color: var(--grey-100);
-            transform: scale(1.02);
-        }
-
-        /* 1. Classic Horizontal Sticky Nav with Top Utility Bar */
-        .utility-bar {
-            background-color: var(--nike-black);
-            color: var(--nike-white);
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            z-index: 101;
-            position: relative;
-        }
-
-        nav.floating-pill {
-            position: sticky;
-            top: 0;
-            left: 0;
-            transform: none;
-            width: 100%;
-            max-width: 100%;
-            height: 72px;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 0;
-            border: none;
-            border-bottom: 1px solid var(--border-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 var(--space-8);
-            z-index: 100;
-            box-shadow: none;
-            transition: all 0.3s ease;
-        }
-
-        nav.floating-pill.scrolled {
-            top: 0;
-            background-color: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid var(--nike-black);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-        }
-
-        nav.floating-pill.scrolled .logo-text,
-        nav.floating-pill.scrolled .nav-links a {
-            color: var(--nike-black);
-        }
-
-        nav.floating-pill.scrolled .logo-img {
-            filter: none;
-        }
-
-        nav.floating-pill.scrolled .nav-links a:hover {
-            color: var(--orange-flash);
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-
-        .logo-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 0%; /* Sharp square logo */
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        nav.floating-pill:hover .logo-img {
-            transform: scale(1.05);
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: 0.05em;
-            color: var(--nike-black);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: var(--space-5);
-        }
-
-        .nav-links a {
-            font-family: var(--font-body);
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--nike-black);
-        }
-
-        .nav-links a:hover {
-            color: var(--orange-flash);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-        }
-
-        /* 2. section.hero-dynamic */
-        section.hero-dynamic {
-            padding-top: 140px;
-            padding-bottom: var(--space-9);
-            background: radial-gradient(circle at 80% 20%, var(--grey-100) 0%, var(--grey-50) 100%);
-            position: relative;
-            overflow: hidden;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-        }
-
-        section.hero-dynamic::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            right: -10%;
-            width: 60%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(255, 80, 0, 0.05) 0%, transparent 60%);
-            z-index: 1;
-        }
-
-        .hero-inner {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: var(--space-8);
-            align-items: center;
-            z-index: 2;
-            position: relative;
-            width: 100%;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: flex-col;
-            align-items: flex-start;
-            gap: var(--space-5);
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            background-color: var(--orange-flash);
-            color: var(--nike-white);
-            font-family: var(--font-display);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: var(--space-1) var(--space-3);
-            border-radius: var(--space-1);
-        }
-
-        .hero-title {
-            font-size: clamp(48px, 8vw, 84px);
-            font-weight: 700;
-            color: var(--nike-black);
-            max-width: 800px;
-            line-height: 0.9;
-        }
-
-        .hero-desc {
-            font-size: 18px;
-            font-weight: 400;
-            max-width: 520px;
-            color: var(--text-secondary);
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: var(--space-4);
-            margin-top: var(--space-2);
-        }
-
-        .hero-media {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-img-container {
-            width: 100%;
-            max-width: 440px;
-            height: 520px;
-            border-radius: 0px; /* Sharp edges for Nike Brutalism */
-            overflow: hidden;
-            box-shadow: none; /* Shadow-free flat elevation model */
-            position: relative;
-            transform: none; /* No rotation */
-            transition: all 0.4s ease;
-            border: 1px solid var(--border-secondary);
-        }
-
-        .hero-img-container:hover {
-            transform: scale(1.02);
-            border-color: var(--nike-black);
-        }
-
-        .hero-img-container img {
-            width: 100%;
-            height: 100%;
-            object-position: center;
-        }
-
-        /* 3. section#marquesina.marquee-scroll */
-        section#marquesina.marquee-scroll {
-            background-color: var(--nike-black);
-            padding: var(--space-6) 0;
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            z-index: 10;
-        }
-
-        .marquee-track {
-            display: inline-flex;
-            animation: marquee 25s linear infinite;
-        }
-
-        .marquee-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-4);
-            margin-right: 50px;
-        }
-
-        .marquee-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 0px; /* Square marquee photos */
-            border: 1.5px solid var(--orange-flash);
-            object-fit: cover;
-        }
-
-        .marquee-text {
-            font-family: var(--font-display);
-            font-size: 40px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--nike-white);
-            letter-spacing: 0.02em;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* 4. section#destacados.bento-grid */
-        section#destacados.bento-grid {
-            padding: var(--space-10) 0;
-            background-color: var(--grey-50);
-        }
-
-        .section-header {
-            margin-bottom: var(--space-7);
-        }
-
-        .section-tag {
-            font-family: var(--font-display);
-            font-size: 14px;
-            color: var(--orange-flash);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: var(--space-1);
-            display: block;
-        }
-
-        .section-title {
-            font-size: clamp(32px, 5vw, 48px);
-            color: var(--nike-black);
-        }
-
-        .bento-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 280px;
-            gap: var(--space-5);
-        }
-
-        .bento-card {
-            background-color: var(--nike-white);
-            border-radius: 0px; /* Sharp cards for Nike flat editorial */
-            overflow: hidden;
-            position: relative;
-            box-shadow: none; /* Shadow-free flat elevation model */
-            transition: all 0.3s ease;
-            border: 1.5px solid var(--border-secondary);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .bento-card:hover {
-            border-color: var(--nike-black);
-            transform: scale(1.01);
-        }
-
-        /* Grid spans settings */
-        .col-span-2 { grid-column: span 2; }
-        .row-span-2 { grid-row: span 2; }
-
-        .bento-card-media {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .bento-card-media img,
-        .bento-card-media video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .bento-card:hover .bento-card-media img {
-            transform: scale(1.05);
-        }
-
-        .bento-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.3) 60%, transparent 100%);
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: var(--space-5);
-        }
-
-        .bento-card-overlay h3 {
-            color: var(--nike-white);
-            font-size: 28px;
-            margin-bottom: var(--space-2);
-        }
-
-        .bento-card-overlay p {
-            color: var(--grey-300);
-            font-size: 14px;
-        }
-
-        .bento-card-content {
-            padding: var(--space-5);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            position: relative;
-            z-index: 3;
-        }
-
-        .bento-icon-wrapper {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: var(--grey-100);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--nike-black);
-            margin-bottom: var(--space-3);
-        }
-
-        .bento-title-small {
-            font-size: 20px;
-            margin-bottom: var(--space-2);
-        }
-
-        .bento-desc-small {
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--text-secondary);
-        }
-
-        .bento-stat {
-            font-family: var(--font-display);
-            font-size: 72px;
-            font-weight: 700;
-            color: var(--orange-flash);
-            line-height: 1;
-        }
-
-        /* 5. section#galeria.bento-gallery */
-        section#galeria.bento-gallery {
-            padding: var(--space-10) 0;
-            background-color: var(--grey-100);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-5);
-            margin-top: var(--space-6);
-        }
-
-        .gallery-card {
-            background-color: var(--nike-white);
-            border-radius: 0px; /* Sharp cards for Nike flat editorial */
-            overflow: hidden;
-            position: relative;
-            box-shadow: none; /* Shadow-free flat elevation model */
-            transition: all 0.3s ease;
-            border: 1.5px solid var(--border-secondary);
-        }
-
-        .gallery-card:hover {
-            border-color: var(--nike-black);
-            transform: scale(1.01);
-        }
-
-        .gallery-card-img {
-            height: 340px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-card-img img {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s ease;
-        }
-
-        .gallery-card:hover .gallery-card-img img {
-            transform: scale(1.04);
-        }
-
-        .gallery-card-badge {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background-color: var(--nike-black);
-            color: var(--nike-white);
-            font-family: var(--font-display);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 4px;
-            z-index: 10;
-        }
-
-        .gallery-card-info {
-            padding: var(--space-4);
-            background-color: var(--nike-white);
-            border-top: 1px solid var(--grey-100);
-        }
-
-        .gallery-card-title {
-            font-size: 18px;
-            color: var(--nike-black);
-            margin-bottom: var(--space-1);
-        }
-
-        .gallery-card-desc {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-3);
-        }
-
-        .gallery-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .gallery-card-price {
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--nike-black);
-        }
-
-        /* 6. footer.bento-footer */
-        footer.bento-footer {
-            background-color: var(--nike-black);
-            color: var(--grey-300);
-            padding: var(--space-10) 0 var(--space-6) 0;
-            position: relative;
-            z-index: 20;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
-            gap: var(--space-7);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: var(--space-8);
-            margin-bottom: var(--space-6);
-        }
-
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-
-        .footer-logo {
-            font-family: var(--font-display);
-            font-size: 24px;
-            color: var(--nike-white);
-            letter-spacing: 0.05em;
-        }
-
-        .footer-desc {
-            font-size: 14px;
-            color: var(--grey-300);
-            line-height: 1.6;
-        }
-
-        .footer-col h4 {
-            color: var(--nike-white);
-            font-size: 16px;
-            margin-bottom: var(--space-4);
-            letter-spacing: 0.05em;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-        }
-
-        .footer-links a {
-            font-size: 14px;
-            color: var(--grey-300);
-        }
-
-        .footer-links a:hover {
-            color: var(--nike-white);
-            padding-left: var(--space-1);
-        }
-
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-            font-size: 14px;
-        }
-
-        .footer-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-2);
-        }
-
-        .footer-info-item .material-symbols-outlined {
-            color: var(--orange-flash);
-            font-size: 20px;
-        }
-
-        .footer-newsletter {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-
-        .footer-newsletter p {
-            font-size: 14px;
-            color: var(--grey-300);
-        }
-
-        .footer-newsletter-btn {
-            display: inline-flex;
-            background-color: var(--orange-flash);
-            color: var(--nike-white);
-            padding: var(--space-3) var(--space-5);
-            border-radius: 9999px;
-            font-family: var(--font-body);
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            justify-content: center;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .footer-newsletter-btn:hover {
-            background-color: var(--nike-white);
-            color: var(--nike-black);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-3);
-            font-size: 12px;
-            color: var(--text-disabled);
-        }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-fab {
+            background-color: var(--brand-black);
+            color: var(--brand-white);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* We handle scrolling in the wrapper */
+        }
+
+        /* Scroll Snapping Container */
+        .lookbook-wrapper {
+            height: 100vh;
+            width: 100vw;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .lookbook-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Persistent Brand Header Overlay */
+        .brand-overlay {
             position: fixed;
-            bottom: 32px;
-            right: 32px;
-            background-color: #25D366;
-            color: var(--nike-white);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            mix-blend-mode: difference;
+            pointer-events: none;
+        }
+        .brand-overlay h1 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        /* Floating Contact Button */
+        .contact-fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            background: var(--brand-white);
+            color: var(--brand-black);
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .contact-fab:hover {
+            transform: scale(1.05);
+        }
+
+        /* Lookbook Section (Full viewport) */
+        .look {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 150;
-            animation: pulse-fab 2s infinite;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            overflow: hidden;
         }
 
-        .whatsapp-fab:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+        /* Look Background Image */
+        .look-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6; /* Dimmed slightly to let text pop */
+            filter: grayscale(20%); /* Editorial raw feel */
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .whatsapp-fab svg {
-            width: 32px;
-            height: 32px;
-            fill: currentColor;
+        /* Hover zoom effect on the image */
+        .look:hover .look-img {
+            transform: scale(1.05);
         }
 
-        @keyframes pulse-fab {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
+        /* Massive Asymmetrical Typography */
+        .look-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bodoni Moda', serif;
+            font-size: 45vw; /* Absolute massive size */
+            font-weight: 400;
+            color: rgba(255,255,255,0.05);
+            z-index: 1;
+            pointer-events: none;
+            line-height: 0.8;
         }
 
-        /* Fade In Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        .look-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1400px;
+            padding: 0 4rem;
+            display: flex;
+            flex-direction: column;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* Alignment variations per section to create asymmetry */
+        .align-right { align-items: flex-end; text-align: right; }
+        .align-left { align-items: flex-start; text-align: left; }
+        .align-center { align-items: center; text-align: center; }
+
+        .look-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 400;
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        
+        .look-title span {
+            display: block;
+            font-style: italic;
+            font-size: 0.6em;
+            margin-left: 2rem;
+            color: var(--brand-grey);
         }
 
-        /* Responsive Custom Media Queries */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .bento-container {
-                grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: 260px;
-            }
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .look-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 400px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Next Look Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            animation: bounce 2s infinite ease-in-out;
+            pointer-events: none;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
         }
 
         @media (max-width: 768px) {
-            nav.floating-pill {
-                padding: 0 var(--space-4);
-                height: 56px;
-            }
-            .nav-links {
-                display: none; /* Hide on mobile — keep simple or use burger if desired */
-            }
-            section.hero-dynamic {
-                padding-top: 100px;
-                min-height: auto;
-            }
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: var(--space-6);
-            }
-            .hero-img-container {
-                height: 360px;
-                max-width: 100%;
-            }
-            .bento-container {
-                grid-template-columns: 1fr;
-                grid-auto-rows: 240px;
-            }
-            .col-span-2 { grid-column: span 1; }
-            .row-span-2 { grid-row: span 1; }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-6);
-            }
-            .whatsapp-fab {
-                bottom: 24px;
-                right: 24px;
-                width: 50px;
-                height: 50px;
-            }
-            .whatsapp-fab svg {
-                width: 26px;
-                height: 26px;
-            }
+            .brand-overlay { top: 1.5rem; left: 1.5rem; }
+            .look-content { padding: 0 2rem; }
+            .look-desc { max-width: 100%; }
+            .contact-fab { bottom: 1.5rem; right: 1.5rem; padding: 1rem; width: auto; font-size: 0.8rem; }
         }
     </style>
 <style id="premium-effects">
@@ -934,14 +249,14 @@ img {
 
 
 :root {
-  --primary-rgb: 28, 25, 23;
-  --mesh-color-1: #1C1917;
-  --mesh-color-2: #E7E5E4;
+  --primary-rgb: 233, 30, 99;
+  --mesh-color-1: #E91E63;
+  --mesh-color-2: #FFEB3B;
   --mesh-color-3: #00BCD4;
-  --gradient-start: #1C1917;
-  --gradient-end: #E7E5E4;
-  --glow-color: rgba(28, 25, 23, 0.08);
-  --selection-bg: rgba(28, 25, 23, 0.2);
+  --gradient-start: #E91E63;
+  --gradient-end: #FFEB3B;
+  --glow-color: rgba(233, 30, 99, 0.08);
+  --selection-bg: rgba(233, 30, 99, 0.2);
 }
 
 
@@ -1075,53 +390,30 @@ img {
 </style>
 </head>
 <body>
-    <!-- Top Utility Promo Bar -->
-    <div class="utility-bar">
-        <span>Envíos gratis en Charlone • Asesoramiento personalizado</span>
+
+    <!-- Persistent Branding overlaying the entire screen -->
+    <div class="brand-overlay">
+        <h1>Las<br>Castañas</h1>
     </div>
 
-    <!-- 1. nav.floating-pill -->
-    <nav class="floating-pill">
-        <div class="nav-brand">
-            <img src="img/lascastagnas_ch_0.jpg" alt="Las Castañas Logo" class="logo-img">
-            <span class="logo-text">Las Castañas</span>
-        </div>
-        <div class="nav-links">
-            <a href="#destacados">Destacados</a>
-            <a href="#galeria">Colección</a>
-            <a href="#tienda">Catálogo</a>
-            <a href="#contacto">Contacto</a>
-        </div>
-        <div class="nav-actions">
-            <!-- Custom pill button for actions -->
-            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 18px; font-size: 12px; border-radius: 9999px;">
-                Escribinos
-            </a>
-            <!-- ADS:NAV:END -->
-        </div>
-    </nav>
+    <!-- WhatsApp VIP Concierge Button -->
+    <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="contact-fab">
+        Adquirir Piezas
+    </a>
 
-    <!-- 2. section.hero-dynamic -->
-    <section class="hero-dynamic">
-        <div class="container">
-            <div class="hero-inner">
-                <div class="hero-content">
-                    <span class="hero-badge">Curaduría de Estilo</span>
-                    <h1 class="hero-title">MOVETE A TU RITMO. VESTÍ LAS CASTAÑAS.</h1>
-                    <p class="hero-desc">Boutique de indumentaria y accesorios de moda de alta calidad en Coronel Charlone. Descubrí las colecciones exclusivas de temporada, jeans premium, sweaters y el asesoramiento personalizado de Silvana y Sharon.</p>
-                    <div class="hero-btns">
-                        <a href="#destacados" class="btn btn-primary">Ver Colección</a>
-                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-secondary">Chatear ahora</a>
-                    </div>
-                </div>
-                <div class="hero-media">
-                    <div class="hero-img-container">
-                        <img src="img/lascastagnas_ch_1.jpg" alt="Las Castañas Hero Style">
-                    </div>
-                </div>
+    <!-- The Snapping Wrapper -->
+    <div class="lookbook-wrapper">
+
+        <!-- LOOK 01: Hero / Cover -->
+        <section class="look">
+            <img src="img/lascastagnas_ch_2.jpg" alt="Portada Editorial" class="look-img">
+            <div class="look-number">01</div>
+            <div class="look-content align-center">
+                <h2 class="look-title">Nueva<br><span>Temporada</span></h2>
+                <p class="look-desc">Colección Otoño-Invierno curada exclusivamente para la mujer contemporánea en Coronel Charlone. Fibras puras, líneas limpias y diseño absoluto.</p>
             </div>
-        </div>
-    </section>
+            <div class="scroll-indicator">Desliza</div>
+        </section>
 <div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
   <div class="marquee-container">
     <div class="marquee-track">
@@ -1131,271 +423,51 @@ img {
 </div>
 
 
-    <!-- 3. section#marquesina.marquee-scroll -->
-    <section id="marquesina" class="marquee-scroll">
-        <div class="marquee-track">
-            <!-- First repeat -->
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_2.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Las Castañas</span>
+        <!-- LOOK 02: Sweaters -->
+        <section class="look">
+            <img src="img/lascastagnas_ch_7.jpg" alt="Sweaters y Tejidos" class="look-img">
+            <div class="look-number">02</div>
+            <div class="look-content align-left">
+                <h2 class="look-title">Raw<br><span>Knitwear</span></h2>
+                <p class="look-desc">Sweaters de punto grueso y abrigos de media estación. La dualidad entre calidez extrema y siluetas estructuradas.</p>
             </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_3.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Indumentaria Premium</span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_5.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Accesorios</span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_6.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Diseño Exclusivo</span>
-            </div>
-            
-            <!-- Second repeat for seamless looping -->
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_2.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Las Castañas</span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_3.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Indumentaria Premium</span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_5.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Accesorios</span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_6.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Diseño Exclusivo</span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 4. section#destacados.bento-grid -->
-    <section id="destacados" class="bento-grid">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Nuestra Identidad</span>
-                <h2 class="section-title">Destacados de la Temporada</h2>
+        <!-- LOOK 03: Denim -->
+        <section class="look">
+            <img src="img/lascastagnas_ch_8.jpg" alt="Jeans Wide Leg" class="look-img">
+            <div class="look-number">03</div>
+            <div class="look-content align-right">
+                <h2 class="look-title">Denim<br><span>Architecture</span></h2>
+                <p class="look-desc">Jeans Wide Leg rígidos. Pantalones pensados no como ropa, sino como cimientos del estilo diario. Calce anatómico perfecto.</p>
             </div>
-            
-            <div class="bento-container">
-                <!-- Large Image Bento Block -->
-                <div class="bento-card col-span-2 row-span-2 fade-in">
-                    <div class="bento-card-media">
-                        <img src="img/lascastagnas_ch_7.jpg" alt="Sweaters y Abrigos">
-                    </div>
-                    <div class="bento-card-overlay">
-                        <h3>Otoño Invierno</h3>
-                        <p>Los mejores abrigos, sweaters y bufandas seleccionados cuidadosamente por Silvana y Sharon.</p>
-                    </div>
-                </div>
+        </section>
 
-                <!-- Text Bento Block -->
-                <div class="bento-card fade-in">
-                    <div class="bento-card-content">
-                        <div class="bento-icon-wrapper">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </div>
-                        <div>
-                            <h3 class="bento-title-small">Hecho para vos</h3>
-                            <p class="bento-desc-small">Cada prenda está elegida para brindarte la máxima comodidad sin perder el toque elegante que te define.</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- LOOK 04: Accesorios -->
+        <section class="look">
+            <img src="img/lascastagnas_ch_5.jpg" alt="Accesorios Premium" class="look-img">
+            <div class="look-number">04</div>
+            <div class="look-content align-center">
+                <h2 class="look-title">Pure<br><span>Details</span></h2>
+                <p class="look-desc">Cinturones de cuero crudo y carteras minimalistas. Los detalles silenciosos que elevan cualquier composición visual.</p>
+            </div>
+        </section>
 
-                <!-- Interactive Media Bento Block (Video Loop) -->
-                <div class="bento-card row-span-2 fade-in">
-                    <div class="bento-card-media">
-                        <video src="img/lascastagnas_ch_4.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <div class="bento-card-overlay">
-                        <h3>Lookbook '25</h3>
-                        <p>Prendas en movimiento.</p>
-                    </div>
-                </div>
-
-                <!-- Stat Bento Block -->
-                <div class="bento-card fade-in">
-                    <div class="bento-card-content">
-                        <span class="bento-stat">100%</span>
-                        <div>
-                            <h3 class="bento-title-small">Calidad Garantizada</h3>
-                            <p class="bento-desc-small">Trabajamos únicamente con marcas premium e hilados seleccionados.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Image & Text Bento Block -->
-                <div class="bento-card col-span-2 fade-in">
-                    <div class="bento-card-media">
-                        <img src="img/lascastagnas_ch_8.jpg" alt="Boutique las castañas">
-                    </div>
-                    <div class="bento-card-overlay">
-                        <h3>Boutique Charlone</h3>
-                        <p>Vení a visitarnos y armá tu look ideal con asesoramiento personalizado.</p>
-                    </div>
+        <!-- LOOK 05: Silvana & Sharon / Footer -->
+        <section class="look">
+            <img src="img/lascastagnas_ch_1.jpg" alt="Showroom" class="look-img" style="opacity: 0.3;">
+            <div class="look-number">05</div>
+            <div class="look-content align-left">
+                <h2 class="look-title" style="font-size: clamp(2rem, 5vw, 4rem);">Curaduría<br><span>Por Silvana & Sharon</span></h2>
+                <p class="look-desc" style="margin-bottom: 2rem;">Visitá nuestro showroom. Una experiencia de compra privada diseñada para entender tu estilo y elevarlo al máximo nivel. Asesoramiento 1 a 1.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Coronel Charlone, Arg.</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 5. section#galeria.bento-gallery -->
-    <section id="galeria" class="bento-gallery">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Colección Activa</span>
-                <h2 class="section-title">Prendas & Accesorios</h2>
-            </div>
-            
-            <div class="gallery-grid">
-                <!-- Gallery Card 1 -->
-                <div class="gallery-card fade-in">
-                    <div class="gallery-card-badge">Nuevo</div>
-                    <div class="gallery-card-img">
-                        <img src="img/lascastagnas_ch_9.jpg" alt="Saco Castaña Classic">
-                    </div>
-                    <div class="gallery-card-info">
-                        <h3 class="gallery-card-title">Saco Castaña Classic</h3>
-                        <p class="gallery-card-desc">Saco clásico con textura suave y caída perfecta. Ideal para uso diario u ocasiones formales.</p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-card-price">$26.500</span>
-                            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 16px; font-size: 11px;">Consultar</a>
-                        </div>
-                    </div>
-                </div>
+    </div>
 
-                <!-- Gallery Card 2 -->
-                <div class="gallery-card fade-in">
-                    <div class="gallery-card-badge">Más Vendido</div>
-                    <div class="gallery-card-img">
-                        <img src="img/lascastagnas_ch_10.jpg" alt="Sweater Soft Linen">
-                    </div>
-                    <div class="gallery-card-info">
-                        <h3 class="gallery-card-title">Sweater Soft Linen</h3>
-                        <p class="gallery-card-desc">Confeccionado con lana suave seleccionada, cuello redondo y calce cómodo.</p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-card-price">$22.900</span>
-                            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 16px; font-size: 11px;">Consultar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Card 3 (Video Preview) -->
-                <div class="gallery-card fade-in">
-                    <div class="gallery-card-badge">Video</div>
-                    <div class="gallery-card-img">
-                        <video src="img/lascastagnas_ch_11.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover;"></video>
-                    </div>
-                    <div class="gallery-card-info">
-                        <h3 class="gallery-card-title">Colección Invierno</h3>
-                        <p class="gallery-card-desc">Descubrí las últimas novedades de accesorios en movimiento.</p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-card-price">Premium</span>
-                            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 16px; font-size: 11px;">Ver Más</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ADS:CONTENT:END -->
-
-    <!-- 6. footer.bento-footer -->
-    <footer class="bento-footer" id="contacto">
-        <!-- ADS:FOOTER:START -->
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3 class="footer-logo">Las Castañas</h3>
-                    <p class="footer-desc">Boutique exclusiva de indumentaria y accesorios premium. Cuidamos cada detalle para ofrecerte la mejor experiencia en Coronel Charlone, Buenos Aires.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Menú</h4>
-                    <div class="footer-links">
-                        <a href="#destacados">Destacados</a>
-                        <a href="#galeria">Colección</a>
-                        <a href="#tienda">Catálogo</a>
-                        <a href="#contacto">Contacto</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Contacto</h4>
-                    <div class="footer-info">
-                        <div class="footer-info-item">
-                            <span class="material-symbols-outlined">location_on</span>
-                            <span>Coronel Charlone, Provincia de Buenos Aires</span>
-                        </div>
-                        <div class="footer-info-item">
-                            <span class="material-symbols-outlined">call</span>
-                            <span>Sharon: 3388512014<br>Silvana: 3385521955</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Horarios</h4>
-                    <div class="footer-newsletter">
-                        <p>Lunes a Sábado: 15:30 a 19:30 hs.<br>Sábados por la mañana: 10:00 a 12:00 hs.</p>
-                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="footer-newsletter-btn">Escribinos por WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Las Castañas. Todos los derechos reservados.</p>
-                <p>Desarrollado por ADS Labs</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating WhatsApp FAB with pulse animation -->
-    <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Escribinos por WhatsApp">
-        <svg viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.479 2.012 14.019.985 11.39.985c-5.441 0-9.87 4.372-9.874 9.8.001 1.636.5 3.224 1.455 4.832L1.95 21.074l5.697-1.492zm11.947-6.868c-.3-.15-1.77-.874-2.043-.974-.274-.1-.474-.15-.673.15-.2.3-.773.974-.948 1.174-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.485-.893-.797-1.496-1.782-1.67-2.082-.175-.3-.018-.463.13-.61.135-.133.3-.35.45-.525.15-.175.2-.299.3-.5.1-.2.05-.375-.025-.525-.075-.15-.673-1.624-.922-2.224-.24-.58-.487-.5-.672-.51-.176-.01-.376-.01-.577-.01-.2 0-.527.075-.802.375-.276.3-1.052 1.025-1.052 2.5 0 1.475 1.078 2.9 1.227 3.1.15.2 2.122 3.24 5.14 4.545.717.31 1.277.495 1.71.63.722.23 1.38.197 1.9.12.578-.085 1.77-.724 2.02-1.424.25-.7.25-1.3 1.75-1.425-.075-.125-.275-.2-.575-.35z"/>
-        </svg>
-    </a>
-
-    <!-- ADS:SCRIPTS -->
-    <script>
-        // Nav glassmorphism background update on scroll
-        window.addEventListener('scroll', function() {
-            var nav = document.querySelector('nav.floating-pill');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Simple IntersectionObserver for fade-in animations on scroll
-        document.addEventListener("DOMContentLoaded", function() {
-            var fadeElements = document.querySelectorAll('.fade-in');
-            
-            var observerOptions = {
-                root: null,
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            };
-            
-            var observer = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            fadeElements.forEach(function(el) {
-                observer.observe(el);
-            });
-        });
-    </script>
 <script id="premium-effects-js">
 
 // ═══ GLOBAL PREMIUM POLISH ═══

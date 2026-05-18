@@ -3,851 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Las Castañas — Boutique de Indumentaria</title>
-    <!-- SEO Optimization -->
-    <meta name="description" content="Exclusiva boutique de indumentaria y accesorios en Coronel Charlone. Un espacio de moda curado por Silvana y Sharon.">
+    <title>Las Castañas — Showroom Orgánico</title>
     <meta name="store-id" content="lascastagnas_ch">
     
-    <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;450;500;550;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Material Symbols for Premium Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..300,0..1&display=swap" rel="stylesheet">
-    
-    <!-- Custom Vanilla CSS — Shopify Cinematic Dark-Teal Design System -->
     <style>
         :root {
-            /* Shopify Colors - Elegant Light Linen & Sand Palette */
-            --color-void: #FAF9F6;       /* Soft warm off-white linen */
-            --color-deep-teal: #F5F5F4;  /* Sand grey */
-            --color-dark-forest: #E7E5E4; /* Warm stone beige / lino */
-            --color-forest: #D6D3D1;      /* Warm stone border / accent */
-            --color-card-border: #E7E5E4; /* Border color */
-            
-            /* Text & Accents */
-            --color-white: #1C1917;       /* Primary Dark Stone Text */
-            --color-neon-green: #EA580C;  /* Burnt orange brand accent */
-            --color-aloe: #57534E;        /* Dark Muted Accent */
-            --color-pistachio: #292524;
-            
-            /* Zinc Neutral Scale */
-            --shade-30: #292524;
-            --shade-text-muted: #57534E;  /* Soft Dark Stone Body text */
-            --shade-50: #78716C;
-            --shade-70: #E7E5E4;
-            
-            /* Spacing Scale (8px base) */
-            --space-1: 4px;
-            --space-2: 8px;
-            --space-3: 12px;
-            --space-4: 16px;
-            --space-5: 24px;
-            --space-6: 28px;
-            --space-7: 32px;
-            --space-8: 40px;
-            --space-9: 64px;
-            --space-10: 80px;
-            
-            /* Fonts */
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            --color-linen: #FAF9F6;
+            --color-sand: #E7E5E4;
+            --color-stone: #1C1917;
+            --color-muted: #78716C;
         }
 
-        /* Basic Resets & Aesthetics */
-        *, *::before, *::after {
-            box-sizing: border-box;
+        * {
             margin: 0;
             padding: 0;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-            background-color: var(--color-void);
-            color: var(--color-white);
+            box-sizing: border-box;
         }
 
         body {
-            font-family: var(--font-body);
+            background-color: var(--color-linen);
+            color: var(--color-stone);
+            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            line-height: 1.56;
+            display: flex;
         }
 
-        /* Typography Styles */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-display);
-            font-weight: 300; /* Signature ultra-light weight */
-            color: var(--color-white);
-            line-height: 1.1;
-        }
-
-        p {
-            font-family: var(--font-body);
-            font-weight: 400;
-            color: var(--shade-text-muted);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        img, video {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* Global Utilities */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 var(--space-4);
-        }
-
-        /* Unique Buttons System */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-2);
-            font-family: var(--font-body);
-            font-weight: 450;
-            font-size: 15px;
-            text-transform: none;
-            padding: 12px 26px 12px 16px; /* Asymmetric Shopify padding */
-            border-radius: 9999px; /* Pill shape */
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            text-align: center;
-            touch-action: manipulation;
-        }
-
-        .btn-primary {
-            background-color: var(--color-white);
-            color: var(--color-void);
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .btn-primary:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px var(--color-neon-green);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--color-white);
-            border-color: var(--color-white);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--color-white);
-            color: var(--color-void);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px var(--color-neon-green);
-        }
-
-        /* 1. nav.floating-pill */
-        nav.floating-pill {
+        /* LEFT PANEL: Fixed Curatorial Story */
+        .fixed-panel {
             position: fixed;
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 48px);
-            max-width: 960px;
-            height: 64px;
-            background-color: rgba(2, 9, 10, 0.7);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-radius: 9999px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 var(--space-5);
-            z-index: 100;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        nav.floating-pill.scrolled {
-            top: 12px;
-            background-color: var(--color-forest);
-            border-color: var(--color-card-border);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-
-        .logo-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-weight: 400;
-            font-size: 18px;
-            letter-spacing: 0.02em;
-            color: var(--color-white);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: var(--space-5);
-        }
-
-        .nav-links a {
-            font-family: var(--font-display);
-            font-weight: 500;
-            font-size: 15px;
-            letter-spacing: 0.72px;
-            color: var(--color-white);
-        }
-
-        .nav-links a:hover {
-            color: var(--color-neon-green);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-        }
-
-        /* 2. section.hero-dynamic */
-        section.hero-dynamic {
-            padding-top: 160px;
-            padding-bottom: var(--space-10);
-            background: radial-gradient(circle at 50% 30%, var(--color-forest) 0%, var(--color-deep-teal) 70%, var(--color-void) 100%);
-            position: relative;
-            overflow: hidden;
-            min-height: 95vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-inner {
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: var(--space-8);
-            align-items: center;
-            z-index: 2;
-            position: relative;
-            width: 100%;
-        }
-
-        .hero-content {
+            top: 0;
+            left: 0;
+            width: 45vw;
+            height: 100vh;
+            padding: 4rem 4rem 4rem 6rem;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: var(--space-5);
-        }
-
-        .hero-tag {
-            font-family: var(--font-display);
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--color-neon-green);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background-color: rgba(54, 244, 164, 0.08);
-            padding: 6px 14px;
-            border-radius: 9999px;
-            border: 1px solid rgba(54, 244, 164, 0.15);
-        }
-
-        .hero-title {
-            font-size: clamp(44px, 7.5vw, 86px);
-            font-weight: 200; /* Ultra-light */
-            line-height: 0.95;
-            color: var(--color-white);
-        }
-
-        .hero-title span {
-            color: var(--color-neon-green);
-            font-weight: 400;
-        }
-
-        .hero-desc {
-            font-size: 18px;
-            color: var(--shade-text-muted);
-            max-width: 540px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: var(--space-4);
-            margin-top: var(--space-2);
-        }
-
-        .hero-media {
-            display: flex;
             justify-content: center;
-            align-items: center;
-        }
-
-        .hero-img-container {
-            width: 100%;
-            max-width: 420px;
-            height: 500px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--color-card-border);
-            position: relative;
-            box-shadow: 
-                0px 0px 0px 1px rgba(0,0,0,0.1),
-                0px 10px 30px rgba(0,0,0,0.4),
-                inset rgba(255,255,255,0.05) 0px 1px 0px;
-            transition: all 0.5s ease;
-        }
-
-        .hero-img-container:hover {
-            transform: scale(1.02);
-            border-color: var(--color-neon-green);
-        }
-
-        .hero-img-container img {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* 3. section#marquesina.marquee-scroll */
-        section#marquesina.marquee-scroll {
-            background-color: var(--color-void);
-            border-top: 1px solid var(--color-card-border);
-            border-bottom: 1px solid var(--color-card-border);
-            padding: var(--space-5) 0;
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
+            background-color: var(--color-linen);
             z-index: 10;
         }
 
-        .marquee-track {
-            display: inline-flex;
-            animation: marquee 30s linear infinite;
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 4rem;
+            letter-spacing: -0.02em;
         }
 
-        .marquee-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-4);
-            margin-right: 60px;
-        }
-
-        .marquee-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 8px;
-            border: 1px solid var(--color-card-border);
-            object-fit: cover;
-        }
-
-        .marquee-text {
-            font-family: var(--font-display);
-            font-size: 32px;
-            font-weight: 300;
-            text-transform: none;
-            color: var(--color-white);
-            letter-spacing: 1px;
-        }
-
-        .marquee-text span {
-            color: var(--color-neon-green);
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* 4. section#destacados.bento-grid */
-        section#destacados.bento-grid {
-            padding: var(--space-10) 0;
-            background-color: var(--color-deep-teal);
-        }
-
-        .section-header {
-            margin-bottom: var(--space-8);
-        }
-
-        .section-tag {
-            font-family: var(--font-display);
-            font-size: 13px;
-            color: var(--color-neon-green);
-            letter-spacing: 2px;
+        .curator-badge {
+            font-size: 0.75rem;
             text-transform: uppercase;
-            margin-bottom: var(--space-2);
-            display: block;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            color: var(--color-muted);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .curator-badge::after {
+            content: '';
+            height: 1px;
+            width: 40px;
+            background-color: var(--color-sand);
         }
 
-        .section-title {
-            font-size: clamp(32px, 5vw, 48px);
+        .story-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-muted);
+            max-width: 420px;
+            margin-bottom: 3rem;
             font-weight: 300;
-            color: var(--color-white);
         }
 
-        .bento-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 280px;
-            gap: var(--space-5);
+        .authors {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .author-avatars {
+            display: flex;
+        }
+        .author-avatars img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--color-linen);
+            object-fit: cover;
+        }
+        .author-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
         }
 
-        /* Advanced Shopify Cards System */
-        .bento-card {
-            background-color: var(--color-deep-teal);
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid var(--color-card-border);
-            /* Stacked Shadows System */
-            box-shadow: 
-                rgba(0,0,0,0.1) 0px 0px 0px 1px, 
-                rgba(0,0,0,0.2) 0px 2px 2px, 
-                rgba(0,0,0,0.2) 0px 4px 4px, 
-                rgba(0,0,0,0.3) 0px 8px 8px,
-                rgba(255,255,255,0.03) 0px 1px 0px inset; /* top edge highlight */
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        .contact-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-stone);
+            color: var(--color-linen);
+            text-decoration: none;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .contact-btn:hover {
+            background-color: #000;
+        }
+
+        /* RIGHT PANEL: Scrolling Gallery */
+        .scroll-panel {
+            margin-left: 45vw;
+            width: 55vw;
+            min-height: 100vh;
+            padding: 6rem;
+            background-color: var(--color-sand);
+        }
+
+        .gallery-item {
+            margin-bottom: 10rem;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
-        .bento-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(54, 244, 164, 0.3);
-            box-shadow: 
-                rgba(0,0,0,0.15) 0px 0px 0px 1px, 
-                rgba(0,0,0,0.3) 0px 4px 8px, 
-                rgba(0,0,0,0.4) 0px 8px 16px, 
-                rgba(54, 244, 164, 0.1) 0px 0px 20px;
-        }
-
-        /* Spans */
-        .col-span-2 { grid-column: span 2; }
-        .row-span-2 { grid-row: span 2; }
-
-        .bento-card-media {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Asymmetrical Archways */
+        .frame-arch {
             width: 100%;
-            height: 100%;
-            z-index: 1;
+            max-width: 500px;
+            aspect-ratio: 3/4;
+            border-radius: 200px 200px 0 0; /* Arch shape */
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .frame-pill {
+            width: 80%;
+            max-width: 400px;
+            aspect-ratio: 2/3;
+            border-radius: 200px; /* Pill shape */
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+            align-self: flex-end;
+            position: relative;
         }
 
-        .bento-card-media img,
-        .bento-card-media video {
+        .frame-square {
+            width: 90%;
+            max-width: 600px;
+            aspect-ratio: 4/3;
+            border-radius: 2px; /* Sharp */
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .gallery-item img, .gallery-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s ease;
         }
 
-        .bento-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(28, 25, 23, 0.85) 0%, rgba(28, 25, 23, 0.25) 70%, transparent 100%);
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: var(--space-5);
-        }
-
-        .bento-card-overlay h3 {
-            font-size: 28px;
-            font-weight: 300;
-            margin-bottom: var(--space-2);
-            color: #FAF9F6;
-        }
-
-        .bento-card-overlay p {
-            color: #E7E5E4;
-            font-size: 14px;
-        }
-
-        .bento-card-content {
-            padding: var(--space-5);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            position: relative;
-            z-index: 3;
-        }
-
-        .bento-icon-wrapper {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: var(--color-forest);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-neon-green);
-            margin-bottom: var(--space-3);
-            border: 1px solid var(--color-card-border);
-        }
-
-        .bento-title-small {
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: var(--space-2);
-            color: var(--color-white);
-        }
-
-        .bento-desc-small {
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--shade-text-muted);
-        }
-
-        .bento-stat {
-            font-family: var(--font-display);
-            font-size: 80px;
-            font-weight: 200;
-            color: var(--color-neon-green);
-            line-height: 1;
-        }
-
-        /* 5. section#galeria.bento-gallery */
-        section#galeria.bento-gallery {
-            padding: var(--space-10) 0;
-            background-color: var(--color-void);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-5);
-            margin-top: var(--space-6);
-        }
-
-        .gallery-card {
-            background-color: var(--color-deep-teal);
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid var(--color-card-border);
-            box-shadow: 
-                rgba(0,0,0,0.1) 0px 0px 0px 1px, 
-                rgba(0,0,0,0.2) 0px 4px 8px;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--color-neon-green);
-        }
-
-        .gallery-card-img {
-            height: 350px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid var(--color-card-border);
-        }
-
-        .gallery-card-img img {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s ease;
-        }
-
-        .gallery-card:hover .gallery-card-img img {
+        .gallery-item:hover img {
             transform: scale(1.03);
         }
 
-        .gallery-card-badge {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background-color: var(--color-neon-green);
-            color: var(--color-void);
-            font-family: var(--font-display);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 9999px;
-            z-index: 10;
+        .item-caption {
+            text-align: center;
+            max-width: 300px;
         }
-
-        .gallery-card-info {
-            padding: var(--space-5);
-        }
-
-        .gallery-card-title {
-            font-size: 20px;
+        .item-caption h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
             font-weight: 400;
-            color: var(--color-white);
-            margin-bottom: var(--space-1);
+            margin-bottom: 0.5rem;
+        }
+        .item-caption p {
+            font-size: 0.9rem;
+            color: var(--color-muted);
+            line-height: 1.5;
         }
 
-        .gallery-card-desc {
-            font-size: 13px;
-            color: var(--shade-text-muted);
-            margin-bottom: var(--space-4);
-        }
-
-        .gallery-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .gallery-card-price {
-            font-family: var(--font-display);
-            font-size: 20px;
-            font-weight: 500;
-            color: var(--color-white);
-        }
-
-        /* 6. footer.bento-footer */
-        footer.bento-footer {
-            background-color: var(--color-dark-forest);
-            color: var(--shade-text-muted);
-            padding: var(--space-10) 0 var(--space-6) 0;
-            border-top: 1px solid var(--color-card-border);
-            position: relative;
-            z-index: 20;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
-            gap: var(--space-7);
-            border-bottom: 1px solid var(--color-card-border);
-            padding-bottom: var(--space-8);
-            margin-bottom: var(--space-6);
-        }
-
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-
-        .footer-logo {
-            font-family: var(--font-display);
-            font-size: 24px;
-            font-weight: 300;
-            color: var(--color-white);
-        }
-
-        .footer-desc {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .footer-col h4 {
-            color: var(--color-white);
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: var(--space-4);
-            letter-spacing: 0.5px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-        }
-
-        .footer-links a {
-            font-size: 14px;
-            color: var(--shade-text-muted);
-        }
-
-        .footer-links a:hover {
-            color: var(--color-neon-green);
-        }
-
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-            font-size: 14px;
-        }
-
-        .footer-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-2);
-        }
-
-        .footer-info-item .material-symbols-outlined {
-            color: var(--color-neon-green);
-            font-size: 20px;
-        }
-
-        .footer-newsletter {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-
-        .footer-newsletter p {
-            font-size: 14px;
-        }
-
-        .footer-newsletter-btn {
-            display: inline-flex;
-            background-color: var(--color-white);
-            color: var(--color-void);
-            padding: 12px 24px;
-            border-radius: 9999px;
-            font-family: var(--font-body);
-            font-weight: 500;
-            font-size: 13px;
-            justify-content: center;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .footer-newsletter-btn:hover {
-            background-color: var(--color-neon-green);
-            color: var(--color-void);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-3);
-            font-size: 13px;
-            color: var(--shade-50);
-        }
-
-        /* Floating WhatsApp Button - Neon Styled */
-        .whatsapp-fab {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            background-color: var(--color-neon-green);
-            color: var(--color-void);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(54, 244, 164, 0.3);
-            z-index: 150;
-            animation: pulse-fab 2s infinite;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(54, 244, 164, 0.5);
-        }
-
-        .whatsapp-fab svg {
-            width: 30px;
-            height: 30px;
-            fill: currentColor;
-        }
-
-        @keyframes pulse-fab {
-            0% {
-                box-shadow: 0 0 0 0 rgba(54, 244, 164, 0.6);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(54, 244, 164, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(54, 244, 164, 0);
-            }
-        }
-
-        /* Scroll Animation Target */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+            body { flex-direction: column; }
+            .fixed-panel {
+                position: relative;
+                width: 100vw;
+                height: auto;
+                min-height: 80vh;
+                padding: 3rem 2rem;
             }
-            .bento-container {
-                grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: 260px;
+            .scroll-panel {
+                margin-left: 0;
+                width: 100vw;
+                padding: 4rem 2rem;
             }
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav.floating-pill {
-                padding: 0 var(--space-4);
-                height: 56px;
-            }
-            .nav-links {
-                display: none;
-            }
-            section.hero-dynamic {
-                padding-top: 120px;
-                min-height: auto;
-            }
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: var(--space-6);
-            }
-            .hero-img-container {
-                height: 380px;
-                max-width: 100%;
-            }
-            .bento-container {
-                grid-template-columns: 1fr;
-                grid-auto-rows: 240px;
-            }
-            .col-span-2 { grid-column: span 1; }
-            .row-span-2 { grid-row: span 1; }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-6);
-            }
+            .story-title { font-size: 2.5rem; }
+            .frame-arch, .frame-pill, .frame-square { align-self: center; width: 100%; }
         }
     </style>
 <style id="premium-effects">
@@ -904,14 +279,14 @@ img {
 
 
 :root {
-  --primary-rgb: 28, 25, 23;
-  --mesh-color-1: #1C1917;
-  --mesh-color-2: #E7E5E4;
+  --primary-rgb: 233, 30, 99;
+  --mesh-color-1: #E91E63;
+  --mesh-color-2: #FFEB3B;
   --mesh-color-3: #00BCD4;
-  --gradient-start: #1C1917;
-  --gradient-end: #E7E5E4;
-  --glow-color: rgba(28, 25, 23, 0.08);
-  --selection-bg: rgba(28, 25, 23, 0.2);
+  --gradient-start: #E91E63;
+  --gradient-end: #FFEB3B;
+  --glow-color: rgba(233, 30, 99, 0.08);
+  --selection-bg: rgba(233, 30, 99, 0.2);
 }
 
 
@@ -1046,323 +421,76 @@ img {
 </head>
 <body>
 
-    <!-- 1. nav.floating-pill -->
-    <nav class="floating-pill">
-        <div class="nav-brand">
-            <img src="img/lascastagnas_ch_0.jpg" alt="Las Castañas Logo" class="logo-img">
-            <span class="logo-text">Las Castañas</span>
-        </div>
-        <div class="nav-links">
-            <a href="#destacados">Destacados</a>
-            <a href="#galeria">Colección</a>
-            <a href="#tienda">Catálogo</a>
-            <a href="#contacto">Contacto</a>
-        </div>
-        <div class="nav-actions">
-            <!-- Custom pill button with asymmetric padding -->
-            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 18px 8px 12px; font-size: 13px; border-radius: 9999px;">
-                Escribinos
-            </a>
-            <!-- ADS:NAV:END -->
-        </div>
-    </nav>
+    <!-- Left Fixed Panel -->
+    <div class="fixed-panel">
+        <div class="brand-logo">Las Castañas.</div>
+        
+        <div class="curator-badge">Showroom Coronel Charlone</div>
+        
+        <h1 class="story-title">El arte de vestir con propósito y calma.</h1>
+        
+        <p class="story-text">
+            Creemos que la moda no debe ser desechable. En nuestro showroom, seleccionamos a mano prendas que acarician la piel y perduran en el tiempo. Desde jeans de calce arquitectónico hasta hilados suaves como la arena. Un espacio privado donde el asesoramiento personal es la norma, no la excepción.
+        </p>
 
-    <!-- 2. section.hero-dynamic -->
-    <section class="hero-dynamic">
-        <div class="container">
-            <div class="hero-inner">
-                <div class="hero-content">
-                    <span class="hero-tag">Boutique Premium</span>
-                    <h1 class="hero-title">Elegancia simple. Vestite con <span>Castañas</span>.</h1>
-                    <p class="hero-desc">Boutique de indumentaria y accesorios de moda de alta calidad en Coronel Charlone. Descubrí colecciones exclusivas de temporada, jeans de tendencia, prendas de tejido artesanal y el asesoramiento personalizado de Silvana y Sharon.</p>
-                    <div class="hero-btns">
-                        <a href="#destacados" class="btn btn-primary">Ver Novedades</a>
-                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-secondary">Asesoría WhatsApp</a>
-                    </div>
-                </div>
-                <div class="hero-media">
-                    <div class="hero-img-container">
-                        <img src="img/lascastagnas_ch_3.jpg" alt="Las Castañas Showcase Item">
-                    </div>
-                </div>
+        <div class="authors">
+            <div class="author-avatars">
+                <img src="img/lascastagnas_ch_0.jpg" alt="Silvana">
+                <img src="img/lascastagnas_ch_1.jpg" alt="Sharon" style="margin-left: -15px;">
             </div>
+            <div class="author-names">Curado por Silvana & Sharon</div>
         </div>
-    </section>
-<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
-  <div class="marquee-container">
-    <div class="marquee-track">
-      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
+
+        <div>
+            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="contact-btn">Coordinar Visita Privada</a>
+        </div>
     </div>
-  </div>
-</div>
 
-
-    <!-- 3. section#marquesina.marquee-scroll -->
-    <section id="marquesina" class="marquee-scroll">
-        <div class="marquee-track">
-            <!-- Loop block -->
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_1.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Nueva Colección <span>'25</span></span>
+    <!-- Right Scrolling Gallery -->
+    <div class="scroll-panel">
+        
+        <div class="gallery-item">
+            <div class="frame-arch">
+                <img src="img/lascastagnas_ch_8.jpg" alt="Denim Premium">
             </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_2.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Tejidos <span>Premium</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_5.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Detalles <span>Únicos</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_6.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Accesorios <span>Sleek</span></span>
-            </div>
-            
-            <!-- Loop duplicate -->
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_1.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Nueva Colección <span>'25</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_2.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Tejidos <span>Premium</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_5.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Detalles <span>Únicos</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_6.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Accesorios <span>Sleek</span></span>
+            <div class="item-caption">
+                <h3>Denim Estructural</h3>
+                <p>Wide Legs y cortes rectos diseñados para esculpir la silueta manteniendo absoluta comodidad.</p>
             </div>
         </div>
-    </section>
 
-    <!-- 4. Curaduría & Showroom Section -->
-    <section class="curatoria-section" style="padding: 80px 0; background-color: #F5F5F4; border-top: 1px solid var(--color-card-border); border-bottom: 1px solid var(--color-card-border);">
-        <div class="container" style="max-width: 1000px; text-align: center;">
-            <span style="font-family: var(--font-body); text-transform: uppercase; font-size: 13px; letter-spacing: 0.1em; color: var(--color-neon-green); font-weight: 600; display: block; margin-bottom: 12px;">El Alma de la Boutique</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 42px); color: var(--color-white); font-weight: 500; margin-bottom: 24px; text-transform: none;">Curaduría de Silvana & Sharon</h2>
-            <div style="width: 60px; height: 1.5px; background-color: var(--color-neon-green); margin: 0 auto 32px;"></div>
-            <p style="font-family: var(--font-body); font-size: 18px; line-height: 1.8; color: var(--shade-text-muted); max-width: 800px; margin: 0 auto 40px; font-style: italic;">
-                "Creemos que vestirse es un acto de expresión personal y comodidad. Por eso, elegimos a mano cada jean Wide Leg, cada sweater suave y cada accesorio de tendencia que entra a nuestro showroom en Coronel Charlone. Buscamos calidad que dure y diseños que enamoren."
-            </p>
-            <div style="display: flex; justify-content: center; gap: 24px; align-items: center; flex-wrap: wrap;">
-                <img src="img/lascastagnas_ch_0.jpg" alt="Silvana y Sharon Avatar" style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--color-white); object-fit: cover;">
-                <div style="text-align: left;">
-                    <h4 style="font-family: var(--font-body); font-size: 16px; font-weight: 600; color: var(--color-white);">Silvana & Sharon</h4>
-                    <span style="font-family: var(--font-body); font-size: 13px; color: var(--shade-text-muted);">Fundadoras de Las Castañas</span>
-                </div>
+        <div class="gallery-item">
+            <div class="frame-pill">
+                <img src="img/lascastagnas_ch_7.jpg" alt="Soft Knitwear">
+            </div>
+            <div class="item-caption">
+                <h3>Texturas Puras</h3>
+                <p>Nuestros sweaters están tejidos pensando en el abrazo cálido que exige el invierno pampeano.</p>
             </div>
         </div>
-    </section>
 
-    <!-- 4.5 Catálogo Boutique Section -->
-    <section id="destacados" style="padding: 80px 0; background-color: var(--color-void);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 48px;">
-                <span class="section-tag" style="font-family: var(--font-body); text-transform: uppercase; font-size: 13px; letter-spacing: 0.1em; color: var(--color-neon-green); font-weight: 600; display: block; margin-bottom: 8px;">Colección</span>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 42px); color: var(--color-white); font-weight: 500; text-transform: none;">Novedades del Showroom</h2>
+        <div class="gallery-item">
+            <div class="frame-square">
+                <img src="img/lascastagnas_ch_5.jpg" alt="Accesorios">
             </div>
-            
-            <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
-                <!-- Product Card 1 -->
-                <div class="product-card" style="background-color: #FFFFFF; border-radius: 16px; border: 1px solid var(--color-card-border); overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); transition: all 0.4s ease; display: flex; flex-direction: column;">
-                    <div style="position: relative; aspect-ratio: 4/5; overflow: hidden;">
-                        <img src="img/lascastagnas_ch_7.jpg" alt="Sweaters y Abrigos" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
-                        <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--color-neon-green); letter-spacing: 0.05em;">Abrigos</span>
-                        <h3 style="font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--color-white); text-transform: none; line-height: 1.3;">Sweaters & Abrigos Premium</h3>
-                        <p style="font-size: 14px; color: var(--shade-text-muted); line-height: 1.5;">Tejidos suaves seleccionados de excelente confección para pasar la temporada abrigada y elegante.</p>
-                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: auto; border-radius: 8px; font-size: 13px; padding: 10px 20px; justify-content: center; text-transform: none; width: 100%; font-weight: 500;">Consultar Catálogo</a>
-                    </div>
-                </div>
-
-                <!-- Product Card 2 -->
-                <div class="product-card" style="background-color: #FFFFFF; border-radius: 16px; border: 1px solid var(--color-card-border); overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); transition: all 0.4s ease; display: flex; flex-direction: column;">
-                    <div style="position: relative; aspect-ratio: 4/5; overflow: hidden;">
-                        <img src="img/lascastagnas_ch_8.jpg" alt="Jeans de Tendencia" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
-                        <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--color-neon-green); letter-spacing: 0.05em;">Denim</span>
-                        <h3 style="font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--color-white); text-transform: none; line-height: 1.3;">Jeans Wide Leg & Straight</h3>
-                        <p style="font-size: 14px; color: var(--shade-text-muted); line-height: 1.5;">La última tendencia en jeans rígidos y elastizados. Calce espectacular asegurado.</p>
-                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: auto; border-radius: 8px; font-size: 13px; padding: 10px 20px; justify-content: center; text-transform: none; width: 100%; font-weight: 500;">Preguntar por talles</a>
-                    </div>
-                </div>
-
-                <!-- Product Card 3 -->
-                <div class="product-card" style="background-color: #FFFFFF; border-radius: 16px; border: 1px solid var(--color-card-border); overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); transition: all 0.4s ease; display: flex; flex-direction: column;">
-                    <div style="position: relative; aspect-ratio: 4/5; overflow: hidden;">
-                        <img src="img/lascastagnas_ch_5.jpg" alt="Carteras y Accesorios" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
-                        <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--color-neon-green); letter-spacing: 0.05em;">Accesorios</span>
-                        <h3 style="font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--color-white); text-transform: none; line-height: 1.3;">Carteras & Accesorios Sleek</h3>
-                        <p style="font-size: 14px; color: var(--shade-text-muted); line-height: 1.5;">Carteras de cuero, cinturones de diseño y complementos ideales para tu día a día.</p>
-                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: auto; border-radius: 8px; font-size: 13px; padding: 10px 20px; justify-content: center; text-transform: none; width: 100%; font-weight: 500;">Ver variedades</a>
-                    </div>
-                </div>
+            <div class="item-caption">
+                <h3>Objetos Singulares</h3>
+                <p>Cinturones y marroquinería que elevan cualquier conjunto minimalista.</p>
             </div>
         </div>
-    </section>
 
-    <!-- 5. section#galeria.bento-gallery -->
-    <section id="galeria" class="bento-gallery">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Colección Premium</span>
-                <h2 class="section-title">Prendas Destacadas</h2>
+        <div class="gallery-item">
+            <div class="frame-arch">
+                <video src="img/lascastagnas_ch_4.mp4" autoplay loop muted playsinline></video>
             </div>
-            
-            <div class="gallery-grid">
-                <!-- Card 1 -->
-                <div class="gallery-card fade-in">
-                    <div class="gallery-card-badge">Exclusivo</div>
-                    <div class="gallery-card-img">
-                        <img src="img/lascastagnas_ch_9.jpg" alt="Saco Castaña Premium">
-                    </div>
-                    <div class="gallery-card-info">
-                        <h3 class="gallery-card-title">Saco Castaña Classic</h3>
-                        <p class="gallery-card-desc">Saco con forrería premium y caída elegante. Ideal para media estación y noches frescas.</p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-card-price">$26.500</span>
-                            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 18px; font-size: 12px; border-radius: 9999px;">Consultar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="gallery-card fade-in">
-                    <div class="gallery-card-badge">Hot Item</div>
-                    <div class="gallery-card-img">
-                        <img src="img/lascastagnas_ch_10.jpg" alt="Sweater Soft Wool">
-                    </div>
-                    <div class="gallery-card-info">
-                        <h3 class="gallery-card-title">Sweater Soft Linen</h3>
-                        <p class="gallery-card-desc">Sweater liviano e increíblemente suave al tacto. Una caricia para el uso diario en Coronel Charlone.</p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-card-price">$22.900</span>
-                            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 18px; font-size: 12px; border-radius: 9999px;">Consultar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 (Video Feature) -->
-                <div class="gallery-card fade-in">
-                    <div class="gallery-card-badge">Estilo</div>
-                    <div class="gallery-card-img">
-                        <video src="img/lascastagnas_ch_4.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover;"></video>
-                    </div>
-                    <div class="gallery-card-info">
-                        <h3 class="gallery-card-title">Colección de Invierno</h3>
-                        <p class="gallery-card-desc">Prendas icónicas diseñadas para destacar. Mirá la colección completa en nuestro showroom.</p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-card-price">Premium</span>
-                            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 18px; font-size: 12px; border-radius: 9999px;">Escribinos</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="item-caption">
+                <h3>Dinámica de Uso</h3>
+                <p>Ropa diseñada para moverse con vos, del día a la noche.</p>
             </div>
         </div>
-    </section>
 
-    <!-- ADS:CONTENT:END -->
+    </div>
 
-    <!-- 6. footer.bento-footer -->
-    <footer class="bento-footer" id="contacto">
-        <!-- ADS:FOOTER:START -->
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3 class="footer-logo">Las Castañas</h3>
-                    <p class="footer-desc">Referente en Coronel Charlone. Vestimos tus días con prendas de alta calidad curadas individualmente para garantizar durabilidad y confort.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Navegación</h4>
-                    <div class="footer-links">
-                        <a href="#destacados">Destacados</a>
-                        <a href="#galeria">Colección</a>
-                        <a href="#tienda">Catálogo</a>
-                        <a href="#contacto">Contacto</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Contacto</h4>
-                    <div class="footer-info">
-                        <div class="footer-info-item">
-                            <span class="material-symbols-outlined">location_on</span>
-                            <span>Coronel Charlone, Provincia de Buenos Aires</span>
-                        </div>
-                        <div class="footer-info-item">
-                            <span class="material-symbols-outlined">call</span>
-                            <span>Sharon: 543388512014<br>Silvana: 543385521955</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Horarios Showroom</h4>
-                    <div class="footer-newsletter">
-                        <p>Lunes a Sábado: 15:30 a 19:30 hs.<br>Sábados por la mañana: 10:00 a 12:00 hs.</p>
-                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="footer-newsletter-btn">Chatear con Sharon</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Las Castañas. Todos los derechos reservados.</p>
-                <p>Desarrollado por ADS Labs</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Glowing Neon Green WhatsApp FAB -->
-    <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.479 2.012 14.019.985 11.39.985c-5.441 0-9.87 4.372-9.874 9.8.001 1.636.5 3.224 1.455 4.832L1.95 21.074l5.697-1.492zm11.947-6.868c-.3-.15-1.77-.874-2.043-.974-.274-.1-.474-.15-.673.15-.2.3-.773.974-.948 1.174-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.485-.893-.797-1.496-1.782-1.67-2.082-.175-.3-.018-.463.13-.61.135-.133.3-.35.45-.525.15-.175.2-.299.3-.5.1-.2.05-.375-.025-.525-.075-.15-.673-1.624-.922-2.224-.24-.58-.487-.5-.672-.51-.176-.01-.376-.01-.577-.01-.2 0-.527.075-.802.375-.276.3-1.052 1.025-1.052 2.5 0 1.475 1.078 2.9 1.227 3.1.15.2 2.122 3.24 5.14 4.545.717.31 1.277.495 1.71.63.722.23 1.38.197 1.9.12.578-.085 1.77-.724 2.02-1.424.25-.7.25-1.3 1.75-1.425-.075-.125-.275-.2-.575-.35z"/>
-        </svg>
-    </a>
-
-    <!-- ADS:SCRIPTS -->
-    <script>
-        // Update nav glass background on scroll
-        window.addEventListener('scroll', function() {
-            var nav = document.querySelector('nav.floating-pill');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // IntersectionObserver for scroll-trigger animations
-        document.addEventListener("DOMContentLoaded", function() {
-            var fadeElements = document.querySelectorAll('.fade-in');
-            
-            var observerOptions = {
-                root: null,
-                threshold: 0.1,
-                rootMargin: "0px 0px -40px 0px"
-            };
-            
-            var observer = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            fadeElements.forEach(function(el) {
-                observer.observe(el);
-            });
-        });
-    </script>
 <script id="premium-effects-js">
 
 // ═══ GLOBAL PREMIUM POLISH ═══

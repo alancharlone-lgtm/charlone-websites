@@ -2,849 +2,276 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Las Castañas — Comunidad de Estilo y Tendencias</title>
-    <!-- SEO Optimization -->
-    <meta name="description" content="Descubrí las últimas tendencias de indumentaria y accesorios en Coronel Charlone. Encontrá tus prendas preferidas curadas por Silvana y Sharon.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Las Castañas — VIP Concierge</title>
     <meta name="store-id" content="lascastagnas_ch">
     
-    <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
     
-    <!-- Material Symbols for Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..300,0..1&display=swap" rel="stylesheet">
-    
-    <!-- Custom Vanilla CSS — Xiaohongshu Lifestyle UGC Design System -->
     <style>
         :root {
-            /* Xiaohongshu Colors - Stone & Sand Theme */
-            --color-primary-red: #FF2442;     /* Brand Red Token */
-            --color-component-red: #FF2E4D;   /* Brand Red Component */
-            --color-star-yellow: #FDBC5F;     /* Favorite yellow */
-            --color-surface: #FFFFFF;
-            --color-canvas: #FAF9F6;          /* Soft warm off-white linen canvas */
-            --color-subtle-bg: #F5F5F4;       /* Sand / warm beige */
-            
-            /* Translucent Overlay System */
-            --fill-1: rgba(28, 25, 23, 0.04);   /* Hover overlay */
-            --fill-2: rgba(28, 25, 23, 0.08);   /* Secondary / Separator grey */
-            --fill-3: rgba(28, 25, 23, 0.16);   /* Pressed */
-            --separator: rgba(28, 25, 23, 0.06);   /* Hairline border */
-            --separator-strong: rgba(28, 25, 23, 0.15);
-            
-            /* Typography Colors */
-            --text-title: #1C1917;       /* Primary Dark Stone Text */
-            --text-paragraph: #44403C;   /* Soft Dark Stone Body text */
-            --text-description: #78716C; /* Auxiliary caption */
-            --text-disabled: #A8A29E;
-            
-            /* Spacing Scale (8px base) */
-            --space-1: 4px;
-            --space-2: 8px;
-            --space-3: 12px;
-            --space-4: 16px;
-            --space-5: 24px;
-            --space-6: 28px;
-            --space-7: 32px;
-            --space-8: 40px;
-            --space-9: 64px;
-            --space-10: 80px;
-            
-            /* Font Stack */
-            --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --app-bg: #0F0F13;
+            --app-card: rgba(255, 255, 255, 0.05);
+            --app-card-border: rgba(255, 255, 255, 0.1);
+            --app-text: #FFFFFF;
+            --app-muted: rgba(255, 255, 255, 0.5);
+            --app-accent: #E1C1A6; /* Warm gold/beige */
         }
 
-        /* Basic Resets & Aesthetics */
-        *, *::before, *::after {
-            box-sizing: border-box;
+        * {
             margin: 0;
             padding: 0;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-            background-color: var(--color-canvas);
-            color: var(--text-paragraph);
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: var(--font-family);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            line-height: 1.5;
-        }
-
-        /* Typography Styles */
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--text-title);
-            font-weight: 600;
-            line-height: 1.25;
-            letter-spacing: 0;
-        }
-
-        p {
-            color: var(--text-paragraph);
-            font-weight: 400;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s ease;
-        }
-
-        img, video {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* Layout Container */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 var(--space-4);
-        }
-
-        /* Pill Buttons System */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-2);
-            font-family: var(--font-family);
-            font-weight: 500;
-            font-size: 14px;
-            padding: 8px 20px; /* Xiaohongshu standard padding */
-            border-radius: 9999px; /* Pill radius */
-            border: 1px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            text-align: center;
-            touch-action: manipulation;
-        }
-
-        .btn-primary {
-            background-color: var(--color-primary-red);
-            color: #FFFFFF;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-component-red);
-            transform: scale(1.02);
-        }
-
-        .btn-secondary {
-            background-color: var(--fill-2);
-            color: var(--text-title);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--fill-3);
-            transform: scale(1.02);
-        }
-
-        .btn-outline {
-            background-color: var(--color-surface);
-            border-color: var(--color-component-red);
-            color: var(--color-component-red);
-        }
-
-        .btn-outline:hover {
-            background-color: rgba(255, 36, 66, 0.05);
-            transform: scale(1.02);
-        }
-
-        /* 1. nav.floating-pill */
-        nav.floating-pill {
-            position: fixed;
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 48px);
-            max-width: 960px;
-            height: 64px;
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 9999px;
-            border: 1px solid var(--separator);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 var(--space-5);
-            z-index: 100;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        nav.floating-pill.scrolled {
-            top: 12px;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-
-        .logo-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .logo-text {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-title);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: var(--space-5);
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            font-size: 15px;
-            color: var(--text-paragraph);
-        }
-
-        .nav-links a:hover {
-            color: var(--color-primary-red);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-        }
-
-        /* 2. section.hero-dynamic */
-        section.hero-dynamic {
-            padding-top: 140px;
-            padding-bottom: var(--space-10);
-            background: radial-gradient(circle at 80% 20%, rgba(255, 36, 66, 0.03) 0%, var(--color-canvas) 100%);
-            position: relative;
-            overflow: hidden;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-inner {
-            display: grid;
-            grid-template-columns: 1.25fr 0.75fr;
-            gap: var(--space-8);
-            align-items: center;
-            z-index: 2;
-            position: relative;
-            width: 100%;
-        }
-
-        .hero-content {
+            background-color: var(--app-bg);
+            color: var(--app-text);
+            font-family: 'Outfit', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* App style */
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: var(--space-4);
         }
 
-        .hero-tag {
-            font-size: 12px;
+        /* Concierge Top Header */
+        .app-header {
+            padding: 2rem 1.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .concierge-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatars-stack {
+            display: flex;
+            position: relative;
+        }
+        .avatars-stack img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--app-bg);
+            object-fit: cover;
+        }
+        .avatars-stack img:nth-child(2) {
+            margin-left: -16px;
+        }
+        .online-dot {
+            position: absolute;
+            bottom: 0;
+            right: -2px;
+            width: 12px;
+            height: 12px;
+            background-color: #34C759;
+            border: 2px solid var(--app-bg);
+            border-radius: 50%;
+        }
+
+        .concierge-info h1 {
+            font-size: 1.1rem;
             font-weight: 600;
-            color: var(--color-primary-red);
-            background-color: rgba(255, 36, 66, 0.08);
-            padding: 4px 12px;
-            border-radius: 9999px;
-            display: inline-flex;
+            letter-spacing: -0.01em;
+        }
+        .concierge-info p {
+            font-size: 0.8rem;
+            color: var(--app-accent);
+            font-weight: 500;
+        }
+
+        .header-actions .icon-btn {
+            background: var(--app-card);
+            border: 1px solid var(--app-card-border);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
-            gap: var(--space-1);
-        }
-
-        .hero-title {
-            font-size: clamp(36px, 6vw, 64px);
-            font-weight: 700;
-            color: var(--text-title);
-            line-height: 1.1;
-        }
-
-        .hero-title span {
-            color: var(--color-primary-red);
-        }
-
-        .hero-desc {
-            font-size: 16px;
-            color: var(--text-paragraph);
-            max-width: 500px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: var(--space-4);
-            margin-top: var(--space-2);
-        }
-
-        .hero-media {
-            display: flex;
             justify-content: center;
-            align-items: center;
+            color: var(--app-text);
+            cursor: pointer;
         }
 
-        .hero-img-container {
-            width: 100%;
-            max-width: 400px;
-            height: 480px;
+        /* Greeting Section */
+        .greeting-section {
+            padding: 1rem 1.5rem 2rem;
+            flex-shrink: 0;
+        }
+        .greeting-section h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+        .greeting-section h2 span {
+            font-weight: 600;
+        }
+        .greeting-section p {
+            margin-top: 0.5rem;
+            color: var(--app-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            max-width: 90%;
+        }
+
+        /* Horizontal Carousel of Looks (The Core Content) */
+        .looks-carousel {
+            flex-grow: 1;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 0 1.5rem 2rem;
+            gap: 1.5rem;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            align-items: center;
+        }
+        .looks-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .look-card {
+            min-width: 85%;
+            max-width: 340px;
+            height: 100%;
+            max-height: 500px;
+            scroll-snap-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--app-card-border);
             border-radius: 24px;
             overflow: hidden;
-            border: 1px solid var(--separator);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-            transition: all 0.4s ease;
-        }
-
-        .hero-img-container:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.06);
-        }
-
-        .hero-img-container img {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* 3. section#marquesina.marquee-scroll */
-        section#marquesina.marquee-scroll {
-            background-color: var(--color-surface);
-            border-top: 1px solid var(--separator);
-            border-bottom: 1px solid var(--separator);
-            padding: var(--space-4) 0;
-            overflow: hidden;
-            white-space: nowrap;
             position: relative;
-            z-index: 10;
-        }
-
-        .marquee-track {
-            display: inline-flex;
-            animation: marquee 28s linear infinite;
-        }
-
-        .marquee-item {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             display: flex;
-            align-items: center;
-            gap: var(--space-3);
-            margin-right: 50px;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+        .look-card:hover {
+            transform: translateY(-5px);
         }
 
-        .marquee-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 1px solid var(--separator);
+        .look-card-img {
+            width: 100%;
+            height: 65%;
             object-fit: cover;
         }
 
-        .marquee-text {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--text-title);
+        .look-card-info {
+            padding: 1.25rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .marquee-text span {
-            color: var(--color-primary-red);
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* 4. section#destacados.bento-grid */
-        section#destacados.bento-grid {
-            padding: var(--space-10) 0;
-            background-color: var(--color-canvas);
-        }
-
-        .section-header {
-            margin-bottom: var(--space-8);
-        }
-
-        .section-tag {
-            font-size: 13px;
-            color: var(--color-primary-red);
-            font-weight: 600;
-            letter-spacing: 1px;
+        .look-tag {
+            font-size: 0.7rem;
             text-transform: uppercase;
-            margin-bottom: var(--space-2);
-            display: block;
-        }
-
-        .section-title {
-            font-size: clamp(28px, 4.5vw, 42px);
+            letter-spacing: 0.1em;
+            color: var(--app-accent);
             font-weight: 600;
-            color: var(--text-title);
+            margin-bottom: 0.25rem;
         }
 
-        .bento-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 280px;
-            gap: var(--space-5);
+        .look-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
-        /* Flat, highly-rounded Xiaohongshu Bento Cards */
-        .bento-card {
-            background-color: var(--color-surface);
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid var(--separator);
-            box-shadow: none; /* Flat design system */
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            border-color: var(--separator-strong);
-        }
-
-        .col-span-2 { grid-column: span 2; }
-        .row-span-2 { grid-row: span 2; }
-
-        .bento-card-media {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .bento-card-media img,
-        .bento-card-media video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .bento-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: var(--space-5);
-        }
-
-        .bento-card-overlay h3 {
-            font-size: 24px;
-            color: #FFFFFF;
-            margin-bottom: var(--space-2);
-        }
-
-        .bento-card-overlay p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
-        }
-
-        .bento-card-content {
-            padding: var(--space-5);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            position: relative;
-            z-index: 3;
-        }
-
-        .bento-icon-wrapper {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: var(--fill-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-primary-red);
-            margin-bottom: var(--space-3);
-        }
-
-        .bento-title-small {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: var(--space-2);
-            color: var(--text-title);
-        }
-
-        .bento-desc-small {
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--text-paragraph);
-        }
-
-        .bento-stat {
-            font-family: inherit;
-            font-size: 72px;
-            font-weight: 700;
-            color: var(--color-primary-red);
-            line-height: 1;
-        }
-
-        /* 5. section#galeria.bento-gallery */
-        section#galeria.bento-gallery {
-            padding: var(--space-10) 0;
-            background-color: var(--color-subtle-bg);
-            border-top: 1px solid var(--separator);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-5);
-            margin-top: var(--space-6);
-        }
-
-        /* UGC Social Card Layout */
-        .gallery-card {
-            background-color: var(--color-surface);
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid var(--separator);
-            transition: all 0.3s ease;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-        }
-
-        .gallery-card-img {
-            height: 340px;
-            width: 100%;
-            position: relative;
+        .look-card p {
+            font-size: 0.85rem;
+            color: var(--app-muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        .gallery-card-img img {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s ease;
-        }
-
-        .gallery-card:hover .gallery-card-img img {
-            transform: scale(1.03);
-        }
-
-        .gallery-card-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #FFFFFF;
-            font-size: 11px;
-            font-weight: 500;
-            padding: 4px 8px;
-            border-radius: 9999px;
-            z-index: 10;
-        }
-
-        .gallery-card-info {
-            padding: var(--space-4);
-        }
-
-        .gallery-card-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-title);
-            margin-bottom: var(--space-1);
-        }
-
-        .gallery-card-desc {
-            font-size: 13px;
-            color: var(--text-paragraph);
-            margin-bottom: var(--space-4);
-        }
-
-        /* Social Feed Card Footer (Xiaohongshu style) */
-        .gallery-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--fill-1);
-            padding-top: var(--space-3);
-        }
-
-        .gallery-card-author {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-
-        .author-avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .author-name {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-paragraph);
-        }
-
-        .gallery-card-social {
-            display: flex;
-            align-items: center;
-            gap: var(--space-1);
-            color: var(--text-description);
-            font-size: 12px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .gallery-card-social:hover {
-            color: var(--color-primary-red);
-        }
-
-        .gallery-card-social .material-symbols-outlined {
-            font-size: 18px;
-        }
-
-        /* 6. footer.bento-footer */
-        footer.bento-footer {
-            background-color: var(--color-surface);
-            color: var(--text-paragraph);
-            padding: var(--space-10) 0 var(--space-6) 0;
-            border-top: 1px solid var(--separator);
-            position: relative;
-            z-index: 20;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
-            gap: var(--space-7);
-            border-bottom: 1px solid var(--separator);
-            padding-bottom: var(--space-8);
-            margin-bottom: var(--space-6);
-        }
-
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-
-        .footer-logo {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--text-title);
-        }
-
-        .footer-desc {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .footer-col h4 {
-            color: var(--text-title);
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: var(--space-4);
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-        }
-
-        .footer-links a {
-            font-size: 14px;
-            color: var(--text-paragraph);
-        }
-
-        .footer-links a:hover {
-            color: var(--color-primary-red);
-        }
-
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-            font-size: 14px;
-        }
-
-        .footer-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-2);
-        }
-
-        .footer-info-item .material-symbols-outlined {
-            color: var(--color-primary-red);
-            font-size: 18px;
-        }
-
-        .footer-newsletter {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-
-        .footer-newsletter p {
-            font-size: 14px;
-        }
-
-        .footer-newsletter-btn {
-            display: inline-flex;
-            background-color: var(--color-primary-red);
-            color: #FFFFFF;
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-family: var(--font-family);
-            font-weight: 500;
-            font-size: 13px;
-            justify-content: center;
+        .request-btn {
+            background-color: var(--app-text);
+            color: var(--app-bg);
             border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .footer-newsletter-btn:hover {
-            background-color: var(--color-component-red);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-3);
-            font-size: 13px;
-            color: var(--text-description);
-        }
-
-        /* Floating Social-Red WhatsApp FAB */
-        .whatsapp-fab {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            background-color: var(--color-primary-red);
-            color: #FFFFFF;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            border-radius: 12px;
+            padding: 0.75rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(255, 36, 66, 0.3);
-            z-index: 150;
-            animation: pulse-fab 2s infinite;
+            gap: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            margin-top: 1rem;
+            text-decoration: none;
         }
 
-        .whatsapp-fab:hover {
-            transform: scale(1.08);
-            box-shadow: 0 15px 35px rgba(255, 36, 66, 0.4);
+        /* App Dock Navigation */
+        .app-dock {
+            padding: 1rem 2rem 2rem;
+            background: rgba(15, 15, 19, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-top: 1px solid var(--app-card-border);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-shrink: 0;
+            padding-bottom: env(safe-area-inset-bottom, 2rem);
         }
 
-        .whatsapp-fab svg {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
+        .dock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--app-muted);
+            text-decoration: none;
+        }
+        .dock-item.active {
+            color: var(--app-accent);
+        }
+        .dock-item span.icon {
+            font-size: 24px;
+        }
+        .dock-item span.label {
+            font-size: 0.7rem;
+            font-weight: 500;
         }
 
-        @keyframes pulse-fab {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 36, 66, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(255, 36, 66, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 36, 66, 0);
-            }
+        /* Floating Message Badge */
+        .msg-badge {
+            position: absolute;
+            top: -4px;
+            right: -8px;
+            background-color: #FF3B30;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 10px;
+            border: 2px solid var(--app-bg);
         }
 
-        /* Scroll Triggers */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+        @media (min-width: 768px) {
+            body { align-items: center; background-image: radial-gradient(circle at top right, #1a1a24, #0f0f13); }
+            .app-header, .greeting-section, .looks-carousel, .app-dock {
+                max-width: 480px;
+                width: 100%;
             }
-            .bento-container {
-                grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: 260px;
-            }
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav.floating-pill {
-                padding: 0 var(--space-4);
-                height: 56px;
-            }
-            .nav-links {
-                display: none;
-            }
-            section.hero-dynamic {
-                padding-top: 110px;
-                min-height: auto;
-            }
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: var(--space-6);
-            }
-            .hero-img-container {
-                height: 380px;
-                max-width: 100%;
-            }
-            .bento-container {
-                grid-template-columns: 1fr;
-                grid-auto-rows: 240px;
-            }
-            .col-span-2 { grid-column: span 1; }
-            .row-span-2 { grid-row: span 1; }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-6);
-            }
+            .looks-carousel { padding-bottom: 1rem; }
         }
     </style>
 <style id="premium-effects">
@@ -901,14 +328,14 @@ img {
 
 
 :root {
-  --primary-rgb: 28, 25, 23;
-  --mesh-color-1: #1C1917;
-  --mesh-color-2: #F5F5F4;
+  --primary-rgb: 233, 30, 99;
+  --mesh-color-1: #E91E63;
+  --mesh-color-2: #FFEB3B;
   --mesh-color-3: #00BCD4;
-  --gradient-start: #1C1917;
-  --gradient-end: #F5F5F4;
-  --glow-color: rgba(28, 25, 23, 0.08);
-  --selection-bg: rgba(28, 25, 23, 0.2);
+  --gradient-start: #E91E63;
+  --gradient-end: #FFEB3B;
+  --glow-color: rgba(233, 30, 99, 0.08);
+  --selection-bg: rgba(233, 30, 99, 0.2);
 }
 
 
@@ -1041,89 +468,32 @@ img {
 
 </style>
 </head>
-    <!-- 1. App-Style Header Navigation -->
-    <nav class="floating-pill" style="position: sticky; top: 0; left: 0; transform: none; width: 100%; max-width: 100%; height: 68px; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 0; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--space-4); z-index: 100; box-shadow: none;">
-        <div class="nav-brand" style="display: flex; align-items: center; gap: 8px;">
-            <img src="img/lascastagnas_ch_0.jpg" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;">
-            <span style="font-family: var(--font-body); font-weight: 600; font-size: 16px; color: rgba(0,0,0,0.8);">@lascastagnas_ch</span>
-        </div>
-        <div style="flex-grow: 1; max-width: 400px; margin: 0 var(--space-4); position: relative; display: flex; align-items: center;">
-            <span class="material-symbols-outlined" style="position: absolute; left: 12px; font-size: 18px; color: rgba(0,0,0,0.4);">search</span>
-            <input type="text" placeholder="Buscar jeans, sweaters, abrigos..." style="width: 100%; height: 36px; background-color: #F5F5F5; border: none; border-radius: 9999px; padding-left: 38px; padding-right: 16px; font-size: 13px; font-family: var(--font-body); outline: none;">
-        </div>
-        <div class="nav-actions" style="display: flex; align-items: center; gap: 12px;">
-            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn" style="background-color: #FF2442; color: #FFFFFF; font-weight: 500; font-size: 13px; border-radius: 9999px; padding: 6px 16px; text-transform: none; border: none; transition: background 0.2s;">
-                + Seguir
-            </a>
-        </div>
-    </nav>
+<body>
 
-    <!-- 2. Showroom Instagram/RED Profile Header -->
-    <header class="profile-header" style="background-color: #FFFFFF; padding: 48px 0 32px; border-bottom: 1px solid rgba(0,0,0,0.08);">
-        <div class="container" style="max-width: 800px;">
-            <div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
-                <div style="position: relative;">
-                    <img src="img/lascastagnas_ch_0.jpg" alt="Silvana y Sharon Profile" style="width: 96px; height: 96px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 15px rgba(0,0,0,0.1); object-fit: cover;">
-                    <span class="material-symbols-outlined" style="position: absolute; bottom: 0; right: 0; background-color: #1DA1F2; color: #FFF; font-size: 16px; border-radius: 50%; padding: 3px; font-weight: bold;">check</span>
-                </div>
-                <div style="flex-grow: 1;">
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
-                        <h1 style="font-family: var(--font-body); font-size: 24px; font-weight: 600; color: rgba(0,0,0,0.8); text-transform: none; margin: 0; line-height: 1;">Las Castañas</h1>
-                        <span style="background-color: rgba(48,48,52,0.05); color: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 500;">Showroom Oficial</span>
-                    </div>
-                    <div style="display: flex; gap: 24px; margin-bottom: 16px;">
-                        <div style="font-family: var(--font-body); font-size: 14px; color: rgba(0,0,0,0.6);"><strong style="color: rgba(0,0,0,0.8); font-weight: 600;">120</strong> Publicaciones</div>
-                        <div style="font-family: var(--font-body); font-size: 14px; color: rgba(0,0,0,0.6);"><strong style="color: rgba(0,0,0,0.8); font-weight: 600;">1.8K</strong> Seguidoras</div>
-                        <div style="font-family: var(--font-body); font-size: 14px; color: rgba(0,0,0,0.6);"><strong style="color: rgba(0,0,0,0.8); font-weight: 600;">4.6K</strong> Me Gusta</div>
-                    </div>
-                    <p style="font-family: var(--font-body); font-size: 14px; color: rgba(0,0,0,0.62); line-height: 1.6; max-width: 600px; margin: 0;">
-                        ✨ Boutique de indumentaria y accesorios de moda en Coronel Charlone.<br>
-                        Colecciones de última tendencia, sweaters premium super soft, jeans de calce soñado y la asesoría única de Sil y Shar. Envíos gratis locales 📦
-                    </p>
-                </div>
+    <!-- Top App Header -->
+    <header class="app-header">
+        <div class="concierge-profile">
+            <div class="avatars-stack">
+                <img src="img/lascastagnas_ch_0.jpg" alt="Silvana">
+                <img src="img/lascastagnas_ch_1.jpg" alt="Sharon">
+                <div class="online-dot"></div>
+            </div>
+            <div class="concierge-info">
+                <h1>Silvana & Sharon</h1>
+                <p>Personal Shoppers • Activas</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <div class="icon-btn">
+                <span class="material-symbols-outlined">tune</span>
             </div>
         </div>
     </header>
 
-    <!-- 3. section#marquesina.marquee-scroll -->
-    <section id="marquesina" class="marquee-scroll">
-        <div class="marquee-track">
-            <!-- Loop block -->
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_3.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Inspiración <span>Castaña</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_5.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Outfits del Día <span>#OOTD</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_6.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Estilo <span>Elegante</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_7.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Moda <span>Femenina</span></span>
-            </div>
-            
-            <!-- Loop duplicate -->
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_3.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Inspiración <span>Castaña</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_5.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Outfits del Día <span>#OOTD</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_6.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Estilo <span>Elegante</span></span>
-            </div>
-            <div class="marquee-item">
-                <img src="img/lascastagnas_ch_7.jpg" alt="" class="marquee-img">
-                <span class="marquee-text">Moda <span>Femenina</span></span>
-            </div>
-        </div>
+    <!-- Greeting Section -->
+    <section class="greeting-section">
+        <h2>Looks curados<br><span>especialmente para vos.</span></h2>
+        <p>Basado en tu última charla con nosotras, seleccionamos estas piezas exclusivas de temporada.</p>
     </section>
 <div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
   <div class="marquee-container">
@@ -1134,283 +504,73 @@ img {
 </div>
 
 
-    <!-- 4. Muro Social UGC Masonry Grid -->
-    <section id="destacados" style="padding: 64px 0; background-color: #F5F5F5;">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <span class="section-tag" style="font-family: var(--font-body); text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; color: #FF2442; font-weight: 600; display: block; margin-bottom: 8px;">Comunidad</span>
-                <h2 style="font-family: var(--font-body); font-size: clamp(24px, 4vw, 32px); color: rgba(0,0,0,0.8); font-weight: 600; text-transform: none;">Looks del Showroom</h2>
-            </div>
-            
-            <div class="social-feed-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                <!-- Social Note Card 1 -->
-                <div class="note-card" style="background-color: #FFFFFF; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.06); cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-                    <div style="position: relative; width: 100%; aspect-ratio: 1;">
-                        <img src="img/lascastagnas_ch_1.jpg" alt="Moda Charlone" style="width: 100%; height: 100%; object-fit: cover;">
-                        <span style="position: absolute; top: 12px; right: 12px; background-color: rgba(0,0,0,0.5); color: #FFF; font-size: 11px; padding: 4px 8px; border-radius: 20px; font-family: var(--font-body);">#OOTD</span>
-                    </div>
-                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
-                        <h3 style="font-family: var(--font-body); font-size: 15px; font-weight: 600; color: rgba(0,0,0,0.8); text-transform: none; line-height: 1.4; margin: 0;">¡Nueva temporada Otoño Invierno! 🍁 Sweaters y abrigos suaves seleccionados de excelente confección.</h3>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <img src="img/lascastagnas_ch_0.jpg" alt="User" style="width: 24px; height: 24px; border-radius: 50%;">
-                                <span style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62);">lascastagnas_ch</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 4px;" class="like-button" onclick="toggleLike(this, event)">
-                                <span class="material-symbols-outlined heart-icon" style="font-size: 18px; color: rgba(0,0,0,0.4); transition: color 0.2s;">favorite</span>
-                                <span class="like-count" style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62); font-family: 'RED Number', var(--font-body);">42</span>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Horizontal Carousel (Glassmorphism Cards) -->
+    <div class="looks-carousel">
+        
+        <!-- Card 1 -->
+        <div class="look-card">
+            <img src="img/lascastagnas_ch_2.jpg" alt="Conjunto Minimal" class="look-card-img">
+            <div class="look-card-info">
+                <div>
+                    <div class="look-tag">Match 98%</div>
+                    <h3>El Conjunto Minimal</h3>
+                    <p>Ideal para el fin de semana. Texturas suaves y caída natural que estiliza.</p>
                 </div>
-
-                <!-- Social Note Card 2 -->
-                <div class="note-card" style="background-color: #FFFFFF; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.06); cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-                    <div style="position: relative; width: 100%; aspect-ratio: 1;">
-                        <img src="img/lascastagnas_ch_8.jpg" alt="Jeans Tendencia" style="width: 100%; height: 100%; object-fit: cover;">
-                        <span style="position: absolute; top: 12px; right: 12px; background-color: rgba(0,0,0,0.5); color: #FFF; font-size: 11px; padding: 4px 8px; border-radius: 20px; font-family: var(--font-body);">#Denim</span>
-                    </div>
-                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
-                        <h3 style="font-family: var(--font-body); font-size: 15px; font-weight: 600; color: rgba(0,0,0,0.8); text-transform: none; line-height: 1.4; margin: 0;">Jeans Wide Leg de calce soñado 👖 Rígidos y elastizados de calce perfecto. Pasá a probarte tu talle ideal.</h3>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <img src="img/lascastagnas_ch_0.jpg" alt="User" style="width: 24px; height: 24px; border-radius: 50%;">
-                                <span style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62);">lascastagnas_ch</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 4px;" class="like-button" onclick="toggleLike(this, event)">
-                                <span class="material-symbols-outlined heart-icon" style="font-size: 18px; color: rgba(0,0,0,0.4); transition: color 0.2s;">favorite</span>
-                                <span class="like-count" style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62); font-family: 'RED Number', var(--font-body);">89</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Social Note Card 3 -->
-                <div class="note-card" style="background-color: #FFFFFF; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.06); cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-                    <div style="position: relative; width: 100%; aspect-ratio: 1;">
-                        <img src="img/lascastagnas_ch_5.jpg" alt="Accesorios" style="width: 100%; height: 100%; object-fit: cover;">
-                        <span style="position: absolute; top: 12px; right: 12px; background-color: rgba(0,0,0,0.5); color: #FFF; font-size: 11px; padding: 4px 8px; border-radius: 20px; font-family: var(--font-body);">#Accesorios</span>
-                    </div>
-                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
-                        <h3 style="font-family: var(--font-body); font-size: 15px; font-weight: 600; color: rgba(0,0,0,0.8); text-transform: none; line-height: 1.4; margin: 0;">Accesorios que marcan la diferencia ✨ Carteras exclusivas y cinturones seleccionados de diseño pampeano.</h3>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <img src="img/lascastagnas_ch_0.jpg" alt="User" style="width: 24px; height: 24px; border-radius: 50%;">
-                                <span style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62);">lascastagnas_ch</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 4px;" class="like-button" onclick="toggleLike(this, event)">
-                                <span class="material-symbols-outlined heart-icon" style="font-size: 18px; color: rgba(0,0,0,0.4); transition: color 0.2s;">favorite</span>
-                                <span class="like-count" style="font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.62); font-family: 'RED Number', var(--font-body);">56</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="request-btn">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span> Consultar a Sharon
+                </a>
             </div>
         </div>
-    </section>       </div>
-    </section>
 
-    <!-- 5. section#galeria.bento-gallery -->
-    <section id="galeria" class="bento-gallery">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Colección del Momento</span>
-                <h2 class="section-title">Looks Destacados</h2>
-            </div>
-            
-            <div class="gallery-grid">
-                <!-- Social Note Card 1 -->
-                <div class="gallery-card fade-in">
-                    <div class="gallery-card-badge">Popular</div>
-                    <div class="gallery-card-img">
-                        <img src="img/lascastagnas_ch_9.jpg" alt="Saco Castaña Classic">
-                    </div>
-                    <div class="gallery-card-info">
-                        <h3 class="gallery-card-title">Saco Castaña Classic</h3>
-                        <p class="gallery-card-desc">Saco elegante con forrería suave y diseño atemporal. Una prenda ideal para elevar cualquier outfit.</p>
-                        <div class="gallery-card-footer">
-                            <div class="gallery-card-author">
-                                <img src="img/lascastagnas_ch_0.jpg" alt="Avatar" class="author-avatar">
-                                <span class="author-name">Silvana S.</span>
-                            </div>
-                            <div class="gallery-card-social">
-                                <span class="material-symbols-outlined">favorite</span>
-                                <span>184</span>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Card 2 -->
+        <div class="look-card">
+            <img src="img/lascastagnas_ch_8.jpg" alt="Wide Leg Denim" class="look-card-img">
+            <div class="look-card-info">
+                <div>
+                    <div class="look-tag">Must-Have</div>
+                    <h3>Arquitectura Denim</h3>
+                    <p>El Wide Leg definitivo. Lo trajimos pensando exactamente en el calce que buscabas.</p>
                 </div>
-
-                <!-- Social Note Card 2 -->
-                <div class="gallery-card fade-in">
-                    <div class="gallery-card-badge">Recomendado</div>
-                    <div class="gallery-card-img">
-                        <img src="img/lascastagnas_ch_10.jpg" alt="Sweater Soft Linen">
-                    </div>
-                    <div class="gallery-card-info">
-                        <h3 class="gallery-card-title">Sweater Soft Linen</h3>
-                        <p class="gallery-card-desc">Tejido suave en tonos neutros, calce relajado y cuello redondo. Comodidad y sofisticación.</p>
-                        <div class="gallery-card-footer">
-                            <div class="gallery-card-author">
-                                <img src="img/lascastagnas_ch_0.jpg" alt="Avatar" class="author-avatar">
-                                <span class="author-name">Sharon S.</span>
-                            </div>
-                            <div class="gallery-card-social">
-                                <span class="material-symbols-outlined">favorite</span>
-                                <span>142</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Social Note Card 3 (Video UGC Note) -->
-                <div class="gallery-card fade-in">
-                    <div class="gallery-card-badge">Video</div>
-                    <div class="gallery-card-img">
-                        <video src="img/lascastagnas_ch_11.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover;"></video>
-                    </div>
-                    <div class="gallery-card-info">
-                        <h3 class="gallery-card-title">Comunidad Castañas</h3>
-                        <p class="gallery-card-desc">Encontrá inspiración diaria y compartí tus combinaciones preferidas en nuestro showroom.</p>
-                        <div class="gallery-card-footer">
-                            <div class="gallery-card-author">
-                                <img src="img/lascastagnas_ch_0.jpg" alt="Avatar" class="author-avatar">
-                                <span class="author-name">@lascastagnas_ch</span>
-                            </div>
-                            <div class="gallery-card-social">
-                                <span class="material-symbols-outlined">favorite</span>
-                                <span>256</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="request-btn">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span> Reservar Talle
+                </a>
             </div>
         </div>
-    </section>
 
-    <!-- ADS:CONTENT:END -->
-
-    <!-- 6. footer.bento-footer -->
-    <footer class="bento-footer" id="contacto">
-        <!-- ADS:FOOTER:START -->
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3 class="footer-logo">Las Castañas</h3>
-                    <p class="footer-desc">Espacio de moda e inspiración en Coronel Charlone. Creamos colecciones curadas con pasión por la calidad y el buen vestir.</p>
+        <!-- Card 3 -->
+        <div class="look-card">
+            <img src="img/lascastagnas_ch_7.jpg" alt="Knitwear Premium" class="look-card-img">
+            <div class="look-card-info">
+                <div>
+                    <div class="look-tag">Recién Ingresado</div>
+                    <h3>Fibras Puras</h3>
+                    <p>Sweater de media estación. Un abrazo al cuerpo con hilados de altísima calidad.</p>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>Comunidad</h4>
-                    <div class="footer-links">
-                        <a href="#destacados">Recomendados</a>
-                        <a href="#galeria">Colección</a>
-                        <a href="#tienda">Catálogo</a>
-                        <a href="#contacto">Contacto</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Ubicación & Teléfono</h4>
-                    <div class="footer-info">
-                        <div class="footer-info-item">
-                            <span class="material-symbols-outlined">location_on</span>
-                            <span>Coronel Charlone, Provincia de Buenos Aires</span>
-                        </div>
-                        <div class="footer-info-item">
-                            <span class="material-symbols-outlined">call</span>
-                            <span>Sharon: 543388512014<br>Silvana: 543385521955</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Horarios Showroom</h4>
-                    <div class="footer-newsletter">
-                        <p>Lunes a Sábado: 15:30 a 19:30 hs.<br>Sábados por la mañana: 10:00 a 12:00 hs.</p>
-                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="footer-newsletter-btn">Preguntanos por WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Las Castañas. Todos los derechos reservados.</p>
-                <p>Desarrollado por ADS Labs</p>
+                <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="request-btn">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span> Me interesa
+                </a>
             </div>
         </div>
-    </footer>
 
-    <!-- Glowing Xiaohongshu Red WhatsApp FAB -->
-    <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.479 2.012 14.019.985 11.39.985c-5.441 0-9.87 4.372-9.874 9.8.001 1.636.5 3.224 1.455 4.832L1.95 21.074l5.697-1.492zm11.947-6.868c-.3-.15-1.77-.874-2.043-.974-.274-.1-.474-.15-.673.15-.2.3-.773.974-.948 1.174-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.485-.893-.797-1.496-1.782-1.67-2.082-.175-.3-.018-.463.13-.61.135-.133.3-.35.45-.525.15-.175.2-.299.3-.5.1-.2.05-.375-.025-.525-.075-.15-.673-1.624-.922-2.224-.24-.58-.487-.5-.672-.51-.176-.01-.376-.01-.577-.01-.2 0-.527.075-.802.375-.276.3-1.052 1.025-1.052 2.5 0 1.475 1.078 2.9 1.227 3.1.15.2 2.122 3.24 5.14 4.545.717.31 1.277.495 1.71.63.722.23 1.38.197 1.9.12.578-.085 1.77-.724 2.02-1.424.25-.7.25-1.3 1.75-1.425-.075-.125-.275-.2-.575-.35z"/>
-        </svg>
-    </a>
+    </div>
 
-    <!-- ADS:SCRIPTS -->
-    <script>
-        // Xiaohongshu Toggle Like function
-        function toggleLike(el, event) {
-            if (event) {
-                event.stopPropagation();
-                event.preventDefault();
-            }
-            var heart = el.querySelector('.heart-icon');
-            var countEl = el.querySelector('.like-count');
-            var count = parseInt(countEl.innerText);
-            
-            var isActive = heart.style.color === 'rgb(255, 36, 66)' || heart.style.color === '#FF2442';
-            
-            if (isActive) {
-                heart.style.color = 'rgba(0,0,0,0.4)';
-                heart.style.fontVariationSettings = "'FILL' 0";
-                countEl.innerText = count - 1;
-            } else {
-                heart.style.color = '#FF2442';
-                heart.style.fontVariationSettings = "'FILL' 1";
-                countEl.innerText = count + 1;
-                
-                heart.style.transform = 'scale(1.3)';
-                setTimeout(function() {
-                    heart.style.transform = 'scale(1)';
-                }, 200);
-            }
-        }
+    <!-- App Dock Navigation -->
+    <nav class="app-dock">
+        <a href="#" class="dock-item">
+            <span class="material-symbols-outlined icon">auto_awesome</span>
+            <span class="label">Descubrir</span>
+        </a>
+        <a href="#" class="dock-item active" style="position: relative;">
+            <span class="material-symbols-outlined icon" style="font-variation-settings: 'FILL' 1;">style</span>
+            <span class="label">Tus Looks</span>
+        </a>
+        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="dock-item" style="position: relative;">
+            <span class="material-symbols-outlined icon">forum</span>
+            <span class="label">Chat</span>
+            <div class="msg-badge">1</div>
+        </a>
+    </nav>
 
-        // Update nav styling on scroll
-        window.addEventListener('scroll', function() {
-            var nav = document.querySelector('nav.floating-pill');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // IntersectionObserver for soft slide animations
-        document.addEventListener("DOMContentLoaded", function() {
-            var fadeElements = document.querySelectorAll('.fade-in');
-            
-            var observerOptions = {
-                root: null,
-                threshold: 0.1,
-                rootMargin: "0px 0px -40px 0px"
-            };
-            
-            var observer = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            fadeElements.forEach(function(el) {
-                observer.observe(el);
-            });
-        });
-    </script>
 <script id="premium-effects-js">
 
 // ═══ GLOBAL PREMIUM POLISH ═══

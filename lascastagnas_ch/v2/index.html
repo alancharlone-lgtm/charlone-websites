@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Las Castañas — Showroom Orgánico</title>
-    <meta name="store-id" content="lascastagnas_ch">
-    
+    <title>Las Castañas — Showroom Gallery</title>
+    <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display+SC&family=Prata&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --color-linen: #FAF9F6;
-            --color-sand: #E7E5E4;
-            --color-stone: #1C1917;
-            --color-muted: #78716C;
+            --color-bg-primary: #F2EFEA;
+            --color-bg-secondary: #E5E0DA;
+            --color-text-main: #1C1917;
+            --color-text-muted: #78716C;
+            --color-accent: #A78BFA; /* Lavender Touch */
+            --color-gold: #C5A880;
+            --font-serif: 'Prata', serif;
+            --font-sans: 'Outfit', sans-serif;
+            --font-sc: 'Playfair Display SC', serif;
+            --transition-premium: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -25,204 +30,315 @@
         }
 
         body {
-            background-color: var(--color-linen);
-            color: var(--color-stone);
-            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-main);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            display: flex;
         }
 
-        /* LEFT PANEL: Fixed Curatorial Story */
-        .fixed-panel {
+        /* Split Layout Container */
+        .split-container {
+            display: flex;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /* --- FIXED SIDEBAR (LEFT) --- */
+        .sidebar {
+            width: 40vw;
+            height: 100vh;
             position: fixed;
             top: 0;
             left: 0;
-            width: 45vw;
-            height: 100vh;
-            padding: 4rem 4rem 4rem 6rem;
+            background-color: var(--color-bg-secondary);
+            padding: 6rem 5rem;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            background-color: var(--color-linen);
+            justify-content: space-between;
+            border-right: 1px solid rgba(28, 25, 23, 0.05);
             z-index: 10;
         }
 
-        .brand-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 500;
-            margin-bottom: 4rem;
-            letter-spacing: -0.02em;
+        .brand-header {
+            display: flex;
+            flex-direction: column;
         }
 
-        .curator-badge {
-            font-size: 0.75rem;
+        .brand-tag {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--color-gold);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-name {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .brand-desc {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-text-muted);
+            font-weight: 300;
+            max-width: 380px;
+        }
+
+        .story-block {
+            margin: 4rem 0;
+            padding-left: 2rem;
+            border-left: 2px solid var(--color-gold);
+            font-style: italic;
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #57534E;
+        }
+
+        .brand-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .vip-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-text-main);
+            color: #fff;
+            text-decoration: none;
+            padding: 1.3rem 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: var(--transition-premium);
+            border: 1px solid var(--color-text-main);
+            width: fit-content;
+        }
+
+        .vip-button:hover {
+            background-color: transparent;
+            color: var(--color-text-main);
+            transform: translateY(-3px);
+        }
+
+        .social-link {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 0.15em;
             font-weight: 600;
-            color: var(--color-muted);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .curator-badge::after {
-            content: '';
-            height: 1px;
-            width: 40px;
-            background-color: var(--color-sand);
+            transition: var(--transition-premium);
+            width: fit-content;
         }
 
-        .story-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            line-height: 1.1;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            max-width: 90%;
+        .social-link:hover {
+            color: var(--color-text-main);
+            padding-left: 8px;
         }
 
-        .story-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--color-muted);
-            max-width: 420px;
-            margin-bottom: 3rem;
-            font-weight: 300;
-        }
-
-        .authors {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        .author-avatars {
-            display: flex;
-        }
-        .author-avatars img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 2px solid var(--color-linen);
-            object-fit: cover;
-        }
-        .author-names {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-style: italic;
-        }
-
-        .contact-btn {
-            display: inline-block;
-            margin-top: 3rem;
-            padding: 1rem 2.5rem;
-            background-color: var(--color-stone);
-            color: var(--color-linen);
-            text-decoration: none;
-            border-radius: 100px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        .contact-btn:hover {
-            background-color: #000;
-        }
-
-        /* RIGHT PANEL: Scrolling Gallery */
-        .scroll-panel {
-            margin-left: 45vw;
-            width: 55vw;
-            min-height: 100vh;
-            padding: 6rem;
-            background-color: var(--color-sand);
-        }
-
-        .gallery-item {
-            margin-bottom: 10rem;
+        /* --- SCROLLING CONTENT (RIGHT) --- */
+        .content-scroll {
+            width: 60vw;
+            margin-left: 40vw;
+            padding: 8rem 8rem 8rem 10rem;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 12rem;
         }
 
-        /* Asymmetrical Archways */
-        .frame-arch {
+        /* Asymmetric Gallery Elements */
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            max-width: 500px;
-            aspect-ratio: 3/4;
-            border-radius: 200px 200px 0 0; /* Arch shape */
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        .frame-pill {
-            width: 80%;
-            max-width: 400px;
-            aspect-ratio: 2/3;
-            border-radius: 200px; /* Pill shape */
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-            margin-bottom: 2rem;
-            align-self: flex-end;
             position: relative;
         }
 
-        .frame-square {
-            width: 90%;
-            max-width: 600px;
-            aspect-ratio: 4/3;
-            border-radius: 2px; /* Sharp */
+        /* Beautiful Arch masking */
+        .img-wrapper-arch {
+            width: 100%;
+            aspect-ratio: 0.78;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-            margin-bottom: 2rem;
-            align-self: flex-start;
+            border-radius: 260px 260px 0 0;
+            background-color: var(--color-bg-secondary);
             position: relative;
+            box-shadow: 0 30px 60px rgba(28, 25, 23, 0.04);
+            transition: var(--transition-premium);
         }
 
-        .gallery-item img, .gallery-item video {
+        .img-wrapper-arch img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            filter: grayscale(10%) sepia(8%);
+            transition: var(--transition-premium);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.03);
+        .gallery-item:hover .img-wrapper-arch img {
+            scale: 1.04;
         }
 
-        .item-caption {
-            text-align: center;
-            max-width: 300px;
+        .item-info {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 1rem;
         }
-        .item-caption h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
+
+        .item-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-num {
+            font-family: var(--font-sc);
+            font-size: 0.9rem;
+            color: var(--color-gold);
             margin-bottom: 0.5rem;
         }
-        .item-caption p {
-            font-size: 0.9rem;
-            color: var(--color-muted);
+
+        .item-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            font-weight: 300;
+            max-width: 250px;
+            text-align: right;
             line-height: 1.5;
         }
 
+        /* Asymmetry Modifiers */
+        .item-left {
+            width: 75%;
+            align-self: flex-start;
+        }
+
+        .item-right {
+            width: 75%;
+            align-self: flex-end;
+        }
+
+        .item-mid {
+            width: 85%;
+            align-self: center;
+        }
+
+        /* --- TESTIMONIAL / CONCEPT CARD --- */
+        .concept-card {
+            background-color: var(--color-bg-secondary);
+            padding: 5rem;
+            border-radius: 120px 0 120px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 90%;
+            align-self: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.02);
+            border: 1px solid rgba(28,25,23,0.03);
+        }
+
+        .concept-quote {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            line-height: 1.5;
+            margin-bottom: 2.5rem;
+            color: var(--color-text-main);
+        }
+
+        .concept-author {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-weight: 700;
+            color: var(--color-gold);
+        }
+
+        /* Footer inside scrolling area */
+        .scroll-footer {
+            margin-top: 6rem;
+            padding-top: 6rem;
+            border-top: 1px solid rgba(28, 25, 23, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .footer-credits {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* --- RESPONSIVE STYLE --- */
         @media (max-width: 1024px) {
-            body { flex-direction: column; }
-            .fixed-panel {
-                position: relative;
+            .split-container {
+                flex-direction: column;
+            }
+            .sidebar {
                 width: 100vw;
                 height: auto;
-                min-height: 80vh;
-                padding: 3rem 2rem;
-            }
-            .scroll-panel {
-                margin-left: 0;
-                width: 100vw;
+                position: relative;
                 padding: 4rem 2rem;
             }
-            .story-title { font-size: 2.5rem; }
-            .frame-arch, .frame-pill, .frame-square { align-self: center; width: 100%; }
+            .brand-name {
+                font-size: 2.8rem;
+            }
+            .story-block {
+                margin: 2.5rem 0;
+            }
+            .content-scroll {
+                width: 100vw;
+                margin-left: 0;
+                padding: 4rem 2rem;
+                gap: 6rem;
+            }
+            .item-left, .item-right, .item-mid {
+                width: 100%;
+            }
+            .img-wrapper-arch {
+                border-radius: 150px 150px 0 0;
+            }
+            .concept-card {
+                padding: 3rem 1.5rem;
+                border-radius: 60px 0 60px 0;
+            }
+            .concept-quote {
+                font-size: 1.4rem;
+            }
+            .scroll-footer {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
         }
     </style>
 <style id="premium-effects">
@@ -279,14 +395,14 @@ img {
 
 
 :root {
-  --primary-rgb: 233, 30, 99;
-  --mesh-color-1: #E91E63;
-  --mesh-color-2: #FFEB3B;
+  --primary-rgb: 242, 239, 234;
+  --mesh-color-1: #F2EFEA;
+  --mesh-color-2: #E5E0DA;
   --mesh-color-3: #00BCD4;
-  --gradient-start: #E91E63;
-  --gradient-end: #FFEB3B;
-  --glow-color: rgba(233, 30, 99, 0.08);
-  --selection-bg: rgba(233, 30, 99, 0.2);
+  --gradient-start: #F2EFEA;
+  --gradient-end: #E5E0DA;
+  --glow-color: rgba(242, 239, 234, 0.08);
+  --selection-bg: rgba(242, 239, 234, 0.2);
 }
 
 
@@ -421,73 +537,112 @@ img {
 </head>
 <body>
 
-    <!-- Left Fixed Panel -->
-    <div class="fixed-panel">
-        <div class="brand-logo">Las Castañas.</div>
+    <div class="split-container">
         
-        <div class="curator-badge">Showroom Coronel Charlone</div>
-        
-        <h1 class="story-title">El arte de vestir con propósito y calma.</h1>
-        
-        <p class="story-text">
-            Creemos que la moda no debe ser desechable. En nuestro showroom, seleccionamos a mano prendas que acarician la piel y perduran en el tiempo. Desde jeans de calce arquitectónico hasta hilados suaves como la arena. Un espacio privado donde el asesoramiento personal es la norma, no la excepción.
-        </p>
+        <!-- FIXED SIDEBAR (LEFT) -->
+        aside class="sidebar">
+            <div class="brand-header">
+                <span class="brand-tag">Exclusividad & Estilo</span>
+                <h1 class="brand-name">Las<br>Castañas</h1>
+                <p class="brand-desc">Una cuidada selección de prendas de tendencia y abrigo de alta gama en Coronel Charlone. Atemporalidad, calidad textil y un asesoramiento profundamente personalizado.</p>
+                
+                <div class="story-block">
+                    "Curamos cada textura y abrigo pensando en brindarte confort con un sello absoluto de sofisticación cotidiana."
+                </div>
+            </div>
 
-        <div class="authors">
-            <div class="author-avatars">
-                <img src="img/lascastagnas_ch_0.jpg" alt="Silvana">
-                <img src="img/lascastagnas_ch_1.jpg" alt="Sharon" style="margin-left: -15px;">
+            <div class="brand-actions">
+                <a href="https://wa.me/543388512014" target="_blank" class="vip-button">Agendar Cita VIP</a>
+                <a href="https://instagram.com/lascastagnas_ch" target="_blank" class="social-link">Instagram → @lascastagnas_ch</a>
             </div>
-            <div class="author-names">Curado por Silvana & Sharon</div>
-        </div>
+        </aside>
 
-        <div>
-            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="contact-btn">Coordinar Visita Privada</a>
-        </div>
-    </div>
+        <!-- SCROLLING GALLERY (RIGHT) -->
+        <main class="content-scroll">
+            
+            <!-- Item 1: Showroom Concept (Hero) -->
+            <div class="gallery-item item-left">
+                <div class="img-wrapper-arch">
+                    <img src="img/ai_hero.png" alt="Showroom Exclusivo Las Castañas">
+                </div>
+                <div class="item-info">
+                    <div class="item-meta">
+                        <span class="item-num">SALA I</span>
+                        <h2 class="item-title">El Showroom</h2>
+                    </div>
+                    <p class="item-desc">Nuestra tienda es un refugio de diseño minimalista y cálido.</p>
+                </div>
+            </div>
 
-    <!-- Right Scrolling Gallery -->
-    <div class="scroll-panel">
-        
-        <div class="gallery-item">
-            <div class="frame-arch">
-                <img src="img/lascastagnas_ch_8.jpg" alt="Denim Premium">
+            <!-- Item 2: Jeans Premium -->
+            <div class="gallery-item item-right">
+                <div class="img-wrapper-arch">
+                    <img src="img/lascastagnas_ch_2.jpg" alt="Pantalón Wide Leg Denim">
+                </div>
+                <div class="item-info">
+                    <div class="item-meta">
+                        <span class="item-num">SALA II</span>
+                        <h2 class="item-title">Wide Leg Jeans</h2>
+                    </div>
+                    <p class="item-desc">Denim de corte perfecto que estiliza y regala comodidad total.</p>
+                </div>
             </div>
-            <div class="item-caption">
-                <h3>Denim Estructural</h3>
-                <p>Wide Legs y cortes rectos diseñados para esculpir la silueta manteniendo absoluta comodidad.</p>
-            </div>
-        </div>
 
-        <div class="gallery-item">
-            <div class="frame-pill">
-                <img src="img/lascastagnas_ch_7.jpg" alt="Soft Knitwear">
+            <!-- Concept Highlight / Testimonial -->
+            <div class="concept-card">
+                <p class="concept-quote">"Creemos que el lujo reside en la textura, en una costura impecable y en el calce perfecto de tu jean favorito."</p>
+                <span class="concept-author">Sharon & Silvana — Curadoras de Marca</span>
             </div>
-            <div class="item-caption">
-                <h3>Texturas Puras</h3>
-                <p>Nuestros sweaters están tejidos pensando en el abrazo cálido que exige el invierno pampeano.</p>
-            </div>
-        </div>
 
-        <div class="gallery-item">
-            <div class="frame-square">
-                <img src="img/lascastagnas_ch_5.jpg" alt="Accesorios">
+            <!-- Item 3: Cozy Sweaters (Knitwear detail) -->
+            <div class="gallery-item item-left">
+                <div class="img-wrapper-arch">
+                    <img src="img/ai_detail.png" alt="Abrigos y Tejidos de Temporada">
+                </div>
+                <div class="item-info">
+                    <div class="item-meta">
+                        <span class="item-num">SALA III</span>
+                        <h2 class="item-title">Tejidos & Abrigos</h2>
+                    </div>
+                    <p class="item-desc">Hilados nobles en tonalidades lino y piedra que resguardan del frío.</p>
+                </div>
             </div>
-            <div class="item-caption">
-                <h3>Objetos Singulares</h3>
-                <p>Cinturones y marroquinería que elevan cualquier conjunto minimalista.</p>
-            </div>
-        </div>
 
-        <div class="gallery-item">
-            <div class="frame-arch">
-                <video src="img/lascastagnas_ch_4.mp4" autoplay loop muted playsinline></video>
+            <!-- Item 4: Accessories -->
+            <div class="gallery-item item-mid">
+                <div class="img-wrapper-arch">
+                    <img src="img/ai_product.png" alt="Carteras y Marroquinería">
+                </div>
+                <div class="item-info">
+                    <div class="item-meta">
+                        <span class="item-num">SALA IV</span>
+                        <h2 class="item-title">Marroquinería Chic</h2>
+                    </div>
+                    <p class="item-desc">El detalle final: carteras de cuero y accesorios que completan tu identidad.</p>
+                </div>
             </div>
-            <div class="item-caption">
-                <h3>Dinámica de Uso</h3>
-                <p>Ropa diseñada para moverse con vos, del día a la noche.</p>
+
+            <!-- Item 5: Real lookbook item -->
+            <div class="gallery-item item-right">
+                <div class="img-wrapper-arch">
+                    <img src="img/lascastagnas_ch_3.jpg" alt="Colección de Estación">
+                </div>
+                <div class="item-info">
+                    <div class="item-meta">
+                        <span class="item-num">SALA V</span>
+                        <h2 class="item-title">Siluetas Contemporáneas</h2>
+                    </div>
+                    <p class="item-desc">Jeans premium, abrigos estructurados y blusas de tendencia.</p>
+                </div>
             </div>
-        </div>
+
+            <!-- Footer Section -->
+            <footer class="scroll-footer">
+                <div class="footer-logo">Las Castañas</div>
+                <div class="footer-credits">© 2026. Charlone, Buenos Aires. Asesoramiento Exclusivo.</div>
+            <p class="text-center text-xs text-stone-600 mt-4 pb-2">Desarrollado por ADS Labs</p></footer>
+
+        </main>
 
     </div>
 

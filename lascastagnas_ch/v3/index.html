@@ -2,276 +2,321 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Las Castañas — VIP Concierge</title>
-    <meta name="store-id" content="lascastagnas_ch">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Castañas — VIP Showroom App</title>
+    <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --app-bg: #0F0F13;
-            --app-card: rgba(255, 255, 255, 0.05);
-            --app-card-border: rgba(255, 255, 255, 0.1);
-            --app-text: #FFFFFF;
-            --app-muted: rgba(255, 255, 255, 0.5);
-            --app-accent: #E1C1A6; /* Warm gold/beige */
+            --color-dark-bg: #090C15;
+            --color-glass-card: rgba(255, 255, 255, 0.03);
+            --color-glass-border: rgba(255, 255, 255, 0.08);
+            --color-text-main: #F3F4F6;
+            --color-text-muted: #9CA3AF;
+            --color-gold: #D4AF37;
+            --color-gold-glow: rgba(212, 175, 55, 0.2);
+            --font-display: 'Cinzel', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --transition-fluid: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--app-bg);
-            color: var(--app-text);
-            font-family: 'Outfit', sans-serif;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden; /* App style */
+            background-color: var(--color-dark-bg);
+            color: var(--color-text-main);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
-        }
-
-        /* Concierge Top Header */
-        .app-header {
-            padding: 2rem 1.5rem 1rem;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-shrink: 0;
+            background-image: radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
         }
 
-        .concierge-profile {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .avatars-stack {
-            display: flex;
-            position: relative;
-        }
-        .avatars-stack img {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: 2px solid var(--app-bg);
-            object-fit: cover;
-        }
-        .avatars-stack img:nth-child(2) {
-            margin-left: -16px;
-        }
-        .online-dot {
-            position: absolute;
-            bottom: 0;
-            right: -2px;
-            width: 12px;
-            height: 12px;
-            background-color: #34C759;
-            border: 2px solid var(--app-bg);
-            border-radius: 50%;
-        }
-
-        .concierge-info h1 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-        .concierge-info p {
-            font-size: 0.8rem;
-            color: var(--app-accent);
-            font-weight: 500;
-        }
-
-        .header-actions .icon-btn {
-            background: var(--app-card);
-            border: 1px solid var(--app-card-border);
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--app-text);
-            cursor: pointer;
-        }
-
-        /* Greeting Section */
-        .greeting-section {
-            padding: 1rem 1.5rem 2rem;
-            flex-shrink: 0;
-        }
-        .greeting-section h2 {
-            font-size: 2.2rem;
-            font-weight: 300;
-            line-height: 1.2;
-        }
-        .greeting-section h2 span {
-            font-weight: 600;
-        }
-        .greeting-section p {
-            margin-top: 0.5rem;
-            color: var(--app-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            max-width: 90%;
-        }
-
-        /* Horizontal Carousel of Looks (The Core Content) */
-        .looks-carousel {
-            flex-grow: 1;
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 0 1.5rem 2rem;
-            gap: 1.5rem;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            align-items: center;
-        }
-        .looks-carousel::-webkit-scrollbar {
-            display: none;
-        }
-
-        .look-card {
-            min-width: 85%;
-            max-width: 340px;
-            height: 100%;
-            max-height: 500px;
-            scroll-snap-align: center;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--app-card-border);
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s;
-        }
-        .look-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .look-card-img {
+        /* Container Limit */
+        .app-wrapper {
             width: 100%;
-            height: 65%;
-            object-fit: cover;
-        }
-
-        .look-card-info {
-            padding: 1.25rem;
-            flex-grow: 1;
+            max-width: 1200px;
+            padding: 4rem 2rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 2.5rem;
         }
 
-        .look-tag {
-            font-size: 0.7rem;
+        /* --- APP HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-glass-border);
+        }
+
+        .logo-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--color-text-main);
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--color-gold);
+            font-weight: 500;
+            margin-top: 0.3rem;
+        }
+
+        .vip-status-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--color-gold);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--app-accent);
-            font-weight: 600;
-            margin-bottom: 0.25rem;
+            color: var(--color-gold);
+            box-shadow: 0 0 15px var(--color-gold-glow);
         }
 
-        .look-card h3 {
-            font-size: 1.25rem;
-            font-weight: 500;
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--color-gold);
+            animation: pulse-gold 2s infinite;
+        }
+
+        @keyframes pulse-gold {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 8px var(--color-gold); }
+            100% { transform: scale(0.9); opacity: 0.6; }
+        }
+
+        /* --- BENTO GRID SYSTEM --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 240px;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        /* Base Card Styling */
+        .bento-card {
+            background: var(--color-glass-card);
+            border: 1px solid var(--color-glass-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-fluid);
+            text-decoration: none;
+            color: var(--color-text-main);
+        }
+
+        .bento-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.05);
+        }
+
+        /* Image Overlays inside Cards */
+        .card-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            filter: grayscale(20%);
+            transition: var(--transition-fluid);
+            z-index: 1;
+        }
+
+        .bento-card:hover .card-bg-img {
+            scale: 1.05;
+            opacity: 0.55;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Bento Grid Layouts */
+        .span-2-x { grid-column: span 2; }
+        .span-3-x { grid-column: span 3; }
+        .span-2-y { grid-row: span 2; }
+        .span-full { grid-column: span 4; }
+
+        /* Typography inside Bento Cards */
+        .card-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+
+        .card-title-lg {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            line-height: 1.1;
+            font-weight: 400;
+            letter-spacing: 0.02em;
             margin-bottom: 0.5rem;
         }
 
-        .look-card p {
-            font-size: 0.85rem;
-            color: var(--app-muted);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+        .card-title-md {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
         }
 
-        .request-btn {
-            background-color: var(--app-text);
-            color: var(--app-bg);
-            border: none;
-            border-radius: 12px;
-            padding: 0.75rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            width: 100%;
+        .card-desc {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+            font-weight: 300;
+        }
+
+        /* Special Card Customizations */
+        .hero-banner-card {
+            background-image: linear-gradient(to right, rgba(9, 12, 21, 0.9) 30%, transparent 100%);
+        }
+
+        .chat-btn-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--color-gold);
+            color: var(--color-dark-bg);
+            padding: 1rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: var(--transition-fluid);
+            width: fit-content;
+            margin-top: 1rem;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .bento-card:hover .chat-btn-box {
+            background-color: #fff;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Quick Info Row */
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--color-glass-border);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            cursor: pointer;
-            margin-top: 1rem;
-            text-decoration: none;
+            font-size: 0.8rem;
+            color: var(--color-gold);
         }
 
-        /* App Dock Navigation */
-        .app-dock {
-            padding: 1rem 2rem 2rem;
-            background: rgba(15, 15, 19, 0.8);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-top: 1px solid var(--app-card-border);
+        .info-text {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--color-text-main);
+        }
+
+        /* --- FOOTER APP --- */
+        footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-glass-border);
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            flex-shrink: 0;
-            padding-bottom: env(safe-area-inset-bottom, 2rem);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
         }
 
-        .dock-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: var(--app-muted);
-            text-decoration: none;
-        }
-        .dock-item.active {
-            color: var(--app-accent);
-        }
-        .dock-item span.icon {
-            font-size: 24px;
-        }
-        .dock-item span.label {
-            font-size: 0.7rem;
-            font-weight: 500;
-        }
-
-        /* Floating Message Badge */
-        .msg-badge {
-            position: absolute;
-            top: -4px;
-            right: -8px;
-            background-color: #FF3B30;
-            color: white;
-            font-size: 0.65rem;
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 10px;
-            border: 2px solid var(--app-bg);
-        }
-
-        @media (min-width: 768px) {
-            body { align-items: center; background-image: radial-gradient(circle at top right, #1a1a24, #0f0f13); }
-            .app-header, .greeting-section, .looks-carousel, .app-dock {
-                max-width: 480px;
-                width: 100%;
+        /* --- RESPONSIVE BENTO --- */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 220px;
             }
-            .looks-carousel { padding-bottom: 1rem; }
+            .span-3-x { grid-column: span 2; }
+            .span-full { grid-column: span 2; }
+        }
+
+        @media (max-width: 640px) {
+            .app-wrapper {
+                padding: 2rem 1rem;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 240px;
+            }
+            .span-2-x, .span-3-x, .span-2-y, .span-full {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .card-title-lg {
+                font-size: 1.8rem;
+            }
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
         }
     </style>
 <style id="premium-effects">
@@ -470,106 +515,127 @@ img {
 </head>
 <body>
 
-    <!-- Top App Header -->
-    <header class="app-header">
-        <div class="concierge-profile">
-            <div class="avatars-stack">
-                <img src="img/lascastagnas_ch_0.jpg" alt="Silvana">
-                <img src="img/lascastagnas_ch_1.jpg" alt="Sharon">
-                <div class="online-dot"></div>
-            </div>
-            <div class="concierge-info">
-                <h1>Silvana & Sharon</h1>
-                <p>Personal Shoppers • Activas</p>
-            </div>
-        </div>
-        <div class="header-actions">
-            <div class="icon-btn">
-                <span class="material-symbols-outlined">tune</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Greeting Section -->
-    <section class="greeting-section">
-        <h2>Looks curados<br><span>especialmente para vos.</span></h2>
-        <p>Basado en tu última charla con nosotras, seleccionamos estas piezas exclusivas de temporada.</p>
-    </section>
-<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
-  <div class="marquee-container">
-    <div class="marquee-track">
-      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
-    </div>
-  </div>
-</div>
-
-
-    <!-- Horizontal Carousel (Glassmorphism Cards) -->
-    <div class="looks-carousel">
+    <div class="app-wrapper">
         
-        <!-- Card 1 -->
-        <div class="look-card">
-            <img src="img/lascastagnas_ch_2.jpg" alt="Conjunto Minimal" class="look-card-img">
-            <div class="look-card-info">
-                <div>
-                    <div class="look-tag">Match 98%</div>
-                    <h3>El Conjunto Minimal</h3>
-                    <p>Ideal para el fin de semana. Texturas suaves y caída natural que estiliza.</p>
-                </div>
-                <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="request-btn">
-                    <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span> Consultar a Sharon
-                </a>
+        <!-- APP HEADER -->
+        <header>
+            <div class="logo-wrap">
+                <h1 class="logo-title">Las Castañas</h1>
+                <span class="logo-subtitle">VIP Concierge App</span>
             </div>
-        </div>
+            <div class="vip-status-pill">
+                <div class="status-dot"></div>
+                <span>Showroom Abierto</span>
+            </div>
+        </header>
 
-        <!-- Card 2 -->
-        <div class="look-card">
-            <img src="img/lascastagnas_ch_8.jpg" alt="Wide Leg Denim" class="look-card-img">
-            <div class="look-card-info">
-                <div>
-                    <div class="look-tag">Must-Have</div>
-                    <h3>Arquitectura Denim</h3>
-                    <p>El Wide Leg definitivo. Lo trajimos pensando exactamente en el calce que buscabas.</p>
+        <!-- BENTO GRID SYSTEM -->
+        <main class="bento-grid">
+            
+            <!-- Cell 1: Hero Banner (Double size width) -->
+            <div class="bento-card span-3-x span-2-y hero-banner-card">
+                <img src="img/ai_hero.png" alt="Interior Showroom" class="card-bg-img">
+                <div class="card-content">
+                    <span class="card-label">Espacio Exclusivo</span>
+                    <div>
+                        <h2 class="card-title-lg">El Showroom VIP</h2>
+                        <p class="card-desc" style="max-width: 500px; margin-top: 1rem;">Ubicado en Coronel Charlone, nuestro espacio está diseñado para regalarte una experiencia de compra silenciosa, cómoda y profundamente asesorada.</p>
+                    </div>
+                    <a href="https://wa.me/543388512014" target="_blank" class="chat-btn-box">
+                        <span>Ver en Mapa</span>
+                    </a>
                 </div>
-                <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="request-btn">
-                    <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span> Reservar Talle
-                </a>
             </div>
-        </div>
 
-        <!-- Card 3 -->
-        <div class="look-card">
-            <img src="img/lascastagnas_ch_7.jpg" alt="Knitwear Premium" class="look-card-img">
-            <div class="look-card-info">
-                <div>
-                    <div class="look-tag">Recién Ingresado</div>
-                    <h3>Fibras Puras</h3>
-                    <p>Sweater de media estación. Un abrazo al cuerpo con hilados de altísima calidad.</p>
+            <!-- Cell 2: Quick WhatsApp Concierge (Single size) -->
+            <a href="https://wa.me/543388512014" target="_blank" class="bento-card span-2-y" style="background-image: radial-gradient(circle at 100% 0%, rgba(212,175,55,0.15) 0%, transparent 60%);">
+                <div class="card-content">
+                    <span class="card-label">Asesoramiento VIP</span>
+                    <div>
+                        <h3 class="card-title-md" style="margin-bottom: 0.8rem;">Personal Shopper</h3>
+                        <p class="card-desc">Chateá directo con Sharon y Silvana. Consultá stock, talles de Jeans premium o reservá el showroom para vos.</p>
+                    </div>
+                    <div class="chat-btn-box">
+                        <span>WhatsApp VIP</span>
+                    </div>
                 </div>
-                <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="request-btn">
-                    <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span> Me interesa
-                </a>
+            </a>
+
+            <!-- Cell 3: Accessories Highlight (Single size) -->
+            <a href="https://wa.me/543388512014" target="_blank" class="bento-card">
+                <img src="img/ai_product.png" alt="Accesorios Chic" class="card-bg-img" style="object-position: center 30%;">
+                <div class="card-content">
+                    <span class="card-label">Marroquinería</span>
+                    <h3 class="card-title-md">Carteras Chic</h3>
+                </div>
+            </a>
+
+            <!-- Cell 4: Cozy Knitwear Closeup (Single size) -->
+            <a href="https://wa.me/543388512014" target="_blank" class="bento-card">
+                <img src="img/ai_detail.png" alt="Sweaters Tejidos" class="card-bg-img">
+                <div class="card-content">
+                    <span class="card-label">Hilados Nobles</span>
+                    <h3 class="card-title-md">Abrigos & Sweaters</h3>
+                </div>
+            </a>
+
+            <!-- Cell 5: Real Lookbook Jeans (Double size width) -->
+            <a href="https://wa.me/543388512014" target="_blank" class="bento-card span-2-x">
+                <img src="img/lascastagnas_ch_4.jpg" alt="Pantalones Jeans Exclusivos" class="card-bg-img" style="object-position: center 25%;">
+                <div class="card-content">
+                    <span class="card-label">Denim Premium</span>
+                    <h3 class="card-title-md">Jeans de Calce Perfecto</h3>
+                </div>
+            </a>
+
+            <!-- Cell 6: Curated Brands (Single size) -->
+            <div class="bento-card">
+                <div class="card-content" style="justify-content: center; gap: 1rem;">
+                    <span class="card-label">Nuestra Esencia</span>
+                    <h3 class="card-title-md" style="font-size: 1.3rem;">Curaduría Independiente</h3>
+                    <p class="card-desc">Marcas seleccionadas que priorizan diseño, durabilidad y calce.</p>
+                </div>
             </div>
-        </div>
+
+            <!-- Cell 7: Real Lookbook Knitwear (Single size) -->
+            <a href="https://wa.me/543388512014" target="_blank" class="bento-card">
+                <img src="img/lascastagnas_ch_10.jpg" alt="Looks de Estación" class="card-bg-img">
+                <div class="card-content">
+                    <span class="card-label">Colección 2026</span>
+                    <h3 class="card-title-md">Prendas de Tendencia</h3>
+                </div>
+            </a>
+
+            <!-- Cell 8: Details & Hours (Double size width) -->
+            <div class="bento-card span-2-x">
+                <div class="card-content">
+                    <span class="card-label">Información General</span>
+                    <div class="info-grid">
+                        <div class="info-row">
+                            <div class="info-circle">U</div>
+                            <div class="info-text">Coronel Charlone, Provincia de Buenos Aires</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-circle">H</div>
+                            <div class="info-text">Showroom con Cita Previa (Consultar horarios)</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-circle">I</div>
+                            <div class="info-text">Instagram: @lascastagnas_ch</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- APP FOOTER -->
+        <footer>
+            <span>Las Castañas Showroom VIP © 2026</span>
+            <span>Exclusividad y Calidad Textil</span>
+        <p class="text-center text-xs text-stone-600 mt-4 pb-2">Desarrollado por ADS Labs</p></footer>
 
     </div>
-
-    <!-- App Dock Navigation -->
-    <nav class="app-dock">
-        <a href="#" class="dock-item">
-            <span class="material-symbols-outlined icon">auto_awesome</span>
-            <span class="label">Descubrir</span>
-        </a>
-        <a href="#" class="dock-item active" style="position: relative;">
-            <span class="material-symbols-outlined icon" style="font-variation-settings: 'FILL' 1;">style</span>
-            <span class="label">Tus Looks</span>
-        </a>
-        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="dock-item" style="position: relative;">
-            <span class="material-symbols-outlined icon">forum</span>
-            <span class="label">Chat</span>
-            <div class="msg-badge">1</div>
-        </a>
-    </nav>
 
 <script id="premium-effects-js">
 

@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Las Castañas — Editorial</title>
-    <meta name="store-id" content="lascastagnas_ch">
-    
+    <title>Las Castañas — Editorial Lookbook</title>
+    <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --brand-white: #FFFFFF;
-            --brand-black: #050505;
-            --brand-grey: #666666;
+            --bg-color: #FAF7F2;
+            --text-color: #1C1917;
+            --accent-color: #C0512F;
+            --accent-muted: #8A817A;
+            --accent-green: #2F5B4F;
+            --font-serif: 'Italiana', 'Playfair Display', serif;
+            --font-sans: 'Outfit', sans-serif;
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -24,175 +28,564 @@
         }
 
         body {
-            background-color: var(--brand-black);
-            color: var(--brand-white);
-            font-family: 'Inter', sans-serif;
-            overflow: hidden; /* We handle scrolling in the wrapper */
-        }
-
-        /* Scroll Snapping Container */
-        .lookbook-wrapper {
-            height: 100vh;
-            width: 100vw;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
             overflow-y: scroll;
-            scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .lookbook-wrapper::-webkit-scrollbar {
-            display: none;
+            scroll-snap-type: y mandatory;
         }
 
-        /* Persistent Brand Header Overlay */
-        .brand-overlay {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 100;
-            mix-blend-mode: difference;
-            pointer-events: none;
-        }
-        .brand-overlay h1 {
-            font-family: 'Bodoni Moda', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            line-height: 1;
-            text-transform: uppercase;
-        }
-
-        /* Floating Contact Button */
-        .contact-fab {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 100;
-            background: var(--brand-white);
-            color: var(--brand-black);
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .contact-fab:hover {
-            transform: scale(1.05);
-        }
-
-        /* Lookbook Section (Full viewport) */
-        .look {
+        /* Snap Section */
+        section {
             height: 100vh;
-            width: 100vw;
-            scroll-snap-align: start;
-            position: relative;
+            width: 100%;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
             overflow: hidden;
         }
 
-        /* Look Background Image */
-        .look-img {
+        /* Fixed Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo-wrap a {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+        }
+
+        .logo-wrap a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-color);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- SECTION 1: HERO --- */
+        .hero-section {
+            background-color: #F5EFEB;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-left {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10% 8%;
+            z-index: 2;
+        }
+
+        .editorial-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 5.5rem;
+            line-height: 1.05;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #444;
+            max-width: 460px;
+            margin-bottom: 3.5rem;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 1.2rem 3rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: var(--transition-smooth);
+            width: fit-content;
+            border: 1px solid var(--text-color);
+        }
+
+        .cta-btn:hover {
+            background-color: transparent;
+            color: var(--text-color);
+            transform: translateY(-2px);
+        }
+
+        .hero-right {
+            width: 50%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-img-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(15%) sepia(10%);
+            transition: var(--transition-smooth);
+        }
+
+        .hero-right:hover .hero-img-bg {
+            scale: 1.03;
+        }
+
+        /* --- SECTION 2: LOOKBOOK SNAP GRID --- */
+        .lookbook-section {
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .lookbook-info {
+            width: 35%;
+            height: 100%;
+            padding: 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid rgba(28, 25, 23, 0.08);
+        }
+
+        .lookbook-title {
+            font-family: var(--font-serif);
+            font-size: 3.2rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .lookbook-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--accent-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .lookbook-slider {
+            width: 65%;
+            height: 100%;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        
+        .lookbook-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slide-item {
+            min-width: 60%;
+            height: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+            border-right: 1px solid rgba(28, 25, 23, 0.08);
+        }
+
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .slide-item:hover .slide-img {
+            scale: 1.05;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            bottom: 3.5rem;
+            left: 3.5rem;
+            color: #fff;
+            z-index: 5;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .slide-name {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+        }
+
+        /* --- SECTION 3: STORY & DETAIL --- */
+        .story-section {
+            background-color: #1C1917;
+            color: #E7E5E4;
+        }
+
+        .story-left {
+            width: 50%;
+            height: 100%;
+            position: relative;
+            background: #151312;
+        }
+
+        .story-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.75;
+            filter: grayscale(40%);
+        }
+
+        .story-right {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8%;
+        }
+
+        .story-badge {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .story-heading {
+            font-family: var(--font-serif);
+            font-size: 3.8rem;
+            line-height: 1.1;
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+
+        .story-para {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #A8A29E;
+            margin-bottom: 3.5rem;
+            font-weight: 300;
+        }
+
+        /* --- SECTION 4: CURATED COLLECTIONS --- */
+        .collection-section {
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6% 8%;
+        }
+
+        .col-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+        }
+
+        .col-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1;
+        }
+
+        .col-grid {
+            display: flex;
+            gap: 2rem;
+            width: 100%;
+            height: 60vh;
+        }
+
+        .col-card {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            border: 1px solid rgba(28, 25, 23, 0.06);
+            background-color: #fff;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .col-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(28, 25, 23, 0.05);
+            border-color: var(--accent-color);
+        }
+
+        .col-card-img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 70%;
             object-fit: cover;
-            opacity: 0.6; /* Dimmed slightly to let text pop */
-            filter: grayscale(20%); /* Editorial raw feel */
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: grayscale(10%);
+            transition: var(--transition-smooth);
         }
 
-        /* Hover zoom effect on the image */
-        .look:hover .look-img {
-            transform: scale(1.05);
+        .col-card:hover .col-card-img {
+            scale: 1.05;
         }
 
-        /* Massive Asymmetrical Typography */
-        .look-number {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Bodoni Moda', serif;
-            font-size: 45vw; /* Absolute massive size */
-            font-weight: 400;
-            color: rgba(255,255,255,0.05);
-            z-index: 1;
-            pointer-events: none;
-            line-height: 0.8;
-        }
-
-        .look-content {
-            position: relative;
+        .col-card-info {
             z-index: 2;
-            width: 100%;
-            max-width: 1400px;
-            padding: 0 4rem;
+            position: relative;
+            background-color: #fff;
+            padding-top: 1.5rem;
+            margin-top: 70%;
+        }
+
+        .col-card-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .col-card-name {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- SECTION 5: CONTACT & CONCIERGE --- */
+        .contact-section {
+            background-color: #FAF7F2;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-left {
+            width: 45%;
+            height: 100%;
+            padding: 8%;
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
 
-        /* Alignment variations per section to create asymmetry */
-        .align-right { align-items: flex-end; text-align: right; }
-        .align-left { align-items: flex-start; text-align: left; }
-        .align-center { align-items: center; text-align: center; }
+        .contact-title {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+        }
 
-        .look-title {
-            font-family: 'Bodoni Moda', serif;
-            font-size: clamp(3rem, 8vw, 8rem);
-            font-weight: 400;
-            line-height: 0.9;
+        .contact-meta {
+            margin-bottom: 3.5rem;
+        }
+
+        .meta-row {
+            display: flex;
             margin-bottom: 1.5rem;
-            text-transform: uppercase;
-        }
-        
-        .look-title span {
-            display: block;
-            font-style: italic;
-            font-size: 0.6em;
-            margin-left: 2rem;
-            color: var(--brand-grey);
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        .look-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 300;
-            max-width: 400px;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.8);
+        .meta-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(192, 81, 47, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-weight: bold;
         }
 
-        /* Next Look Indicator */
+        .meta-text {
+            font-size: 1rem;
+            color: #444;
+        }
+
+        .contact-right {
+            width: 55%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-right-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(10%);
+        }
+
+        /* Scroll Progress dots */
         .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-            animation: bounce 2s infinite ease-in-out;
-            pointer-events: none;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, 10px); }
+            position: fixed;
+            right: 3.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        @media (max-width: 768px) {
-            .brand-overlay { top: 1.5rem; left: 1.5rem; }
-            .look-content { padding: 0 2rem; }
-            .look-desc { max-width: 100%; }
-            .contact-fab { bottom: 1.5rem; right: 1.5rem; padding: 1rem; width: auto; font-size: 0.8rem; }
+        .indicator-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: rgba(28, 25, 23, 0.2);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .indicator-dot.active {
+            background-color: var(--accent-color);
+            scale: 2;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 968px) {
+            body {
+                scroll-snap-type: none;
+            }
+            section {
+                height: auto;
+                min-height: 100vh;
+                flex-direction: column;
+                scroll-snap-align: none;
+            }
+            header {
+                padding: 1.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-left, .hero-right, .lookbook-info, .lookbook-slider, .story-left, .story-right, .contact-left, .contact-right {
+                width: 100%;
+                height: auto;
+            }
+            .hero-left {
+                padding: 8rem 2rem 4rem 2rem;
+            }
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .hero-right {
+                height: 50vh;
+            }
+            .lookbook-info {
+                padding: 4rem 2rem;
+            }
+            .lookbook-slider {
+                height: 60vh;
+            }
+            .slide-item {
+                min-width: 85%;
+            }
+            .story-right {
+                padding: 4rem 2rem;
+            }
+            .story-heading {
+                font-size: 2.8rem;
+            }
+            .story-left {
+                height: 40vh;
+            }
+            .col-grid {
+                flex-direction: column;
+                height: auto;
+                gap: 1.5rem;
+            }
+            .col-card {
+                height: 50vh;
+            }
+            .contact-left {
+                padding: 4rem 2rem;
+            }
+            .contact-title {
+                font-size: 2.8rem;
+            }
+            .contact-right {
+                height: 40vh;
+            }
+            .scroll-indicator {
+                display: none;
+            }
         }
     </style>
 <style id="premium-effects">
@@ -391,29 +784,40 @@ img {
 </head>
 <body>
 
-    <!-- Persistent Branding overlaying the entire screen -->
-    <div class="brand-overlay">
-        <h1>Las<br>Castañas</h1>
+    <!-- Scroll Indicators -->
+    <div class="scroll-indicator">
+        <div class="indicator-dot active" onclick="scrollToSection(0)"></div>
+        <div class="indicator-dot" onclick="scrollToSection(1)"></div>
+        <div class="indicator-dot" onclick="scrollToSection(2)"></div>
+        <div class="indicator-dot" onclick="scrollToSection(3)"></div>
+        <div class="indicator-dot" onclick="scrollToSection(4)"></div>
     </div>
 
-    <!-- WhatsApp VIP Concierge Button -->
-    <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="contact-fab">
-        Adquirir Piezas
-    </a>
+    <!-- Navigation Header -->
+    <header>
+        <div class="logo-wrap">
+            <a href="#">Las Castañas</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#lookbook">Lookbook</a></li>
+            <li><a href="#story">Curaduría</a></li>
+            <li><a href="#colecciones">Colecciones</a></li>
+            <li><a href="https://wa.me/543388512014" target="_blank" style="color: var(--accent-color); font-weight: 700;">WhatsApp VIP</a></li>
+        </ul>
+    </header>
 
-    <!-- The Snapping Wrapper -->
-    <div class="lookbook-wrapper">
-
-        <!-- LOOK 01: Hero / Cover -->
-        <section class="look">
-            <img src="img/lascastagnas_ch_2.jpg" alt="Portada Editorial" class="look-img">
-            <div class="look-number">01</div>
-            <div class="look-content align-center">
-                <h2 class="look-title">Nueva<br><span>Temporada</span></h2>
-                <p class="look-desc">Colección Otoño-Invierno curada exclusivamente para la mujer contemporánea en Coronel Charlone. Fibras puras, líneas limpias y diseño absoluto.</p>
-            </div>
-            <div class="scroll-indicator">Desliza</div>
-        </section>
+    <!-- SECTION 1: HERO -->
+    <section id="hero" class="hero-section">
+        <div class="hero-left">
+            <span class="editorial-label">Colección de Invierno 2026</span>
+            <h1 class="hero-title">Elegancia<br>Contemporánea</h1>
+            <p class="hero-desc">Boutique de indumentaria y accesorios de alta calidad en Coronel Charlone. Prendas exclusivas de tendencia seleccionadas con dedicación.</p>
+            <a href="https://wa.me/543388512014" target="_blank" class="cta-btn">Reservar Asesoramiento</a>
+        </div>
+        <div class="hero-right">
+            <img src="img/ai_hero.png" alt="Showroom Las Castañas" class="hero-img-bg">
+        </div>
+    </section>
 <div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
   <div class="marquee-container">
     <div class="marquee-track">
@@ -423,51 +827,136 @@ img {
 </div>
 
 
-        <!-- LOOK 02: Sweaters -->
-        <section class="look">
-            <img src="img/lascastagnas_ch_7.jpg" alt="Sweaters y Tejidos" class="look-img">
-            <div class="look-number">02</div>
-            <div class="look-content align-left">
-                <h2 class="look-title">Raw<br><span>Knitwear</span></h2>
-                <p class="look-desc">Sweaters de punto grueso y abrigos de media estación. La dualidad entre calidez extrema y siluetas estructuradas.</p>
-            </div>
-        </section>
-
-        <!-- LOOK 03: Denim -->
-        <section class="look">
-            <img src="img/lascastagnas_ch_8.jpg" alt="Jeans Wide Leg" class="look-img">
-            <div class="look-number">03</div>
-            <div class="look-content align-right">
-                <h2 class="look-title">Denim<br><span>Architecture</span></h2>
-                <p class="look-desc">Jeans Wide Leg rígidos. Pantalones pensados no como ropa, sino como cimientos del estilo diario. Calce anatómico perfecto.</p>
-            </div>
-        </section>
-
-        <!-- LOOK 04: Accesorios -->
-        <section class="look">
-            <img src="img/lascastagnas_ch_5.jpg" alt="Accesorios Premium" class="look-img">
-            <div class="look-number">04</div>
-            <div class="look-content align-center">
-                <h2 class="look-title">Pure<br><span>Details</span></h2>
-                <p class="look-desc">Cinturones de cuero crudo y carteras minimalistas. Los detalles silenciosos que elevan cualquier composición visual.</p>
-            </div>
-        </section>
-
-        <!-- LOOK 05: Silvana & Sharon / Footer -->
-        <section class="look">
-            <img src="img/lascastagnas_ch_1.jpg" alt="Showroom" class="look-img" style="opacity: 0.3;">
-            <div class="look-number">05</div>
-            <div class="look-content align-left">
-                <h2 class="look-title" style="font-size: clamp(2rem, 5vw, 4rem);">Curaduría<br><span>Por Silvana & Sharon</span></h2>
-                <p class="look-desc" style="margin-bottom: 2rem;">Visitá nuestro showroom. Una experiencia de compra privada diseñada para entender tu estilo y elevarlo al máximo nivel. Asesoramiento 1 a 1.</p>
-                <div style="display: flex; gap: 1rem;">
-                    <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Coronel Charlone, Arg.</span>
+    <!-- SECTION 2: LOOKBOOK SNAP SLIDER -->
+    <section id="lookbook" class="lookbook-section">
+        <div class="lookbook-info">
+            <span class="editorial-label" style="margin-bottom: 1rem;">Estética Seleccionada</span>
+            <h2 class="lookbook-title">La Edición Visual</h2>
+            <p class="lookbook-desc">Cada prenda es elegida a mano bajo un estricto criterio de diseño, textil y atemporalidad.</p>
+            <a href="#colecciones" class="cta-btn" style="background-color: transparent; color: var(--text-color); border: 1px solid var(--text-color);">Ver Colecciones</a>
+        </div>
+        <div class="lookbook-slider">
+            <div class="slide-item">
+                <img src="img/lascastagnas_ch_0.jpg" alt="Lookbook Las Castañas 1" class="slide-img">
+                <div class="slide-overlay">
+                    <span class="slide-label">Tendencia</span>
+                    <h3 class="slide-name">Jeans Baggy Denim</h3>
                 </div>
             </div>
-        </section>
+            <div class="slide-item">
+                <img src="img/lascastagnas_ch_1.jpg" alt="Lookbook Las Castañas 2" class="slide-img">
+                <div class="slide-overlay">
+                    <span class="slide-label">Texturas</span>
+                    <h3 class="slide-name">Sweaters de Temporada</h3>
+                </div>
+            </div>
+            <div class="slide-item">
+                <img src="img/lascastagnas_ch_2.jpg" alt="Lookbook Las Castañas 3" class="slide-img">
+                <div class="slide-overlay">
+                    <span class="slide-label">Sastrería</span>
+                    <h3 class="slide-name">Blazers Exclusivos</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
+    <!-- SECTION 3: CURADURÍA STORY -->
+    <section id="story" class="story-section">
+        <div class="story-left">
+            <img src="img/ai_detail.png" alt="Detalle del Tejido" class="story-img">
+        </div>
+        <div class="story-right">
+            <span class="story-badge">El Origen del Estilo</span>
+            <h2 class="story-heading">Curaduría Dedicada</h2>
+            <p class="story-para">Silvana y Sharon seleccionan personalmente cada abrigo, jean premium y accesorio chic de Las Castañas. Nuestro propósito es brindarte prendas de tendencia que no solo te vistan, sino que cuenten tu historia y te aporten seguridad y comodidad cotidiana.</p>
+            <a href="https://wa.me/543388512014" target="_blank" class="cta-btn" style="border-color: #fff; background-color: #fff; color: #1C1917;">Contactar por WhatsApp</a>
+        </div>
+    </section>
 
+    <!-- SECTION 4: CURATED COLLECTIONS -->
+    <section id="colecciones" class="collection-section">
+        <div class="col-header">
+            <h2 class="col-title">Nuestras Líneas</h2>
+            <p style="color: var(--accent-muted); max-width: 320px; font-weight: 300; font-size: 0.95rem; text-align: right;">Prendas y accesorios con sello de distinción y alta calidad.</p>
+        </div>
+        <div class="col-grid">
+            <a href="https://wa.me/543388512014" target="_blank" class="col-card">
+                <img src="img/lascastagnas_ch_3.jpg" alt="Jeans Premium" class="col-card-img">
+                <div class="col-card-info">
+                    <span class="col-card-tag">Denim Premium</span>
+                    <h3 class="col-card-name">Wide Leg & Straight Jeans</h3>
+                </div>
+            </a>
+            <a href="https://wa.me/543388512014" target="_blank" class="col-card">
+                <img src="img/ai_product.png" alt="Accesorios Chic" class="col-card-img" style="object-position: center 30%;">
+                <div class="col-card-info">
+                    <span class="col-card-tag">Marroquinería</span>
+                    <h3 class="col-card-name">Carteras & Accesorios Chic</h3>
+                </div>
+            </a>
+            <a href="https://wa.me/543388512014" target="_blank" class="col-card">
+                <img src="img/lascastagnas_ch_10.jpg" alt="Abrigos Premium" class="col-card-img">
+                <div class="col-card-info">
+                    <span class="col-card-tag">Otoño / Invierno</span>
+                    <h3 class="col-card-name">Abrigos & Sweaters Exclusivos</h3>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CONTACT & FOOTER -->
+    <section id="contact" class="contact-section">
+        <div class="contact-left">
+            <span class="editorial-label">Experiencia Personalizada</span>
+            <h2 class="contact-title">Reservar una Visita</h2>
+            <div class="contact-meta">
+                <div class="meta-row">
+                    <div class="meta-circle">W</div>
+                    <div class="meta-text">WhatsApp: <strong>3388512014</strong></div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-circle">I</div>
+                    <div class="meta-text">Instagram: <strong>@lascastagnas_ch</strong></div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-circle">D</div>
+                    <div class="meta-text">Ubicación: <strong>Coronel Charlone, Buenos Aires</strong></div>
+                </div>
+            </div>
+            <a href="https://wa.me/543388512014" target="_blank" class="cta-btn">Iniciar Chat VIP</a>
+        </div>
+        <div class="contact-right">
+            <img src="img/lascastagnas_ch_4.jpg" alt="Instagram Las Castañas" class="contact-right-img">
+        </div>
+    </section>
+
+    <!-- Scroll Snap Dot Script -->
+    <script>
+        const sections = document.querySelectorAll('section');
+        const dots = document.querySelectorAll('.indicator-dot');
+
+        window.addEventListener('scroll', () => {
+            let current = 0;
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - window.innerHeight / 3) {
+                    current = index;
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                if (index === current) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        });
+
+        function scrollToSection(index) {
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 <script id="premium-effects-js">
 
 // ═══ GLOBAL PREMIUM POLISH ═══

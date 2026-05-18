@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Castañas — Indumentaria y Accesorios</title>
+    <!-- SEO Optimization -->
+    <meta name="description" content="Las Castañas en Coronel Charlone. Vestite con la mejor selección de indumentaria y accesorios. Colección premium de Silvana y Sharon.">
+    <meta name="store-id" content="lascastagnas_ch">
+    
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,500;0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols for Premium Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..300,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Custom Vanilla CSS — Nike-Inspired Podium Design System -->
+    <style>
+        :root {
+            /* Colors */
+            --nike-black: #111111;
+            --nike-white: #FFFFFF;
+            --grey-50: #FAFAFA;
+            --grey-100: #F5F5F5;
+            --grey-200: #E5E5E5;
+            --grey-300: #CACACB;
+            --grey-700: #39393B;
+            --grey-800: #28282A;
+            --grey-900: #1F1F21;
+            
+            /* Text Hierarchy Colors */
+            --text-primary: #111111;
+            --text-secondary: #707072;
+            --text-disabled: #9E9EA0;
+            --border-primary: #707072;
+            --border-secondary: #CACACB;
+            
+            /* Accent & Semantic */
+            --nike-red: #D30005;
+            --orange-flash: #FF5000;
+            --success-green: #007D48;
+            --link-blue: #1151FF;
+            --focus-ring: rgba(39, 93, 197, 0.8);
+            
+            /* Spacing Grid (8px base) */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 24px;
+            --space-6: 28px;
+            --space-7: 32px;
+            --space-8: 40px;
+            --space-9: 64px;
+            --space-10: 80px;
+            
+            /* Fonts */
+            --font-display: 'Archivo Narrow', 'Helvetica Neue', Arial, sans-serif;
+            --font-body: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Basic Resets & Aesthetics */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background-color: var(--grey-50);
+            color: var(--text-primary);
+        }
+
+        body {
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Typography Custom Rules */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 0.95;
+            color: var(--nike-black);
+        }
+
+        p {
+            font-family: var(--font-body);
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Global Classes & Utilities */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            touch-action: manipulation;
+        }
+
+        .btn-primary {
+            background-color: var(--nike-black);
+            color: var(--nike-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--text-secondary);
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--nike-black);
+            border-color: var(--border-secondary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--nike-black);
+            background-color: var(--grey-100);
+            transform: scale(1.02);
+        }
+
+        /* 1. nav.floating-pill */
+        nav.floating-pill {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 960px;
+            height: 64px;
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-5);
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        nav.floating-pill.scrolled {
+            top: 12px;
+            background-color: rgba(17, 17, 17, 0.9);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        nav.floating-pill.scrolled .logo-text,
+        nav.floating-pill.scrolled .nav-links a {
+            color: var(--nike-white);
+        }
+
+        nav.floating-pill.scrolled .logo-img {
+            filter: invert(1);
+        }
+
+        nav.floating-pill.scrolled .nav-links a:hover {
+            color: var(--grey-300);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        nav.floating-pill:hover .logo-img {
+            transform: rotate(15deg);
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.05em;
+            color: var(--nike-black);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-5);
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--nike-black);
+        }
+
+        .nav-links a:hover {
+            color: var(--orange-flash);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        /* 2. section.hero-dynamic */
+        section.hero-dynamic {
+            padding-top: 140px;
+            padding-bottom: var(--space-9);
+            background: radial-gradient(circle at 80% 20%, var(--grey-100) 0%, var(--grey-50) 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        section.hero-dynamic::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(255, 80, 0, 0.05) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: var(--space-8);
+            align-items: center;
+            z-index: 2;
+            position: relative;
+            width: 100%;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: flex-col;
+            align-items: flex-start;
+            gap: var(--space-5);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            background-color: var(--orange-flash);
+            color: var(--nike-white);
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--space-1);
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 8vw, 84px);
+            font-weight: 700;
+            color: var(--nike-black);
+            max-width: 800px;
+            line-height: 0.9;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 520px;
+            color: var(--text-secondary);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: var(--space-4);
+            margin-top: var(--space-2);
+        }
+
+        .hero-media {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-img-container {
+            width: 100%;
+            max-width: 440px;
+            height: 520px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            position: relative;
+            transform: rotate(2deg);
+            transition: all 0.6s ease;
+        }
+
+        .hero-img-container:hover {
+            transform: rotate(0deg) scale(1.03);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            height: 100%;
+            object-position: center;
+        }
+
+        /* 3. section#marquesina.marquee-scroll */
+        section#marquesina.marquee-scroll {
+            background-color: var(--nike-black);
+            padding: var(--space-6) 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            animation: marquee 25s linear infinite;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-right: 50px;
+        }
+
+        .marquee-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--orange-flash);
+            object-fit: cover;
+        }
+
+        .marquee-text {
+            font-family: var(--font-display);
+            font-size: 40px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--nike-white);
+            letter-spacing: 0.02em;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* 4. section#destacados.bento-grid */
+        section#destacados.bento-grid {
+            padding: var(--space-10) 0;
+            background-color: var(--grey-50);
+        }
+
+        .section-header {
+            margin-bottom: var(--space-7);
+        }
+
+        .section-tag {
+            font-family: var(--font-display);
+            font-size: 14px;
+            color: var(--orange-flash);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-1);
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--nike-black);
+        }
+
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 280px;
+            gap: var(--space-5);
+        }
+
+        .bento-card {
+            background-color: var(--nike-white);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--grey-300);
+        }
+
+        /* Grid spans settings */
+        .col-span-2 { grid-column: span 2; }
+        .row-span-2 { grid-row: span 2; }
+
+        .bento-card-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .bento-card-media img,
+        .bento-card-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .bento-card:hover .bento-card-media img {
+            transform: scale(1.05);
+        }
+
+        .bento-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.3) 60%, transparent 100%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: var(--space-5);
+        }
+
+        .bento-card-overlay h3 {
+            color: var(--nike-white);
+            font-size: 28px;
+            margin-bottom: var(--space-2);
+        }
+
+        .bento-card-overlay p {
+            color: var(--grey-300);
+            font-size: 14px;
+        }
+
+        .bento-card-content {
+            padding: var(--space-5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            position: relative;
+            z-index: 3;
+        }
+
+        .bento-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--grey-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--nike-black);
+            margin-bottom: var(--space-3);
+        }
+
+        .bento-title-small {
+            font-size: 20px;
+            margin-bottom: var(--space-2);
+        }
+
+        .bento-desc-small {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .bento-stat {
+            font-family: var(--font-display);
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--orange-flash);
+            line-height: 1;
+        }
+
+        /* 5. section#galeria.bento-gallery */
+        section#galeria.bento-gallery {
+            padding: var(--space-10) 0;
+            background-color: var(--grey-100);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-5);
+            margin-top: var(--space-6);
+        }
+
+        .gallery-card {
+            background-color: var(--nike-white);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+        }
+
+        .gallery-card-img {
+            height: 340px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-card-img img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-card:hover .gallery-card-img img {
+            transform: scale(1.04);
+        }
+
+        .gallery-card-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background-color: var(--nike-black);
+            color: var(--nike-white);
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            z-index: 10;
+        }
+
+        .gallery-card-info {
+            padding: var(--space-4);
+            background-color: var(--nike-white);
+            border-top: 1px solid var(--grey-100);
+        }
+
+        .gallery-card-title {
+            font-size: 18px;
+            color: var(--nike-black);
+            margin-bottom: var(--space-1);
+        }
+
+        .gallery-card-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-3);
+        }
+
+        .gallery-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gallery-card-price {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--nike-black);
+        }
+
+        /* 6. footer.bento-footer */
+        footer.bento-footer {
+            background-color: var(--nike-black);
+            color: var(--grey-300);
+            padding: var(--space-10) 0 var(--space-6) 0;
+            position: relative;
+            z-index: 20;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+            gap: var(--space-7);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: var(--space-8);
+            margin-bottom: var(--space-6);
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 24px;
+            color: var(--nike-white);
+            letter-spacing: 0.05em;
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            color: var(--grey-300);
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            color: var(--nike-white);
+            font-size: 16px;
+            margin-bottom: var(--space-4);
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--grey-300);
+        }
+
+        .footer-links a:hover {
+            color: var(--nike-white);
+            padding-left: var(--space-1);
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            font-size: 14px;
+        }
+
+        .footer-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-2);
+        }
+
+        .footer-info-item .material-symbols-outlined {
+            color: var(--orange-flash);
+            font-size: 20px;
+        }
+
+        .footer-newsletter {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .footer-newsletter p {
+            font-size: 14px;
+            color: var(--grey-300);
+        }
+
+        .footer-newsletter-btn {
+            display: inline-flex;
+            background-color: var(--orange-flash);
+            color: var(--nike-white);
+            padding: var(--space-3) var(--space-5);
+            border-radius: 9999px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .footer-newsletter-btn:hover {
+            background-color: var(--nike-white);
+            color: var(--nike-black);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            font-size: 12px;
+            color: var(--text-disabled);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background-color: #25D366;
+            color: var(--nike-white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 150;
+            animation: pulse-fab 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-fab svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        @keyframes pulse-fab {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Fade In Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Custom Media Queries */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bento-container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 260px;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav.floating-pill {
+                padding: 0 var(--space-4);
+                height: 56px;
+            }
+            .nav-links {
+                display: none; /* Hide on mobile — keep simple or use burger if desired */
+            }
+            section.hero-dynamic {
+                padding-top: 100px;
+                min-height: auto;
+            }
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+            .hero-img-container {
+                height: 360px;
+                max-width: 100%;
+            }
+            .bento-container {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 240px;
+            }
+            .col-span-2 { grid-column: span 1; }
+            .row-span-2 { grid-row: span 1; }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+            .whatsapp-fab {
+                bottom: 24px;
+                right: 24px;
+                width: 50px;
+                height: 50px;
+            }
+            .whatsapp-fab svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+    </style>
+<style id="premium-effects">
+
+/* ═══ GLOBAL PREMIUM POLISH ═══ */
+html {
+  scroll-behavior: smooth;
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection {
+  background: var(--selection-bg, rgba(233, 30, 99, 0.2));
+  color: var(--selection-color, inherit);
+}
+img {
+  transition: opacity 0.3s ease;
+}
+img[loading="lazy"] {
+  opacity: 0;
+}
+img.loaded, img:not([loading="lazy"]) {
+  opacity: 1;
+}
+
+/* Premium button hover shine */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 100%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.btn-shine:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Smooth image loading */
+img {
+  image-rendering: auto;
+}
+
+
+:root {
+  --primary-rgb: 233, 30, 99;
+  --mesh-color-1: #E91E63;
+  --mesh-color-2: #FFEB3B;
+  --mesh-color-3: #00BCD4;
+  --gradient-start: #E91E63;
+  --gradient-end: #FFEB3B;
+  --glow-color: rgba(233, 30, 99, 0.08);
+  --selection-bg: rgba(233, 30, 99, 0.2);
+}
+
+
+/* ═══ SCROLL REVEAL ═══ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-left] {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-left].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+[data-reveal-scale] {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-scale].revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* ═══ ANIMATED GRADIENT MESH ═══ */
+.gradient-mesh-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gradient-mesh-bg::before,
+.gradient-mesh-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: meshFloat 20s ease-in-out infinite;
+}
+.gradient-mesh-bg::before {
+  width: 60vw; height: 60vw;
+  top: -20%; left: -10%;
+  background: var(--mesh-color-1, #E91E63);
+  animation-delay: 0s;
+}
+.gradient-mesh-bg::after {
+  width: 50vw; height: 50vw;
+  bottom: -20%; right: -10%;
+  background: var(--mesh-color-2, #FFEB3B);
+  animation-delay: -10s;
+}
+.gradient-mesh-blob-3 {
+  position: fixed;
+  width: 40vw; height: 40vw;
+  top: 40%; left: 30%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.1;
+  background: var(--mesh-color-3, #00BCD4);
+  animation: meshFloat 25s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes meshFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5%, -8%) scale(1.05); }
+  50% { transform: translate(-3%, 5%) scale(0.95); }
+  75% { transform: translate(8%, 3%) scale(1.02); }
+}
+
+
+/* ═══ HOVER TILT 3D ═══ */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ═══ COUNTER ANIMATION ═══ */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ═══ INFINITE MARQUEE ═══ */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marqueeScroll var(--marquee-speed, 30s) linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+</style>
+</head>
+<body>
+
+    <!-- 1. nav.floating-pill -->
+    <nav class="floating-pill">
+        <div class="nav-brand">
+            <img src="img/lascastagnas_ch_0.jpg" alt="Las Castañas Logo" class="logo-img">
+            <span class="logo-text">Las Castañas</span>
+        </div>
+        <div class="nav-links">
+            <a href="#destacados">Destacados</a>
+            <a href="#galeria">Colección</a>
+            <a href="#tienda">Catálogo</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <div class="nav-actions">
+            <!-- Custom pill button for actions -->
+            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 18px; font-size: 12px; border-radius: 9999px;">
+                Escribinos
+            </a>
+            <!-- ADS:NAV:END -->
+        </div>
+    </nav>
+
+    <!-- 2. section.hero-dynamic -->
+    <section class="hero-dynamic">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <span class="hero-badge">Estilo Charlone</span>
+                    <h1 class="hero-title">MOVETE A TU RITMO. VESTÍ LAS CASTAÑAS.</h1>
+                    <p class="hero-desc">Indumentaria y accesorios con un diseño pensado para vos. Descubrí prendas versátiles, elegantes y de la mejor calidad en Coronel Charlone.</p>
+                    <div class="hero-btns">
+                        <a href="#destacados" class="btn btn-primary">Ver Colección</a>
+                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-secondary">Chatear ahora</a>
+                    </div>
+                </div>
+                <div class="hero-media">
+                    <div class="hero-img-container">
+                        <img src="img/lascastagnas_ch_1.jpg" alt="Las Castañas Hero Style">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<div class="marquee-section" style="padding: 14px 0; overflow:hidden;">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span><span class="marquee-content">✦ Productos · ✦ Servicios · ✦ Calidad · ✦ Confianza</span>
+    </div>
+  </div>
+</div>
+
+
+    <!-- 3. section#marquesina.marquee-scroll -->
+    <section id="marquesina" class="marquee-scroll">
+        <div class="marquee-track">
+            <!-- First repeat -->
+            <div class="marquee-item">
+                <img src="img/lascastagnas_ch_2.jpg" alt="" class="marquee-img">
+                <span class="marquee-text">Las Castañas</span>
+            </div>
+            <div class="marquee-item">
+                <img src="img/lascastagnas_ch_3.jpg" alt="" class="marquee-img">
+                <span class="marquee-text">Indumentaria Premium</span>
+            </div>
+            <div class="marquee-item">
+                <img src="img/lascastagnas_ch_5.jpg" alt="" class="marquee-img">
+                <span class="marquee-text">Accesorios</span>
+            </div>
+            <div class="marquee-item">
+                <img src="img/lascastagnas_ch_6.jpg" alt="" class="marquee-img">
+                <span class="marquee-text">Diseño Exclusivo</span>
+            </div>
+            
+            <!-- Second repeat for seamless looping -->
+            <div class="marquee-item">
+                <img src="img/lascastagnas_ch_2.jpg" alt="" class="marquee-img">
+                <span class="marquee-text">Las Castañas</span>
+            </div>
+            <div class="marquee-item">
+                <img src="img/lascastagnas_ch_3.jpg" alt="" class="marquee-img">
+                <span class="marquee-text">Indumentaria Premium</span>
+            </div>
+            <div class="marquee-item">
+                <img src="img/lascastagnas_ch_5.jpg" alt="" class="marquee-img">
+                <span class="marquee-text">Accesorios</span>
+            </div>
+            <div class="marquee-item">
+                <img src="img/lascastagnas_ch_6.jpg" alt="" class="marquee-img">
+                <span class="marquee-text">Diseño Exclusivo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. section#destacados.bento-grid -->
+    <section id="destacados" class="bento-grid">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestra Identidad</span>
+                <h2 class="section-title">Destacados de la Temporada</h2>
+            </div>
+            
+            <div class="bento-container">
+                <!-- Large Image Bento Block -->
+                <div class="bento-card col-span-2 row-span-2 fade-in">
+                    <div class="bento-card-media">
+                        <img src="img/lascastagnas_ch_7.jpg" alt="Sweaters y Abrigos">
+                    </div>
+                    <div class="bento-card-overlay">
+                        <h3>Otoño Invierno</h3>
+                        <p>Los mejores abrigos, sweaters y bufandas seleccionados cuidadosamente por Silvana y Sharon.</p>
+                    </div>
+                </div>
+
+                <!-- Text Bento Block -->
+                <div class="bento-card fade-in">
+                    <div class="bento-card-content">
+                        <div class="bento-icon-wrapper">
+                            <span class="material-symbols-outlined">favorite</span>
+                        </div>
+                        <div>
+                            <h3 class="bento-title-small">Hecho para vos</h3>
+                            <p class="bento-desc-small">Cada prenda está elegida para brindarte la máxima comodidad sin perder el toque elegante que te define.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Media Bento Block (Video Loop) -->
+                <div class="bento-card row-span-2 fade-in">
+                    <div class="bento-card-media">
+                        <video src="img/lascastagnas_ch_4.mp4" autoplay loop muted playsinline></video>
+                    </div>
+                    <div class="bento-card-overlay">
+                        <h3>Lookbook '25</h3>
+                        <p>Prendas en movimiento.</p>
+                    </div>
+                </div>
+
+                <!-- Stat Bento Block -->
+                <div class="bento-card fade-in">
+                    <div class="bento-card-content">
+                        <span class="bento-stat">100%</span>
+                        <div>
+                            <h3 class="bento-title-small">Calidad Garantizada</h3>
+                            <p class="bento-desc-small">Trabajamos únicamente con marcas premium e hilados seleccionados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image & Text Bento Block -->
+                <div class="bento-card col-span-2 fade-in">
+                    <div class="bento-card-media">
+                        <img src="img/lascastagnas_ch_8.jpg" alt="Boutique las castañas">
+                    </div>
+                    <div class="bento-card-overlay">
+                        <h3>Boutique Charlone</h3>
+                        <p>Vení a visitarnos y armá tu look ideal con asesoramiento personalizado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. section#galeria.bento-gallery -->
+    <section id="galeria" class="bento-gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Colección Activa</span>
+                <h2 class="section-title">Prendas & Accesorios</h2>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Gallery Card 1 -->
+                <div class="gallery-card fade-in">
+                    <div class="gallery-card-badge">Nuevo</div>
+                    <div class="gallery-card-img">
+                        <img src="img/lascastagnas_ch_9.jpg" alt="Saco Castaña Classic">
+                    </div>
+                    <div class="gallery-card-info">
+                        <h3 class="gallery-card-title">Saco Castaña Classic</h3>
+                        <p class="gallery-card-desc">Saco clásico con textura suave y caída perfecta. Ideal para uso diario u ocasiones formales.</p>
+                        <div class="gallery-card-footer">
+                            <span class="gallery-card-price">$26.500</span>
+                            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 16px; font-size: 11px;">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 2 -->
+                <div class="gallery-card fade-in">
+                    <div class="gallery-card-badge">Más Vendido</div>
+                    <div class="gallery-card-img">
+                        <img src="img/lascastagnas_ch_10.jpg" alt="Sweater Soft Linen">
+                    </div>
+                    <div class="gallery-card-info">
+                        <h3 class="gallery-card-title">Sweater Soft Linen</h3>
+                        <p class="gallery-card-desc">Confeccionado con lana suave seleccionada, cuello redondo y calce cómodo.</p>
+                        <div class="gallery-card-footer">
+                            <span class="gallery-card-price">$22.900</span>
+                            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 16px; font-size: 11px;">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 3 (Video Preview) -->
+                <div class="gallery-card fade-in">
+                    <div class="gallery-card-badge">Video</div>
+                    <div class="gallery-card-img">
+                        <video src="img/lascastagnas_ch_11.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover;"></video>
+                    </div>
+                    <div class="gallery-card-info">
+                        <h3 class="gallery-card-title">Colección Invierno</h3>
+                        <p class="gallery-card-desc">Descubrí las últimas novedades de accesorios en movimiento.</p>
+                        <div class="gallery-card-footer">
+                            <span class="gallery-card-price">Premium</span>
+                            <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 16px; font-size: 11px;">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADS:CONTENT:END -->
+
+    <!-- 6. footer.bento-footer -->
+    <footer class="bento-footer" id="contacto">
+        <!-- ADS:FOOTER:START -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Las Castañas</h3>
+                    <p class="footer-desc">Boutique exclusiva de indumentaria y accesorios premium. Cuidamos cada detalle para ofrecerte la mejor experiencia en Coronel Charlone, Buenos Aires.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Menú</h4>
+                    <div class="footer-links">
+                        <a href="#destacados">Destacados</a>
+                        <a href="#galeria">Colección</a>
+                        <a href="#tienda">Catálogo</a>
+                        <a href="#contacto">Contacto</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <div class="footer-info">
+                        <div class="footer-info-item">
+                            <span class="material-symbols-outlined">location_on</span>
+                            <span>Coronel Charlone, Provincia de Buenos Aires</span>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="material-symbols-outlined">call</span>
+                            <span>Sharon: 3388512014<br>Silvana: 3385521955</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Horarios</h4>
+                    <div class="footer-newsletter">
+                        <p>Lunes a Sábado: 15:30 a 19:30 hs.<br>Sábados por la mañana: 10:00 a 12:00 hs.</p>
+                        <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="footer-newsletter-btn">Escribinos por WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Las Castañas. Todos los derechos reservados.</p>
+                <p>Desarrollado por ADS Labs</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp FAB with pulse animation -->
+    <a href="https://wa.me/543388512014" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Escribinos por WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.479 2.012 14.019.985 11.39.985c-5.441 0-9.87 4.372-9.874 9.8.001 1.636.5 3.224 1.455 4.832L1.95 21.074l5.697-1.492zm11.947-6.868c-.3-.15-1.77-.874-2.043-.974-.274-.1-.474-.15-.673.15-.2.3-.773.974-.948 1.174-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.485-.893-.797-1.496-1.782-1.67-2.082-.175-.3-.018-.463.13-.61.135-.133.3-.35.45-.525.15-.175.2-.299.3-.5.1-.2.05-.375-.025-.525-.075-.15-.673-1.624-.922-2.224-.24-.58-.487-.5-.672-.51-.176-.01-.376-.01-.577-.01-.2 0-.527.075-.802.375-.276.3-1.052 1.025-1.052 2.5 0 1.475 1.078 2.9 1.227 3.1.15.2 2.122 3.24 5.14 4.545.717.31 1.277.495 1.71.63.722.23 1.38.197 1.9.12.578-.085 1.77-.724 2.02-1.424.25-.7.25-1.3 1.75-1.425-.075-.125-.275-.2-.575-.35z"/>
+        </svg>
+    </a>
+
+    <!-- ADS:SCRIPTS -->
+    <script>
+        // Nav glassmorphism background update on scroll
+        window.addEventListener('scroll', function() {
+            var nav = document.querySelector('nav.floating-pill');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Simple IntersectionObserver for fade-in animations on scroll
+        document.addEventListener("DOMContentLoaded", function() {
+            var fadeElements = document.querySelectorAll('.fade-in');
+            
+            var observerOptions = {
+                root: null,
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+            
+            var observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            fadeElements.forEach(function(el) {
+                observer.observe(el);
+            });
+        });
+    </script>
+<script id="premium-effects-js">
+
+// ═══ GLOBAL PREMIUM POLISH ═══
+// Lazy image loading with fade-in
+document.querySelectorAll('img').forEach(img => {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  }
+});
+
+// Add shine effect to primary buttons
+document.querySelectorAll('button, a[href]').forEach(btn => {
+  const bg = getComputedStyle(btn).backgroundColor;
+  if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+    btn.classList.add('btn-shine');
+  }
+});
+
+
+// ═══ SCROLL REVEAL ═══
+(function() {
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]');
+  if (!revealElements.length) {
+    // Auto-apply to sections and cards if no data-reveal attributes found
+    document.querySelectorAll('section, [class*="card"], [class*="rounded"]').forEach((el, i) => {
+      if (el.tagName === 'SECTION') {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = '0.1s';
+      } else if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        el.setAttribute('data-reveal', '');
+        el.style.transitionDelay = (i % 4) * 0.1 + 's';
+      }
+    });
+  }
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  
+  document.querySelectorAll('[data-reveal], [data-reveal-left], [data-reveal-scale]').forEach(el => {
+    observer.observe(el);
+  });
+})();
+
+
+// ═══ GRADIENT MESH (JS companion — injects the blob element) ═══
+(function() {
+  if (!document.querySelector('.gradient-mesh-bg')) {
+    const mesh = document.createElement('div');
+    mesh.className = 'gradient-mesh-bg';
+    document.body.prepend(mesh);
+    
+    const blob3 = document.createElement('div');
+    blob3.className = 'gradient-mesh-blob-3';
+    document.body.prepend(blob3);
+  }
+})();
+
+
+// ═══ HOVER 3D TILT ═══
+(function() {
+  const cards = document.querySelectorAll('.tilt-card');
+  if (!cards.length) {
+    // Auto-apply to product/category cards
+    document.querySelectorAll('[class*="card"], [class*="rounded-xl"]').forEach(el => {
+      if (el.closest('section') && !el.closest('header') && !el.closest('footer') && !el.closest('nav')) {
+        if (el.querySelector('img') || el.querySelector('h3')) {
+          el.classList.add('tilt-card');
+        }
+      }
+    });
+  }
+  
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / centerY * -6;
+      const rotateY = (x - centerX) / centerX * 6;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
+  });
+})();
+
+
+// ═══ COUNTER ANIMATION ═══
+(function() {
+  const counters = document.querySelectorAll('.counter-value, [data-counter]');
+  if (!counters.length) {
+    // Auto-detect numbers that look like stats
+    document.querySelectorAll('*').forEach(el => {
+      const text = el.textContent.trim();
+      if (/^[+]?\d{2,}[+%]?$/.test(text) && el.children.length === 0) {
+        const num = parseInt(text.replace(/[^0-9]/g, ''));
+        if (num >= 10) {
+          el.dataset.counter = num;
+          el.dataset.counterSuffix = text.replace(/[0-9]/g, '').replace(/^\+/, '');
+          if (text.startsWith('+')) el.dataset.counterPrefix = '+';
+          el.classList.add('counter-value');
+          el.textContent = '0' + (el.dataset.counterSuffix || '');
+        }
+      }
+    });
+  }
+  
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.counter);
+    const prefix = el.dataset.counterPrefix || '';
+    const suffix = el.dataset.counterSuffix || '';
+    const duration = 2000;
+    const startTime = performance.now();
+    
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+      const current = Math.floor(eased * target);
+      el.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('.counter-value, [data-counter]').forEach(el => observer.observe(el));
+})();
+
+</script>
+</body>
+</html>

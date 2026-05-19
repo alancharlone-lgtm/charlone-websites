@@ -216,7 +216,9 @@
       top: 0;
       left: 0;
       width: 100%;
-      background-color: var(--white);
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--hairline);
       z-index: 100;
     }
@@ -651,6 +653,23 @@
       text-align: center;
     }
 
+    /* About Section Styles */
+    .about-section {
+      padding: 10rem 0;
+      background-color: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 6.4rem;
+    }
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+
     /* ----------------------------------------------------
        LAYOUT: Corporate Footer
        ---------------------------------------------------- */
@@ -974,7 +993,25 @@
       </div>
     </section>
 
-    <!-- SECTION 4 — MASSIVE CTA -->
+    <!-- SECTION 4 — NUESTRA HISTORIA (5th Section) -->
+    <section id="nosotros" class="about-section">
+      <div class="container about-grid">
+        <div class="about-text fade-in">
+          <span class="hero-badge" style="color: var(--accent); border-color: var(--accent);">
+            <span class="material-symbols-outlined">favorite</span>
+            Nuestra Historia
+          </span>
+          <h2>El legado de la crema más pura en Charlone.</h2>
+          <p>Nuestra heladería nació con un propósito simple: honrar la tradición láctea de nuestro pueblo. Cada mañana seleccionamos la crema directamente de los tambos locales para batirla con dulzura y pasión artesanal.</p>
+          <p>No utilizamos aditivos ni colorantes sintéticos. El verdadero sabor a campo y amor en cada bocha.</p>
+        </div>
+        <div class="hero-image-container fade-in" style="height: 36rem;">
+          <img src="img/ai_detail.png" alt="Preparación manual de helados en Helados Charlone" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 — MASSIVE CTA -->
     <section class="massive-cta">
       <div class="container">
         <div class="cta-card fade-in">
@@ -1059,7 +1096,7 @@
         <div class="footer-col">
           <h4>Contacto</h4>
           <p style="font-size: 1.4rem; color: var(--ash-gray);">Ministro Lobos 880<br>B6223 Charlone, Buenos Aires</p>
-          <p style="font-size: 1.4rem; color: var(--ash-gray);">Instagram: @heladoscharlone</p>
+          <p style="font-size: 1.4rem; color: var(--ash-gray);">Instagram: <a href="https://instagram.com/heladoscharlone" target="_blank" style="color: var(--primary); text-decoration: underline;">@heladoscharlone</a></p>
         </div>
       </div>
       

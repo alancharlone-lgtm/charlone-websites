@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conti Insumos — Depósito y Asesoramiento Agropecuario</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Insumos agropecuarios premium y asesoramiento profesional en Coronel Charlone. Semillas fiscalizadas, agroquímicos autorizados y fertilizantes inteligentes.">
+  <meta name="keywords" content="agroquimicos, semillas fiscalizadas, fertilizantes, silobolsas, coronel charlone, general villegas, conti insumos">
+
+  <!-- Google Fonts: Inter (Sans, weight 300 to 900) & Inconsolata (Mono, weight 400 to 600) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM (ClickHouse Inspired Tech Bento Grid)
+       ========================================================================== */
+    :root {
+      /* Colors */
+      --color-bg: #000000;                     /* Pure Obsidian Black */
+      --color-surf: #141414;                   /* Elevated Charcoal Dark Card Surface */
+      --color-surf-hover: #1e1e1e;
+      --color-border: rgba(65, 65, 65, 0.8);    /* Signature ClickHouse Card border */
+      --color-border-hover: rgba(110, 110, 110, 0.9);
+      
+      --color-volt: #faff69;                   /* Acid yellow-green brand volt */
+      --color-volt-pale: #f4f692;              /* Muted volt for active/pressed states */
+      --color-forest: #166534;                 /* Forest green secondary CTA */
+      --color-forest-hover: #14572f;
+      --color-border-olive: #4f5100;           /* Dark olive borders for secondary elements */
+      
+      --color-text-primary: #ffffff;           /* High contrast text */
+      --color-text-secondary: #a0a0a0;         /* Muted technical detail text */
+      --color-text-muted: #585858;
+      
+      /* Typography */
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: 'Inconsolata', monospace;
+      
+      /* Radii */
+      --radius-pill: 9999px;
+      --radius-bento: 24px;
+      --radius-btn: 4px;
+      
+      /* Animation Transitions */
+      --transition-base: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset and Core Standards */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Typography Hierarchy */
+    h1, h2, h3, h4 {
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-base);
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--color-bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-surf);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-btn);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-text-muted);
+    }
+
+    /* Utility classes */
+    .label-mono {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--color-volt);
+    }
+
+    /* ==========================================================================
+       FLOATING PILL NAVIGATION
+       ========================================================================== */
+    .floating-pill {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      height: 64px;
+      background: rgba(20, 20, 20, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 32px;
+      z-index: 1000;
+      transition: all var(--transition-base);
+    }
+
+    .floating-pill.scrolled {
+      top: 12px;
+      width: 95%;
+      border-color: var(--color-volt);
+      box-shadow: 0 4px 20px rgba(250, 255, 105, 0.08);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: -1px;
+    }
+
+    .nav-logo-icon {
+      width: 14px;
+      height: 14px;
+      background-color: var(--color-volt);
+      border-radius: 2px;
+      transform: rotate(45deg);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      transition: all var(--transition-base);
+    }
+
+    .nav-links a:hover {
+      color: var(--color-volt);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-nav {
+      background-color: var(--color-forest);
+      color: var(--color-text-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-btn);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--color-forest);
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+
+    .btn-nav:hover {
+      background-color: var(--color-forest-hover);
+      border-color: var(--color-volt);
+    }
+
+    /* Hamburger Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--color-text-primary);
+      transition: all var(--transition-base);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-cta {
+        display: none;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* ==========================================================================
+       DYNAMIC HERO SECTION (Massive 96px H1, Left Aligned)
+       ========================================================================== */
+    .hero-dynamic {
+      min-height: 100vh;
+      padding-top: 140px;
+      padding-bottom: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    /* Mesh Backdrop Blur Background */
+    .hero-mesh {
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: 50%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(30, 101, 52, 0.15) 0%, rgba(0,0,0,0) 70%);
+      z-index: -1;
+      filter: blur(80px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+      z-index: 2;
+    }
+
+    .hero-h1 {
+      font-size: clamp(3.2rem, 7.5vw, 6rem); /* Extreme size scaling */
+      text-transform: capitalize;
+    }
+
+    .hero-h1 span.accent {
+      color: var(--color-volt);
+      display: block;
+    }
+
+    .hero-p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      color: var(--color-text-secondary);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+    }
+
+    /* Button variants */
+    .btn-volt {
+      background-color: var(--color-volt);
+      color: var(--color-bg);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: var(--radius-btn);
+      border: 1px solid var(--color-volt);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all var(--transition-base);
+    }
+
+    .btn-volt:hover {
+      background-color: transparent;
+      color: var(--color-volt);
+    }
+
+    .btn-volt:active {
+      color: var(--color-volt-pale);
+    }
+
+    .btn-ghost {
+      background-color: transparent;
+      color: var(--color-text-primary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: var(--radius-btn);
+      border: 1px solid var(--color-border-olive);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all var(--transition-base);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--color-volt);
+      background-color: rgba(255, 255, 105, 0.03);
+    }
+
+    /* Hero performance stats card */
+    .hero-stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      border-top: 1px solid var(--color-border);
+      padding-top: 32px;
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    .stat-number {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--color-text-primary);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-number span.plus {
+      color: var(--color-volt);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* Hero media block */
+    .hero-media-box {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-bento);
+      padding: 12px;
+      background-color: var(--color-surf);
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      position: relative;
+    }
+
+    .hero-media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: calc(var(--radius-bento) - 8px);
+      filter: grayscale(30%) brightness(90%);
+      transition: transform var(--transition-slow);
+    }
+
+    .hero-media-box:hover img {
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-media-box {
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    /* ==========================================================================
+       MARQUEE SCROLL (Infinite product/crops horizontal list)
+       ========================================================================== */
+    .marquee-scroll {
+      background-color: var(--color-surf);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 16px 0;
+      display: flex;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 20s linear infinite;
+      gap: 32px;
+    }
+
+    .marquee-item {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .marquee-item::after {
+      content: '⚡';
+      color: var(--color-volt);
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
+       ASYSMMETRIC BENTO GRID OF TECHNICAL ADVANTAGES & SERVICES
+       ========================================================================== */
+    .bento-grid-section {
+      padding: 96px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      margin-bottom: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 24px;
+    }
+
+    /* Bento Cards general properties */
+    .bento-card {
+      background-color: var(--color-surf);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-bento);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--transition-base);
+    }
+
+    .bento-card:hover {
+      border-color: var(--color-volt);
+      transform: translateY(-4px);
+    }
+
+    /* Span modifications */
+    .span-col-2 { grid-column: span 2; }
+    .span-col-3 { grid-column: span 3; }
+    .span-row-2 { grid-row: span 2; }
+
+    /* Specific styles inside card types */
+    .card-header-icon {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(250, 255, 105, 0.05);
+      border: 1px solid var(--color-border-olive);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-volt);
+      font-size: 1.2rem;
+    }
+
+    .card-chevron {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+    }
+
+    .bento-card:hover .card-chevron {
+      color: var(--color-volt);
+      transform: translateX(4px);
+      transition: transform var(--transition-base);
+    }
+
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* Feature block card with image background overlay */
+    .card-image-bg {
+      background-size: cover;
+      background-position: center;
+      color: var(--color-text-primary);
+      z-index: 1;
+    }
+
+    .card-image-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 90%);
+      z-index: -1;
+    }
+
+    .card-list {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .card-list li {
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--color-text-secondary);
+    }
+
+    .card-list li::before {
+      content: '✓';
+      color: var(--color-volt);
+      font-weight: bold;
+    }
+
+    /* Big Metric Card */
+    .card-metric {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .metric-huge {
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--color-volt);
+      line-height: 1;
+    }
+
+    .metric-sub {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+
+    @media (max-width: 1024px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+      }
+      .span-col-2, .span-col-3, .span-row-2 {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .span-col-2, .span-col-3, .span-row-2 {
+        grid-column: span 1;
+      }
+      .bento-card {
+        padding: 24px;
+        min-height: 220px;
+      }
+    }
+
+    /* ==========================================================================
+       BENTO GALLERY MASONRY (Exclusive high quality local/AI image block)
+       ========================================================================== */
+    .bento-gallery-section {
+      padding: 64px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .gallery-box {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-bento);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background-color: var(--color-surf);
+    }
+
+    .gallery-box.tall {
+      aspect-ratio: 4 / 5;
+    }
+
+    .gallery-box.wide {
+      grid-column: span 2;
+      aspect-ratio: 8 / 3;
+    }
+
+    .gallery-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(80%) grayscale(15%);
+      transition: transform var(--transition-slow), filter var(--transition-base);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 32px;
+      background: linear-gradient(360deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all var(--transition-base);
+    }
+
+    .gallery-box:hover img {
+      transform: scale(1.05);
+      filter: brightness(95%) grayscale(0%);
+    }
+
+    .gallery-box:hover .gallery-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .gallery-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-volt);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-box.wide {
+        grid-column: span 1;
+      }
+      .gallery-box {
+        aspect-ratio: 4 / 3 !important;
+      }
+      .gallery-overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================================================================
+       BENTO CONTACT & INFO BLOCK
+       ========================================================================== */
+    .bento-contact-section {
+      padding: 96px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    /* Form Container */
+    .bento-form-card {
+      background-color: var(--color-surf);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-bento);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .form-input {
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-btn);
+      padding: 14px 18px;
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      transition: all var(--transition-base);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--color-volt);
+      box-shadow: 0 0 0 1px var(--color-volt);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Coordinates Info Card */
+    .bento-info-card {
+      background-color: var(--color-surf);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-bento);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(250, 255, 105, 0.05);
+      border: 1px solid var(--color-border-olive);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-volt);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .info-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .info-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-volt);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .info-value {
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    .info-subtext {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .bento-form-card, .bento-info-card {
+        padding: 32px;
+      }
+    }
+
+    /* ==========================================================================
+       FLOATING WHATSAPP FAB (Dynamic Pulse)
+       ========================================================================== */
+    .fab-whatsapp {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      transition: transform var(--transition-base);
+      animation: wa-pulse 2s infinite;
+    }
+
+    .fab-whatsapp:hover {
+      transform: scale(1.1);
+    }
+
+    .fab-whatsapp svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+
+    @keyframes wa-pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* ==========================================================================
+       BENTO-STYLE FOOTER
+       ========================================================================== */
+    .bento-footer {
+      background-color: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+      padding: 80px 24px 32px 24px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .footer-desc {
+      font-size: 0.9rem;
+      max-width: 320px;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .footer-column-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-volt);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      transition: color var(--transition-base);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-volt);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 64px auto 0 auto;
+      padding-top: 32px;
+      border-top: 1px solid rgba(65, 65, 65, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+
+    /* ==========================================================================
+       MICRO-ANIMATIONS & INTERSECTION OBSERVER CLASSES
+       ========================================================================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <nav class="floating-pill">
+    <div class="nav-logo">
+      <div class="nav-logo-icon"></div>
+      CONTI INSUMOS
+    </div>
+    
+    <ul class="nav-links">
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="#destacados">Insumos</a></li>
+      <li><a href="#galeria">Logística</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="https://wa.me/5493388450123" class="btn-nav" target="_blank" rel="noopener">Consultar Stock</a>
+    </div>
+
+    <button class="menu-toggle" aria-label="Abrir Menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <!-- ADS:NAV:END -->
+  </nav>
+
+  <main>
+    <!-- ==========================================================================
+         1. HERO SECTION (Massive Tech Dynamic Grid)
+         ========================================================================== -->
+    <section id="hero" class="hero-dynamic fade-in">
+      <div class="hero-mesh"></div>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="label-mono">Tecnología Agrícola • Charlone</div>
+          <h1 class="hero-h1">
+            Nutrición y
+            <span class="accent">Protección Integral</span>
+            de Cultivos
+          </h1>
+          <p class="hero-p">
+            Distribución y asesoramiento profesional en semillas fiscalizadas, agroquímicos autorizados y fertilizantes líquidos. Garantizá el máximo rendimiento de tu lote con logística y seguridad provinciales habilitadas.
+          </p>
+          <div class="hero-ctas">
+            <a href="https://wa.me/5493388450123" class="btn-volt" target="_blank" rel="noopener">
+              Coordiná una Asesoría
+              <span style="font-size: 1.1rem;">→</span>
+            </a>
+            <a href="#destacados" class="btn-ghost">Ver Insumos</a>
+          </div>
+          
+          <div class="hero-stats-bar">
+            <div>
+              <span class="stat-number">100<span class="plus">%</span></span>
+              <span class="stat-label">Depósito Habilitado</span>
+            </div>
+            <div>
+              <span class="stat-number">INASE</span>
+              <span class="stat-label">Semillas Fiscalizadas</span>
+            </div>
+            <div>
+              <span class="stat-number">24<span class="plus">/7</span></span>
+              <span class="stat-label">Monitoreo Técnico</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-media-box">
+          <img src="img/ai_hero.png" alt="Monitoreo tecnológico de cultivos en Charlone" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         2. MARQUEE BANNER
+         ========================================================================== -->
+    <section id="marquesina" class="marquee-scroll">
+      <div class="marquee-track">
+        <div class="marquee-item">SEMILLAS FISCALIZADAS</div>
+        <div class="marquee-item">PROTECCIÓN VEGETAL</div>
+        <div class="marquee-item">LOGÍSTICA DIRECTA A CAMPO</div>
+        <div class="marquee-item">FERTILIZANTES DE VANGUARDIA</div>
+        <div class="marquee-item">SILOBOLSAS RESISTENTES</div>
+        <div class="marquee-item">ASESORAMIENTO EN LOTE</div>
+        <!-- Duplicating list for seamless infinite loops -->
+        <div class="marquee-item">SEMILLAS FISCALIZADAS</div>
+        <div class="marquee-item">PROTECCIÓN VEGETAL</div>
+        <div class="marquee-item">LOGÍSTICA DIRECTA A CAMPO</div>
+        <div class="marquee-item">FERTILIZANTES DE VANGUARDIA</div>
+        <div class="marquee-item">SILOBOLSAS RESISTENTES</div>
+        <div class="marquee-item">ASESORAMIENTO EN LOTE</div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. ASYMMETRIC BENTO GRID
+         ========================================================================== -->
+    <section id="destacados" class="bento-grid-section fade-in">
+      <div class="section-head">
+        <div class="label-mono">Catálogo Técnico</div>
+        <h2 class="section-title">Insumos de Alto Rendimiento</h2>
+        <p style="max-width: 600px; margin-top: 8px;">
+          Nuestra grilla operativa de productos cuenta con certificaciones provinciales y respaldo de marcas líderes para proteger el valor de tu producción.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Card 1: Seeds (Span 2x2 with Image Background overlay) -->
+        <div class="bento-card span-col-2 span-row-2 card-image-bg" style="background-image: url('img/ai_product.png');">
+          <div>
+            <div class="label-mono" style="color: var(--color-volt);">INASE Fiscalización</div>
+          </div>
+          <div class="card-info" style="margin-top: auto;">
+            <h3 class="card-title">Semillas Seleccionadas</h3>
+            <p class="card-desc" style="color: #efeff1;">
+              Variedades fiscalizadas de soja, maíz y trigo diseñadas con genética avanzada para garantizar una germinación uniforme y resistencia climática en la región de Villegas.
+            </p>
+            <ul class="card-list">
+              <li style="color: #ffffff;">Maíz híbrido de alta densidad y estabilidad</li>
+              <li style="color: #ffffff;">Soja fiscalizada con tecnología de control biológico</li>
+              <li style="color: #ffffff;">Trigo seleccionado para máxima sanidad de espiga</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2: Agrochemicals (Span 2x1) -->
+        <div class="bento-card span-col-2">
+          <div class="card-header-icon">
+            <div class="card-icon">🛡️</div>
+            <span class="card-chevron">→</span>
+          </div>
+          <div class="card-info">
+            <h3 class="card-title">Protección Vegetal Habilitada</h3>
+            <p class="card-desc">
+              Línea completa de herbicidas, fungicidas e insecticidas autorizados provincialmente bajo estrictas normas de almacenamiento y manipulación técnica.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Metrics 15+ years -->
+        <div class="bento-card card-metric">
+          <span class="metric-huge">+15</span>
+          <span class="metric-sub">Años de Trayectoria</span>
+        </div>
+
+        <!-- Card 4: Metrics Depósito -->
+        <div class="bento-card card-metric">
+          <span class="metric-huge">SAFE</span>
+          <span class="metric-sub">Depósito Oficial</span>
+        </div>
+
+        <!-- Card 5: Nutrition and Fertilizers (Span 1x2) -->
+        <div class="bento-card span-row-2">
+          <div class="card-header-icon">
+            <div class="card-icon">🧪</div>
+            <span class="card-chevron">→</span>
+          </div>
+          <div class="card-info" style="margin-top: auto;">
+            <h3 class="card-title">Nutrición Inteligente</h3>
+            <p class="card-desc">
+              Fertilizantes líquidos y sólidos de última generación para potenciar las etapas críticas de implantación y desarrollo radicular de tu siembra.
+            </p>
+            <ul class="card-list" style="margin-top: 12px;">
+              <li>Coadyuvantes premium</li>
+              <li>Inoculantes biológicos</li>
+              <li>Microelementos quelados</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 6: Silobolsas (Span 2x1) -->
+        <div class="bento-card span-col-2">
+          <div class="card-header-icon">
+            <div class="card-icon">📦</div>
+            <span class="card-chevron">→</span>
+          </div>
+          <div class="card-info">
+            <h3 class="card-title">Almacenamiento Seguro</h3>
+            <p class="card-desc">
+              Silobolsas multicapa de alta densidad con barrera contra el oxígeno para asegurar la conservación hermética y la calidad comercial de tus granos en el lote.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 7: Asesoría de lote (Span 1x1) -->
+        <div class="bento-card">
+          <div class="card-header-icon">
+            <div class="card-icon">🌾</div>
+          </div>
+          <div class="card-info">
+            <h3 class="card-title" style="font-size: 1.15rem;">Monitoreo Técnico</h3>
+            <p class="card-desc" style="font-size: 0.85rem;">
+              Asesoramiento agronómico presencial y prescripciones agrícolas precisas para optimizar recursos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. BENTO GALLERY MASONRY
+         ========================================================================== -->
+    <section id="galeria" class="bento-gallery-section fade-in">
+      <div class="section-head">
+        <div class="label-mono">Procesos de Calidad</div>
+        <h2 class="section-title">Infraestructura y Logística</h2>
+        <p style="max-width: 600px; margin-top: 8px;">
+          Visualizá nuestra operatoria directa de entrega a campo y almacenamiento hermético en Coronel Charlone.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Gallery 1: Tall Block -->
+        <div class="gallery-box tall">
+          <img src="img/ai_detail.png" alt="Insumos agropecuarios minuciosamente inspeccionados" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Control de Lote</span>
+            <h3 class="gallery-title">Inspección de Semillas</h3>
+          </div>
+        </div>
+
+        <!-- Gallery 2: Wide Block -->
+        <div class="gallery-box wide">
+          <img src="img/ai_hero.png" alt="Entrega directa a campo en Coronel Charlone" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Logística Propia</span>
+            <h3 class="gallery-title">Distribución Directa a Campo</h3>
+          </div>
+        </div>
+
+        <!-- Gallery 3: Normal Block -->
+        <div class="gallery-box">
+          <img src="img/ai_product.png" alt="Insumos listos para despachar" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Depósito</span>
+            <h3 class="gallery-title">Stock Permanente</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. BENTO CONTACT & INFO BLOCK
+         ========================================================================== -->
+    <section id="contacto" class="bento-contact-section fade-in">
+      <div class="section-head">
+        <div class="label-mono">Canal Directo</div>
+        <h2 class="section-title">Conversá con el Equipo</h2>
+        <p style="max-width: 600px; margin-top: 8px;">
+          Completá el formulario para solicitar presupuestos técnicos o ponete en contacto directo mediante nuestros canales habilitados.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Interactive WhatsApp Form -->
+        <div class="bento-form-card">
+          <div class="form-title-block">
+            <span class="label-mono">Formulario de Pedidos</span>
+            <h3 style="font-size: 1.5rem;">Solicitar Presupuesto</h3>
+            <p>Escribí tu consulta y enviala por WhatsApp de forma instantánea.</p>
+          </div>
+          
+          <form class="contact-form" id="whatsapp-sender">
+            <div class="form-group">
+              <label class="form-label" for="nombre-form">Tu Nombre</label>
+              <input type="text" id="nombre-form" class="form-input" placeholder="Ingresá tu nombre" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="producto-form">Insumo o Servicio</label>
+              <select id="producto-form" class="form-input" required>
+                <option value="Semillas Fiscalizadas">Semillas Fiscalizadas (Soja, Maíz, Trigo)</option>
+                <option value="Agroquímicos de Protección">Agroquímicos de Protección Vegetal</option>
+                <option value="Fertilizantes Líquidos/Sólidos">Fertilizantes Líquidos / Sólidos</option>
+                <option value="Silobolsas de Almacenamiento">Silobolsas de Almacenamiento</option>
+                <option value="Asesoramiento y Monitoreo">Asesoramiento Agronómico y Monitoreo</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="mensaje-form">Detalles de Consulta</label>
+              <textarea id="mensaje-form" class="form-input" placeholder="Ej: cantidad de hectáreas, fertilización de base, etc." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-volt" style="justify-content: center;">
+              Enviar Consulta Directa
+              <span>⚡</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Coordinates Info -->
+        <div class="bento-info-card">
+          <div class="form-title-block">
+            <span class="label-mono">Nuestras Oficinas</span>
+            <h3 style="font-size: 1.5rem;">Ubicación & Horarios</h3>
+            <p>Establecimiento oficial y depósito oficial homologado.</p>
+          </div>
+
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div class="info-content">
+                <span class="info-title">Dirección</span>
+                <span class="info-value">Dr. Garay N° 869</span>
+                <span class="info-subtext">Coronel Charlone, General Villegas, Bs. As.</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">🕒</div>
+              <div class="info-content">
+                <span class="info-title">Horarios de Atención</span>
+                <span class="info-value">Lunes a Viernes</span>
+                <span class="info-subtext">08:00 - 12:00 y 15:30 - 19:30</span>
+                <span class="info-value" style="margin-top: 4px;">Sábados</span>
+                <span class="info-subtext">08:00 - 12:30</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">👤</div>
+              <div class="info-content">
+                <span class="info-title">Director Técnico</span>
+                <span class="info-value">Conti Maximiliano Marcelo</span>
+                <span class="info-subtext">Ingeniero Agrónomo Habilitado</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">📱</div>
+              <div class="info-content">
+                <span class="info-title">Redes Sociales</span>
+                <a href="https://instagram.com/conti.insumos" class="info-value" style="color: var(--color-volt); text-decoration: underline;" target="_blank" rel="noopener">@conti.insumos</a>
+                <span class="info-subtext">Instagram Oficial del Comercio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FLOATING WHATSAPP FAB (Dynamic Pulse)
+       ========================================================================== -->
+  <a href="https://wa.me/5493388450123" class="fab-whatsapp" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.588 1.485 5.407 1.486 5.417 0 9.826-4.386 9.83-9.778 0-2.614-1.017-5.074-2.865-6.924C17.18 2.086 14.73 1.07 12.103 1.07c-5.424 0-9.83 4.386-9.834 9.779a9.717 9.717 0 0 0 1.542 5.161l-.971 3.548 3.639-.955zM17.8 14.28c-.324-.162-1.92-.949-2.219-1.057-.297-.108-.515-.162-.73.162-.216.324-.836 1.057-1.026 1.272-.19.215-.38.243-.704.081-.324-.162-1.37-.505-2.61-1.611-.965-.86-1.616-1.922-1.806-2.247-.19-.325-.02-.5-.181-.661-.147-.146-.324-.38-.487-.569-.162-.189-.216-.324-.324-.541-.109-.216-.055-.405-.027-.567.027-.162.216-.515.324-.676.108-.162.144-.27.216-.405.072-.135.036-.253-.014-.356-.05-.104-.515-1.246-.704-1.701-.184-.443-.37-.383-.508-.39-.131-.006-.28-.008-.429-.008a.82.82 0 0 0-.595.277c-.203.223-.778.761-.778 1.856 0 1.095.8 2.15 1.9 2.299.112.015 2.136 3.262 5.176 4.57.723.311 1.288.497 1.727.637.727.231 1.388.199 1.91.121.583-.087 1.92-.786 2.192-1.542.272-.756.272-1.405.19-1.542-.08-.135-.297-.216-.621-.379z"/>
+    </svg>
+  </a>
+
+  <!-- ADS:CONTENT:END -->
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="bento-footer">
+    <!-- ADS:FOOTER:START -->
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="nav-logo" style="padding: 0;">
+          <div class="nav-logo-icon"></div>
+          CONTI INSUMOS
+        </div>
+        <p class="footer-desc">
+          Distribución calificada, depósito homologado y monitoreo integral de cultivos agrícolas en Coronel Charlone.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-column-title">Navegación</span>
+        <ul class="footer-links">
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#destacados">Insumos</a></li>
+          <li><a href="#galeria">Logística</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-column-title">Insumos Técnicos</span>
+        <ul class="footer-links">
+          <li><a href="#destacados">Semillas Fiscalizadas</a></li>
+          <li><a href="#destacados">Herbicidas e Insecticidas</a></li>
+          <li><a href="#destacados">Fertilizantes Inteligentes</a></li>
+          <li><a href="#destacados">Silobolsas Multicapa</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-column-title">Contacto Comercial</span>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/5493388450123" target="_blank" rel="noopener">WhatsApp Comercial</a></li>
+          <li><a href="https://instagram.com/conti.insumos" target="_blank" rel="noopener">Instagram Oficial</a></li>
+          <li><span style="font-size: 0.9rem; color: var(--color-text-secondary);">Tel: (03388) 15-450123</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Conti Insumos. Todos los derechos reservados.</span>
+      <span>Desarrollado por ADS Labs</span>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       SCRIPTS (Intersection Observer & Contact Form Action)
+       ========================================================================== -->
+  <!-- ADS:SCRIPTS -->
+  <script>
+    // 1. Floating navigation bar interactive response on scroll
+    const nav = document.querySelector('.floating-pill');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // 2. Mobile menu toggle logic
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      if (navLinksContainer.style.display === 'flex') {
+        navLinksContainer.style.display = 'none';
+        menuToggle.style.transform = 'rotate(0deg)';
+      } else {
+        navLinksContainer.style.display = 'flex';
+        navLinksContainer.style.flexDirection = 'column';
+        navLinksContainer.style.position = 'absolute';
+        navLinksContainer.style.top = '75px';
+        navLinksContainer.style.left = '0';
+        navLinksContainer.style.width = '100%';
+        navLinksContainer.style.background = 'rgba(20, 20, 20, 0.95)';
+        navLinksContainer.style.backdropFilter = 'blur(10px)';
+        navLinksContainer.style.padding = '24px';
+        navLinksContainer.style.borderRadius = '20px';
+        navLinksContainer.style.border = '1px solid var(--color-border)';
+        navLinksContainer.style.gap = '16px';
+        menuToggle.style.transform = 'rotate(90deg)';
+      }
+    });
+
+    // 3. Scroll slide-up animations using IntersectionObserver
+    const observerOptions = {
+      root: null,
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // 4. Interactive WhatsApp Form Sender
+    const contactForm = document.getElementById('whatsapp-sender');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre-form').value;
+      const producto = document.getElementById('producto-form').value;
+      const mensaje = document.getElementById('mensaje-form').value;
+      
+      const customText = `¡Hola Maximiliano! Mi nombre es ${nombre}. Quisiera consultar por el insumo/servicio de "${producto}". Detalles: ${mensaje}`;
+      const encodedText = encodeURIComponent(customText);
+      const waUrl = `https://wa.me/5493388450123?text=${encodedText}`;
+      
+      window.open(waUrl, '_blank');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conti Insumos — Tecnología e Insumos Agropecuarios</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Protección integral de cultivos y nutrición inteligente. Semillas fiscalizadas, agroquímicos autorizados y asesoramiento agronómico especializado en Coronel Charlone.">
+  <meta name="keywords" content="agroquimicos, fertilizantes, semillas, silobolsas, charlone, villegas, agro, asesoramiento agronómico, conti insumos">
+
+  <!-- Google Fonts - Preconnect & Import (Sans: Inter, Mono: Inconsolata) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM (HashiCorp Inspired + Asymmetrical Flow)
+       ========================================================================== */
+    :root {
+      /* Colors - Day/Night Split */
+      --color-hcp-dark-bg: #15181e;     /* Obsidian Dark */
+      --color-hcp-dark-surf: #0d0e12;   /* Deepest Void Dark Input */
+      --color-primary: #1e4620;         /* Forest Green */
+      --color-primary-light: #2d6b30;
+      --color-secondary: #d4af37;       /* Crop Gold */
+      --color-light-bg: #f8f9fa;        /* Clean Off-White Neutral */
+      --color-light-surf: #ffffff;
+      --color-text-dark: #efeff1;       /* Warm light text for dark blocks */
+      --color-text-light: #15181e;      /* Clean near-black for light blocks */
+      --color-text-muted-dark: #868584;
+      --color-text-muted-light: #525252;
+      --color-border-light: rgba(21, 24, 30, 0.1);
+      --color-border-dark: rgba(178, 182, 189, 0.25);
+      --color-focus: #1060ff;           /* Interactive blue outline */
+
+      /* Spacing Scale (8px Grid base) */
+      --space-4xs: 2px;
+      --space-2xs: 4px;
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 32px;
+      --space-xl: 48px;
+      --space-2xl: 80px;
+      --space-3xl: 120px;
+
+      /* Font Families */
+      --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: 'Inconsolata', monospace;
+
+      /* Radii */
+      --radius-sm: 3px;
+      --radius-md: 5px;
+      --radius-lg: 8px;
+
+      /* Whisper Shadow System */
+      --shadow-whisper: rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px;
+      --transition-base: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Document Standards */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-light-bg);
+      color: var(--color-text-light);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Typography & Hierarchy */
+    h1, h2, h3, h4, h5 {
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .font-mono-label {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      color: var(--color-secondary);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-base);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ==========================================================================
+       BUTTON & COMPONENT STYLINGS (HashiCorp Asymmetric Padding)
+       ========================================================================== */
+    .btn-hcp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      padding: 9px 16px 9px 20px; /* Asymmetric Left-heavy padding */
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      border: 1px solid transparent;
+      box-shadow: var(--shadow-whisper);
+    }
+
+    .btn-hcp-primary {
+      background-color: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .btn-hcp-primary:hover {
+      background-color: var(--color-primary-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-hcp-secondary {
+      background-color: transparent;
+      border: 1px solid var(--color-border-dark);
+      color: var(--color-text-dark);
+    }
+
+    .btn-hcp-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: #ffffff;
+    }
+
+    .btn-hcp-light {
+      background-color: var(--color-light-surf);
+      border: 1px solid var(--color-border-light);
+      color: var(--color-text-light);
+    }
+
+    .btn-hcp-light:hover {
+      background-color: var(--color-light-bg);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       NAVIGATION (Top heavy, dual row bar)
+       ========================================================================== */
+    .top-heavy-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      font-family: var(--font-sans);
+    }
+
+    .top-bar {
+      height: 32px;
+      background-color: var(--color-hcp-dark-surf);
+      color: var(--color-text-muted-dark);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 var(--space-xl);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .top-bar span.badge {
+      color: var(--color-secondary);
+      border: 1px solid var(--color-secondary);
+      padding: 1px 6px;
+      font-size: 9px;
+    }
+
+    .main-nav {
+      height: 64px;
+      background-color: rgba(21, 24, 30, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-xl);
+      color: var(--color-text-dark);
+    }
+
+    .main-nav.scrolled {
+      background-color: #15181e;
+    }
+
+    .nav-brand {
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .nav-brand span.logo-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-secondary);
+      border-radius: 1px;
+      transform: rotate(45deg);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: var(--space-lg);
+    }
+
+    .nav-menu a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-text-muted-dark);
+      padding: var(--space-xs) 0;
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+      color: #ffffff;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .menu-toggle-hcp {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      padding: var(--space-xs);
+    }
+
+    .menu-toggle-hcp span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: #ffffff;
+    }
+
+    /* ==========================================================================
+       HERO ASYMMETRIC (Split Screen 40/60 Dark Mode Backdrop)
+       ========================================================================== */
+    .hero-asymmetric {
+      background-color: var(--color-hcp-dark-bg);
+      color: var(--color-text-dark);
+      min-height: 90vh;
+      padding-top: 96px; /* Offset for dual nav */
+      display: grid;
+      grid-template-columns: 0.45fr 0.55fr;
+      position: relative;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+
+    .hero-content {
+      padding: var(--space-2xl) var(--space-xl) var(--space-2xl) var(--space-xl);
+      margin-left: auto;
+      max-width: 540px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: var(--space-lg);
+      z-index: 10;
+    }
+
+    .trust-badge-hcp {
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-md);
+      padding: 6px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-text-dark);
+    }
+
+    .trust-badge-hcp span.dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--color-secondary);
+      border-radius: 50%;
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--color-secondary);
+    }
+
+    .hero-p {
+      font-size: 1.15rem;
+      color: var(--color-text-muted-dark);
+      line-height: 1.6;
+    }
+
+    .hero-ctas-group {
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    .hero-media {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+      background-color: var(--color-hcp-dark-surf);
+    }
+
+    .hero-media img {
+      filter: brightness(80%) contrast(110%);
+      transition: transform var(--transition-slow);
+    }
+
+    .hero-asymmetric:hover .hero-media img {
+      transform: scale(1.02);
+    }
+
+    /* ==========================================================================
+       SECTION DATA-BAR (Horizontal Metric Bar)
+       ========================================================================== */
+    .data-bar {
+      background-color: var(--color-hcp-dark-surf);
+      color: var(--color-text-dark);
+      border-bottom: 1px solid var(--color-border-dark);
+      padding: var(--space-xl) var(--space-xl);
+    }
+
+    .data-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+      text-align: center;
+    }
+
+    .data-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xs);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .data-item:last-child {
+      border-right: none;
+    }
+
+    .data-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--color-secondary);
+      line-height: 1;
+    }
+
+    .data-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-text-muted-dark);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       SECTION STAGGERED LIST (Zigzag Layout with Clean Lines)
+       ========================================================================== */
+    .staggered-list {
+      padding: var(--space-2xl) var(--space-xl);
+      background-color: var(--color-light-bg);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .staggered-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xl);
+    }
+
+    .section-headline-hcp {
+      margin-bottom: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .section-headline-hcp h2 {
+      font-size: 2.2rem;
+      color: var(--color-text-light);
+    }
+
+    .staggered-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+      padding-bottom: var(--space-xl);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .staggered-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .staggered-row.reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .staggered-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+
+    .staggered-content h3 {
+      font-size: 1.8rem;
+      color: var(--color-text-light);
+    }
+
+    .staggered-content p {
+      font-size: 1.05rem;
+      color: var(--color-text-muted-light);
+      line-height: 1.6;
+    }
+
+    .staggered-specs-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .staggered-specs-list li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .staggered-specs-list li::before {
+      content: '✓';
+      color: var(--color-primary);
+      font-weight: bold;
+    }
+
+    .staggered-media {
+      height: 380px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border-light);
+      box-shadow: var(--shadow-whisper);
+    }
+
+    /* ==========================================================================
+       SECTION TECHNICAL PROFILE (Advisory & Habilitado Deposit Details)
+       ========================================================================== */
+    .technical-profile {
+      padding: var(--space-2xl) var(--space-xl);
+      background-color: var(--color-light-surf);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .tech-grid {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.4fr 0.6fr;
+      gap: var(--space-2xl);
+    }
+
+    .tech-left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .tech-left h2 {
+      font-size: 2.2rem;
+      color: var(--color-primary);
+    }
+
+    .tech-left p {
+      font-size: 1.05rem;
+      color: var(--color-text-muted-light);
+      line-height: 1.6;
+    }
+
+    .tech-card-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+
+    .tech-card {
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      background-color: var(--color-light-bg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      box-shadow: var(--shadow-whisper);
+    }
+
+    .tech-card-icon {
+      width: 32px;
+      height: 32px;
+      background-color: rgba(30, 70, 32, 0.1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      font-weight: bold;
+      font-family: var(--font-mono);
+      font-size: 14px;
+    }
+
+    .tech-card h4 {
+      font-size: 1.15rem;
+      color: var(--color-text-light);
+    }
+
+    .tech-card p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted-light);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       SECTION MASSIVE-CTA (Large conversion overlay section)
+       ========================================================================== */
+    .massive-cta {
+      background-color: var(--color-hcp-dark-bg);
+      color: var(--color-text-dark);
+      padding: var(--space-3xl) var(--space-xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+
+    .massive-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 80% 20%, rgba(30, 70, 32, 0.3) 0%, transparent 60%);
+      z-index: 1;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .cta-inner h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .cta-inner p {
+      font-size: 1.2rem;
+      color: var(--color-text-muted-dark);
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+    }
+
+    /* ==========================================================================
+       FLOATING WHATSAPP FAB (Dynamic Pulse)
+       ========================================================================== */
+    .fab-whatsapp {
+      position: fixed;
+      bottom: var(--space-lg);
+      right: var(--space-lg);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 999;
+      transition: transform var(--transition-base);
+      animation: wa-pulse-hcp 2s infinite;
+    }
+
+    .fab-whatsapp:hover {
+      transform: scale(1.1);
+    }
+
+    .fab-whatsapp svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+
+    @keyframes wa-pulse-hcp {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* ==========================================================================
+       CORPORATE FOOTER (Sitemap & Coordinates)
+       ========================================================================== */
+    .corporate-footer {
+      background-color: var(--color-hcp-dark-surf);
+      color: var(--color-text-muted-dark);
+      padding: var(--space-2xl) var(--space-xl) var(--space-lg) var(--space-xl);
+      border-top: 1px solid var(--color-border-dark);
+    }
+
+    .footer-top {
+      max-width: 1150px;
+      margin: 0 auto var(--space-2xl) auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .footer-desc-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .footer-desc-block h3 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      font-weight: 900;
+    }
+
+    .footer-desc-block p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .footer-links-column {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .footer-links-column h4 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .footer-links-column ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .footer-links-column a {
+      font-size: 0.9rem;
+    }
+
+    .footer-links-column a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      max-width: 1150px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: var(--space-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    /* ==========================================================================
+       ANIMATIONS
+       ========================================================================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN (Media Queries)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-asymmetric {
+        grid-template-columns: 1fr;
+      }
+      .hero-media {
+        display: none;
+      }
+      .hero-content {
+        max-width: 100%;
+        padding: var(--space-2xl) var(--space-xl);
+      }
+      .data-container {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+      }
+      .data-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: var(--space-md);
+      }
+      .data-item:nth-child(3), .data-item:nth-child(4) {
+        border-bottom: none;
+      }
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        display: none;
+      }
+      .main-nav {
+        padding: 0 var(--space-md);
+      }
+      .nav-menu {
+        display: none;
+      }
+      .menu-toggle-hcp {
+        display: flex;
+      }
+      .staggered-row, .staggered-row.reverse {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+      .staggered-media {
+        height: 300px;
+        grid-row: 1; /* Media above text on mobile */
+      }
+      .tech-card-group {
+        grid-template-columns: 1fr;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR (Top Heavy dual row)
+       ========================================================================== -->
+  <header class="top-heavy-nav">
+    <div class="top-bar">
+      <div>📍 Dirección Técnica: Coronel Charlone, Gral. Villegas</div>
+      <div style="display: flex; gap: var(--space-md); align-items: center;">
+        <span>Horarios: Lun a Sáb</span>
+        <span class="badge">DEPÓSITO MINISTERIAL HABILITADO</span>
+      </div>
+    </div>
+    <div class="main-nav">
+      <a href="#" class="nav-brand">
+        <span class="logo-dot"></span>
+        Conti Insumos
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#soluciones">Insumos</a></li>
+        <li><a href="#trayectoria">Asesoramiento</a></li>
+        <li><a href="#habilitaciones">Seguridad</a></li>
+        <li><a href="https://instagram.com/conti.insumos" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#contacto" class="btn-hcp btn-hcp-primary" style="height: 38px; font-size: 0.85rem;">CONTACTAR</a>
+        <button class="menu-toggle-hcp" id="menuToggle" aria-label="Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <!-- ADS:NAV:END -->
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO ASYMMETRIC SECTION
+       ========================================================================== -->
+  <section id="inicio" class="hero-asymmetric fade-in">
+    <div class="hero-content">
+      <div class="trust-badge-hcp">
+        <span class="dot"></span>
+        <span>CONTI MAXIMILIANO MARCELO</span>
+      </div>
+      <h1 class="hero-h1">
+        Insumos técnicos de <em>alto rendimiento</em> agrícola.
+      </h1>
+      <p class="hero-p">
+        Distribución provincial habilitada de semillas fiscalizadas, fitosanitarios y fertilizantes en Coronel Charlone. Potenciamos tu lote mediante diagnósticos y prescripciones a medida de tu suelo.
+      </p>
+      <div class="hero-ctas-group">
+        <a href="#contacto" class="btn-hcp btn-hcp-primary">SOLICITAR ASESORÍA</a>
+        <a href="#soluciones" class="btn-hcp btn-hcp-secondary">VER CATÁLOGO</a>
+      </div>
+    </div>
+    
+    <div class="hero-media">
+      <img src="img/ai_hero.png" alt="Instalaciones industriales del depósito Conti Insumos en Charlone">
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION DATA-BAR (Technical Stats)
+       ========================================================================== -->
+  <section class="data-bar">
+    <div class="data-container">
+      <div class="data-item">
+        <span class="data-number">100%</span>
+        <span class="data-label">Fiscalizado & Habilitado</span>
+      </div>
+      <div class="data-item">
+        <span class="data-number">30+</span>
+        <span class="data-label">Años Región Pampeana</span>
+      </div>
+      <div class="data-item">
+        <span class="data-number">24/7</span>
+        <span class="data-label">Logística Tranquera</span>
+      </div>
+      <div class="data-item">
+        <span class="data-number">5/5</span>
+        <span class="data-label">Certificación Fitosanitaria</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION STAGGERED LIST (Zigzag Solutions)
+       ========================================================================== -->
+  <section id="soluciones" class="staggered-list fade-in">
+    <div class="staggered-container">
+      <div class="section-headline-hcp">
+        <span class="font-mono-label">TECNOLOGÍA DE CULTIVO</span>
+        <h2>Insumos Clave para el Éxito de la Campaña</h2>
+      </div>
+
+      <!-- Row 1: Agroquímicos -->
+      <div class="staggered-row">
+        <div class="staggered-content">
+          <span class="font-mono-label">LÍNEA 01</span>
+          <h3>Protección Fitosanitaria de Precisión</h3>
+          <p>
+            Proveemos un catálogo rigurosamente seleccionado de agroquímicos autorizados para el control efectivo de malezas, plagas y enfermedades. Asesoramos en dosis exactas, combinaciones de tanque y coadyuvantes para asegurar el máximo retorno de la inversión con un manejo sustentable.
+          </p>
+          <ul class="staggered-specs-list">
+            <li>Herbicidas pre y post-emergentes.</li>
+            <li>Fungicidas de amplio espectro para cereales y soja.</li>
+            <li>Insecticidas con alto poder de volteo y persistencia.</li>
+          </ul>
+          <a href="#contacto" class="btn-hcp btn-hcp-light">CONSULTAR FITOSANITARIOS</a>
+        </div>
+        <div class="staggered-media">
+          <img src="img/ai_detail.png" alt="Primer plano de empaques e insumos fitosanitarios habilitados">
+        </div>
+      </div>
+
+      <!-- Row 2: Semillas -->
+      <div class="staggered-row reverse">
+        <div class="staggered-media">
+          <img src="img/ai_product.png" alt="Lote agrícola en Coronel Charlone al atardecer">
+        </div>
+        <div class="staggered-content">
+          <span class="font-mono-label">LÍNEA 02</span>
+          <h3>Semillas Fiscalizadas de Alta Genética</h3>
+          <p>
+            Acceda a las mejores variedades e híbridos de maíz, soja y trigo adaptados específicamente a la microbiología y clima de la zona núcleo bonaerense. Semillas fiscalizadas por el INASE que garantizan pureza, vigor germinativo y resistencia a patógenos locales.
+          </p>
+          <ul class="staggered-specs-list">
+            <li>Híbridos de maíz VT Triple Pro y VIPTERA.</li>
+            <li>Variedades de soja de alto rendimiento Enlist / Conkesta.</li>
+            <li>Trigo Grupo 1 y 2 con excelente comportamiento sanitario.</li>
+          </ul>
+          <a href="#contacto" class="btn-hcp btn-hcp-light">COTIZAR BOLSAS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION TECHNICAL PROFILE (Safety & Location specs)
+       ========================================================================== -->
+  <section id="habilitaciones" class="technical-profile fade-in">
+    <div class="tech-grid">
+      <div class="tech-left">
+        <span class="font-mono-label">GARANTÍA INSTITUCIONAL</span>
+        <h2>Depósito Modelo con Normas Provinciales</h2>
+        <p>
+          Almacenamos y manipulamos productos fitosanitarios en un depósito específicamente diseñado bajo estrictas directrices del Ministerio de Desarrollo Agrario de Buenos Aires. Esta infraestructura asegura que sus insumos conserven intacto su principio activo y vigor biológico.
+        </p>
+        <div style="margin-top: var(--space-md);">
+          <a href="https://instagram.com/conti.insumos" target="_blank" rel="noopener" class="btn-hcp btn-hcp-light">VER EN INSTAGRAM</a>
+        </div>
+      </div>
+
+      <div class="tech-card-group">
+        <div class="tech-card">
+          <div class="tech-card-icon">01</div>
+          <h4>Habilitación Oficial</h4>
+          <p>Cumplimiento del 100% de la ley provincial de agroquímicos. Infraestructura aprobada para distribución regional.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-icon">02</div>
+          <h4>Logística Propia</h4>
+          <p>Coordinamos entregas directas a campo con fletes especializados para el transporte seguro de semillas y químicos.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-icon">03</div>
+          <h4>Asesoramiento Fiel</h4>
+          <p>Dirección técnica en lote a cargo de profesionales idóneos para optimizar prescripciones y rendimientos agrícolas.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-icon">04</div>
+          <h4>Soporte Nutricional</h4>
+          <p>Nutrición de suelo y foliar a medida, basada en muestreos georreferenciados precisos de cada lote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION MASSIVE-CTA
+       ========================================================================== -->
+  <section id="contacto" class="massive-cta fade-in">
+    <div class="cta-inner">
+      <span class="font-mono-label" style="color: var(--color-secondary);">PLANIFICACIÓN DE CAMPAÑA</span>
+      <h2>Optimice el potencial de su campo hoy.</h2>
+      <p>
+        Póngase en contacto con Maximiliano Conti y su equipo técnico. Ofrecemos cotizaciones a medida de sus hectáreas y facilidades comerciales adaptadas al ciclo productivo.
+      </p>
+      
+      <!-- Horizontal Asymmetric Form -->
+      <form style="display: flex; flex-wrap: wrap; gap: var(--space-sm); width: 100%; justify-content: center; margin-top: var(--space-md);" onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito! Nos comunicaremos a la brevedad.');">
+        <input type="text" placeholder="Su Nombre / Establecimiento" style="height: 48px; min-width: 250px; background-color: var(--color-hcp-dark-surf); border: 1px solid var(--color-border-dark); border-radius: var(--radius-md); padding: 0 var(--space-sm); color: #ffffff;" required>
+        <input type="text" placeholder="Celular o Email" style="height: 48px; min-width: 250px; background-color: var(--color-hcp-dark-surf); border: 1px solid var(--color-border-dark); border-radius: var(--radius-md); padding: 0 var(--space-sm); color: #ffffff;" required>
+        <button type="submit" class="btn-hcp btn-hcp-primary" style="height: 48px;">COTIZAR INSUMOS</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FLOATING WHATSAPP FAB (Dynamic Pulse)
+       ========================================================================== -->
+  <a href="https://wa.me/5493388450123" class="fab-whatsapp" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97-1.861-1.868-4.339-2.897-6.974-2.898-5.437 0-9.862 4.373-9.866 9.8.001 1.716.463 3.39 1.337 4.887l-.99 3.614 3.704-.977zm9.953-6.838c.287.143.43.214.473.301.042.088.042.508-.128.986-.171.478-.838.939-1.15 1.002-.313.063-.72.083-1.815-.353-1.285-.513-2.115-1.818-2.179-1.905-.064-.088-.515-.68-.515-1.297 0-.617.32-.919.435-1.036.114-.117.25-.176.335-.176.085 0 .17.001.245.006.079.004.184-.03.287.22.103.25.352.857.382.919.03.063.03.136-.012.22-.042.085-.063.136-.128.214-.064.078-.133.176-.191.235-.064.067-.13.14-.056.267.074.127.329.54.706.874.485.43 0.893.563 1.01.62.117.057.185.048.254-.03.07-.078.298-.346.377-.464.079-.118.159-.098.266-.057z"/>
+    </svg>
+  </a>
+
+  <!-- ADS:CONTENT:END -->
+
+  <!-- ==========================================================================
+       CORPORATE FOOTER (Sitemap & Registered Info)
+       ========================================================================== -->
+  <footer class="corporate-footer">
+    <!-- ADS:FOOTER:START -->
+    <div class="footer-top">
+      <div class="footer-desc-block">
+        <h3>Conti Insumos</h3>
+        <p>Distribución profesional de insumos agropecuarios y dirección técnica autorizada en Coronel Charlone, Provincia de Buenos Aires.</p>
+        <p style="font-size: 0.8rem; color: var(--color-text-muted-dark);">Ubicación: Dr. Garay N° 869</p>
+      </div>
+      
+      <div class="footer-links-column">
+        <h4>LÍNEAS</h4>
+        <ul>
+          <li><a href="#soluciones">Fitosanitarios</a></li>
+          <li><a href="#soluciones">Semillas Fiscalizadas</a></li>
+          <li><a href="#soluciones">Nutrición Foliar</a></li>
+          <li><a href="#soluciones">Silobolsas Tricapa</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-column">
+        <h4>SERVICIOS</h4>
+        <ul>
+          <li><a href="#trayectoria">Recomendación a Campo</a></li>
+          <li><a href="#trayectoria">Logística y Despacho</a></li>
+          <li><a href="#trayectoria">Habilitación Fitosanitaria</a></li>
+          <li><a href="#trayectoria">Prescripciones Agrícolas</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-column">
+        <h4>CONTACTO</h4>
+        <ul>
+          <li><a href="#contacto">Solicitar Cotización</a></li>
+          <li><a href="https://instagram.com/conti.insumos" target="_blank" rel="noopener">Instagram Oficial</a></li>
+          <li><a href="https://wa.me/5493388450123" target="_blank" rel="noopener">WhatsApp Comercial</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Conti Insumos. Todos los derechos reservados. Depósito Oficial. Dr. Garay N° 869, Coronel Charlone, Gral. Villegas.</p>
+      <p>Desarrollado por ADS Labs</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT & CORE SCRIPTS
+       ========================================================================== -->
+  <!-- ADS:SCRIPTS -->
+  <script>
+    // Scroll Effect on Navigation Bar
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.main-nav');
+      if (nav) {
+        if (window.scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+    });
+
+    // Mobile Navigation Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navMenu.style.display === 'flex';
+        navMenu.style.display = isOpen ? 'none' : 'flex';
+        navMenu.style.flexDirection = 'column';
+        navMenu.style.position = 'absolute';
+        navMenu.style.top = '64px';
+        navMenu.style.left = '0';
+        navMenu.style.width = '100%';
+        navMenu.style.backgroundColor = 'var(--color-hcp-dark-bg)';
+        navMenu.style.padding = 'var(--space-md) var(--space-xl)';
+        navMenu.style.borderBottom = '1px solid var(--color-border-dark)';
+        
+        // Hamburguer animation
+        const spans = menuToggle.querySelectorAll('span');
+        if (isOpen) {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        } else {
+          spans[0].style.transform = 'translateY(6px) rotate(45deg)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+        }
+      });
+    }
+
+    // Intersection Observer for Smooth Fade-In Effects
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const fadeInObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(element => {
+      fadeInObserver.observe(element);
+    });
+
+    console.log("Conti Insumos HashiCorp Staggered Layout Loaded Successfully");
+  </script>
+</body>
+</html>

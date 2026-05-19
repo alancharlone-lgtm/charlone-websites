@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helados Charlone — Estilo de Vida y Delicia Artesanal</title>
+  
+  <!-- Preconnect and Google Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <style>
+    /* ----------------------------------------------------
+       DESIGN SYSTEM: Airbnb-inspired custom tokens
+       ---------------------------------------------------- */
+    :root {
+      /* Palette */
+      --primary: #795900;             /* Brand Primary (Dulce de Leche / Amber Gold) */
+      --primary-pressed: #5c4300;     /* Saturation variant for hover/press states */
+      --accent: #ff385c;              /* Airbnb Rausch Coral (used for CTA dots/accents) */
+      --accent-dark: #e00b41;
+      
+      /* Canvas & Subsurface */
+      --canvas: #ffffff;
+      --soft-cloud: #f7f7f7;          /* Soft grey for backgrounds & sections */
+      
+      /* Borders & Dividers */
+      --hairline: #dddddd;            /* Ubiquitous Airbnb 1px divider */
+      
+      /* Neutrals & Text */
+      --ink-black: #222222;           /* Primary text - carrying ~90% density */
+      --charcoal: #3f3f3f;
+      --ash-gray: #6a6a6a;            /* Subtitle / secondary metadata labels */
+      --stone-gray: #c1c1c1;
+      --white: #ffffff;
+      
+      /* Typography */
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      
+      /* Border Radius */
+      --radius-sm: 8px;
+      --radius-md: 14px;              /* Airbnb signature image/grid radius */
+      --radius-lg: 20px;              /* Sticky booking card and pill button radius */
+      --radius-pill: 32px;
+      --radius-circle: 50%;
+      
+      /* Elevation */
+      --shadow-elevation-1: rgba(0, 0, 0, 0.08) 0 4px 12px;
+      --shadow-elevation-2: rgba(0, 0, 0, 0.02) 0 0 0 1px, rgba(0, 0, 0, 0.04) 0 2px 6px 0, rgba(0, 0, 0, 0.1) 0 4px 8px 0;
+      
+      /* Transitions */
+      --transition-base: 0.3s cubic-bezier(0.2, 0, 0, 1);
+      --transition-slow: 0.6s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 62.5%;
+    }
+
+    body {
+      background-color: var(--canvas);
+      color: var(--ink-black);
+      font-family: var(--font-family);
+      font-size: 1.6rem;
+      font-weight: 500; /* Airbnb utilizes 500 as body weight */
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Typography Hierarchy */
+    h1 {
+      font-size: clamp(3.2rem, 6vw, 5.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink-black);
+    }
+
+    h2 {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--ink-black);
+    }
+
+    h3 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--ink-black);
+    }
+
+    p {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2.4rem;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ----------------------------------------------------
+       COMPONENTS: Buttons & Inputs
+       ---------------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-family);
+      font-size: 1.6rem;
+      font-weight: 600;
+      padding: 1.4rem 2.4rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
+
+    .btn-rausch {
+      background-color: var(--accent);
+      color: var(--white);
+    }
+
+    .btn-rausch:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-rausch:active {
+      transform: scale(0.95);
+    }
+
+    .btn-brand {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-brand:hover {
+      background-color: var(--primary-pressed);
+      transform: translateY(-1px);
+    }
+
+    .btn-brand:active {
+      transform: scale(0.95);
+    }
+
+    .btn-secondary {
+      background-color: var(--white);
+      color: var(--ink-black);
+      border: 1px solid var(--hairline);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--soft-cloud);
+      border-color: var(--ink-black);
+    }
+
+    .btn-secondary:active {
+      transform: scale(0.95);
+    }
+
+    /* Circle Button */
+    .btn-circle {
+      width: 4rem;
+      height: 4rem;
+      border-radius: var(--radius-circle);
+      background-color: var(--white);
+      border: 1px solid var(--hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+
+    .btn-circle:hover {
+      box-shadow: var(--shadow-elevation-1);
+      border-color: var(--ink-black);
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Navigation (Top Heavy + Micro bar)
+       ---------------------------------------------------- */
+    .nav-top-heavy {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--white);
+      border-bottom: 1px solid var(--hairline);
+      z-index: 100;
+    }
+
+    .micro-bar {
+      background-color: var(--soft-cloud);
+      border-bottom: 1px solid var(--hairline);
+      padding: 0.8rem 0;
+      font-size: 1.2rem;
+      color: var(--ash-gray);
+    }
+
+    .micro-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .micro-bar-links {
+      display: flex;
+      gap: 2.4rem;
+    }
+
+    .main-nav {
+      height: 8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    /* Tri-tab category picker */
+    .category-picker {
+      display: flex;
+      gap: 3.2rem;
+    }
+
+    .category-tab {
+      background: none;
+      border: none;
+      padding: 2.4rem 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ash-gray);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: var(--transition-base);
+    }
+
+    .category-tab:hover {
+      color: var(--ink-black);
+    }
+
+    .category-tab.active {
+      color: var(--ink-black);
+      border-bottom-color: var(--ink-black);
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Hero Asymmetric (Section 1)
+       ---------------------------------------------------- */
+    .hero-asymmetric {
+      padding-top: 15rem; /* navbar compensation */
+      padding-bottom: 10rem;
+      background-color: var(--soft-cloud);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 6.4rem;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3.2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background-color: var(--white);
+      border: 1px solid var(--hairline);
+      padding: 0.6rem 1.6rem;
+      border-radius: var(--radius-pill);
+      align-self: flex-start;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ink-black);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .hero-badge span {
+      color: var(--accent);
+      font-size: 1.6rem;
+    }
+
+    .hero-text p {
+      font-size: 1.8rem;
+      color: var(--ash-gray);
+    }
+
+    .hero-image-container {
+      position: relative;
+      width: 100%;
+      height: 48rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .hero-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Trust Badge floating */
+    .floating-trust-badge {
+      position: absolute;
+      bottom: 3.2rem;
+      left: 3.2rem;
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.6rem 2.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      box-shadow: var(--shadow-elevation-2);
+      border: 1px solid var(--hairline);
+    }
+
+    .trust-icon-wrap {
+      width: 4.8rem;
+      height: 4.8rem;
+      background-color: var(--soft-cloud);
+      border-radius: var(--radius-circle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .trust-text-wrap h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink-black);
+    }
+
+    .trust-text-wrap p {
+      font-size: 1.2rem;
+      color: var(--ash-gray);
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Data Bar (Section 2)
+       ---------------------------------------------------- */
+    .data-bar {
+      background-color: var(--primary-pressed);
+      color: var(--white);
+      padding: 6.4rem 0;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+      gap: 3.2rem;
+    }
+
+    .data-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .data-num {
+      font-size: clamp(4rem, 6vw, 6.4rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--white);
+    }
+
+    .data-label {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Staggered List (Section 3)
+       ---------------------------------------------------- */
+    .staggered-list {
+      padding: 12rem 0;
+    }
+
+    .staggered-header {
+      text-align: center;
+      margin-bottom: 8rem;
+    }
+
+    .staggered-header h2 {
+      margin-bottom: 1.6rem;
+    }
+
+    .staggered-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 9.6rem;
+      padding: 6.4rem 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .staggered-row:last-child {
+      border-bottom: none;
+    }
+
+    .staggered-image-wrap {
+      width: 100%;
+      height: 42rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .staggered-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .staggered-image-wrap:hover img {
+      transform: scale(1.03);
+    }
+
+    .staggered-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+
+    .staggered-content .row-tag {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Staggering logic */
+    .row-reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .row-reverse .staggered-image-wrap {
+      grid-column: 1;
+    }
+    
+    .row-reverse .staggered-content {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    /* Guest Favorite Lockup (Airbnb key moment) */
+    .guest-favorite-lockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.8rem;
+      padding: 3.2rem;
+      background-color: var(--soft-cloud);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--hairline);
+      max-width: 40rem;
+      margin: 3.2rem auto 0;
+    }
+
+    .favorite-badge-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.6rem;
+    }
+
+    .laurel-svg {
+      width: 4.8rem;
+      height: 4.8rem;
+      fill: var(--ink-black);
+    }
+
+    .rating-num {
+      font-size: 4.8rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--ink-black);
+    }
+
+    .favorite-label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Massive CTA (Section 4)
+       ---------------------------------------------------- */
+    .massive-cta {
+      padding: 10rem 0;
+      background-color: var(--soft-cloud);
+      border-top: 1px solid var(--hairline);
+    }
+
+    .cta-card {
+      background-color: var(--white);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-elevation-2);
+      padding: 6.4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 6.4rem;
+      align-items: center;
+    }
+
+    .cta-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+
+    .cta-booking-panel {
+      background-color: var(--white);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-elevation-1);
+      padding: 3.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+
+    .panel-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .panel-price {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--ink-black);
+    }
+
+    .panel-price span {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--ash-gray);
+    }
+
+    .panel-input-box {
+      border: 1px solid var(--stone-gray);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .panel-input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--stone-gray);
+    }
+
+    .panel-input-row:last-child {
+      border-bottom: none;
+    }
+
+    .panel-input-cell {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .panel-input-cell:first-child {
+      border-right: 1px solid var(--stone-gray);
+    }
+
+    .panel-input-cell label {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--ink-black);
+    }
+
+    .panel-input-cell select, .panel-input-cell input {
+      border: none;
+      background: none;
+      font-family: var(--font-family);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .panel-footnote {
+      font-size: 1.2rem;
+      color: var(--ash-gray);
+      text-align: center;
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Corporate Footer
+       ---------------------------------------------------- */
+    .corporate-footer {
+      background-color: var(--white);
+      border-top: 1px solid var(--hairline);
+      padding: 8rem 0 4rem;
+      font-family: var(--font-family);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4.8rem;
+      margin-bottom: 6.4rem;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink-black);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .footer-col ul a {
+      font-size: 1.4rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
+
+    .footer-col ul a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--hairline);
+      padding-top: 3.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2.4rem;
+      font-size: 1.4rem;
+      color: var(--ash-gray);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 2.4rem;
+    }
+
+    .footer-bottom-links a {
+      color: var(--ash-gray);
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--ink-black);
+      text-decoration: underline;
+    }
+
+    /* Floating Action Button (FAB) */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 4rem;
+      right: 4rem;
+      width: 6rem;
+      height: 6rem;
+      background-color: #25D366;
+      color: var(--white);
+      border-radius: var(--radius-circle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: var(--shadow-elevation-1);
+      z-index: 99;
+      transition: var(--transition-base);
+      animation: fab-pulse 2s infinite;
+    }
+
+    .whatsapp-fab .material-symbols-outlined {
+      font-size: 3.2rem;
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes fab-pulse {
+      0% { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); }
+      50% { box-shadow: 0 10px 35px rgba(37, 211, 102, 0.6); }
+      100% { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); }
+    }
+
+    /* ----------------------------------------------------
+       RESPONSIVE DESIGN (Media Queries)
+       ---------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 4.8rem;
+      }
+
+      .hero-image-container {
+        height: 40rem;
+      }
+
+      .staggered-row {
+        gap: 4.8rem;
+      }
+
+      .cta-card {
+        grid-template-columns: 1fr;
+        padding: 4rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .category-picker {
+        display: none; /* simple navigation flow on mobile */
+      }
+
+      .staggered-row, .row-reverse {
+        grid-template-columns: 1fr;
+        gap: 3.2rem;
+      }
+
+      .staggered-image-wrap {
+        height: 30rem;
+      }
+
+      .row-reverse .staggered-image-wrap {
+        grid-column: 1;
+      }
+
+      .row-reverse .staggered-content {
+        grid-column: 1;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3.2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation (Top Heavy + Micro Bar) -->
+  <header class="nav-top-heavy">
+    <div class="micro-bar">
+      <div class="container">
+        <span>📍 Ministro Lobos 880, Coronel Charlone, Provincia de Buenos Aires</span>
+        <div class="micro-bar-links">
+          <span>Horario: Mar-Dom 12:00 a 24:00 hs</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <nav class="main-nav">
+        <a href="#" class="nav-logo">
+          Helados Charlone<span>.</span>
+        </a>
+        <div class="category-picker">
+          <button class="category-tab active" onclick="filterCategory('todos')">Todos</button>
+          <button class="category-tab" onclick="filterCategory('cremas')">Cremas</button>
+          <button class="category-tab" onclick="filterCategory('chocolates')">Chocolates</button>
+          <button class="category-tab" onclick="filterCategory('frutales')">Frutales</button>
+        </div>
+        <div style="display: flex; gap: 1.6rem; align-items: center;">
+          <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-rausch">Reservar Delivery</a>
+        </div>
+        <!-- ADS:NAV:END -->
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- SECTION 1 — HERO ASYMMETRIC -->
+    <section class="hero-asymmetric">
+      <div class="container hero-grid">
+        <div class="hero-text fade-in">
+          <div class="hero-badge">
+            <span class="material-symbols-outlined">verified</span>
+            Sabor 100% Natural de la Cuenca Lechera
+          </div>
+          <h1>El helado que rinde homenaje a nuestro pueblo.</h1>
+          <p>Elaboramos diariamente con crema de leche fresca proveniente de los mejores tambos de Charlone, logrando una textura insuperable sin aditivos artificiales.</p>
+          <div style="display: flex; gap: 1.6rem;">
+            <a href="#menu" class="btn btn-brand">Mirá los Sabores</a>
+            <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-secondary">Pedir por WhatsApp</a>
+          </div>
+        </div>
+        <div class="hero-image-container fade-in">
+          <img src="img/ai_product.png" alt="Helados premium servidos en copa artesanal de Helados Charlone" loading="lazy">
+          <!-- Floating trust badge -->
+          <div class="floating-trust-badge">
+            <div class="trust-icon-wrap">
+              <span class="material-symbols-outlined">workspace_premium</span>
+            </div>
+            <div class="trust-text-wrap">
+              <h4>Artesanal de Verdad</h4>
+              <p>Crema de leche 100% fresca</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 — DATA BAR -->
+    <section class="data-bar">
+      <div class="container data-grid">
+        <div class="data-item fade-in">
+          <span class="data-num">100%</span>
+          <span class="data-label">Crema de tambo local</span>
+        </div>
+        <div class="data-item fade-in">
+          <span class="data-num">0%</span>
+          <span class="data-label">Conservantes artificiales</span>
+        </div>
+        <div class="data-item fade-in">
+          <span class="data-num">30+</span>
+          <span class="data-label">Recetas tradicionales</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 — STAGGERED LIST -->
+    <section id="menu" class="staggered-list">
+      <div class="container">
+        <div class="staggered-header fade-in">
+          <h2>Nuestras Joyas de la Corona</h2>
+          <p>Un recorrido gastronómico por los gustos preferidos de Charlone, batidos con pasión.</p>
+        </div>
+
+        <!-- Row 1 -->
+        <div class="staggered-row fade-in">
+          <div class="staggered-image-wrap">
+            <img src="img/ai_detail.png" alt="Cremoso helado de dulce de leche artesanal premium" loading="lazy">
+          </div>
+          <div class="staggered-content">
+            <span class="row-tag">Especialidad Local</span>
+            <h3>Dulce de Leche Artesanal</h3>
+            <p>Elaborado a partir de dulce de leche casero y una infusión lenta de crema natural de Charlone. Una textura untuosa y aterciopelada que te transporta a los sabores de la infancia.</p>
+            <div>
+              <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-secondary">Pedir este sabor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 (Reversed) -->
+        <div class="staggered-row row-reverse fade-in">
+          <div class="staggered-image-wrap">
+            <img src="img/ai_hero.png" alt="Deliciosa copa de chocolate fondente amargo premium" loading="lazy">
+          </div>
+          <div class="staggered-content">
+            <span class="row-tag">Clásico Supremo</span>
+            <h3>Chocolate Fondente</h3>
+            <p>Seleccionamos los mejores granos de cacao amargo y los fundimos con crema fresca. Intenso, profundo y con el porcentaje justo de dulzor para destacar los aceites esenciales del chocolate.</p>
+            <div>
+              <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-secondary">Pedir este sabor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="staggered-row fade-in">
+          <div class="staggered-image-wrap">
+            <img src="img/ai_product.png" alt="Sabrosas copas de helado con frutilla natural" loading="lazy">
+          </div>
+          <div class="staggered-content">
+            <span class="row-tag">Frescura Pura</span>
+            <h3>Frutilla a la Crema</h3>
+            <p>Frutillas cosechadas a mano en campos de la provincia, procesadas de inmediato para conservar su sabor frutal fresco, amalgamadas con una sutil base de crema batida.</p>
+            <div>
+              <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-secondary">Pedir este sabor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guest Favorite Badge Lockup -->
+        <div class="guest-favorite-lockup fade-in">
+          <div class="favorite-badge-header">
+            <span class="material-symbols-outlined" style="font-size: 3.2rem; color: var(--primary);">workspace_premium</span>
+            <span class="rating-num">4.9</span>
+            <span class="material-symbols-outlined" style="font-size: 3.2rem; color: var(--primary);">workspace_premium</span>
+          </div>
+          <span class="favorite-label">Favorito de los Vecinos</span>
+          <p style="font-size: 1.4rem;">Calificación promedio del pueblo basada en más de 200 pedidos mensuales por WhatsApp.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4 — MASSIVE CTA -->
+    <section class="massive-cta">
+      <div class="container">
+        <div class="cta-card fade-in">
+          <div class="cta-text">
+            <h2>Llevamos la felicidad directamente a tu mesa.</h2>
+            <p>Hacé tu pedido personalizado ahora. Podés combinar hasta 4 gustos por kilo. Nuestro equipo despacha cada kilo en contenedores térmicos reforzados de alta densidad para asegurar el frío.</p>
+            <div style="display: flex; gap: 1.6rem; flex-wrap: wrap;">
+              <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-rausch">Iniciar WhatsApp</a>
+              <a href="#menu" class="btn btn-secondary">Explorar la carta completa</a>
+            </div>
+          </div>
+          
+          <!-- Sticky booking panel lookalike -->
+          <div class="cta-booking-panel">
+            <div class="panel-price-row">
+              <span class="panel-price">$ Artesanal <span>/ kilo</span></span>
+              <span style="font-size: 1.3rem; font-weight: 600; color: var(--accent);"><span class="material-symbols-outlined" style="font-size: 1.4rem; vertical-align: middle;">star</span> 4.9 (200+ opiniones)</span>
+            </div>
+            
+            <div class="panel-input-box">
+              <div class="panel-input-row">
+                <div class="panel-input-cell">
+                  <label>Tamaño</label>
+                  <select>
+                    <option>1 Kilo (Hasta 4 gustos)</option>
+                    <option>1/2 Kilo (Hasta 3 gustos)</option>
+                    <option>1/4 Kilo (Hasta 2 gustos)</option>
+                  </select>
+                </div>
+                <div class="panel-input-cell">
+                  <label>Entrega</label>
+                  <input type="text" value="Inmediata" readonly>
+                </div>
+              </div>
+              <div class="panel-input-cell">
+                <label>Gusto Principal</label>
+                <select>
+                  <option>Dulce de Leche Artesanal</option>
+                  <option>Chocolate Fondente</option>
+                  <option>Frutilla a la Crema</option>
+                  <option>Sambayón al Oporto</option>
+                  <option>Tramontana</option>
+                </select>
+              </div>
+            </div>
+            
+            <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-rausch" style="width: 100%;">Pedir Reserva</a>
+            <span class="panel-footnote">No se cobrará nada hasta coordinar la entrega</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- ADS:CONTENT:END -->
+  </main>
+
+  <!-- Corporate Footer -->
+  <footer class="corporate-footer">
+    <!-- ADS:FOOTER:START -->
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Helados Charlone</h4>
+          <p style="font-size: 1.4rem; color: var(--ash-gray);">El verdadero helado artesanal, elaborado con crema fresca directa de Coronel Charlone, Buenos Aires.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#menu">Nuestros Sabores</a></li>
+            <li><a href="https://wa.me/5491112345678" target="_blank">Reservar</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Garantía de Calidad</h4>
+          <ul>
+            <li><a href="#">100% Leche de Tambo</a></li>
+            <li><a href="#">Sin conservantes</a></li>
+            <li><a href="#">Recetas locales</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p style="font-size: 1.4rem; color: var(--ash-gray);">Ministro Lobos 880<br>B6223 Charlone, Buenos Aires</p>
+          <p style="font-size: 1.4rem; color: var(--ash-gray);">Instagram: @heladoscharlone</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <span>© 2026 Helados Charlone. Todos los derechos reservados.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="https://wa.me/5491112345678" target="_blank">Desarrollado por ADS Labs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button (FAB) -->
+  <a href="https://wa.me/5491112345678" target="_blank" class="whatsapp-fab" aria-label="Pedir por WhatsApp">
+    <span class="material-symbols-outlined">chat</span>
+  </a>
+
+  <!-- Script setup -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Intersection Observer
+      const fadeElements = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeElements.forEach(el => observer.observe(el));
+
+      // 2. Nav scroll shadow
+      const header = document.querySelector(".nav-top-heavy");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 40) {
+          header.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+        } else {
+          header.style.boxShadow = "none";
+        }
+      });
+    });
+
+    // Dummy category filter
+    function filterCategory(category) {
+      const tabs = document.querySelectorAll(".category-tab");
+      tabs.forEach(tab => tab.classList.remove("active"));
+      event.target.classList.add("active");
+      console.log("Filtrando sabroes de categoría:", category);
+    }
+  </script>
+  <!-- ADS:SCRIPTS -->
+</body>
+</html>

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helados Charlone — Grilla Bento y Sabores de Culto</title>
+  
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <style>
+    /* ----------------------------------------------------
+       DESIGN SYSTEM: Warm Editorial + Bento Grid Tech
+       ---------------------------------------------------- */
+    :root {
+      /* Palette */
+      --primary: #795900;             /* Brand Primary (Golden Dulce de Leche) */
+      --accent-terracotta: #c0512f;   /* Warm Editorial Terracotta accent */
+      --accent-forest: #2f5b4f;       /* Forest green secondary accent */
+      --background-paper: #faf7f2;    /* Warm off-white book paper canvas */
+      --text-foreground: #1c1a17;     /* Warm near-black */
+      --text-muted: #8a817a;          /* Timestamps & low-importance metadata */
+      --surface-white: #ffffff;
+      
+      /* Typography */
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-serif: 'Lora', Georgia, serif;
+      
+      /* Radius & Gap */
+      --radius-btn: 12px;
+      --radius-bento: 24px;           /* Large, premium bento grid corners */
+      --radius-badge: 50px;
+      --bento-gap: 2.4rem;
+      
+      /* Shadows */
+      --shadow-bento: rgba(28, 26, 23, 0.04) 0 4px 20px 0;
+      --shadow-hover: rgba(28, 26, 23, 0.08) 0 12px 30px 0, rgba(28, 26, 23, 0.03) 0 4px 10px 0;
+      
+      /* Transitions */
+      --transition-base: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-spring: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 62.5%;
+    }
+
+    body {
+      background-color: var(--background-paper);
+      color: var(--text-foreground);
+      font-family: var(--font-sans);
+      font-size: 1.6rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Typography Hierarchy */
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(3.6rem, 7vw, 6.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text-foreground);
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-foreground);
+    }
+
+    h3 {
+      font-family: var(--font-sans);
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text-foreground);
+    }
+
+    p {
+      font-size: 1.6rem;
+      color: var(--text-foreground);
+      opacity: 0.8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2.4rem;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity var(--transition-base), transform var(--transition-base);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ----------------------------------------------------
+       COMPONENTS: Buttons & Badges
+       ---------------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 1.4rem 2.8rem;
+      border-radius: var(--radius-btn);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition-base);
+      gap: 0.8rem;
+    }
+
+    .btn-terracotta {
+      background-color: var(--accent-terracotta);
+      color: var(--background-paper);
+    }
+
+    .btn-terracotta:hover {
+      background-color: #a84122;
+      transform: translateY(-2px);
+    }
+
+    .btn-terracotta:active {
+      transform: scale(0.95);
+    }
+
+    .btn-outline-foreground {
+      background-color: transparent;
+      color: var(--text-foreground);
+      border-color: var(--text-foreground);
+    }
+
+    .btn-outline-foreground:hover {
+      background-color: rgba(28, 26, 23, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-foreground:active {
+      transform: scale(0.95);
+    }
+
+    .badge-forest {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: rgba(47, 91, 79, 0.08);
+      color: var(--accent-forest);
+      padding: 0.4rem 1.6rem;
+      border-radius: var(--radius-badge);
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Navigation (Floating Pill with glassmorphism)
+       ---------------------------------------------------- */
+    .floating-pill {
+      position: fixed;
+      top: 2.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 4.8rem);
+      max-width: 1100px;
+      height: 7.2rem;
+      background-color: rgba(250, 247, 242, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(28, 26, 23, 0.08);
+      border-radius: 40px;
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(28, 26, 23, 0.04);
+      transition: var(--transition-base);
+    }
+
+    .floating-pill .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 0 3.2rem;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-foreground);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent-terracotta);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-foreground);
+      opacity: 0.7;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 600;
+      transition: var(--transition-base);
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--accent-terracotta);
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Hero Dynamic (Section 1)
+       ---------------------------------------------------- */
+    .hero-dynamic {
+      padding-top: 18rem;
+      padding-bottom: 8rem;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(circle at 80% 20%, rgba(192, 81, 47, 0.03) 0%, transparent 60%);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 6.4rem;
+    }
+
+    .hero-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3.2rem;
+      align-items: flex-start;
+    }
+
+    .hero-info h1 {
+      max-width: 60rem;
+    }
+
+    .hero-info p {
+      font-size: 1.8rem;
+      max-width: 50rem;
+      opacity: 0.75;
+    }
+
+    .hero-graphic {
+      position: relative;
+      height: 48rem;
+      width: 100%;
+      border-radius: var(--radius-bento);
+      overflow: hidden;
+      box-shadow: var(--shadow-bento);
+    }
+
+    .hero-graphic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Marquee Scroll (Section 2)
+       ---------------------------------------------------- */
+    .marquee-scroll {
+      background-color: var(--text-foreground);
+      color: var(--background-paper);
+      padding: 3.2rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 20s linear infinite;
+      gap: 6.4rem;
+    }
+
+    .marquee-item {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .marquee-item span {
+      color: var(--accent-terracotta);
+    }
+
+    @keyframes marquee {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Bento Grid (Section 3)
+       ---------------------------------------------------- */
+    .bento-section {
+      padding: 12rem 0;
+    }
+
+    .bento-header {
+      text-align: center;
+      margin-bottom: 8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 24rem;
+      gap: var(--bento-gap);
+    }
+
+    /* Bento Cards general */
+    .bento-card {
+      background-color: var(--surface-white);
+      border-radius: var(--radius-bento);
+      border: 1px solid rgba(28, 26, 23, 0.06);
+      box-shadow: var(--shadow-bento);
+      padding: 3.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+      transition: transform var(--transition-spring), box-shadow var(--transition-base);
+    }
+
+    .bento-card:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Bento Spanning classes */
+    .col-span-2 { grid-column: span 2; }
+    .col-span-3 { grid-column: span 3; }
+    .row-span-2 { grid-row: span 2; }
+
+    /* Bento inner variations */
+    .bento-card-image {
+      padding: 0;
+    }
+
+    .bento-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-accent {
+      background-color: var(--accent-forest);
+      color: var(--background-paper);
+      border: none;
+    }
+
+    .card-accent p, .card-accent h3 {
+      color: var(--background-paper);
+    }
+
+    .card-accent .material-symbols-outlined {
+      color: var(--background-paper);
+    }
+
+    .bento-content-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .bento-card .card-icon {
+      font-size: 3.6rem;
+      color: var(--accent-terracotta);
+      margin-bottom: 0.8rem;
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Bento Gallery (Section 4)
+       ---------------------------------------------------- */
+    .bento-gallery {
+      padding: 12rem 0;
+      background-color: rgba(28, 26, 23, 0.02);
+      border-top: 1px solid rgba(28, 26, 23, 0.05);
+      border-bottom: 1px solid rgba(28, 26, 23, 0.05);
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 8rem;
+    }
+
+    .gallery-bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 30rem;
+      gap: var(--bento-gap);
+    }
+
+    .gallery-bento-card {
+      border-radius: var(--radius-bento);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-bento);
+      transition: transform var(--transition-spring), box-shadow var(--transition-base);
+    }
+
+    .gallery-bento-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-bento-card:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT: Bento Footer (Dashboard style)
+       ---------------------------------------------------- */
+    .bento-footer {
+      background-color: var(--text-foreground);
+      color: var(--background-paper);
+      padding: 10rem 0 6rem;
+      font-family: var(--font-sans);
+    }
+
+    .footer-dashboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--bento-gap);
+      margin-bottom: 8rem;
+    }
+
+    .footer-block {
+      background-color: rgba(250, 247, 242, 0.03);
+      border: 1px solid rgba(250, 247, 242, 0.05);
+      border-radius: var(--radius-bento);
+      padding: 3.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 24rem;
+    }
+
+    .footer-block-large {
+      grid-column: span 2;
+    }
+
+    .footer-block h4 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--background-paper);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.6rem;
+    }
+
+    .footer-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .footer-block ul a {
+      color: var(--background-paper);
+      opacity: 0.7;
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
+
+    .footer-block ul a:hover {
+      opacity: 1;
+      color: var(--accent-terracotta);
+    }
+
+    .footer-bottom-dashboard {
+      border-top: 1px solid rgba(250, 247, 242, 0.08);
+      padding-top: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2.4rem;
+      font-size: 1.4rem;
+      color: var(--background-paper);
+      opacity: 0.6;
+    }
+
+    .footer-bottom-dashboard a {
+      color: var(--background-paper);
+      text-decoration: underline;
+    }
+
+    /* Floating Action Button (FAB) */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 4rem;
+      right: 4rem;
+      width: 6rem;
+      height: 6rem;
+      background-color: #25D366;
+      color: var(--background-paper);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: var(--shadow-bento);
+      z-index: 99;
+      transition: var(--transition-base);
+      animation: fab-pulse 2s infinite;
+    }
+
+    .whatsapp-fab .material-symbols-outlined {
+      font-size: 3.2rem;
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes fab-pulse {
+      0% { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); }
+      50% { box-shadow: 0 10px 35px rgba(37, 211, 102, 0.6); }
+      100% { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); }
+    }
+
+    /* Hamburger for Mobile Nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-foreground);
+    }
+
+    /* ----------------------------------------------------
+       RESPONSIVE DESIGN (Media Queries)
+       ---------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 4.8rem;
+      }
+
+      .hero-graphic {
+        height: 38rem;
+      }
+
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 22rem;
+      }
+
+      .col-span-2, .col-span-3 {
+        grid-column: span 2;
+      }
+
+      .footer-dashboard {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-block-large {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .floating-pill {
+        top: 1.6rem;
+        width: calc(100% - 3.2rem);
+        height: 6.4rem;
+      }
+
+      .floating-pill .nav-container {
+        padding: 0 2rem;
+      }
+
+      .nav-links {
+        display: none; /* simple responsive navigation block */
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .hero-dynamic {
+        padding-top: 14rem;
+      }
+
+      .bento-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+      }
+
+      .bento-card {
+        min-height: 20rem;
+      }
+
+      .row-span-2 {
+        min-height: 32rem;
+      }
+
+      .gallery-bento {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+      }
+
+      .gallery-bento-card {
+        height: 26rem;
+      }
+
+      .footer-dashboard {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+      }
+
+      .footer-block {
+        min-height: 18rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Pill Navbar -->
+  <nav class="floating-pill">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        Charlone<span>.</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#sabores">Sabores</a></li>
+        <li><a href="#local">El Local</a></li>
+        <li><a href="#pedido">WhatsApp</a></li>
+      </ul>
+      <div style="display: flex; align-items: center; gap: 1.2rem;">
+        <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-terracotta" style="padding: 1rem 2rem; font-size: 1.4rem;">Pedir</a>
+      </div>
+      <!-- ADS:NAV:END -->
+    </div>
+  </nav>
+
+  <main>
+    <!-- SECTION 1 — HERO DYNAMIC -->
+    <section class="hero-dynamic">
+      <div class="container hero-layout">
+        <div class="hero-info fade-in">
+          <span class="badge-forest">
+            <span class="material-symbols-outlined" style="font-size: 1.6rem;">local_shipping</span>
+            Envío sin cargo en Charlone
+          </span>
+          <h1>Helados con Alma y Crema Real.</h1>
+          <p>Un sabor honesto y batido diariamente a base de crema fresca local. Sin saborizantes artificiales, directo a tu mesa.</p>
+          <div style="display: flex; gap: 1.6rem; flex-wrap: wrap;">
+            <a href="#sabores" class="btn btn-terracotta">Nuestros Sabores</a>
+            <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-outline-foreground">WhatsApp Delivery</a>
+          </div>
+        </div>
+        <div class="hero-graphic fade-in">
+          <img src="img/ai_hero.png" alt="Deliciosa copa premium con bochas de chocolate y dulce de leche de Helados Charlone" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 — MARQUEE SCROLL -->
+    <section class="marquee-scroll">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          Dulce de Leche Artesanal <span>★</span>
+        </div>
+        <div class="marquee-item">
+          Chocolate Fondente <span>★</span>
+        </div>
+        <div class="marquee-item">
+          Frutilla a la Crema <span>★</span>
+        </div>
+        <div class="marquee-item">
+          Sambayón al Oporto <span>★</span>
+        </div>
+        <div class="marquee-item">
+          Tramontana de Culto <span>★</span>
+        </div>
+        <!-- Duplicate for loop -->
+        <div class="marquee-item">
+          Dulce de Leche Artesanal <span>★</span>
+        </div>
+        <div class="marquee-item">
+          Chocolate Fondente <span>★</span>
+        </div>
+        <div class="marquee-item">
+          Frutilla a la Crema <span>★</span>
+        </div>
+        <div class="marquee-item">
+          Sambayón al Oporto <span>★</span>
+        </div>
+        <div class="marquee-item">
+          Tramontana de Culto <span>★</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 — BENTO GRID -->
+    <section id="sabores" class="bento-section">
+      <div class="container">
+        <div class="bento-header fade-in">
+          <span class="badge-forest">Bento Tech Layout</span>
+          <h2>Una Experiencia para Armar</h2>
+          <p>Elegí tus favoritos y disfrutá de un helado 100% natural.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Card 1: Main product portrait -->
+          <div class="bento-card col-span-2 row-span-2 bento-card-image fade-in">
+            <img src="img/ai_detail.png" alt="Detalle cremoso de dulce de leche artesanal batido" loading="lazy">
+          </div>
+
+          <!-- Card 2: Highlighted Flavor -->
+          <div class="bento-card fade-in">
+            <div class="bento-content-wrap">
+              <span class="material-symbols-outlined card-icon">icecream</span>
+              <h3>Dulce de Leche</h3>
+              <p style="font-size: 1.4rem;">El clásico de culto batido a mano.</p>
+            </div>
+            <a href="https://wa.me/5491112345678" target="_blank" style="color: var(--accent-terracotta); font-weight: 700; text-decoration: none; font-size: 1.4rem;">Pedir →</a>
+          </div>
+
+          <!-- Card 3: Quality Stat -->
+          <div class="bento-card card-accent fade-in">
+            <div class="bento-content-wrap">
+              <span class="material-symbols-outlined card-icon">verified_user</span>
+              <h3>100% Real</h3>
+              <p style="font-size: 1.4rem; opacity: 0.8;">Crema de tambos locales sin conservantes.</p>
+            </div>
+            <span style="font-size: 1.2rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em;">Compromiso</span>
+          </div>
+
+          <!-- Card 4: Another Highlighted Flavor -->
+          <div class="bento-card fade-in">
+            <div class="bento-content-wrap">
+              <span class="material-symbols-outlined card-icon">nutrition</span>
+              <h3>Chocolate</h3>
+              <p style="font-size: 1.4rem;">Intenso cacao fundido a temperatura ideal.</p>
+            </div>
+            <a href="https://wa.me/5491112345678" target="_blank" style="color: var(--accent-terracotta); font-weight: 700; text-decoration: none; font-size: 1.4rem;">Pedir →</a>
+          </div>
+
+          <!-- Card 5: Deliver Area -->
+          <div class="bento-card fade-in">
+            <div class="bento-content-wrap">
+              <span class="material-symbols-outlined card-icon">distance</span>
+              <h3>Charlone</h3>
+              <p style="font-size: 1.4rem;">Reparto en todo el pueblo con empaque reforzado.</p>
+            </div>
+            <span style="font-size: 1.3rem; font-weight: 600; color: var(--accent-forest);">Mar-Dom 12-24hs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 — BENTO GALLERY -->
+    <section id="local" class="bento-gallery">
+      <div class="container">
+        <div class="gallery-header fade-in">
+          <h2>Galería de Sabores</h2>
+        </div>
+        <div class="gallery-bento">
+          <div class="gallery-bento-card fade-in">
+            <img src="img/ai_product.png" alt="Copa premium servida" loading="lazy">
+          </div>
+          <div class="gallery-bento-card fade-in">
+            <img src="img/ai_detail.png" alt="Macro de textura de helado" loading="lazy">
+          </div>
+          <div class="gallery-bento-card fade-in">
+            <img src="img/ai_hero.png" alt="Presentación de bochas premium" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ADS:CONTENT:END -->
+  </main>
+
+  <!-- Bento Footer (Dashboard Style) -->
+  <footer id="pedido" class="bento-footer">
+    <!-- ADS:FOOTER:START -->
+    <div class="container">
+      <div class="footer-dashboard">
+        <div class="footer-block footer-block-large">
+          <div>
+            <h4>Helados Charlone</h4>
+            <h2 style="color: var(--background-paper); margin-bottom: 2rem;">¿Querés hacer tu pedido ahora?</h2>
+            <p style="color: var(--background-paper); opacity: 0.7; font-size: 1.5rem; max-width: 45rem;">Escribinos directamente al WhatsApp. Coordinamos de inmediato y lo tenés en tu mesa en minutos.</p>
+          </div>
+          <div style="margin-top: 3.2rem;">
+            <a href="https://wa.me/5491112345678" target="_blank" class="btn btn-terracotta">Hacer Pedido Directo</a>
+          </div>
+        </div>
+        
+        <div class="footer-block">
+          <div>
+            <h4>Ubicación</h4>
+            <p style="color: var(--background-paper); opacity: 0.8; font-size: 1.5rem;">Ministro Lobos 880<br>B6223 Charlone, Buenos Aires</p>
+          </div>
+          <span style="font-size: 1.3rem; opacity: 0.5;">Ver mapa</span>
+        </div>
+
+        <div class="footer-block">
+          <div>
+            <h4>Horarios</h4>
+            <p style="color: var(--background-paper); opacity: 0.8; font-size: 1.5rem;">Martes a Domingo<br>12:00 a 24:00 hs</p>
+          </div>
+          <span style="font-size: 1.3rem; opacity: 0.5;">Lunes cerrado</span>
+        </div>
+      </div>
+      
+      <div class="footer-bottom-dashboard">
+        <span>© 2026 Helados Charlone. Todos los derechos reservados.</span>
+        <div>
+          <span>Desarrollado por <a href="https://wa.me/5491112345678" target="_blank" style="color: var(--background-paper);">ADS Labs</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button (FAB) -->
+  <a href="https://wa.me/5491112345678" target="_blank" class="whatsapp-fab" aria-label="Pedir por WhatsApp">
+    <span class="material-symbols-outlined">chat</span>
+  </a>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Intersection Observer
+      const fadeElements = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeElements.forEach(el => observer.observe(el));
+    });
+  </script>
+  <!-- ADS:SCRIPTS -->
+</body>
+</html>

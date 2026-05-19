@@ -1,988 +1,1048 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maxikiosco La Nona | Creatividad y diversión en Coronel Charlone</title>
-  
-  <!-- Google Fonts: Bricolage Grotesque (Stylised creative headings) & DM Sans (Modern body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-  
-  <style>
-    /* CSS VARIABLES: TOKENS DE CANVA CREATIVA */
-    :root {
-      --primary: #7D2AE8; /* Violeta Canva */
-      --primary-gradient: linear-gradient(135deg, #7D2AE8 0%, #00C4CC 100%);
-      --accent-teal: #00C4CC; /* Celeste Canva */
-      
-      --pastel-purple: #F3E8FF;
-      --pastel-teal: #E0F7FA;
-      --pastel-yellow: #FFFDE7;
-      
-      /* Neutrales */
-      --white: #FFFFFF;
-      --light-bg: #FAF7FD; /* Fondo suave lavanda */
-      --charcoal: #1A191D; /* Texto primario */
-      --muted-gray: #6F6E77; /* Texto secundario */
-      --border-color: #EFEBF4;
-      
-      --shadow-soft: 0 10px 40px rgba(125, 42, 232, 0.04);
-      --shadow-hover: 0 20px 50px rgba(125, 42, 232, 0.08);
-      
-      --radius-large: 32px;
-      --radius-medium: 16px;
-      --radius-pill: 9999px;
-    }
-
-    /* RESET & ESTILOS BASE */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      background-color: var(--light-bg);
-      font-family: 'DM Sans', sans-serif;
-      color: var(--charcoal);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 800;
-      color: var(--charcoal);
-    }
-
-    /* RITMO VISUAL ASIMÉTRICO (ESPACIOS AMPLIOS) */
-    section {
-      padding: 120px 24px;
-      position: relative;
-    }
-
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    /* FLOATING NAV BAR CON BLUR */
-    .canva-nav {
-      background-color: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 20px 24px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.02);
-    }
-
-    .nav-container {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .nav-logo-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--primary-gradient);
-      padding: 2.5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .nav-logo {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .nav-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-link {
-      text-decoration: none;
-      color: var(--charcoal);
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-      position: relative;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--primary);
-      transition: width 0.3s;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-link:hover {
-      color: var(--primary);
-    }
-
-    /* BOTONES ELEGANTES CANVA */
-    .btn-canva {
-      display: inline-block;
-      padding: 12px 28px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: var(--radius-medium);
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      font-size: 0.95rem;
-      text-align: center;
-      border: none;
-    }
-
-    .btn-canva-gradient {
-      background: var(--primary-gradient);
-      color: var(--white);
-      box-shadow: 0 4px 15px rgba(125, 42, 232, 0.2);
-    }
-
-    .btn-canva-gradient:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(125, 42, 232, 0.3);
-    }
-
-    .btn-canva-gradient:active {
-      transform: translateY(0);
-    }
-
-    .btn-canva-outline {
-      background-color: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-    }
-
-    .btn-canva-outline:hover {
-      background-color: var(--pastel-purple);
-      transform: translateY(-2px);
-    }
-
-    /* CHIPS / ETIQUETAS REDONDEADAS PASTEL */
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 16px;
-      border-radius: var(--radius-pill);
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 16px;
-    }
-
-    .chip-purple {
-      background-color: var(--pastel-purple);
-      color: var(--primary);
-    }
-
-    .chip-teal {
-      background-color: var(--pastel-teal);
-      color: #007A80;
-    }
-
-    .chip-yellow {
-      background-color: var(--pastel-yellow);
-      color: #7A6900;
-    }
-
-    /* HERO: ASYMMETRIC VERTICAL SPLIT-SCREEN */
-    .hero-split-screen {
-      background-color: var(--white);
-      padding: 80px 24px;
-      min-height: calc(85vh - 84px);
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-    }
-
-    .hero-title {
-      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
-      line-height: 1.1;
-      font-weight: 800;
-    }
-
-    .hero-title span {
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-description {
-      font-size: 1.2rem;
-      color: var(--muted-gray);
-      max-width: 520px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .hero-visual {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    /* MÁSCARA ORGÁNICA ELEGANTE EN IMÁGENES */
-    .hero-image-mask {
-      width: 100%;
-      max-width: 460px;
-      aspect-ratio: 0.9/1;
-      border-radius: 40px 10px 40px 10px; /* Asimetría suave */
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      transition: all 0.5s;
-    }
-
-    .hero-image-mask::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(125, 42, 232, 0.15));
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero-image-mask:hover {
-      border-radius: 20px 40px 20px 40px;
-      transform: scale(1.02);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .hero-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* HISTORIA ASIMÉTRICA CON ALTERNANCIA Y AIRE */
-    .asymmetric-story {
-      background-color: var(--light-bg);
-    }
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .story-visual {
-      position: relative;
-    }
-
-    .story-frame {
-      border-radius: 10px 50px 10px 50px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      aspect-ratio: 1.2/1;
-      width: 100%;
-    }
-
-    .story-text {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .story-text h2 {
-      font-size: 2.6rem;
-      line-height: 1.15;
-    }
-
-    .story-desc {
-      font-size: 1.15rem;
-      color: var(--muted-gray);
-    }
-
-    /* SECCIÓN DE PRODUCTOS: GRILLA ASIMÉTRICA Y FILTRABLE */
-    .catalog-section {
-      background-color: var(--white);
-    }
-
-    .catalog-header {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 60px auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .catalog-header h2 {
-      font-size: 2.8rem;
-    }
-
-    /* Grilla de productos asimétricos Staggered */
-    .products-staggered-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-
-    /* Alternamos el margin-top para dar un look desalineado premium de galería */
-    .product-card-asymmetric:nth-child(2) {
-      margin-top: 48px;
-    }
-
-    .product-card-asymmetric:nth-child(3) {
-      margin-top: 96px;
-    }
-
-    .product-card-asymmetric {
-      background-color: var(--white);
-      border-radius: var(--radius-large);
-      border: 1px solid var(--border-color);
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .product-card-asymmetric:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(125, 42, 232, 0.2);
-    }
-
-    .card-image-box {
-      width: 100%;
-      aspect-ratio: 1/1;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .card-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .product-card-asymmetric:hover .card-img {
-      transform: scale(1.08);
-    }
-
-    .card-content {
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      gap: 16px;
-    }
-
-    .card-title {
-      font-size: 1.6rem;
-      line-height: 1.2;
-    }
-
-    .card-desc {
-      font-size: 0.95rem;
-      color: var(--muted-gray);
-      flex-grow: 1;
-    }
-
-    .card-action-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-top: 8px;
-    }
-
-    .card-action-link::after {
-      content: '→';
-      transition: transform 0.2s;
-    }
-
-    .product-card-asymmetric:hover .card-action-link::after {
-      transform: translateX(4px);
-    }
-
-    /* SECCIÓN DE MOSTRAR PRODUCTOS DESTACADOS SECUNDARIOS */
-    .featured-grid-section {
-      background-color: var(--light-bg);
-      padding: 100px 24px;
-    }
-
-    .featured-layout {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .featured-text {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .featured-cards-stack {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .mini-feature-card {
-      background-color: var(--white);
-      border-radius: var(--radius-medium);
-      padding: 24px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .mini-card-icon {
-      font-size: 2rem;
-      background-color: var(--pastel-purple);
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .mini-card-title {
-      font-size: 1.2rem;
-    }
-
-    .mini-card-desc {
-      font-size: 0.88rem;
-      color: var(--muted-gray);
-    }
-
-    /* GALERÍA DE ARTE: COLLAGE DE FORMAS ASIMÉTRICAS */
-    .asymmetric-gallery {
-      background-color: var(--white);
-    }
-
-    .gallery-masonry-canvas {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 280px;
-      gap: 24px;
-      margin-top: 40px;
-    }
-
-    .gallery-frame-canvas {
-      overflow: hidden;
-      position: relative;
-      box-shadow: var(--shadow-soft);
-      transition: all 0.4s;
-    }
-
-    .gallery-frame-canvas:hover {
-      transform: scale(1.02);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .gc-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Formas variadas para dar look de diseño curado Canva */
-    .g-shape-1 {
-      border-radius: 10px 60px 10px 60px;
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .g-shape-2 {
-      border-radius: 50% 50% 10px 10px;
-      grid-row: span 2;
-    }
-
-    .g-shape-3 {
-      border-radius: 20px 20px 60px 20px;
-    }
-
-    .g-shape-4 {
-      border-radius: 40px 10px 40px 10px;
-    }
-
-    /* SECCIÓN DE CONTACTO LLAMADO A LA ACCIÓN */
-    .cta-elegant {
-      background-color: var(--light-bg);
-      padding: 120px 24px;
-    }
-
-    .cta-elegant-card {
-      background: var(--white);
-      max-width: 900px;
-      margin: 0 auto;
-      border-radius: 40px;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      align-items: center;
-    }
-
-    .cta-card-content {
-      padding: 64px 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-    }
-
-    .cta-card-content h2 {
-      font-size: 2.6rem;
-      line-height: 1.15;
-    }
-
-    .cta-card-content p {
-      font-size: 1.1rem;
-      color: var(--muted-gray);
-    }
-
-    .cta-card-image {
-      height: 100%;
-      min-height: 380px;
-      position: relative;
-    }
-
-    /* FOOTER ELEGANTE */
-    .elegant-footer {
-      background-color: var(--white);
-      border-top: 1px solid var(--border-color);
-      padding: 80px 24px;
-    }
-
-    .footer-container {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 32px;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--border-color);
-      padding-top: 32px;
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      color: var(--muted-gray);
-      font-size: 0.9rem;
-    }
-
-    /* ANIMACIÓN FADE-IN AL SCROLL */
-    .scroll-fade {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .scroll-fade.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 900px) {
-      section {
-        padding: 80px 16px;
-      }
-      .hero-grid, .story-grid, .featured-layout, .cta-elegant-card {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
-      }
-      .hero-content, .story-text, .featured-text, .cta-card-content {
-        align-items: center;
-      }
-      .hero-actions {
-        justify-content: center;
-      }
-      .hero-visual, .story-visual {
-        justify-content: center;
-      }
-      .hero-image-mask {
-        max-width: 380px;
-      }
-      .products-staggered-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-      }
-      .product-card-asymmetric:nth-child(2),
-      .product-card-asymmetric:nth-child(3) {
-        margin-top: 0;
-      }
-      .cta-card-image {
-        min-height: 280px;
-      }
-      .footer-top {
-        flex-direction: column;
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .nav-links {
-        display: none;
-      }
-      .products-staggered-grid {
-        grid-template-columns: 1fr;
-      }
-      .gallery-masonry-canvas {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 180px;
-      }
-      .g-shape-1 {
-        grid-column: span 2;
-        grid-row: span 2;
-      }
-      .cta-card-content {
-        padding: 32px 16px;
-      }
-      .cta-card-content h2 {
-        font-size: 2rem;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        text-align: center;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxikiosco La Nona — Juguetes y Golosinas Especiales</title>
+    <meta name="description" content="Descubrí juguetes didácticos mágicos, regalería especial y el surtido escolar y de dulces más completo de Coronel Charlone.">
+    
+    <!-- Google Fonts: Space Grotesk (Modern Geometric) & Space Mono (Technical Labels) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS: Soft Claymorphism & Asymmetrical Flow Layout -->
+    <style>
+        :root {
+            /* Claymorphism & Warm Swatch Palette */
+            --bg-cream: #FAF9F7;
+            --bg-card: #FFFFFF;
+            --border-oat: #DAD4C8;
+            --border-oat-light: #EEE9DF;
+            
+            --clay-black: #1A1A18;
+            --clay-muted: #7E7A71;
+            
+            /* Swatches adapted to the Kiosco / Candy Vibe */
+            --primary: #FF4B72; /* Pomegranate Sweet Pink */
+            --primary-light: #FFCBD5;
+            --primary-dark: #A51A36;
+            
+            --secondary: #F7B05B; /* Lemon Gold */
+            --secondary-light: #FEE7C9;
+            --secondary-dark: #9D6A09;
+            
+            --matcha-green: #078A52;
+            --matcha-light: #C6F4D6;
+            
+            --slushie-cyan: #3BD3FD;
+            --slushie-light: #D4F6FF;
+            
+            --font-primary: 'Outfit', 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            
+            /* Elevation & Shape Tokens */
+            --radius-sharp: 6px;
+            --radius-standard: 12px;
+            --radius-card: 24px;
+            --radius-section: 40px;
+            --radius-pill: 1584px;
+            
+            --shadow-clay: rgba(0,0,0,0.08) 0px 4px 6px, 
+                           rgba(0,0,0,0.03) 0px -2px 4px inset, 
+                           rgba(255,255,255,0.9) 0px 2px 0px inset;
+            --shadow-hard: -7px 7px 0px #1A1A18;
+        }
+
+        /* Base Resets */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-cream);
+            color: var(--clay-black);
+            font-family: var(--font-primary);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Typographic System */
+        h1, h2, h3, h4 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            color: var(--clay-black);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 6vw + 1rem, 5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw + 1rem, 3.2rem);
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.15rem;
+            color: var(--clay-muted);
+        }
+
+        .mono-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        /* Clay Interactive Pill Buttons */
+        .btn-clay {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--border-oat);
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--shadow-clay);
+        }
+
+        .btn-clay-primary {
+            background-color: var(--primary);
+            color: #FFFFFF;
+        }
+
+        .btn-clay-primary:hover {
+            background-color: var(--secondary);
+            color: var(--clay-black);
+            transform: rotateZ(-3deg) translateY(-3px);
+            box-shadow: var(--shadow-hard);
+            border-color: var(--clay-black);
+        }
+
+        .btn-clay-secondary {
+            background-color: #FFFFFF;
+            color: var(--clay-black);
+        }
+
+        .btn-clay-secondary:hover {
+            background-color: var(--primary-light);
+            transform: rotateZ(3deg) translateY(-3px);
+            box-shadow: var(--shadow-hard);
+            border-color: var(--clay-black);
+        }
+
+        /* Layout 2: Asymmetrical Flow Navigation (Top Heavy Double Nav) */
+        .top-heavy-bar {
+            background-color: var(--clay-black);
+            color: #FFFFFF;
+            padding: 0.5rem 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-heavy-bar a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .top-heavy-bar a:hover {
+            color: var(--primary-light);
+        }
+
+        .clay-nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(250, 249, 247, 0.9);
+            border-bottom: 1px solid var(--border-oat);
+            z-index: 1000;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 2.5rem;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--clay-black);
+            transition: transform 0.2s ease;
+        }
+
+        .logo-box:hover {
+            transform: scale(1.03);
+        }
+
+        .logo-clay-blob {
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary);
+            border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; /* Organic clay blob shape */
+            border: 1.5px solid var(--clay-black);
+            box-shadow: var(--shadow-clay);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-primary);
+            font-weight: 500;
+            color: var(--clay-black);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: var(--radius-pill);
+            transition: width 0.2s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Section 2: Asymmetric Hero with Floating Trust Badge */
+        .hero-asymmetric {
+            padding: 6rem 2.5rem;
+            border-bottom: 1px solid var(--border-oat);
+            overflow: hidden;
+        }
+
+        .hero-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-text-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero-title-main {
+            font-size: clamp(2.8rem, 5vw + 0.5rem, 4.8rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title-main span {
+            color: var(--primary);
+            background-color: var(--primary-light);
+            padding: 0.1rem 0.6rem;
+            border-radius: var(--radius-standard);
+            border: 1px solid var(--border-oat);
+        }
+
+        .hero-lead-text {
+            font-size: 1.25rem;
+            color: var(--clay-muted);
+            margin-bottom: 2.5rem;
+            max-width: 580px;
+            line-height: 1.6;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-display-pane {
+            position: relative;
+        }
+
+        .hero-image-card {
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-oat);
+            border-radius: var(--radius-card);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-clay);
+            transition: all 0.3s ease;
+        }
+
+        .hero-image-card img {
+            width: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 4/3;
+        }
+
+        .trust-badge-float {
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            background-color: var(--secondary);
+            border: 1.5px solid var(--clay-black);
+            border-radius: var(--radius-pill);
+            padding: 0.8rem 1.4rem;
+            box-shadow: var(--shadow-hard);
+            transform: rotate(8deg);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            animation: trustWobble 4s infinite ease-in-out;
+        }
+
+        .trust-badge-icon {
+            font-size: 1.5rem;
+        }
+
+        .trust-badge-label {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--clay-black);
+            text-transform: uppercase;
+        }
+
+        /* Section 3: Data Bar (Franja de Estadísticas Técnicas) */
+        .data-bar {
+            background-color: var(--clay-black);
+            color: #FFFFFF;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border-oat);
+        }
+
+        .data-bar-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .data-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .data-number {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 700;
+            color: var(--secondary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-primary);
+        }
+
+        .data-label {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: #FAF9F7;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Section 4: Staggered List in Zigzag (Nuestros Rubros Mágicos) */
+        .staggered-list {
+            padding: 8rem 2.5rem;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid var(--border-oat);
+        }
+
+        .staggered-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .staggered-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            margin-bottom: 8rem;
+        }
+
+        .staggered-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .staggered-row:nth-child(even) .staggered-visual {
+            order: -1;
+        }
+
+        .staggered-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .staggered-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .staggered-desc {
+            font-size: 1.15rem;
+            color: var(--clay-muted);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .staggered-list-items {
+            list-style: none;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .staggered-list-item {
+            font-size: 1.1rem;
+            color: var(--clay-black);
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed var(--border-oat);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .staggered-list-item::before {
+            content: '⭐';
+            font-size: 1.1rem;
+        }
+
+        .staggered-visual {
+            position: relative;
+        }
+
+        .staggered-image-container {
+            border: 1px solid var(--border-oat);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-clay);
+            aspect-ratio: 4/3;
+        }
+
+        .staggered-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .staggered-image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .dashed-accent-box {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: calc(100% + 30px);
+            height: calc(100% + 30px);
+            border: 2px dashed var(--border-oat);
+            border-radius: var(--radius-card);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Section 5: Massive Call To Action (Bloque de Contacto Directo) */
+        .massive-cta {
+            padding: 8rem 2.5rem;
+            background-color: var(--bg-cream);
+            border-bottom: 1px solid var(--border-oat);
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border: 1px solid var(--border-oat);
+            border-radius: var(--radius-section);
+            padding: 5rem 4rem;
+            box-shadow: var(--shadow-clay);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            font-size: 1.2rem;
+            color: var(--clay-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .whatsapp-details-row {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--border-oat);
+        }
+
+        .wp-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+
+        .wp-detail-icon {
+            font-size: 1.4rem;
+        }
+
+        /* Section 6: Structured Corporate Footer */
+        .corporate-footer {
+            background-color: var(--clay-black);
+            color: #FFFFFF;
+            padding: 6rem 2.5rem 3rem 2.5rem;
+        }
+
+        .footer-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 4rem;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 4rem;
+        }
+
+        .footer-brand h3 {
+            color: #FFFFFF;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #9F9B93;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .footer-column h4 {
+            color: var(--secondary);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links-list {
+            list-style: none;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links-list a {
+            color: #FAF9F7;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-list a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 3rem auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: #9F9B93;
+        }
+
+        .footer-social-pill {
+            display: inline-flex;
+            gap: 1rem;
+        }
+
+        .footer-social-link {
+            color: #FAF9F7;
+            text-decoration: none;
+            background-color: #252527;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            border: 1px solid #3c3c3c;
+        }
+
+        .footer-social-link:hover {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #FFFFFF;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 1.5px solid var(--clay-black);
+            box-shadow: var(--shadow-hard);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 2.2rem;
+            z-index: 999;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .whatsapp-fab:hover {
+            transform: translateY(-5px) rotate(8deg);
+            background-color: #22c35e;
+        }
+
+        /* Fade-in Animation Observer Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animations */
+        @keyframes trustWobble {
+            0%, 100% { transform: rotate(8deg) translateY(0); }
+            50% { transform: rotate(5deg) translateY(-5px); }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 991px) {
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                text-align: center;
+            }
+            .hero-text-block {
+                align-items: center;
+            }
+            .hero-cta-group {
+                justify-content: center;
+            }
+            .staggered-row {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            .staggered-row:nth-child(even) .staggered-visual {
+                order: 0;
+            }
+            .staggered-info {
+                align-items: center;
+                text-align: center;
+            }
+            .staggered-list-item {
+                justify-content: center;
+            }
+            .data-bar-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3.5rem;
+            }
+            .footer-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-heavy-bar {
+                display: none;
+            }
+            .nav-links {
+                display: none;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .cta-container {
+                padding: 3rem 1.5rem;
+            }
+            .footer-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- NAV BAR ELEGANTE CON BACKDROP BLUR -->
-  <nav class="canva-nav">
-    <div class="nav-container">
-      <a href="#" class="nav-brand">
-        <div class="nav-logo-circle">
-          <!-- Logo real del local -->
-          <img class="nav-logo" src="img/maxikioscolanona_1.jpg" alt="La Nona Logo">
-        </div>
-        <span class="nav-title">La Nona</span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#historia" class="nav-link">Historia</a></li>
-        <li><a href="#productos" class="nav-link">Secciones</a></li>
-        <li><a href="#galeria" class="nav-link">Góndolas</a></li>
-        <li><a href="#contacto" class="nav-link">Contacto</a></li>
-      </ul>
-
-      <!-- ADS:NAV:END -->
+    <!-- Upper double nav-bar -->
+    <div class="top-heavy-bar">
+        <span>📍 Coronel Charlone, Buenos Aires</span>
+        <span>🕒 Lunes a Sábado: 8:30 a 13:00 - 16:30 a 20:30 hs</span>
     </div>
-  </nav>
 
-  <!-- HERO: ASYMMETRIC VERTICAL SPLIT-SCREEN -->
-  <section class="hero-split-screen">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="chip chip-purple">✨ REGALERÍA & LIBRERÍA</div>
-        <h1 class="hero-title">El universo que los chicos <span>aman explorar</span></h1>
-        <p class="hero-description">Juguetes, peluches, golosinas, mochilas y todo lo que necesitás para regalar, estudiar o disfrutar. A la vuelta de tu esquina.</p>
-        <div class="hero-actions">
-          <a href="#productos" class="btn-canva btn-canva-gradient">Explorar Catálogo</a>
-          <a href="https://wa.me/54" class="btn-canva btn-canva-outline">Ver Modelos</a>
+    <!-- MAIN NAVBAR -->
+    <nav class="clay-nav">
+        <div class="nav-container">
+            <a href="#" class="logo-box">
+                <div class="logo-clay-blob"></div>
+                Maxikiosco La Nona
+            </a>
+            <div class="nav-links">
+                <a href="#rubros" class="nav-link">Rubros</a>
+                <a href="#experiencia" class="nav-link">La Experiencia</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+                <a href="https://wa.me/5491123456789" target="_blank" class="btn-clay btn-clay-primary" style="padding: 0.5rem 1.2rem; font-size: 0.95rem;">
+                    Escribinos por WhatsApp
+                </a>
+            </div>
+            <button class="nav-toggle" onclick="alert('¡Menú adaptativo disponible pronto!')">☰</button>
         </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-image-mask">
-          <!-- Imagen de atmósfera IA hero -->
-          <img class="hero-img" src="img/ai_hero.png" alt="Diseño creativo">
-        </div>
-      </div>
-    </div>
-  </section>
+    </nav>
+    <!-- ADS:NAV:END -->
 
-  <!-- HISTORIA ASIMÉTRICA CON ALTERNANCIA Y AIRE -->
-  <section id="historia" class="asymmetric-story scroll-fade">
-    <div class="container story-grid">
-      <div class="story-visual">
-        <div class="story-frame">
-          <!-- Foto real del local -->
-          <img class="hero-img" src="img/maxikioscolanona_5.jpg" alt="Interior La Nona">
-        </div>
-      </div>
-      <div class="story-text">
-        <div class="chip chip-teal">🏡 SOBRE NOSOTROS</div>
-        <h2>Un mundo de sonrisas y soluciones</h2>
-        <p class="story-desc">Maxikiosco amplio en Coronel Charlone que ofrece productos clásicos, gran sección de juguetería, regalería y artículos de librería. Nos consolidamos como el lugar más completo para encontrar regalos y útiles escolares en el pueblo.</p>
-        <p style="color: var(--muted-gray);">Pensado para inspirar la curiosidad y la alegría de los más chicos, en La Nona cada estantería es un viaje lleno de color. Nos encanta ser el lugar donde encontrás ese regalo que saca una sonrisa o los útiles perfectos para el colegio.</p>
-        <div style="margin-top: 12px;">
-          <a href="#productos" class="btn-canva btn-canva-gradient">Ver Variedad</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    <main>
+        <!-- ASYMMETRIC HERO SECTION -->
+        <section class="hero-asymmetric">
+            <div class="hero-wrapper">
+                <div class="hero-text-block">
+                    <span class="mono-label">✨ Kiosco & Juguetería Mágica</span>
+                    <h1 class="hero-title-main">Un lugar lleno de dulzura y <span>juegos</span></h1>
+                    <p class="hero-lead-text">Seleccionamos las golosinas nacionales e importadas más sabrosas, mochilas y útiles llenos de color, y juguetes didácticos que inspiran la imaginación de los niños.</p>
+                    <div class="hero-cta-group">
+                        <a href="#rubros" class="btn-clay btn-clay-primary">Conocé los Rubros</a>
+                        <a href="https://instagram.com/maxikioscolanona" target="_blank" class="btn-clay btn-clay-secondary">Seguinos en Instagram</a>
+                    </div>
+                </div>
+                <div class="hero-display-pane">
+                    <div class="hero-image-card">
+                        <img src="img/ai_hero.png" alt="Exhibidor de juguetes y golosinas">
+                    </div>
+                    <div class="trust-badge-float">
+                        <span class="trust-badge-icon">💖</span>
+                        <span class="trust-badge-label">Atención Familiar</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- SECCIÓN DE PRODUCTOS: GRILLA ASIMÉTRICA STAGGERED (ESTILO GALERÍA) -->
-  <section id="productos" class="catalog-section scroll-fade">
-    <div class="container">
-      <div class="catalog-header">
-        <div class="chip chip-yellow">💎 SURTIDO PREMIUM</div>
-        <h2>Explorá Nuestras Góndolas</h2>
-        <p style="font-size: 1.15rem; color: var(--muted-gray);">Una grilla con mucho aire visual diseñada para que aprecies cada una de nuestras categorías estrella:</p>
-      </div>
+        <!-- DATA BAR STATS -->
+        <section class="data-bar">
+            <div class="data-bar-wrapper">
+                <div class="data-item">
+                    <span class="data-number">100%</span>
+                    <span class="data-label">Atención con Amor</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-number">500+</span>
+                    <span class="data-label">Golosinas y Dulces</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-number">200+</span>
+                    <span class="data-label">Juguetes Didácticos</span>
+                </div>
+            </div>
+        </section>
 
-      <div class="products-staggered-grid">
-        
-        <!-- Tarjeta 1: Juguetería -->
-        <div class="product-card-asymmetric">
-          <div class="card-image-box">
-            <!-- Imagen IA de peluches/juguetes -->
-            <img class="card-img" src="img/ai_product.png" alt="Juguetes">
-          </div>
-          <div class="card-content">
-            <div class="chip chip-purple" style="align-self: flex-start;">🧸 JUGUETERÍA</div>
-            <h3 class="card-title">Juguetes y Peluches</h3>
-            <p class="card-desc">Desde el último superhéroe hasta el peluche más tierno. Siempre hay un tesoro nuevo esperándote.</p>
-            <a href="https://wa.me/54" class="card-action-link">Consultar Juguetes</a>
-          </div>
-        </div>
+        <!-- STAGGERED ZIGZAG LIST -->
+        <section id="rubros" class="staggered-list fade-in">
+            <div class="staggered-wrapper">
+                
+                <!-- Row 1: Juguetes -->
+                <div class="staggered-row">
+                    <div class="staggered-info">
+                        <span class="mono-label">DIDÁCTICOS & CREATIVOS</span>
+                        <h2 class="staggered-title">Juguetes para Aprender e Imaginar</h2>
+                        <p class="staggered-desc">Contamos con una amplia selección de juegos de mesa, rompecabezas, juegos interactivos de madera y peluches adorables ideales para hacer regalos significativos que duran para siempre.</p>
+                        <ul class="staggered-list-items">
+                            <li class="staggered-list-item">Rompecabezas y didácticos de madera</li>
+                            <li class="staggered-list-item">Peluches importados y nacionales hermosos</li>
+                            <li class="staggered-list-item">Juegos de mesa clásicos para toda la familia</li>
+                        </ul>
+                        <a href="https://wa.me/5491123456789?text=Hola!%20Quiero%20saber%20mas%20de%20juguetes" target="_blank" class="btn-clay btn-clay-primary">Consultar Catálogo</a>
+                    </div>
+                    <div class="staggered-visual">
+                        <div class="staggered-image-container">
+                            <img src="img/maxikioscolanona_2.jpg" alt="Estantes con juguetes variados">
+                        </div>
+                        <div class="dashed-accent-box"></div>
+                    </div>
+                </div>
 
-        <!-- Tarjeta 2: Mochilas y útiles escolares -->
-        <div class="product-card-asymmetric">
-          <div class="card-image-box">
-            <!-- Foto real de mochilas/útiles -->
-            <img class="card-img" src="img/maxikioscolanona_2.jpg" alt="Librería">
-          </div>
-          <div class="card-content">
-            <div class="chip chip-teal" style="align-self: flex-start;">🎒 LIBRERÍA</div>
-            <h3 class="card-title">Mochilas y Útiles</h3>
-            <p class="card-desc">Todo para arrancar el año escolar con todo. Cuadernos, lapiceras y mochilas súper cancheras.</p>
-            <a href="https://wa.me/54" class="card-action-link">Ver Útiles</a>
-          </div>
-        </div>
+                <!-- Row 2: Golosinas -->
+                <div class="staggered-row">
+                    <div class="staggered-info">
+                        <span class="mono-label">DULZURAS PREMIUM</span>
+                        <h2 class="staggered-title">Golosinas y Chocolates Seleccionados</h2>
+                        <p class="staggered-desc">El paraíso de los golosos en Charlone. Ofrecemos marcas premium, licores exquisitos, chocolates con el mejor porcentaje de cacao, alfajores espectaculares y gomitas de sabores increíbles.</p>
+                        <ul class="staggered-list-items">
+                            <li class="staggered-list-item">Chocolates artesanales y licores importados</li>
+                            <li class="staggered-list-item">Alfajores regionales de primer nivel</li>
+                            <li class="staggered-list-item">Caramelos y gomitas ideales para cumpleaños</li>
+                        </ul>
+                        <a href="https://wa.me/5491123456789?text=Hola!%20Quiero%20saber%20mas%20de%20golosinas" target="_blank" class="btn-clay btn-clay-primary">Hacer Pedido</a>
+                    </div>
+                    <div class="staggered-visual">
+                        <div class="staggered-image-container">
+                            <img src="img/ai_detail.png" alt="Primer plano de caramelos premium">
+                        </div>
+                        <div class="dashed-accent-box"></div>
+                    </div>
+                </div>
 
-        <!-- Tarjeta 3: Golosinas -->
-        <div class="product-card-asymmetric">
-          <div class="card-image-box">
-            <!-- Foto real de caramelos/golosinas -->
-            <img class="card-img" src="img/maxikioscolanona_4.jpg" alt="Kiosco">
-          </div>
-          <div class="card-content">
-            <div class="chip chip-yellow" style="align-self: flex-start;">🍭 GOLOSINAS</div>
-            <h3 class="card-title">Golosinas y Kiosco</h3>
-            <p class="card-desc">Esa golosina que te saca una sonrisa, el chocolate para el bajón. Endulzamos tu día.</p>
-            <a href="https://wa.me/54" class="card-action-link">Ver Dulces</a>
-          </div>
-        </div>
+                <!-- Row 3: Librería -->
+                <div class="staggered-row">
+                    <div class="staggered-info">
+                        <span class="mono-label">LIBRERÍA & ÚTILES</span>
+                        <h2 class="staggered-title">Todo para la Escuela y Manualidades</h2>
+                        <p class="staggered-desc">Queremos que la escuela empiece con sonrisas. Mochilas ergonómicas, cartucheras de diseño, cuadernos, lápices artísticos de colores y todos los útiles necesarios para que la creatividad vuele.</p>
+                        <ul class="staggered-list-items">
+                            <li class="staggered-list-item">Mochilas escolares y de regalería divinas</li>
+                            <li class="staggered-list-item">Marcadores y lápices escolares seleccionados</li>
+                            <li class="staggered-list-item">Cuadernos de diseño para apuntar ideas</li>
+                        </ul>
+                        <a href="https://wa.me/5491123456789?text=Hola!%20Quiero%20saber%20mas%20de%20utiles" target="_blank" class="btn-clay btn-clay-primary">Consultar útiles</a>
+                    </div>
+                    <div class="staggered-visual">
+                        <div class="staggered-image-container">
+                            <img src="img/maxikioscolanona_3.jpg" alt="Útiles escolares de diseño">
+                        </div>
+                        <div class="dashed-accent-box"></div>
+                    </div>
+                </div>
 
-      </div>
-    </div>
-  </section>
+            </div>
+        </section>
 
-  <!-- SECCIÓN DE MOSTRAR DESTACADOS SECUNDARIOS -->
-  <section class="featured-grid-section scroll-fade">
-    <div class="container featured-layout">
-      <div class="featured-text">
-        <div class="chip chip-purple">✨ DETALLES QUE SUMAN</div>
-        <h2>Pensado para los chicos</h2>
-        <p style="color: var(--muted-gray); font-size: 1.1rem;">Además de nuestro surtido clásico, nos ocupamos de traer colecciones actualizadas de librería escolar, regalería de cumpleaños y todas las novedades en golosinas.</p>
-        <a href="https://wa.me/54" class="btn-canva btn-canva-gradient">Consultar Regalos</a>
-      </div>
-      
-      <div class="featured-cards-stack">
-        <div class="mini-feature-card">
-          <div class="mini-card-icon">🦄</div>
-          <h4 class="mini-card-title">Peluches Soft</h4>
-          <p class="mini-card-desc">Suaves, tiernos y de excelente calidad para regalar.</p>
-        </div>
-        <div class="mini-feature-card">
-          <div class="mini-card-icon">🎨</div>
-          <h4 class="mini-card-title">Línea Artística</h4>
-          <p class="mini-card-desc">Témperas, lápices de colores y acuarelas para el colegio.</p>
-        </div>
-        <div class="mini-feature-card">
-          <div class="mini-card-icon">🍫</div>
-          <h4 class="mini-card-title">Chocolates</h4>
-          <p class="mini-card-desc">Las marcas líderes para darte ese gusto en cualquier momento.</p>
-        </div>
-        <div class="mini-feature-card">
-          <div class="mini-card-icon">🎁</div>
-          <h4 class="mini-card-title">Kits de Regalo</h4>
-          <p class="mini-card-desc">Armamos sets personalizados con globos y golosinas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- EXPERIENCE HIGHLIGHTS -->
+        <section id="experiencia" class="staggered-list fade-in" style="background-color: var(--bg-cream); border-top: 1px solid var(--border-oat);">
+            <div class="staggered-wrapper">
+                <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                    <span class="mono-label">EL VALOR DE LA NONA</span>
+                    <h2>Nuestros Servicios Adicionales</h2>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                    <!-- Card 1 -->
+                    <div style="background:#FFFFFF; border: 1px solid var(--border-oat); border-radius: var(--radius-card); padding: 3rem; box-shadow: var(--shadow-clay); text-align: center;">
+                        <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🎁</span>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Regalos Personalizados</h3>
+                        <p style="font-size: 1rem; color: var(--clay-muted);">Armamos y envolvemos tus regalos de forma especial y sin cargos extra. ¡Hacé sonreír a quien querés de forma mágica!</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div style="background:#FFFFFF; border: 1px solid var(--border-oat); border-radius: var(--radius-card); padding: 3rem; box-shadow: var(--shadow-clay); text-align: center;">
+                        <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">💳</span>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">SUBE y Cargas Virtuales</h3>
+                        <p style="font-size: 1rem; color: var(--clay-muted);">Cargá tu tarjeta SUBE o hacé cargas virtuales de celular de forma rápida y súper segura directamente en nuestro local.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div style="background:#FFFFFF; border: 1px solid var(--border-oat); border-radius: var(--radius-card); padding: 3rem; box-shadow: var(--shadow-clay); text-align: center;">
+                        <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🧸</span>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Peluches de Ensueño</h3>
+                        <p style="font-size: 1rem; color: var(--clay-muted);">Tenemos una colección hermosa de ositos, conejos y criaturas de peluche súper suaves ideales para abrazar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- GALERÍA DE ARTE: COLLAGE DE FORMAS ASIMÉTRICAS -->
-  <section id="galeria" class="asymmetric-gallery scroll-fade">
-    <div class="container">
-      <div class="catalog-header">
-        <div class="chip chip-teal">📸 GALERÍA CREATIVA</div>
-        <h2>Explorá Nuestro Mundo</h2>
-        <p style="color: var(--muted-gray); font-size: 1.15rem;">Una composición asimétrica de fotos reales y ambientales que reflejan la calidez de nuestro local:</p>
-      </div>
+        <!-- MASSIVE CALL TO ACTION -->
+        <section id="contacto" class="massive-cta fade-in">
+            <div class="cta-container">
+                <span class="mono-label">¡COMUNICATE HOY!</span>
+                <h2 class="cta-title">¿Buscás un regalo o querés consultar stock?</h2>
+                <p class="cta-desc">Mandanos un mensaje de WhatsApp directo a nuestra tienda y te asesoramos al instante con fotos de los productos disponibles.</p>
+                <a href="https://wa.me/5491123456789?text=Hola!%20Quiero%20consultar%20por%20un%20producto" target="_blank" class="btn-clay btn-clay-primary" style="font-size: 1.2rem; padding: 1rem 2.5rem;">
+                    💬 Enviar WhatsApp a La Nona
+                </a>
+                
+                <div class="whatsapp-details-row">
+                    <div class="wp-detail-item">
+                        <span class="wp-detail-icon">📍</span>
+                        <span>Coronel Charlone, Buenos Aires</span>
+                    </div>
+                    <div class="wp-detail-item">
+                        <span class="wp-detail-icon">📸</span>
+                        <span>@maxikioscolanona</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-      <div class="gallery-masonry-canvas">
-        <div class="gallery-frame-canvas g-shape-1">
-          <img class="gc-img" src="img/maxikioscolanona_3.jpg" alt="Interior estanterías">
-        </div>
-        <div class="gallery-frame-canvas g-shape-2">
-          <!-- Detalle IA -->
-          <img class="gc-img" src="img/ai_detail.png" alt="Detalle infantil">
-        </div>
-        <div class="gallery-frame-canvas g-shape-3">
-          <img class="gc-img" src="img/maxikioscolanona_2.jpg" alt="Útiles reales">
-        </div>
-        <div class="gallery-frame-canvas g-shape-4">
-          <img class="gc-img" src="img/maxikioscolanona_4.jpg" alt="Caramelos y dulces">
-        </div>
-        <div class="gallery-frame-canvas">
-          <img class="gc-img" src="img/maxikioscolanona_1.jpg" alt="Logo de entrada">
-        </div>
-        <div class="gallery-frame-canvas g-shape-3">
-          <img class="gc-img" src="img/ai_hero.png" alt="Ambiente infantil">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN DE CONTACTO: LLAMADO A LA ACCIÓN -->
-  <section id="contacto" class="cta-elegant">
     <!-- ADS:CONTENT:END -->
-    <div class="container">
-      <div class="cta-elegant-card scroll-fade">
-        <div class="cta-card-content">
-          <div class="chip chip-purple">📲 WHATSAPP EN VIVO</div>
-          <h2>¿Buscás algo especial?</h2>
-          <p>Consultanos por WhatsApp y te ayudamos a encontrar exactamente lo que necesitás. Te mandamos fotos reales de las mochilas, juguetes o peluches en stock para que elijas el mejor.</p>
-          <a href="https://wa.me/54" class="btn-canva btn-canva-gradient" style="padding: 16px 36px; font-size: 1.05rem;">
-            💬 Consultar a La Nona
-          </a>
+
+    <!-- STRUCTURED CORPORATE FOOTER -->
+    <footer class="corporate-footer">
+        <!-- ADS:FOOTER:START -->
+        <div class="footer-wrapper">
+            <div class="footer-brand">
+                <h3>Maxikiosco La Nona</h3>
+                <p>El kiosco y juguetería familiar más querido de Coronel Charlone. Juguetes educativos, golosinas selectas y útiles escolares.</p>
+                <div class="footer-social-pill">
+                    <a href="https://instagram.com/maxikioscolanona" target="_blank" class="footer-social-link" aria-label="Instagram">📸</a>
+                    <a href="https://wa.me/5491123456789" target="_blank" class="footer-social-link" aria-label="WhatsApp">💬</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Nuestros Rubros</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#rubros">Juguetería Didáctica</a></li>
+                    <li><a href="#rubros">Golosinas Premium</a></li>
+                    <li><a href="#rubros">Librería y Útiles</a></li>
+                    <li><a href="#rubros">Peluches y Regalería</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Atención</h4>
+                <ul class="footer-links-list">
+                    <li>📍 Coronel Charlone</li>
+                    <li>Buenos Aires, Argentina</li>
+                    <li>📅 Lun a Sáb: 8:30 - 13:00</li>
+                    <li>📅 Lun a Sáb: 16:30 - 20:30</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Servicios</h4>
+                <ul class="footer-links-list">
+                    <li>✨ Envoltura de Regalos</li>
+                    <li>💳 Cargas Virtuales</li>
+                    <li>🚌 Carga de Sube</li>
+                    <li>📦 Atención Vecinal</li>
+                </ul>
+            </div>
         </div>
-        <div class="cta-card-image">
-          <img class="hero-img" src="img/ai_detail.png" alt="Golosinas de regalo">
+
+        <div class="footer-bottom">
+            <span>Desarrollado por ADS Labs — Todos los derechos reservados &copy; 2026</span>
+            <span>Estilo Claymorphism & Asymmetrical Flow</span>
         </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- FOOTER ELEGANTE -->
-  <footer class="elegant-footer">
-    <!-- ADS:FOOTER:START -->
-    <div class="container footer-container">
-      <div class="footer-top">
-        <a href="#" class="nav-brand">
-          <div class="nav-logo-circle">
-            <img class="nav-logo" src="img/maxikioscolanona_1.jpg" alt="Logo">
-          </div>
-          <span class="nav-title">La Nona</span>
-        </a>
-        <p style="color: var(--muted-gray);">El universo que los chicos aman explorar.</p>
-      </div>
-      <div class="footer-bottom">
-        <p>Coronel Charlone, Provincia de Buenos Aires, Argentina</p>
-        <p class="footer-credits" style="color: var(--charcoal);">Desarrollado por ADS Labs</p>
-      </div>
-    </div>
-  </footer>
+    <!-- Floating WhatsApp FAB -->
+    <a href="https://wa.me/5491123456789" target="_blank" class="whatsapp-fab" aria-label="Escribinos por WhatsApp">
+        💬
+    </a>
 
-  <!-- ANIMACIONES E INTERACTIVE OBSERVER -->
-  <script>
-    // IntersectionObserver para transiciones fluidas de Canva
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, {
-      threshold: 0.08
-    });
+    <!-- Intersection Observer Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observerOptions = {
+                root: null,
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-    document.querySelectorAll('.scroll-fade').forEach(el => {
-      observer.observe(el);
-    });
-  </script>
-  <!-- ADS:SCRIPTS -->
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>

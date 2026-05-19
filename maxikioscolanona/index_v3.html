@@ -1,971 +1,975 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maxikiosco La Nona | El Dashboard de los antojos y la diversión</title>
-  
-  <!-- Google Fonts: Plus Jakarta Sans (Modern UI) & Fredoka (Rounded headings) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* CSS VARIABLES: TOKENS DE SPOTIFY COSMIC NIGHT */
-    :root {
-      --spotify-black: #000000;
-      --spotify-dark: #09090B; /* Zinc Black */
-      --spotify-card: #18181B; /* Tarjeta oscura */
-      --spotify-card-hover: #27272A;
-      
-      --accent-neon: #1DB954; /* Verde Neón */
-      --accent-pink: #FF2E93; /* Rosa Dulce Neón */
-      
-      --text-white: #FFFFFF;
-      --text-muted: #A7A7A7;
-      
-      --glass-bg: rgba(24, 24, 27, 0.65);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      
-      --border-radius-large: 24px;
-      --border-radius-medium: 12px;
-      
-      --font-ui: 'Plus Jakarta Sans', sans-serif;
-      --font-head: 'Fredoka', sans-serif;
-    }
-
-    /* RESET & ESTILOS BASE */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      background-color: var(--spotify-black);
-      font-family: var(--font-ui);
-      color: var(--text-white);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
-      overflow-x: hidden;
-      display: flex;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--font-head);
-      font-weight: 700;
-      color: var(--text-white);
-    }
-
-    /* BARRA DE NAVEGACIÓN LATERAL FIJA IZQUIERDA */
-    .spotify-sidebar {
-      width: 260px;
-      height: 100vh;
-      position: fixed;
-      left: 0;
-      top: 0;
-      background-color: var(--spotify-black);
-      padding: 32px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      border-right: 1px solid var(--glass-border);
-      z-index: 100;
-    }
-
-    .sidebar-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .sidebar-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 2px solid var(--accent-neon);
-      object-fit: cover;
-    }
-
-    .sidebar-title {
-      font-family: var(--font-head);
-      font-size: 1.5rem;
-      color: var(--text-white);
-      letter-spacing: -0.02em;
-    }
-
-    .sidebar-menu {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      list-style: none;
-    }
-
-    .sidebar-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .sidebar-link {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: color 0.2s, transform 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .sidebar-link:hover {
-      color: var(--text-white);
-      transform: translateX(4px);
-    }
-
-    .sidebar-link.active {
-      color: var(--accent-neon);
-    }
-
-    .sidebar-cta-box {
-      margin-top: auto;
-      background: linear-gradient(135deg, rgba(29, 185, 84, 0.1) 0%, rgba(255, 46, 147, 0.1) 100%);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--border-radius-medium);
-      padding: 20px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .sidebar-cta-box p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    /* CONTENEDOR DE SCROLL DERECHO */
-    .spotify-scrollbox {
-      margin-left: 260px;
-      flex-grow: 1;
-      min-height: 100vh;
-      background: linear-gradient(to bottom, #121216 0%, var(--spotify-dark) 40%, var(--spotify-black) 100%);
-      padding: 48px;
-      overflow-y: auto;
-    }
-
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    /* BOTONES ESTILO REPRODUCTOR SPOTIFY */
-    .btn-spotify {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 28px;
-      font-family: var(--font-ui);
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: 9999px;
-      cursor: pointer;
-      transition: transform 0.2s, background-color 0.2s;
-      font-size: 0.95rem;
-      border: none;
-    }
-
-    .btn-spotify-neon {
-      background-color: var(--accent-neon);
-      color: var(--spotify-black);
-    }
-
-    .btn-spotify-neon:hover {
-      background-color: #21D360;
-      transform: scale(1.04);
-    }
-
-    .btn-spotify-neon:active {
-      transform: scale(0.98);
-    }
-
-    .btn-spotify-glass {
-      background-color: rgba(255, 255, 255, 0.08);
-      color: var(--text-white);
-      border: 1px solid var(--glass-border);
-    }
-
-    .btn-spotify-glass:hover {
-      background-color: rgba(255, 255, 255, 0.15);
-      transform: scale(1.04);
-    }
-
-    /* HERO BILLBOARD CONTAINER */
-    .hero-billboard {
-      background: radial-gradient(circle at top right, rgba(255, 46, 147, 0.2) 0%, rgba(29, 185, 84, 0.08) 50%, transparent 100%);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--border-radius-large);
-      padding: 64px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: center;
-      box-shadow: var(--glass-glow);
-      margin-bottom: 60px;
-    }
-
-    .billboard-text {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .billboard-badge {
-      background-color: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--glass-border);
-      padding: 6px 12px;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .billboard-title {
-      font-size: clamp(2.4rem, 4vw, 3.6rem);
-      line-height: 1.15;
-    }
-
-    .billboard-desc {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 520px;
-    }
-
-    .billboard-actions {
-      display: flex;
-      gap: 16px;
-      margin-top: 8px;
-    }
-
-    .billboard-visual {
-      display: flex;
-      justify-content: center;
-    }
-
-    .billboard-image-frame {
-      width: 100%;
-      max-width: 320px;
-      aspect-ratio: 1/1;
-      border-radius: var(--border-radius-large);
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      border: 2px solid rgba(255, 255, 255, 0.05);
-      transition: transform 0.3s;
-    }
-
-    .billboard-image-frame:hover {
-      transform: scale(1.03) rotate(1deg);
-    }
-
-    .billboard-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* SECCIÓN HISTORIA: BENTO INTERMITENTE DE HISTORIA */
-    .history-section {
-      margin-bottom: 80px;
-    }
-
-    .bento-story-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .bento-box {
-      background-color: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--border-radius-large);
-      padding: 32px;
-      box-shadow: var(--glass-glow);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      transition: background-color 0.3s, border-color 0.3s;
-    }
-
-    .bento-box:hover {
-      background-color: rgba(24, 24, 27, 0.85);
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .box-span-2 {
-      grid-column: span 2;
-    }
-
-    .box-span-3 {
-      grid-column: span 3;
-    }
-
-    .box-story-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .box-story-text h2 {
-      font-size: 2.2rem;
-    }
-
-    .box-story-image {
-      padding: 0;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .box-story-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* EL ÁRBOL DE LECCIONES TIPO GRID DE CATEGORÍAS (BENTO SPOTIFY) */
-    .categories-section {
-      margin-bottom: 80px;
-    }
-
-    .section-head {
-      margin-bottom: 32px;
-    }
-
-    .section-head h2 {
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-
-    .section-head p {
-      color: var(--text-muted);
-    }
-
-    .bento-categories-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .category-bento-card {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 1/1;
-      cursor: pointer;
-    }
-
-    .category-bento-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.85) 100%);
-      z-index: 1;
-    }
-
-    .category-card-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .category-bento-card:hover .category-card-img {
-      transform: scale(1.08) rotate(-1deg);
-    }
-
-    .category-card-content {
-      position: absolute;
-      bottom: 24px;
-      left: 24px;
-      right: 24px;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .category-card-title {
-      font-size: 1.6rem;
-    }
-
-    .category-card-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* SECCIÓN DE PRODUCTOS: DISEÑO DE LISTA DE REPRODUCCIÓN (PLAYLIST TRACKLIST) */
-    .tracklist-section {
-      margin-bottom: 80px;
-    }
-
-    .tracklist-container {
-      background-color: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--border-radius-large);
-      padding: 32px;
-      box-shadow: var(--glass-glow);
-      backdrop-filter: blur(16px);
-    }
-
-    /* Encabezado de la Tabla tipo Spotify */
-    .tracklist-header-row {
-      display: grid;
-      grid-template-columns: 50px 1.5fr 1fr 100px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 12px;
-      margin-bottom: 16px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Filas de Canciones/Productos */
-    .track-row {
-      display: grid;
-      grid-template-columns: 50px 1.5fr 1fr 100px;
-      align-items: center;
-      padding: 16px 0;
-      border-radius: var(--border-radius-medium);
-      transition: background-color 0.2s;
-      cursor: pointer;
-    }
-
-    .track-row:hover {
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .track-number {
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    .track-row:hover .track-number {
-      color: var(--accent-neon);
-    }
-
-    .track-title-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .track-thumb {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
-      object-fit: cover;
-      border: 1px solid var(--glass-border);
-    }
-
-    .track-title {
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .track-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .track-tag-pill {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      border: 1px solid rgba(255,255,255,0.1);
-      background-color: rgba(255,255,255,0.03);
-      color: var(--text-white);
-      max-width: fit-content;
-    }
-
-    .track-action {
-      display: flex;
-      justify-content: center;
-    }
-
-    .btn-play-whatsapp {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: var(--accent-neon);
-      color: var(--spotify-black);
-      border: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .btn-play-whatsapp:hover {
-      transform: scale(1.1);
-    }
-
-    /* GALERÍA EN GRILLA BENTO FUSIONADA */
-    .gallery-section {
-      margin-bottom: 80px;
-    }
-
-    .bento-gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 200px;
-      gap: 20px;
-    }
-
-    .bento-gallery-box {
-      border: 1px solid var(--glass-border);
-      border-radius: var(--border-radius-large);
-      overflow: hidden;
-      position: relative;
-      box-shadow: var(--glass-glow);
-    }
-
-    .bento-gallery-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-
-    .bento-gallery-box:hover img {
-      transform: scale(1.04);
-    }
-
-    .b-span-2 {
-      grid-column: span 2;
-    }
-
-    .b-row-2 {
-      grid-row: span 2;
-    }
-
-    /* SECCIÓN DE CONTACTO: CALL TO ACTION TARJETA GIGANTE BENTO */
-    .cta-bento-section {
-      margin-bottom: 60px;
-    }
-
-    .cta-bento-card {
-      background: radial-gradient(circle at bottom left, rgba(29, 185, 84, 0.2) 0%, rgba(255, 46, 147, 0.08) 60%, transparent 100%);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--border-radius-large);
-      padding: 64px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-      box-shadow: var(--glass-glow);
-    }
-
-    .cta-bento-card h2 {
-      font-size: 2.6rem;
-      letter-spacing: -0.01em;
-    }
-
-    .cta-bento-card p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 640px;
-    }
-
-    /* FOOTER INTEGRADO EN EL DASHBOARD */
-    .dashboard-footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 40px;
-      padding-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 1024px) {
-      .spotify-sidebar {
-        display: none; /* Ocultamos sidebar en móviles */
-      }
-      .spotify-scrollbox {
-        margin-left: 0; /* Ocupa todo el ancho */
-        padding: 24px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .hero-billboard {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 40px;
-      }
-      .billboard-text {
-        align-items: center;
-      }
-      .billboard-actions {
-        justify-content: center;
-      }
-      
-      .bento-story-grid {
-        grid-template-columns: 1fr;
-      }
-      .box-span-2, .box-span-3 {
-        grid-column: span 1;
-      }
-      
-      .bento-categories-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .tracklist-header-row {
-        grid-template-columns: 40px 2fr 1fr;
-      }
-      .track-row {
-        grid-template-columns: 40px 2fr 1fr;
-      }
-      .track-header-row div:nth-child(3),
-      .track-row div:nth-child(3) {
-        display: none; /* Ocultar tag en mobile */
-      }
-      
-      .bento-gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 160px;
-      }
-      .b-span-2 {
-        grid-column: span 2;
-      }
-      
-      .cta-bento-card {
-        padding: 40px 20px;
-      }
-      .cta-bento-card h2 {
-        font-size: 2rem;
-      }
-      
-      .dashboard-footer {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxikiosco La Nona — Dulzura y Juguetes en Bento Grids</title>
+    <meta name="description" content="Descubrí golosinas premium, útiles escolares, juguetes didácticos y regalos especiales en una experiencia inmersiva única.">
+    
+    <!-- Google Fonts: Montserrat (Bold geometric headings) & Inter (Clean structural text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS: Spotify Immersive Dark & Bento Grid Layout -->
+    <style>
+        :root {
+            /* Immersive dark color tokens with candy-neon highlights */
+            --bg-deep: #0C0C0C;
+            --bg-surface: #121212;
+            --bg-card: #181818;
+            --bg-card-hover: #222222;
+            --bg-interactive: #282828;
+            
+            --primary: #FF4B72; /* Neon Pink */
+            --primary-glow: rgba(255, 75, 114, 0.4);
+            
+            --secondary: #F7B05B; /* Neon Gold */
+            --secondary-glow: rgba(247, 176, 91, 0.35);
+            
+            --text-base: #FFFFFF;
+            --text-silver: #B3B3B3;
+            --text-muted: #7E7E7E;
+            
+            --border-translucent: rgba(255, 255, 255, 0.08);
+            --border-active: rgba(255, 255, 255, 0.2);
+            
+            --font-display: 'Montserrat', 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --radius-bento: 24px;
+            --radius-pill: 9999px;
+            
+            --shadow-heavy: rgba(0, 0, 0, 0.6) 0px 12px 32px;
+            --shadow-glow: 0 0 20px var(--primary-glow);
+        }
+
+        /* Resets */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-deep);
+            color: var(--text-base);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-base);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+            letter-spacing: -0.03em;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 3.5vw + 0.5rem, 3rem);
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: var(--text-silver);
+        }
+
+        /* Spotify-style pill buttons */
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            padding: 1rem 2.2rem;
+            border-radius: var(--radius-pill);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.3, 1, 0.4, 1);
+        }
+
+        .btn-pill-primary {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn-pill-primary:hover {
+            transform: scale(1.04);
+            background-color: #FFFFFF;
+            color: #000000;
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        .btn-pill-secondary {
+            background-color: transparent;
+            color: #FFFFFF;
+            border-color: var(--border-active);
+        }
+
+        .btn-pill-secondary:hover {
+            transform: scale(1.04);
+            border-color: #FFFFFF;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Layout 3: Bento Floating Pill Navigation */
+        .floating-pill-nav {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1000px;
+            background-color: rgba(18, 18, 18, 0.75);
+            border: 1px solid var(--border-translucent);
+            border-radius: var(--radius-pill);
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-heavy);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 2rem;
+        }
+
+        .logo-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: #FFFFFF;
+        }
+
+        .logo-glow-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-silver);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #FFFFFF;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+
+        /* Section 2: Hero Dynamic (Mesh dark background) */
+        .hero-dynamic {
+            padding: 10rem 2rem 5rem 2rem;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 80% 20%, var(--primary-glow) 0%, transparent 45%),
+                        radial-gradient(circle at 10% 80%, var(--secondary-glow) 0%, transparent 40%),
+                        var(--bg-deep);
+            border-bottom: 1px solid var(--border-translucent);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero-badge-pill {
+            background-color: rgba(255, 75, 114, 0.12);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.4rem 1.2rem;
+            border-radius: var(--radius-pill);
+            margin-bottom: 2rem;
+            box-shadow: 0 0 15px rgba(255, 75, 114, 0.15);
+        }
+
+        .hero-title-massive {
+            font-size: clamp(2.8rem, 6vw + 0.5rem, 4.8rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-title-massive span {
+            color: var(--primary);
+            text-shadow: 0 0 30px rgba(255, 75, 114, 0.3);
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-silver);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-visual-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-translucent);
+            border-radius: var(--radius-bento);
+            padding: 1.2rem;
+            box-shadow: var(--shadow-heavy);
+            width: 100%;
+            max-width: 400px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-visual-card:hover {
+            transform: scale(1.02);
+            border-color: var(--border-active);
+        }
+
+        .hero-visual-card img {
+            width: 100%;
+            border-radius: 16px;
+            display: block;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        /* Section 3: Infinite Marquee Scroll */
+        .marquee-scroll {
+            padding: 2.5rem 0;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-translucent);
+            overflow: hidden;
+            display: flex;
+            white-space: nowrap;
+        }
+
+        .marquee-track {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 2.2rem;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+            padding: 0 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .marquee-item span {
+            color: var(--primary);
+            -webkit-text-stroke: 0;
+            text-shadow: 0 0 10px rgba(255, 75, 114, 0.4);
+        }
+
+        /* Section 4: Bento Grid Section (Antojos y Regalos) */
+        .bento-section {
+            padding: 8rem 2rem;
+            background-color: var(--bg-deep);
+            border-bottom: 1px solid var(--border-translucent);
+        }
+
+        .section-header {
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-header h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+        }
+
+        /* Bento Grid CSS */
+        .bento-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 240px;
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-translucent);
+            border-radius: var(--radius-bento);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .bento-card:hover {
+            transform: scale(1.02);
+            background-color: var(--bg-card-hover);
+            border-color: var(--border-active);
+        }
+
+        .bento-card-col-2 { grid-column: span 2; }
+        .bento-card-col-3 { grid-column: span 3; }
+        .bento-card-row-2 { grid-row: span 2; }
+
+        .bento-card-primary {
+            background: linear-gradient(135deg, #1A1215 0%, #0F0A0B 100%);
+            border-color: rgba(255, 75, 114, 0.2);
+        }
+
+        .bento-card-primary:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(255, 75, 114, 0.15);
+        }
+
+        .bento-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bento-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .bento-content p {
+            font-size: 1rem;
+            color: var(--text-silver);
+            line-height: 1.5;
+        }
+
+        .bento-card-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.3;
+            transition: opacity 0.3s ease, transform 0.4s ease;
+        }
+
+        .bento-card:hover .bento-card-img {
+            opacity: 0.55;
+            transform: scale(1.03);
+        }
+
+        .bento-overlay-text {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .bento-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .bento-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-translucent);
+            padding: 0.25rem 0.6rem;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bento-card:hover .bento-tag {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--border-active);
+        }
+
+        /* Circular Action Arrow */
+        .bento-arrow {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--bg-interactive);
+            border: 1px solid var(--border-translucent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 3;
+            transition: all 0.2s ease;
+        }
+
+        .bento-card:hover .bento-arrow {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            transform: rotate(-45deg);
+        }
+
+        /* Section 5: Bento Gallery */
+        .gallery-section {
+            padding: 8rem 2rem;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-translucent);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #FFFFFF;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 2.2rem;
+            z-index: 999;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.05) translateY(-3px);
+            background-color: #22c35e;
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Section 6: Dashboard Bento-style Footer */
+        .bento-footer {
+            background-color: var(--bg-deep);
+            border-top: 1px solid var(--border-translucent);
+            padding: 6rem 2rem 3rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            border-bottom: 1px solid var(--border-translucent);
+            padding-bottom: 4rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #FFFFFF;
+        }
+
+        .footer-column p {
+            font-size: 0.95rem;
+            color: var(--text-silver);
+            line-height: 1.5;
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-silver);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-translucent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .footer-social-btn:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Fade-in Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                        transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Keyframes */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                text-align: center;
+            }
+            .hero-text {
+                align-items: center;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 220px;
+            }
+            .bento-card-col-3 {
+                grid-column: span 2;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .floating-pill-nav {
+                top: 15px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+            }
+            .bento-card {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+                aspect-ratio: auto;
+                padding: 2rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN LATERAL FIJA IZQUIERDA -->
-  <aside class="spotify-sidebar">
-    <a href="#" class="sidebar-brand">
-      <!-- Logo real del local -->
-      <img class="sidebar-logo" src="img/maxikioscolanona_1.jpg" alt="La Nona Logo">
-      <span class="sidebar-title">La Nona</span>
+    <!-- FLOATING NAV PILL -->
+    <nav class="floating-pill-nav">
+        <div class="nav-container">
+            <a href="#" class="logo-pill">
+                <span class="logo-glow-dot"></span>
+                Maxikiosco La Nona
+            </a>
+            <div class="nav-links">
+                <a href="#bento" class="nav-link">Destacados</a>
+                <a href="#galeria" class="nav-link">Galería</a>
+                <a href="#contacto" class="nav-link">Ubicación</a>
+                <a href="https://wa.me/5491123456789" target="_blank" class="btn-pill btn-pill-primary" style="padding: 0.4rem 1.2rem; font-size: 0.8rem;">
+                    Escribinos
+                </a>
+            </div>
+            <button class="nav-toggle" onclick="alert('¡Menú disponible pronto!')">☰</button>
+        </div>
+    </nav>
+    <!-- ADS:NAV:END -->
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-dynamic">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <span class="hero-badge-pill">🌈 Kiosco & Juguetería de Barrio</span>
+                    <h1 class="hero-title-massive">Dulzura en cada <span>rincón</span></h1>
+                    <p class="hero-desc">Encontrá juguetes didácticos que inspiran, peluches hermosos, artículos de librería llenos de diseño y las golosinas más selectas del pueblo.</p>
+                    <div class="hero-actions">
+                        <a href="#bento" class="btn-pill btn-pill-primary">Explorar Bento</a>
+                        <a href="https://wa.me/5491123456789" target="_blank" class="btn-pill btn-pill-secondary">Consultar WhatsApp</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-visual-card">
+                        <img src="img/ai_hero.png" alt="Maxikiosco La Nona storefront visual">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFINITE MARQUEE RUNNER -->
+        <section class="marquee-scroll">
+            <div class="marquee-track">
+                <div class="marquee-item">🧸 JUGUETES <span>DIDÁCTICOS</span></div>
+                <div class="marquee-item">🍬 DULCES <span>PREMIUM</span></div>
+                <div class="marquee-item">🎒 ÚTILES <span>ESCOLARES</span></div>
+                <div class="marquee-item">🎁 REGALERÍA <span>PERSONALIZADA</span></div>
+                <div class="marquee-item">🚌 CARGA <span>SUBE</span></div>
+                <!-- Duplicate for loop -->
+                <div class="marquee-item">🧸 JUGUETES <span>DIDÁCTICOS</span></div>
+                <div class="marquee-item">🍬 DULCES <span>PREMIUM</span></div>
+                <div class="marquee-item">🎒 ÚTILES <span>ESCOLARES</span></div>
+                <div class="marquee-item">🎁 REGALERÍA <span>PERSONALIZADA</span></div>
+                <div class="marquee-item">🚌 CARGA <span>SUBE</span></div>
+            </div>
+        </section>
+
+        <!-- BENTO GRID SYSTEM -->
+        <section id="bento" class="bento-section fade-in">
+            <div class="section-header">
+                <h2>Explorá por Bloques</h2>
+                <p>Nuestra tienda resumida en una grilla interactiva de alta densidad.</p>
+            </div>
+            
+            <div class="bento-grid">
+                
+                <!-- Box 1 (Golosinas - Large Row Span) -->
+                <div class="bento-card bento-card-col-2 bento-card-row-2 bento-card-primary">
+                    <img class="bento-card-img" src="img/ai_detail.png" alt="Candy Detail closeup">
+                    <div class="bento-arrow">➔</div>
+                    <div class="bento-overlay-text">
+                        <div class="bento-content">
+                            <span class="bento-tag" style="color:var(--primary); border-color:var(--primary)">Golosinas</span>
+                            <h3>Dulces y Chocolates Premium</h3>
+                            <p>Antojos selectos nacionales e importados. Chocolates finos, licores exquisitos y las gomitas más ricas para disfrutar en la noche o hacer regalos deliciosos.</p>
+                        </div>
+                        <div class="bento-tags">
+                            <span class="bento-tag">Nacionales</span>
+                            <span class="bento-tag">Importados</span>
+                            <span class="bento-tag">Chocolates</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 2 (Juguetería) -->
+                <div class="bento-card bento-card-col-2">
+                    <div class="bento-arrow">➔</div>
+                    <div class="bento-content">
+                        <span class="bento-tag" style="color:var(--secondary); border-color:var(--secondary)">Juguetes</span>
+                        <h3>Juguetes Didácticos</h3>
+                        <p>Juegos de mesa creativos, didácticos de madera hermosos y opciones que ayudan a los más chicos a crecer jugando.</p>
+                    </div>
+                    <div class="bento-tags">
+                        <span class="bento-tag">Madera</span>
+                        <span class="bento-tag">Juegos de Mesa</span>
+                    </div>
+                </div>
+
+                <!-- Box 3 (Librería) -->
+                <div class="bento-card">
+                    <div class="bento-arrow">➔</div>
+                    <div class="bento-content">
+                        <span class="bento-tag">Útiles</span>
+                        <h3>Escolar y Librería</h3>
+                        <p>Mochilas hermosas y cartucheras para brillar.</p>
+                    </div>
+                </div>
+
+                <!-- Box 4 (SUBE) -->
+                <div class="bento-card">
+                    <div class="bento-content">
+                        <span class="bento-tag">Servicio</span>
+                        <h3>Tarjeta SUBE</h3>
+                        <p>Cargá tu saldo rápido.</p>
+                    </div>
+                </div>
+
+                <!-- Box 5 (Historia y Calidez - Col 2) -->
+                <div class="bento-card bento-card-col-2">
+                    <div class="bento-arrow">➔</div>
+                    <div class="bento-content">
+                        <span class="bento-tag" style="color:var(--primary); border-color:var(--primary)">La Nona</span>
+                        <h3>Atención Familiar</h3>
+                        <p>El corazón de Charlone. Atendido con el cariño inigualable de nuestra familia para hacerte sentir como en casa en cada visita.</p>
+                    </div>
+                </div>
+
+                <!-- Box 6 (Peluches - Row 2) -->
+                <div class="bento-card bento-card-row-2">
+                    <img class="bento-card-img" src="img/maxikioscolanona_4.jpg" alt="Peluches en estanterias">
+                    <div class="bento-arrow">➔</div>
+                    <div class="bento-overlay-text">
+                        <div class="bento-content">
+                            <span class="bento-tag">Regalería</span>
+                            <h3>Peluches Gigantes</h3>
+                            <p>Osos, conejos y peluches súper suaves listos para acompañar a los más pequeños.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 7 (Cargas Virtuales) -->
+                <div class="bento-card">
+                    <div class="bento-content">
+                        <span class="bento-tag">Celular</span>
+                        <h3>Cargas Virtuales</h3>
+                        <p>Cargá saldo al instante.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BENTO GALLERY IMAGES -->
+        <section id="galeria" class="gallery-section fade-in">
+            <div class="section-header">
+                <h2>Nuestra Tienda en Bento Cards</h2>
+                <p>Recorré de forma visual el interior y los productos mágicos de Maxikiosco La Nona.</p>
+            </div>
+            
+            <div class="bento-grid">
+                <!-- Gallery 1 -->
+                <div class="bento-card bento-card-col-2 bento-card-row-2">
+                    <img class="bento-card-img" src="img/maxikioscolanona_1.jpg" alt="Golosinas variadas">
+                    <div class="bento-overlay-text">
+                        <div class="bento-content">
+                            <h3>Un local lleno de sorpresas</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery 2 -->
+                <div class="bento-card">
+                    <img class="bento-card-img" src="img/maxikioscolanona_2.jpg" alt="Estantes con muñecas y juguetes">
+                    <div class="bento-overlay-text">
+                        <div class="bento-content">
+                            <h3>Muñecas y Regalos</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery 3 -->
+                <div class="bento-card">
+                    <img class="bento-card-img" src="img/maxikioscolanona_3.jpg" alt="Mochilas y útiles escolares">
+                    <div class="bento-overlay-text">
+                        <div class="bento-content">
+                            <h3>Mochilas Divertidas</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery 4 -->
+                <div class="bento-card bento-card-col-2">
+                    <img class="bento-card-img" src="img/maxikioscolanona_5.jpg" alt="Estanteria completa de kiosco diario">
+                    <div class="bento-overlay-text">
+                        <div class="bento-content">
+                            <h3>Bebidas y Artículos de Kiosco</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ADS:CONTENT:END -->
+
+    <!-- STRUCTURED BENTO-STYLE FOOTER -->
+    <footer id="contacto" class="bento-footer">
+        <!-- ADS:FOOTER:START -->
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Maxikiosco La Nona</h3>
+                <p style="margin-top: 1rem;">El maxikiosco y juguetería con la mayor calidez familiar de Coronel Charlone. Golosinas especiales, útiles, regalería y SUBE.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Nuestros Rubros</h4>
+                <ul class="footer-links">
+                    <li><a href="#bento">Didácticos y Juguetes</a></li>
+                    <li><a href="#bento">Golosinas y Chocolates</a></li>
+                    <li><a href="#bento">Librería y Mochilas</a></li>
+                    <li><a href="#bento">SUBE y Servicios</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Horarios de Atención</h4>
+                <ul class="footer-links">
+                    <li>Lunes a Sábado:</li>
+                    <li>🌞 Mañana: 08:30 a 13:00 hs</li>
+                    <li>🌙 Tarde: 16:30 a 20:30 hs</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Ubicación & Contacto</h4>
+                <ul class="footer-links">
+                    <li>📍 Coronel Charlone</li>
+                    <li>Provincia de Buenos Aires</li>
+                    <li>📸 @maxikioscolanona</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>Desarrollado por ADS Labs — Todos los derechos reservados &copy; 2026</span>
+            <div class="footer-social-links">
+                <a href="https://instagram.com/maxikioscolanona" target="_blank" class="footer-social-btn" aria-label="Instagram">📸</a>
+                <a href="https://wa.me/5491123456789" target="_blank" class="footer-social-btn" aria-label="WhatsApp">💬</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp FAB -->
+    <a href="https://wa.me/5491123456789" target="_blank" class="whatsapp-fab" aria-label="Escribinos por WhatsApp">
+        💬
     </a>
 
-    <ul class="sidebar-menu">
-      <li class="sidebar-item">
-        <a href="#inicio" class="sidebar-link active">
-          <span>🏠</span> Inicio
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="#historia" class="sidebar-link">
-          <span>📖</span> Historia
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="#categorias" class="sidebar-link">
-          <span>🎛️</span> Secciones
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="#playlist" class="sidebar-link">
-          <span>🎵</span> Playlist Dulce
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="#galeria" class="sidebar-link">
-          <span>🖼️</span> Galería
-        </a>
-      </li>
-    </ul>
+    <!-- Intersection Observer Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observerOptions = {
+                root: null,
+                threshold: 0.15,
+                rootMargin: '0px 0px -40px 0px'
+            };
 
-    <div class="sidebar-cta-box">
-      <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-white);">¿Buscás Regalos?</span>
-      <p>Consultanos de inmediato y te asesoramos.</p>
-      <a href="https://wa.me/54" class="btn-spotify btn-spotify-neon" style="padding: 10px 16px; font-size: 0.82rem;">
-        💬 Mensaje
-      </a>
-    </div>
-    <!-- ADS:NAV:END -->
-  </aside>
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-  <!-- CONTENEDOR DE SCROLL DERECHO -->
-  <main class="spotify-scrollbox">
-    <div id="inicio" class="container">
-      
-      <!-- HERO BILLBOARD CONTAINER -->
-      <header class="hero-billboard">
-        <div class="billboard-text">
-          <div class="billboard-badge">🎵 TOP HITS DE LA NONA</div>
-          <h1 class="billboard-title">El universo que los chicos aman explorar</h1>
-          <p class="billboard-desc">Juguetes, peluches, golosinas, mochilas y todo lo que necesitás para regalar, estudiar o disfrutar. A la vuelta de tu esquina.</p>
-          <div class="billboard-actions">
-            <a href="#playlist" class="btn-spotify btn-spotify-neon">Escuchar Playlist</a>
-            <a href="https://wa.me/54" class="btn-spotify btn-spotify-glass">Pedir Surtido</a>
-          </div>
-        </div>
-        <div class="billboard-visual">
-          <div class="billboard-image-frame">
-            <!-- Imagen IA hero ambient -->
-            <img class="billboard-img" src="img/ai_hero.png" alt="Diseño Cósmico">
-          </div>
-        </div>
-      </header>
-
-      <!-- HISTORIA EN FORMATO BENTO GRID -->
-      <section id="historia" class="history-section">
-        <div class="bento-story-grid">
-          
-          <div class="bento-box box-span-2 box-story-text">
-            <div class="billboard-badge" style="background-color: rgba(29,185,84,0.1); border-color: var(--accent-neon); color: var(--accent-neon); align-self: flex-start;">🏡 MÍSTICA LOCAL</div>
-            <h2>Un clásico en Charlone</h2>
-            <p style="font-size: 1.1rem; color: var(--text-muted);">Maxikiosco amplio en Coronel Charlone que ofrece productos clásicos, gran sección de juguetería, regalería y artículos de librería. Somos el lugar más completo para encontrar regalos y útiles escolares en el pueblo.</p>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">Fundado con la idea de brindar un espacio alegre donde encontrar todo lo necesario, desde un dulce rápido para endulzar la tarde hasta el set escolar completo. En La Nona nos apasiona ver a los chicos explorar y sonreír.</p>
-          </div>
-
-          <div class="bento-box box-story-image">
-            <!-- Foto real del local -->
-            <img src="img/maxikioscolanona_5.jpg" alt="Interior La Nona">
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ÁRBOL DE LECCIONES / CATEGORÍAS TIPO BENTO SPOTIFY -->
-      <section id="categorias" class="categories-section">
-        <div class="section-head">
-          <h2>Secciones Destacadas</h2>
-          <p>Hacé click en cada bloque para explorar el surtido completo de productos:</p>
-        </div>
-
-        <div class="bento-categories-grid">
-          
-          <!-- Categoría 1: Juguetes -->
-          <div class="bento-box category-bento-card" onclick="location.href='#playlist'">
-            <img class="category-card-img" src="img/ai_product.png" alt="Juguetes">
-            <div class="category-card-content">
-              <span class="track-tag-pill" style="background-color: var(--accent-pink);">🧸 INFANTIL</span>
-              <h3 class="category-card-title">Juguetes</h3>
-              <p class="category-card-desc">Peluches, muñecas y novedades.</p>
-            </div>
-          </div>
-
-          <!-- Categoría 2: útiles -->
-          <div class="bento-box category-bento-card" onclick="location.href='#playlist'">
-            <img class="category-card-img" src="img/maxikioscolanona_2.jpg" alt="Útiles">
-            <div class="category-card-content">
-              <span class="track-tag-pill" style="background-color: var(--accent-neon);">🎒 LIBRERÍA</span>
-              <h3 class="category-card-title">Mochilas</h3>
-              <p class="category-card-desc">Útiles y cartucheras escolares.</p>
-            </div>
-          </div>
-
-          <!-- Categoría 3: Golosinas -->
-          <div class="bento-box category-bento-card" onclick="location.href='#playlist'">
-            <img class="category-card-img" src="img/maxikioscolanona_4.jpg" alt="Caramelos">
-            <div class="category-card-content">
-              <span class="track-tag-pill" style="background-color: #FF9600;">🍭 KIOSCO</span>
-              <h3 class="category-card-title">Golosinas</h3>
-              <p class="category-card-desc">Chocolates, gomitas y snacks.</p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- CATÁLOGO COMO PLAYLIST (TRACKLIST TABLE) -->
-      <section id="playlist" class="tracklist-section">
-        <div class="section-head">
-          <h2>La Playlist de La Nona</h2>
-          <p>Nuestra selección de productos favoritos ordenados para que elijas tu hit preferido:</p>
-        </div>
-
-        <div class="tracklist-container">
-          
-          <!-- Cabecera de la tabla -->
-          <div class="tracklist-header-row">
-            <div style="text-align: center;">#</div>
-            <div>Título / Categoría</div>
-            <div>Diferencial</div>
-            <div style="text-align: center;">Acción</div>
-          </div>
-
-          <!-- Pista 1: Juguetes y Peluches -->
-          <div class="track-row" onclick="window.open('https://wa.me/54')">
-            <div class="track-number">1</div>
-            <div class="track-title-wrapper">
-              <img class="track-thumb" src="img/ai_product.png" alt="Juguetes">
-              <div>
-                <span class="track-title">Juguetes y Peluches</span>
-                <span class="track-subtitle"><br>Desde el último superhéroe hasta el peluche más tierno.</span>
-              </div>
-            </div>
-            <div>
-              <span class="track-tag-pill" style="color: var(--accent-pink); border-color: rgba(255,46,147,0.3);">💖 Tesoro esperándote</span>
-            </div>
-            <div class="track-action">
-              <button class="btn-play-whatsapp">💬</button>
-            </div>
-          </div>
-
-          <!-- Pista 2: Mochilas y útiles -->
-          <div class="track-row" onclick="window.open('https://wa.me/54')">
-            <div class="track-number">2</div>
-            <div class="track-title-wrapper">
-              <img class="track-thumb" src="img/maxikioscolanona_2.jpg" alt="Mochilas">
-              <div>
-                <span class="track-title">Mochilas y Útiles</span>
-                <span class="track-subtitle"><br>Todo para arrancar el año escolar con todo.</span>
-              </div>
-            </div>
-            <div>
-              <span class="track-tag-pill" style="color: var(--accent-neon); border-color: rgba(29,185,84,0.3);">🎒 Súper cancheras</span>
-            </div>
-            <div class="track-action">
-              <button class="btn-play-whatsapp">💬</button>
-            </div>
-          </div>
-
-          <!-- Pista 3: Golosinas y Kiosco -->
-          <div class="track-row" onclick="window.open('https://wa.me/54')">
-            <div class="track-number">3</div>
-            <div class="track-title-wrapper">
-              <img class="track-thumb" src="img/maxikioscolanona_4.jpg" alt="Golosinas">
-              <div>
-                <span class="track-title">Golosinas y Snacks</span>
-                <span class="track-subtitle"><br>Esa golosina que te saca una sonrisa, el chocolate para el bajón.</span>
-              </div>
-            </div>
-            <div>
-              <span class="track-tag-pill" style="color: #FF9600; border-color: rgba(255,150,0,0.3);">🍫 Endulzamos tu día</span>
-            </div>
-            <div class="track-action">
-              <button class="btn-play-whatsapp">💬</button>
-            </div>
-          </div>
-
-          <!-- Pista 4: Regalería -->
-          <div class="track-row" onclick="window.open('https://wa.me/54')">
-            <div class="track-number">4</div>
-            <div class="track-title-wrapper">
-              <img class="track-thumb" src="img/ai_detail.png" alt="Regalería">
-              <div>
-                <span class="track-title">Kits de Regalo Personalizados</span>
-                <span class="track-subtitle"><br>Sorprendé en cumpleaños con nuestros combos armados.</span>
-              </div>
-            </div>
-            <div>
-              <span class="track-tag-pill">🎁 100% personalizados</span>
-            </div>
-            <div class="track-action">
-              <button class="btn-play-whatsapp">💬</button>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- GALERÍA EN GRILLA BENTO COLLAGE -->
-      <section id="galeria" class="gallery-section">
-        <div class="section-head">
-          <h2>Galería del Dashboard</h2>
-          <p>Un paseo por los pasillos de nuestro local en Coronel Charlone a través de una grilla Bento:</p>
-        </div>
-
-        <div class="bento-gallery-grid">
-          
-          <div class="bento-gallery-box b-span-2 b-row-2">
-            <img src="img/maxikioscolanona_3.jpg" alt="Estantería llena de golosinas">
-          </div>
-
-          <div class="bento-gallery-box b-row-2">
-            <img src="img/ai_detail.png" alt="Detalle de juguetes">
-          </div>
-
-          <div class="bento-gallery-box">
-            <img src="img/maxikioscolanona_2.jpg" alt="Mochilas reales">
-          </div>
-
-          <div class="bento-gallery-box">
-            <img src="img/maxikioscolanona_4.jpg" alt="Snacks y caramelos">
-          </div>
-
-          <div class="bento-gallery-box b-span-2">
-            <img src="img/ai_hero.png" alt="Imagen lúdica de fantasía">
-          </div>
-
-          <div class="bento-gallery-box">
-            <img src="img/maxikioscolanona_1.jpg" alt="Logo de entrada de La Nona">
-          </div>
-
-          <div class="bento-gallery-box">
-            <img src="img/ai_product.png" alt="Peluches tiernos">
-          </div>
-
-        </div>
-      </section>
-
-      <!-- CONTACTO: CALL TO ACTION BENTO GIGANTE -->
-      <section class="cta-bento-section">
-        <!-- ADS:CONTENT:END -->
-        <div class="cta-bento-card">
-          <div class="billboard-badge" style="background-color: rgba(255,46,147,0.1); border-color: var(--accent-pink); color: var(--accent-pink);">📲 CHAT DIRECTO</div>
-          <h2>¿Buscás algo especial?</h2>
-          <p>Consultanos por WhatsApp y te ayudamos a encontrar exactamente lo que necesitás. Te mandamos fotos de las mochilas, juguetes o peluches en stock para que elijas el que más te guste.</p>
-          <a href="https://wa.me/54" class="btn-spotify btn-spotify-neon" style="font-size: 1.1rem; padding: 16px 36px;">
-            💬 Conversar por WhatsApp
-          </a>
-        </div>
-      </section>
-
-      <!-- FOOTER DEL DASHBOARD -->
-      <footer class="dashboard-footer">
-        <!-- ADS:FOOTER:START -->
-        <div>
-          <span style="font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: var(--text-white);">LA NONA</span>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Coronel Charlone, Buenos Aires, Argentina.</p>
-        </div>
-        <p style="font-weight: 700; font-size: 0.85rem;">Desarrollado por ADS Labs</p>
-      </footer>
-
-    </div>
-  </main>
-  
-  <!-- ADS:SCRIPTS -->
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
